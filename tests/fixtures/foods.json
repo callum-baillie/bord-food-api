@@ -1,0 +1,57 @@
+[
+  {
+    "fdcId": 101,
+    "description": "Test rolled oats",
+    "dataType": "Branded",
+    "brandOwner": "Example Foods",
+    "brandName": "Test Pantry",
+    "gtinUpc": "012345678905",
+    "publicationDate": "12/1/2025",
+    "servingSize": 40,
+    "servingSizeUnit": "g",
+    "brandedFoodCategory": "Cereals",
+    "ingredients": "Whole grain oats",
+    "foodNutrients": [
+      {"nutrient": {"id": 1003, "name": "Protein", "unitName": "g"}, "amount": 12.5},
+      {"nutrient": {"id": 1093, "name": "Sodium, Na", "unitName": "mg"}, "amount": 0},
+      {"nutrient": {"id": 1089, "name": "Iron, Fe", "unitName": "mg"}, "amount": null},
+      {"nutrient": {"id": 1162, "name": "Vitamin C", "unitName": "mg"}}
+    ]
+  },
+  {
+    "fdcId": 102,
+    "description": "Test rolled oats updated",
+    "dataType": "Branded",
+    "gtinUpc": "00012345678905",
+    "publicationDate": "2/1/2026",
+    "brandOwner": null,
+    "servingSize": null,
+    "foodNutrients": []
+  },
+  {
+    "fdcId": 201,
+    "description": "Oats, whole grain",
+    "dataType": "Foundation",
+    "foodCategory": {"description": "Grains"},
+    "foodNutrients": [{"nutrient": {"id": 1003, "name": "Protein", "unitName": "g"}, "amount": 13.2}]
+  },
+  {
+    "fdcId": 301,
+    "description": "Oats, cooked with milk",
+    "dataType": "Survey (FNDDS)",
+    "wweiaFoodCategory": {"description": "Cooked cereals"},
+    "foodNutrients": []
+  },
+  {
+    "fdcId": 401,
+    "description": "Oats, raw",
+    "dataType": "SR Legacy",
+    "foodNutrients": []
+  },
+  {
+    "fdcId": 501,
+    "description": "Test cocoa powder",
+    "dataType": "Foundation",
+    "foodNutrients": []
+  }
+]

@@ -1,0 +1,7 @@
+# Apply alongside Bòrd's own Compose file. These are environment values on Bòrd.
+services:
+  bord:
+    environment:
+      USDA_FDC_ENABLED: "true"
+      USDA_FDC_BASE_URL: ${LOCAL_FOOD_API_URL:?Set LOCAL_FOOD_API_URL to the local service URL ending in /fdc/v1}
+      USDA_FDC_API_KEY: ${LOCAL_FOOD_API_KEY:-local}

@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!requirements.txt
+!bord_food_api/
+!bord_food_api/*.py
+**/__pycache__
