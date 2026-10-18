@@ -30,4 +30,13 @@ The owner’s earlier **$5 total cap** remains in effect. This campaign addition
 
 The private Tower runbook records actual Compose invocation, release SHA/file digest, campaign ID, mounted configuration/secret paths and stop/status commands. Status JSON is under `/data/crawl-campaigns/<campaign_id>/status.json`; decisions are in `/data/control/jev-crawl-budget.sqlite`; source jobs and request counts remain in the existing control/frontier databases. The configured profile is `crawl`, service `bord-food-crawl`, restart policy `no`.
 
-Startup verification will check only that the worker is running, its status exists and an actual initial Jev decision succeeded; campaign completion/quality/coverage will remain unverified until a later review. The workstation is not required after launch. Runtime results must not be inferred from mocked tests.
+Startup verification checked that the worker was running, its status existed and actual initial Jev decisions succeeded. Campaign completion/quality/coverage remain unverified until a later review. The workstation is not required after launch. Runtime results must not be inferred from mocked tests.
+
+
+## Verified launch
+
+Runner source commit: `24fbc86693afcf7488d081329b2bf45832948bc7`; runner SHA-256: `59f696551e220e7c52dd82c2806bb6265d4cde929015c964ffb5d9ef52a5a526`. Local `python -m pytest -q`: **228 passed**, one upstream warning, 11.10s; Ruff, formatting and OpenAPI passed. GitHub run `39161398811` succeeded, including Python 3.12 verification and Docker smoke. The production API/Bòrd images were not replaced.
+
+The network-free campaign plan validated 19 targets and 40 maximum model calls. The separate Compose container `bord-food-crawl-woodmans` started running with zero restarts/OOM at inspection. Initial campaign state was `running`, phase `robots_and_branch_fetch`; two pre-fetch decisions from `jev-1.14.0` were answered (503 and 508 input tokens). These are startup observations, not completion/coverage results. API `/live` and `/ready` both returned 200. No further progress/completion polling was performed after startup verification.
+
+Pre-run consistent catalog/control backup and frontier backup completed; frontier quick_check passed. The general audit collector’s development-VM leg was unreachable; direct Unraid/service checks supplied launch evidence. Startup/configuration/decision/status records remain on Unraid. No claim that all targets were fetched, all maps found, Jev accuracy established, or an Iowa-wide crawl completed.
