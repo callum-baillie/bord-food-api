@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "status": "v1_api_completed_offline_companion_activation_pending",
+  "status": "v1_api_deployed_core_bulk_activation_verified_companion_pending",
   "tasks": [
     {
       "id": "F01",
@@ -915,5 +915,6 @@
       "live_verification": "not_performed",
       "in_main_v1_scope": false
     }
-  ]
+  ],
+  "live_verification_scope": "Per-task not_performed values preserve the 17 October offline implementation record. The separately authorized 18 October live core-source/deployment evidence is in source-activation-register.json and docs/TOWER-DEPLOYMENT.md."
 }

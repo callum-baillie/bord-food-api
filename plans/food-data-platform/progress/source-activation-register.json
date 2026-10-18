@@ -1,7 +1,71 @@
 {
   "schema_version": "1.0.0",
-  "activations": [],
-  "note": "No live source activated during implementation. Documentation/source-code reads, mocked transports and local synthetic container/provider tests are not source activation. Operator must record policy, scope, rights, budgets and live evidence separately.",
+  "activations": [
+    {
+      "activated_at": "2026-10-18T06:04:54.059225+00:00",
+      "source_id": "usda_fdc",
+      "environment": "Tower Unraid; tower-productivity/bord-food-api",
+      "application_commit": "67c19463ebfe567658813b37a81f5920a0c6ff36",
+      "network_mode": "bulk_only",
+      "status": "live_bulk_publication_verified",
+      "evidence": "docs/TOWER-DEPLOYMENT.md",
+      "jobs": [
+        {
+          "id": "job_29a9cc14881b4b449dedd927a95b7105",
+          "state": "succeeded",
+          "reason": null,
+          "transferred_bytes": 222191867
+        },
+        {
+          "id": "job_4619d2144b5c4cf481150b9eaa641d4f",
+          "state": "succeeded",
+          "reason": "no_change",
+          "transferred_bytes": 160418
+        }
+      ],
+      "scope": [
+        "branded",
+        "foundation",
+        "fndds",
+        "sr_legacy"
+      ],
+      "limitations": "Source publication/transport verified; not a national census, retailer-level fact audit, companion acceptance or optional-source activation.",
+      "activated": true,
+      "reviewed_origins": [
+        "https://fdc.nal.usda.gov"
+      ]
+    },
+    {
+      "activated_at": "2026-10-18T06:04:54.059225+00:00",
+      "source_id": "all_the_places",
+      "environment": "Tower Unraid; tower-productivity/bord-food-api",
+      "application_commit": "67c19463ebfe567658813b37a81f5920a0c6ff36",
+      "network_mode": "bulk_only",
+      "status": "live_bulk_publication_verified",
+      "evidence": "docs/TOWER-DEPLOYMENT.md",
+      "jobs": [
+        {
+          "id": "job_5f00c920120342cbb5003ebba3eb09fb",
+          "state": "succeeded",
+          "reason": null,
+          "transferred_bytes": 10235767
+        }
+      ],
+      "scope": [
+        "walmart_us",
+        "aldi_sud_us",
+        "target_us",
+        "kroger_us"
+      ],
+      "limitations": "Source publication/transport verified; not a national census, retailer-level fact audit, companion acceptance or optional-source activation.",
+      "activated": true,
+      "reviewed_origins": [
+        "https://data.alltheplaces.xyz",
+        "https://alltheplaces-data.openaddresses.io"
+      ]
+    }
+  ],
+  "note": "No live source was activated during the 17 October implementation. The owner separately authorized the 18 October Tower deployment and core bulk activation; records below describe only that later operation. Optional sources, crawlers and paid providers remain unactivated.",
   "implementation": [
     {
       "source_id": "usda_fdc",
@@ -45,5 +109,6 @@
       "live_verification": "not_performed",
       "activated": false
     }
-  ]
+  ],
+  "implementation_recorded_at": "2026-10-17"
 }

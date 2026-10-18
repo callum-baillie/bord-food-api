@@ -1,6 +1,6 @@
 # Bòrd Food API
 
-V1 expansion code now includes empty startup, a durable bulk worker, native store/product APIs and optional source adapters. See [runtime and migration controls](docs/platform-runtime.md), [native OpenAPI](contracts/openapi.json), [Bòrd handoff](contracts/BORD-HANDOFF.md), and [V1 verification](docs/V1-VERIFICATION.md). Implementation test evidence and any later deployment evidence are recorded separately; verify the installed image revision when updating.
+V1 expansion code now includes empty startup, a durable bulk worker, native store/product APIs and optional source adapters. See [runtime and migration controls](docs/platform-runtime.md), [native OpenAPI](contracts/openapi.json), [Bòrd handoff](contracts/BORD-HANDOFF.md), [V1 verification](docs/V1-VERIFICATION.md), and the separately authorized [Tower deployment](docs/TOWER-DEPLOYMENT.md). Verify the installed image revision when updating.
 
 A small, self-hosted USDA FoodData Central API for Bòrd. One Python container, one SQLite database, no separate database server. Search and food details stay local after the initial import.
 

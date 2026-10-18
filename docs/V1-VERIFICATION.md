@@ -2,6 +2,8 @@
 
 This is API repository implementation and offline verification, based on `main` at `13ba74e56f9d383edb2cfc57d4020d2c9943705e`, with an uncommitted worktree. Existing README/environment/setup work and the plan package were preserved. Historical live-USDA evidence in the root `VERIFICATION.md` predates this expansion and does not verify these adapters.
 
+Subsequent operation: the owner separately authorized the 18 October release and Tower deployment. Its live core-source evidence is recorded in [Tower deployment](TOWER-DEPLOYMENT.md); the boundaries below describe the original 17 October implementation run.
+
 ## Delivered API work
 
 - P00: legacy USDA compatibility tests, synthetic fixtures, routine-test socket/DNS egress guard.
