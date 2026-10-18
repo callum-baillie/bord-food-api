@@ -27,3 +27,11 @@ Implementation decisions follow the original template table; actual checkout dri
 
 - On 18 October a new owner request explicitly authorized GitHub publication and Tower deployment/configuration. The tested image is pinned by full application SHA; only the food API service is recreated. Core USDA/selected ATP automatic bulk updates are active; optional/crawler/paid sources stay off. The former local-catalog pin was explicitly overridden for managed refresh while preserving the original database and backup.
 - Live ATP delivery uses the reviewed exact `alltheplaces-data.openaddresses.io` origin; the observed successful output run is older than the global/current check date. Current source coverage is recorded as imported observations, never a national census. Live evidence is separate from the prior offline task record and from companion UI/migration acceptance.
+
+## 2026-10-18 — Authorized bounded source pilot
+
+Keep operator activation distinct from offline V1 completion. Register Woodman’s as an optional reviewed ATP spider without expanding four-spider defaults. Run one source-backed branch’s link-only crawler with two requests, 20-second pacing and the owner’s real contact; pause and close activation afterward. Map discovery grants no media rights.
+
+Select FoodKeeper’s observed exact English resource from its multilingual legacy-HTTP catalog and use HTTPS only. Parse actual workbook cell arrays and retain condition fields/metadata; never substitute third-party food safety guidance when FSIS returns 403. Keep live size unknown and distinguish isolated synthetic volume calibration.
+
+Omit Open Prices null-location observations from a US-scoped pack, while rejecting unresolved non-null related IDs. Prefer native country codes to display labels. Keep price data isolated pending currency/freshness/store-match review; proximity is candidate evidence only. OFF remains snapshot-only without an extraction boundary, and a full baseline requires capacity rehearsal. Two bounded synthetic Jev calls validate capabilities; no unattended AI or model-derived source facts.
