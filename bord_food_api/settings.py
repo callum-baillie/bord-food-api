@@ -40,7 +40,10 @@ SOURCE_DEFAULTS = {
     "usda_fdc": {"enabled": True, "origins": ["https://fdc.nal.usda.gov"]},
     "all_the_places": {
         "enabled": True,
-        "origins": ["https://data.alltheplaces.xyz"],
+        "origins": [
+            "https://data.alltheplaces.xyz",
+            "https://alltheplaces-data.openaddresses.io",
+        ],
         "spiders": ["walmart_us", "aldi_sud_us", "target_us", "kroger_us"],
         "selection_mode": "selected_spiders",
     },

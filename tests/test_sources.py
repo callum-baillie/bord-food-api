@@ -88,12 +88,13 @@ def test_usda_reuses_per_dataset_date_and_exact_normalization():
     assert "foodNutrients" in rows[0]["payload"]
 
 
-def test_selected_atp_resolves_actual_successful_source_run():
+@pytest.mark.parametrize("host", ["data.alltheplaces.xyz", "alltheplaces-data.openaddresses.io"])
+def test_selected_atp_resolves_actual_successful_source_run(host):
     artifacts = resolve_atp(
         {"run_id": "2026-10-15", "start_time": "2026-10-15T01:00:00Z"}, spiders=["walmart_us"]
     )
     pinned = pin_atp_output(
-        artifacts[0], "https://data.alltheplaces.xyz/runs/2026-10-01/output/walmart_us.geojson"
+        artifacts[0], f"https://{host}/runs/2026-10-01/output/walmart_us.geojson"
     )
     assert pinned.release == "2026-10-01"
     assert pinned.metadata["source_observed_at"] == "2026-10-01"
@@ -101,6 +102,32 @@ def test_selected_atp_resolves_actual_successful_source_run():
         pin_atp_output(artifacts[0], artifacts[0].url)
     with pytest.raises(SourceUnresolved):
         resolve_atp({"run_id": "2026-10-15"}, spiders=["unreviewed_spider"])
+
+
+def test_atp_advertised_archive_can_use_reviewed_delivery_host():
+    from bord_food_api.settings import SOURCE_DEFAULTS
+
+    origin = "https://alltheplaces-data.openaddresses.io"
+    url = origin + "/runs/2026-10-01/output.zip"
+    artifacts = resolve_atp(
+        {"run_id": "2026-10-01", "output_url": url},
+        selection_mode="published_archive_us_grocery",
+    )
+    assert artifacts[0].url == url
+    assert origin in SOURCE_DEFAULTS["all_the_places"]["origins"]
+
+
+def test_atp_rejects_unreviewed_delivery_hosts():
+    artifact = resolve_atp({"run_id": "2026-10-15"}, spiders=["walmart_us"])[0]
+    with pytest.raises(SourceUnresolved):
+        pin_atp_output(
+            artifact, "https://unreviewed.example/runs/2026-10-01/output/walmart_us.geojson"
+        )
+    with pytest.raises(SourceUnresolved):
+        resolve_atp(
+            {"run_id": "2026-10-01", "output_url": "https://unreviewed.example/output.zip"},
+            selection_mode="published_archive_us_grocery",
+        )
 
 
 def test_atp_grocery_format_country_and_department_filter():
@@ -413,7 +440,8 @@ class MockTransport:
         }
 
 
-def test_mocked_atp_acquisition_never_fetches_retailer_urls(tmp_path):
+@pytest.mark.parametrize("host", ["data.alltheplaces.xyz", "alltheplaces-data.openaddresses.io"])
+def test_mocked_atp_acquisition_never_fetches_retailer_urls(tmp_path, host):
     url = "https://data.alltheplaces.xyz/runs/latest/output/walmart_us.geojson"
     transport = MockTransport(
         {
@@ -422,7 +450,7 @@ def test_mocked_atp_acquisition_never_fetches_retailer_urls(tmp_path):
                 collection(feature(brand="Walmart", website="https://untrusted.retailer.test"))
             ).encode(),
         },
-        {url: "https://data.alltheplaces.xyz/runs/2026-10-01/output/walmart_us.geojson"},
+        {url: f"https://{host}/runs/2026-10-01/output/walmart_us.geojson"},
     )
     scope = next(
         iter(acquire_source("all_the_places", {"spiders": ["walmart_us"]}, transport, tmp_path))

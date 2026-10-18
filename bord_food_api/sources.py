@@ -35,6 +35,7 @@ from .download import discover
 from .importer import normalize, records
 
 ATP_HOST = "data.alltheplaces.xyz"
+ATP_DELIVERY_HOSTS = {ATP_HOST, "alltheplaces-data.openaddresses.io"}
 ATP_MANIFEST = f"https://{ATP_HOST}/runs/latest.json"
 OFF_BASELINE = "https://static.openfoodfacts.org/data/openfoodfacts-products.jsonl.gz"
 OFF_DELTA_INDEX = "https://static.openfoodfacts.org/data/delta/index.txt"
@@ -182,7 +183,10 @@ def resolve_atp(
                 raise SourceUnresolved("ATP archive exceeds the configured preflight byte budget")
         return [
             Artifact(
-                "archive", _https(url, {ATP_HOST}), str(run), {**metadata, "advertised_bytes": size}
+                "archive",
+                _https(url, ATP_DELIVERY_HOSTS),
+                str(run),
+                {**metadata, "advertised_bytes": size},
             )
         ]
     if selection_mode != "selected_spiders":
@@ -204,7 +208,7 @@ def resolve_atp(
 
 def pin_atp_output(artifact: Artifact, final_url: str) -> Artifact:
     """A latest-success output can be older than the global latest run."""
-    _https(final_url, {ATP_HOST})
+    _https(final_url, ATP_DELIVERY_HOSTS)
     match = re.fullmatch(r"/runs/([^/]+)/output/([^/]+)\.geojson", urlparse(final_url).path)
     if not match or match[1] == "latest" or match[2] != artifact.partition:
         raise SourceUnresolved("ATP output did not resolve to a matching distinct run")
