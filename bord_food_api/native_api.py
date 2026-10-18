@@ -165,6 +165,8 @@ def install_routes(app, settings, authenticate):
     cursors = Cursors(settings.data_dir)
     router = APIRouter(dependencies=[Depends(authenticate)])
     errors = {status: {"model": ErrorEnvelope} for status in (401, 403, 404, 409, 422, 503)}
+    # HTTPStatus renamed 422 in newer Python releases; keep the public contract stable.
+    errors[422]["description"] = "Unprocessable Content"
     unbound, invalid = object(), object()
     bound_manifest = ContextVar("native_catalog_manifest", default=unbound)
 
