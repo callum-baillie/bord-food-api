@@ -74,6 +74,7 @@ class ATPDescriptor:
 
 
 ATP_DESCRIPTORS = {
+    "woodmans_markets_us": ATPDescriptor("woodmans_markets_us", "Woodman's Markets", "grocery"),
     "walmart_us": ATPDescriptor(
         "walmart_us",
         "Walmart",
@@ -155,9 +156,13 @@ def resolve_usda(html: str) -> list[Artifact]:
     ]
 
 
+# Registering an optional reviewed spider must not expand automatic default scope.
+ATP_DEFAULT_SPIDERS = ("walmart_us", "aldi_sud_us", "target_us", "kroger_us")
+
+
 def resolve_atp(
     manifest: dict,
-    spiders: Iterable[str] = tuple(ATP_DESCRIPTORS),
+    spiders: Iterable[str] = ATP_DEFAULT_SPIDERS,
     selection_mode: str = "selected_spiders",
     max_artifact_bytes: int | None = None,
 ) -> list[Artifact]:
@@ -266,9 +271,24 @@ def resolve_snap(html: str, override: str | None = None) -> Artifact:
 
 
 def resolve_foodkeeper(html: str, override: str | None = None) -> Artifact:
-    url = _resource(
-        html, FOODKEEPER_PAGE, {"catalog.data.gov", "www.fsis.usda.gov"}, ".json", override
-    )
+    hosts = {"catalog.data.gov", "www.fsis.usda.gov"}
+    if override:
+        url = _resource(html, FOODKEEPER_PAGE, hosts, ".json", override)
+    else:
+        # The official catalog advertises EN/ES/PT and legacy HTTP links. Select
+        # the observed English resource, upgrading only its exact official path.
+        # Never make an HTTP request or guess a fallback/mirror after a 403.
+        parser = _Links()
+        parser.feed(html)
+        english = "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json"
+        candidates = {
+            english
+            for href in parser.links
+            if urljoin(FOODKEEPER_PAGE, href) in (english, english.replace("https:", "http:"))
+        }
+        if not candidates:
+            raise SourceUnresolved("FoodKeeper catalog has no reviewed English JSON resource")
+        url = candidates.pop()
     return Artifact("english", url, url)
 
 
@@ -428,6 +448,7 @@ def _atp_feature(
                 "city": props.get("addr:city"),
                 "region": props.get("addr:state"),
                 "postal_code": props.get("addr:postcode"),
+                **({"full": props["addr:full"]} if props.get("addr:full") else {}),
                 "country": "US",
             },
             "latitude": lat,
@@ -963,11 +984,23 @@ def parse_open_prices(
                 location_id, proof_id = price.get("location_id"), price.get("proof_id")
                 location = related("locations", location_id)
                 proof = related("proofs", proof_id) if proof_id is not None else None
-                if location is None or (proof_id is not None and proof is None):
+                if proof_id is not None and proof is None:
                     raise ValueError(
                         "Open Prices snapshot has unresolved location/proof references"
                     )
-                country = location.get("osm_address_country") or location.get("country_code")
+                if location_id is None:
+                    # A source observation may have no location. It cannot be
+                    # assigned to U.S. coverage or a branch; omit it from this pack.
+                    continue
+                if location is None:
+                    raise ValueError(
+                        "Open Prices snapshot has unresolved location/proof references"
+                    )
+                country = (
+                    location.get("osm_address_country_code")
+                    or location.get("country_code")
+                    or location.get("osm_address_country")
+                )
                 if str(country).upper() not in {"US", "USA", "UNITED STATES"}:
                     continue
                 amount = _decimal_amount(price.get("price"))
@@ -1009,6 +1042,24 @@ def parse_open_prices(
 
 def parse_foodkeeper(stream: BinaryIO) -> Iterator[dict]:
     """Read the official workbook-shaped JSON, preserving storage ranges verbatim."""
+
+    def worksheet_row(row):
+        # Workbook exports encode each row as an array of one-field cells.
+        # Also accept an already flattened row from reviewed local ingestion.
+        if isinstance(row, dict):
+            return row
+        if not isinstance(row, list):
+            raise TypeError("Invalid FoodKeeper worksheet row")
+        flattened = {}
+        for cell in row:
+            if not isinstance(cell, dict) or len(cell) != 1:
+                raise TypeError("Invalid FoodKeeper worksheet cell")
+            key, value = next(iter(cell.items()))
+            if key in flattened:
+                raise ValueError("Duplicate FoodKeeper worksheet field")
+            flattened[key] = value
+        return flattened
+
     data = json.load(stream)
     if not isinstance(data, dict) or not isinstance(data.get("sheets"), list):
         raise TypeError("FoodKeeper JSON must have the documented sheets collection")
@@ -1017,25 +1068,35 @@ def parse_foodkeeper(stream: BinaryIO) -> Iterator[dict]:
         if not isinstance(sheet, dict) or not isinstance(sheet.get("data"), list):
             raise TypeError("Invalid FoodKeeper worksheet")
         name = sheet.get("name")
+        if not isinstance(name, str) or not name:
+            raise ValueError("FoodKeeper worksheet needs a name")
         if name in sheets:
             raise ValueError("Duplicate FoodKeeper worksheet")
-        sheets[name] = sheet["data"]
+        sheets[name] = [worksheet_row(row) for row in sheet["data"]]
     products = sheets.get("Product")
     if products is None:
         raise ValueError("FoodKeeper JSON has no Product worksheet")
-    categories = {str(row["ID"]): row for row in sheets.get("Category", []) if "ID" in row}
+    categories = {}
+    for row in sheets.get("Category", []):
+        key = row.get("ID")
+        if key is None or isinstance(key, (bool, list, dict)) or str(key) in categories:
+            raise ValueError("FoodKeeper needs unique category IDs")
+        categories[str(key)] = row
+    workbook = {key: value for key, value in data.items() if key != "sheets"}
     seen = set()
     for row in products:
         if not isinstance(row, dict):
             raise TypeError("Invalid FoodKeeper product row")
         key = row.get("ID")
-        if key is None or str(key) in seen:
+        if key is None or isinstance(key, (bool, list, dict)) or str(key) in seen:
             raise ValueError("FoodKeeper needs unique product IDs")
         seen.add(str(key))
         name = row.get("Name")
         if not isinstance(name, str) or not name.strip():
             raise ValueError("FoodKeeper product has no name")
         category_id = row.get("Category_ID")
+        if category_id is not None and str(category_id) not in categories:
+            raise ValueError("FoodKeeper product has an unresolved category")
         yield _record(
             "guidance",
             str(key),
@@ -1050,6 +1111,7 @@ def parse_foodkeeper(stream: BinaryIO) -> Iterator[dict]:
                     if key not in {"ID", "Name", "Category_ID"}
                 },
                 "source_record": row,
+                "source_workbook": workbook,
                 "attribution": "USDA FSIS FoodKeeper",
                 "license": "CC0-1.0_as_catalogued",
                 "precise_expiry": False,
@@ -1073,7 +1135,7 @@ def source_filter_fingerprint(source: str, policy: dict) -> str:
         "retained_codes": sorted(set(policy.get("retained_codes", []))),
         "columns": policy.get("columns") or {},
         "selection_mode": policy.get("selection_mode", "selected_spiders"),
-        "spiders": sorted(set(policy.get("spiders", tuple(ATP_DESCRIPTORS)))),
+        "spiders": sorted(set(policy.get("spiders", ATP_DEFAULT_SPIDERS))),
         "include_territories": bool(policy.get("include_territories", False)),
         "parser_version": str(policy.get("parser_version", "1")),
         "normalizer_version": str(policy.get("normalizer_version", "1")),
@@ -1226,7 +1288,7 @@ def _acquire_source(source, policy, transport, directory: Path, cursor=None):
         manifest = json.loads(text(ATP_MANIFEST))
         artifacts = resolve_atp(
             manifest,
-            policy.get("spiders", tuple(ATP_DESCRIPTORS)),
+            policy.get("spiders", ATP_DEFAULT_SPIDERS),
             policy.get("selection_mode", "selected_spiders"),
             artifact_limit,
         )

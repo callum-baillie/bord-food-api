@@ -50,7 +50,11 @@ SOURCE_DEFAULTS = {
     "usda_snap": {"enabled": False, "origins": ["https://www.fns.usda.gov"]},
     "open_food_facts": {
         "enabled": False,
-        "origins": ["https://static.openfoodfacts.org", "https://world.openfoodfacts.org"],
+        "origins": [
+            "https://static.openfoodfacts.org",
+            "https://world.openfoodfacts.org",
+            "https://openfoodfacts-ds.s3.eu-west-3.amazonaws.com",
+        ],
     },
     "open_prices": {"enabled": False, "origins": ["https://prices.openfoodfacts.org"]},
     "foodkeeper": {

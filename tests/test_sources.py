@@ -831,3 +831,162 @@ def test_off_failed_full_alignment_after_gap_has_only_one_recovery_attempt(tmp_p
         SourceUnresolved("arbitrary private upstream diagnostic").reason_code
         == "source_location_unresolved"
     )
+
+
+def test_foodkeeper_multilingual_catalog_selects_observed_english_over_https():
+    url = "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json"
+    html = "".join(
+        f'<a href="http://www.fsis.usda.gov/shared/data/{lang}/foodkeeper.json">JSON</a>'
+        for lang in ("ES", "EN", "PT")
+    )
+    assert resolve_foodkeeper(html).url == url
+    for wrong in (
+        "https://evil.example/shared/data/EN/foodkeeper.json",
+        url + "?redirect=1",
+        url.replace("/EN/", "/ES/"),
+    ):
+        with pytest.raises(SourceUnresolved):
+            resolve_foodkeeper(f'<a href="{wrong}">English</a>')
+    with pytest.raises(SourceUnresolved):
+        resolve_foodkeeper("", override=url.replace("https:", "http:"))
+
+
+def test_foodkeeper_cell_rows_preserve_conditions_null_zero_and_workbook():
+    data = {
+        "fileName": "SYNTHETIC.xlsx",
+        "dataVersion": 1,
+        "sheets": [
+            {"name": "Category", "data": [[{"ID": 1}, {"Category_Name": "Synthetic category"}]]},
+            {
+                "name": "Product",
+                "data": [
+                    [
+                        {"ID": 2},
+                        {"Name": "Synthetic food"},
+                        {"Category_ID": 1},
+                        {"DOP_Refrigerate_Min": 0},
+                        {"DOP_Refrigerate_Max": None},
+                        {"DOP_Refrigerate_Metric": "Days"},
+                        {"Freeze_Metric": "Not Recommended"},
+                        {"Refrigerate_After_Opening_Min": 2},
+                    ]
+                ],
+            },
+        ],
+    }
+    row = next(parse_foodkeeper(binary(data)))["payload"]
+    assert row["source_workbook"]["dataVersion"] == 1
+    assert row["category"]["Category_Name"] == "Synthetic category"
+    assert row["storage_guidance"]["DOP_Refrigerate_Min"] == 0
+    assert row["storage_guidance"]["DOP_Refrigerate_Max"] is None
+    assert row["storage_guidance"]["Freeze_Metric"] == "Not Recommended"
+    assert row["storage_guidance"]["Refrigerate_After_Opening_Min"] == 2
+    assert row["precise_expiry"] is False
+    data["sheets"][1]["data"][0].append({"Name": "Duplicate"})
+    with pytest.raises(ValueError, match="Duplicate"):
+        list(parse_foodkeeper(binary(data)))
+
+
+def test_foodkeeper_rejects_duplicate_categories_and_unresolved_category():
+    data = {
+        "sheets": [
+            {"name": "Category", "data": [{"ID": 1}, {"ID": 1}]},
+            {"name": "Product", "data": [{"ID": 2, "Name": "Synthetic", "Category_ID": 1}]},
+        ]
+    }
+    with pytest.raises(ValueError, match="unique category"):
+        list(parse_foodkeeper(binary(data)))
+    data["sheets"][0]["data"] = [{"ID": 3}]
+    with pytest.raises(ValueError, match="unresolved category"):
+        list(parse_foodkeeper(binary(data)))
+
+
+def test_woodmans_optional_roster_does_not_expand_default_selection():
+    manifest = {"run_id": "2026-10-10"}
+    assert len(resolve_atp(manifest)) == 4
+    artifact = resolve_atp(manifest, spiders=["woodmans_markets_us"])[0]
+    assert artifact.partition == "woodmans_markets_us"
+    row = next(
+        parse_atp_geojson(
+            binary(
+                collection(
+                    feature(
+                        brand="Woodman's Markets",
+                        **{"addr:full": "10 Synthetic Street, Test City, WI 00000"},
+                    )
+                )
+            ),
+            "woodmans_markets_us",
+        )
+    )
+    assert row["payload"]["chain_name"] == "Woodman's Markets"
+    assert row["payload"]["address"]["full"] == "10 Synthetic Street, Test City, WI 00000"
+
+
+def test_open_prices_null_location_is_unknown_but_dangling_reference_fails():
+    prices = [
+        {"id": 1, "location_id": None, "proof_id": 10, "price": "1.580"},
+        {"id": 2, "location_id": 20, "proof_id": 10, "price": "0.000", "currency": "USD"},
+    ]
+    locations = [{"id": 20, "osm_address_country_code": "US", "osm_address_country": "États-Unis"}]
+    rows = list(parse_open_prices(lines(*prices), lines(*locations), lines({"id": 10})))
+    assert len(rows) == 1 and rows[0]["source_key"] == "2"
+    assert rows[0]["payload"]["amount"] == "0.000"
+    assert rows[0]["payload"]["exact_branch_match"] is False
+    prices[0]["location_id"] = 999
+    with pytest.raises(ValueError, match="unresolved"):
+        list(parse_open_prices(lines(*prices), lines(*locations), lines({"id": 10})))
+
+
+def test_mocked_foodkeeper_acquisition_publishes_immutable_guidance(tmp_path):
+    from bord_food_api.platform import Platform
+    from bord_food_api.sources import FOODKEEPER_PAGE
+
+    url = "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json"
+    workbook = {
+        "sheets": [
+            {"name": "Category", "data": [[{"ID": 1}, {"Category_Name": "Synthetic"}]]},
+            {
+                "name": "Product",
+                "data": [
+                    [
+                        {"ID": 2},
+                        {"Name": "Synthetic oats"},
+                        {"Category_ID": 1},
+                        {"Pantry_Min": 0},
+                        {"Pantry_Max": None},
+                        {"Pantry_Metric": "Days"},
+                    ]
+                ],
+            },
+        ]
+    }
+    transport = MockTransport(
+        {
+            FOODKEEPER_PAGE: f'<a href="{url.replace("https:", "http:")}">English JSON</a>'.encode(),
+            url: json.dumps(workbook).encode(),
+        }
+    )
+    platform = Platform(tmp_path / "catalog")
+    scope = next(acquire_source("foodkeeper", {}, transport, tmp_path))
+    result = platform.sync(
+        "foodkeeper",
+        **{
+            k: scope[k]
+            for k in ("partition", "release", "records", "complete", "cursor", "parser_version")
+        },
+    )
+    manifest = result["manifest"]
+    path = platform.object_path(manifest["packs"]["guidance"])
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    scope = next(acquire_source("foodkeeper", {}, transport, tmp_path, cursor=scope["cursor"]))
+    replay = platform.sync(
+        "foodkeeper",
+        **{
+            k: scope[k]
+            for k in ("partition", "release", "records", "complete", "cursor", "parser_version")
+        },
+    )
+    assert replay["no_change"] is True
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == digest
+    assert platform.current()["generation"] == manifest["generation"]
