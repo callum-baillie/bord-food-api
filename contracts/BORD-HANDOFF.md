@@ -1,5 +1,7 @@
 # Bòrd API integration handoff
 
+**Historical handoff — 17 October.** The companion was subsequently implemented and deployed separately on 18 October as rc.14. See [current implementation status](../docs/PLAN-STATUS.md) and the private Tower operational record. The unperformed statements below describe the original API-only handoff, not the current companion deployment.
+
 API repository work only. The accessible `our-recipes` checkout was inspected read-only at the configuration, food-data domain/provider/service seams. Its existing USDA provider passed the synthetic loopback compatibility smoke in `scripts/smoke-bord-offline.py`. No companion code, household database, UI or migrations were changed; companion implementation tests, deployment and live activation remain unperformed. Follow `plans/food-data-platform/prompts/04-BORD-COMPANION.md` in an authorized companion work session.
 
 The existing `USDA_FDC_BASE_URL`, `USDA_FDC_API_KEY` and `USDA_FDC_ENABLED` continue to target `/fdc/v1` with existing USDA source semantics. Startup now permits liveness before data; `/health` still requires a USDA catalog. `scripts/verify-bord.mts` retains the real Bòrd provider compatibility check and requires an explicitly selected API target.

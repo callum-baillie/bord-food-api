@@ -65,7 +65,7 @@
       ]
     }
   ],
-  "note": "No live source was activated during the 17 October implementation. The owner separately authorized the 18 October Tower deployment and core bulk activation; records below describe only that later operation. Optional sources, crawlers and paid providers remain unactivated.",
+  "note": "The implementation array preserves the 17 October offline record. Activations record later authorized core publication. Current verification also includes the separately authorized companion deployment and optional-source/crawler pilots; validation or artifact acquisition does not mean a source is enabled.",
   "implementation": [
     {
       "source_id": "usda_fdc",
@@ -110,5 +110,87 @@
       "activated": false
     }
   ],
-  "implementation_recorded_at": "2026-10-17"
+  "implementation_recorded_at": "2026-10-17",
+  "current_verification": {
+    "as_of": "2026-10-18",
+    "evidence": [
+      "docs/PLAN-STATUS.md",
+      "docs/SOURCE-PILOT.md",
+      "docs/TOWER-DEPLOYMENT.md"
+    ],
+    "sources": [
+      {
+        "source_id": "usda_fdc",
+        "status": "live_bulk_publication_verified",
+        "activated": true,
+        "foods": 469046
+      },
+      {
+        "source_id": "all_the_places",
+        "status": "live_bulk_publication_verified",
+        "activated": true,
+        "stores": 8665,
+        "chains": 23,
+        "scope": [
+          "walmart_us",
+          "aldi_sud_us",
+          "target_us",
+          "kroger_us",
+          "woodmans_markets_us"
+        ]
+      },
+      {
+        "source_id": "woodmans_maps",
+        "status": "live_link_discovery_pilot_verified_then_paused",
+        "activated": false,
+        "requests": 2,
+        "map_links": 1,
+        "asset_downloads": 0,
+        "display_permission": false
+      },
+      {
+        "source_id": "open_food_facts",
+        "status": "full_version_pinned_export_downloaded_not_imported",
+        "activated": false,
+        "import_performed": false,
+        "live_baseline_delta_equivalence_verified": false,
+        "compressed_bytes": 13179356850,
+        "sha256": "1e8cbd8e00d78d42ed2cf419dd4020964cb37621076a67ee31667913be99ae37",
+        "source_version_id": "VILumlWXh8J9mlPCmokEeMpO11A6lEpI",
+        "gzip_integrity_verified": false,
+        "serving_generation_unchanged": true
+      },
+      {
+        "source_id": "open_prices",
+        "status": "live_exports_and_parser_validated_in_isolation",
+        "activated": false,
+        "us_observations": 42822,
+        "us_locations": 368,
+        "matching_distinct_usda_gtins": 14136,
+        "exact_branch_matches": 0,
+        "price_pack_published": false
+      },
+      {
+        "source_id": "foodkeeper",
+        "status": "implementation_and_synthetic_storage_verified_official_access_403",
+        "activated": false,
+        "live_import_performed": false,
+        "current_source_size_verified": false
+      },
+      {
+        "source_id": "usda_snap",
+        "status": "implemented_current_resource_access_unresolved",
+        "activated": false,
+        "live_import_performed": false
+      }
+    ],
+    "companion": {
+      "status": "separately_implemented_and_deployed",
+      "application_commit": "c472451c7dc8a3e56791bc23ed6e2235e916d013",
+      "release": "1.0.0-rc.14",
+      "schema": "0067_bord_catalog_links",
+      "live_health_rechecked": true,
+      "physical_device_and_full_restore_acceptance_performed": false
+    }
+  }
 }

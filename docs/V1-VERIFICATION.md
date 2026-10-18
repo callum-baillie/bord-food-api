@@ -1,5 +1,7 @@
 # V1 implementation evidence — 17 October 2026
 
+For current API, companion, live-source and later-roadmap status, see [PLAN-STATUS.md](PLAN-STATUS.md). This document preserves the original offline implementation boundary.
+
 This is API repository implementation and offline verification, based on `main` at `13ba74e56f9d383edb2cfc57d4020d2c9943705e`, with an uncommitted worktree. Existing README/environment/setup work and the plan package were preserved. Historical live-USDA evidence in the root `VERIFICATION.md` predates this expansion and does not verify these adapters.
 
 Subsequent operation: the owner separately authorized the 18 October release and Tower deployment. Its live core-source evidence is recorded in [Tower deployment](TOWER-DEPLOYMENT.md); the boundaries below describe the original 17 October implementation run.
