@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Store chain example",
+  "type": "object",
+  "required": [
+    "entity_type",
+    "chain_id",
+    "name",
+    "market_country",
+    "formats",
+    "footprint",
+    "provenance"
+  ],
+  "properties": {
+    "entity_type": {
+      "const": "store_chain"
+    },
+    "chain_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parent_company_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "market_country": {
+      "const": "US"
+    },
+    "formats": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "footprint": {
+      "title": "Reported footprint",
+      "type": "object",
+      "required": [
+        "reported_store_count",
+        "directory_coverage"
+      ],
+      "properties": {
+        "reported_store_count": {
+          "title": "Dated count",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "value",
+            "as_of",
+            "qualifier",
+            "scope",
+            "source_url"
+          ],
+          "properties": {
+            "value": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "as_of": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "qualifier": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "includes_sams_club": {
+              "type": "boolean"
+            },
+            "includes_ancillary_small_formats": {
+              "type": "boolean"
+            },
+            "format_counts": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "strict_banner_count": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "source_url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "additionalProperties": true
+        },
+        "directory_coverage": {
+          "title": "Directory coverage",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "states_50",
+            "dc_present",
+            "checked_on",
+            "reconciled_with_reported_count"
+          ],
+          "properties": {
+            "states_50": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 50
+            },
+            "dc_present": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "territories": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "checked_on": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "reconciled_with_reported_count": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "store_discovery": {
+      "type": "object"
+    },
+    "api_capabilities": {
+      "type": "object"
+    },
+    "map_capabilities": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

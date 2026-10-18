@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed execution policy",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "profile",
+    "network",
+    "bootstrap",
+    "sources",
+    "scheduler",
+    "crawler"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "profile": {
+      "enum": [
+        "production",
+        "development_offline"
+      ]
+    },
+    "network": {
+      "title": "Network",
+      "type": "object",
+      "required": [
+        "mode",
+        "crawl_enabled",
+        "allow_paid_sources",
+        "allow_arbitrary_urls"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "offline",
+            "bulk_only",
+            "approved_sources"
+          ]
+        },
+        "crawl_enabled": {
+          "type": "boolean"
+        },
+        "allow_paid_sources": {
+          "type": "boolean"
+        },
+        "allow_arbitrary_urls": {
+          "const": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "bootstrap": {
+      "title": "Bootstrap",
+      "type": "object",
+      "required": [
+        "mode",
+        "load_examples",
+        "load_research_registry",
+        "empty_business_catalog_at_install"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "automatic",
+            "disabled",
+            "manual"
+          ]
+        },
+        "load_examples": {
+          "const": false
+        },
+        "load_research_registry": {
+          "const": false
+        },
+        "empty_business_catalog_at_install": {
+          "const": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "enabled"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "scheduler": {
+      "type": "object",
+      "required": [
+        "enabled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "crawler": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "obey_robots"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "obey_robots": {
+          "const": true
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -32,6 +32,7 @@ jobs:
           ruff check .
           ruff format --check .
           python -m pytest -q
+          python scripts/export-contracts.py --check
       - name: Exercise the container with synthetic data
         run: python scripts/smoke-docker.py
 

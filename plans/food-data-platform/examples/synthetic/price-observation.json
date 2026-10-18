@@ -1,0 +1,19 @@
+{
+  "observation_id": "obs_synthetic_only",
+  "store_id": "store_synthetic_only",
+  "listing_id": "listing_synthetic_only",
+  "amount_decimal": "1.50",
+  "currency": "USD",
+  "price_basis": "one_synthetic_400g_package",
+  "channel": "in_store",
+  "observed_at": "2026-10-01T12:00:00Z",
+  "retrieved_at": "2026-10-02T12:00:00Z",
+  "source_id": "synthetic_price_fixture",
+  "source_record_id": "SYN-PRICE-1",
+  "conditions": {
+    "loyalty_required": false,
+    "tax_included": null,
+    "synthetic": true
+  },
+  "current_stock_inferred": false
+}

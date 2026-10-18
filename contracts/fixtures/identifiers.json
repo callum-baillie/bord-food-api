@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "classification": "synthetic_identifier_contract",
+  "algorithm": "native GS1 check digit; valid GTIN8/12/13/14 padded to 14 digits; no whitespace stripping",
+  "cases": [
+    {
+      "input": "96385074",
+      "expected": "00000096385074"
+    },
+    {
+      "input": "012345678905",
+      "expected": "00012345678905"
+    },
+    {
+      "input": "4006381333931",
+      "expected": "04006381333931"
+    },
+    {
+      "input": "00012345678905",
+      "expected": "00012345678905"
+    },
+    {
+      "input": "012345678906",
+      "expected": null
+    },
+    {
+      "input": "123",
+      "expected": null
+    },
+    {
+      "input": "SKU-012345678905",
+      "expected": null
+    },
+    {
+      "input": " 012345678905",
+      "expected": null
+    },
+    {
+      "input": "012345678905 ",
+      "expected": null
+    },
+    {
+      "input": "０１２３４５６７８９０５",
+      "expected": null
+    },
+    {
+      "input": "01234567890",
+      "expected": null
+    },
+    {
+      "input": "",
+      "expected": null
+    },
+    {
+      "input": null,
+      "expected": null
+    },
+    {
+      "input": 12345678905,
+      "expected": null
+    }
+  ]
+}

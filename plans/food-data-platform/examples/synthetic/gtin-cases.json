@@ -1,0 +1,46 @@
+{
+  "fixture_kind": "identifier_validation",
+  "synthetic": true,
+  "network_allowed": false,
+  "scenario": {
+    "note": "These are checksum test strings, not claims about real products sold by Walmart.",
+    "cases": [
+      {
+        "input": "96385074",
+        "valid": true,
+        "canonical": "00000096385074"
+      },
+      {
+        "input": "036000291452",
+        "valid": true,
+        "canonical": "00036000291452"
+      },
+      {
+        "input": "4006381333931",
+        "valid": true,
+        "canonical": "04006381333931"
+      },
+      {
+        "input": "04006381333931",
+        "valid": true,
+        "canonical": "04006381333931"
+      },
+      {
+        "input": "4006381333932",
+        "valid": false,
+        "canonical": null
+      },
+      {
+        "input": "2827",
+        "valid": false,
+        "canonical": null
+      },
+      {
+        "input": "123456789",
+        "valid": false,
+        "canonical": null
+      }
+    ],
+    "retailer_store_ids_are_not_gtins": true
+  }
+}

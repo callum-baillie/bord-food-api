@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "policy_version": "suggested-v1",
+  "policy_type": "engineering_defaults_not_source_sla",
+  "field_policies": [
+    {
+      "group": "chain_identity",
+      "description": "90 days",
+      "check_interval_seconds": 7776000,
+      "event_trigger": "On approved alias/parent/retailer discovery change"
+    },
+    {
+      "group": "store_roster",
+      "description": "7 days",
+      "check_interval_seconds": 604800,
+      "event_trigger": "New complete source snapshot or native change feed"
+    },
+    {
+      "group": "address_coordinates",
+      "description": "180 days",
+      "check_interval_seconds": 15552000,
+      "event_trigger": "Changed source address/coordinates, relocation/correction, missing required value"
+    },
+    {
+      "group": "contacts_services",
+      "description": "30 days",
+      "check_interval_seconds": 2592000,
+      "event_trigger": "Changed source facts or operator correction"
+    },
+    {
+      "group": "regular_hours_watched",
+      "description": "14 days",
+      "check_interval_seconds": 1209600,
+      "event_trigger": "Published schedule/holiday change or operator correction"
+    },
+    {
+      "group": "regular_hours_other",
+      "description": "60 days",
+      "check_interval_seconds": 5184000,
+      "event_trigger": "Changed source hours or selected store becomes watched"
+    },
+    {
+      "group": "map_link",
+      "description": "90 days",
+      "check_interval_seconds": 7776000,
+      "event_trigger": "Changed linked asset/page metadata or placement review"
+    },
+    {
+      "group": "off_delta",
+      "description": "1 day",
+      "check_interval_seconds": 86400,
+      "event_trigger": "Unseen continuous delta interval"
+    },
+    {
+      "group": "off_full_reconciliation",
+      "description": "30 days",
+      "check_interval_seconds": 2592000,
+      "event_trigger": "Gap, unknown baseline boundary, missing retention or schema change"
+    },
+    {
+      "group": "public_prices",
+      "description": "1 day",
+      "check_interval_seconds": 86400,
+      "event_trigger": "New snapshot; old observation remains historical"
+    },
+    {
+      "group": "foodkeeper",
+      "description": "30 days",
+      "check_interval_seconds": 2592000,
+      "event_trigger": "New official artifact/hash"
+    },
+    {
+      "group": "usda_release_discovery",
+      "description": "7 days",
+      "check_interval_seconds": 604800,
+      "event_trigger": "New per-dataset release or confirmed correction"
+    }
+  ],
+  "rules": {
+    "stable_fields_update_from_changed_bulk_record": true,
+    "do_not_geocode_unchanged_coordinates": true,
+    "full_page_fetch_can_refresh_multiple_groups": true,
+    "snapshot_missing_requires_complete_healthy_scope": true,
+    "missing_candidate_min_successful_runs": 3,
+    "missing_candidate_min_span_days": 21,
+    "missing_candidate_is_confirmed_closed": false,
+    "source_errors_advance_absence": false,
+    "map_negative_retry_days": [
+      30,
+      90,
+      180
+    ],
+    "sr_legacy_periodic_download": false,
+    "sr_legacy_change_trigger": "manual correction, source/schema revision or full audit",
+    "live_stock_refresh": "disabled in V1; future source/account/channel TTL must be individually set",
+    "semantic_hash_excludes": [
+      "retrieved_at",
+      "last_checked_at",
+      "job_id",
+      "download_progress",
+      "tracking_parameters",
+      "unrelated_html_chrome"
+    ]
+  }
+}

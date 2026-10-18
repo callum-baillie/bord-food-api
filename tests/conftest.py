@@ -27,3 +27,41 @@ def settings(tmp_path):
 def client(settings):
     with TestClient(create_app(settings)) as result:
         yield result
+
+
+@pytest.fixture(autouse=True)
+def deny_external_network(monkeypatch):
+    """All routine tests deny real provider DNS and sockets, independent of HTTP library."""
+    import ipaddress
+    import socket
+
+    original_resolve = socket.getaddrinfo
+    original_connect = socket.socket.connect
+    original_connect_ex = socket.socket.connect_ex
+
+    def allowed(host):
+        if host in ("localhost", b"localhost"):
+            return True
+        try:
+            return ipaddress.ip_address(host).is_loopback
+        except ValueError:
+            return False
+
+    def resolve(host, *args, **kwargs):
+        if not allowed(host):
+            raise AssertionError("External DNS disabled in routine tests")
+        return original_resolve(host, *args, **kwargs)
+
+    def connect(sock, address):
+        if isinstance(address, tuple) and not allowed(address[0]):
+            raise AssertionError("External network disabled in routine tests")
+        return original_connect(sock, address)
+
+    def connect_ex(sock, address):
+        if isinstance(address, tuple) and not allowed(address[0]):
+            raise AssertionError("External network disabled in routine tests")
+        return original_connect_ex(sock, address)
+
+    monkeypatch.setattr(socket, "getaddrinfo", resolve)
+    monkeypatch.setattr(socket.socket, "connect", connect)
+    monkeypatch.setattr(socket.socket, "connect_ex", connect_ex)

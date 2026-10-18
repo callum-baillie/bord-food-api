@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "activations": [],
+  "note": "No live source activated during implementation. Documentation/source-code reads, mocked transports and local synthetic container/provider tests are not source activation. Operator must record policy, scope, rights, budgets and live evidence separately.",
+  "implementation": [
+    {
+      "source_id": "usda_fdc",
+      "status": "implemented_offline_tested",
+      "live_verification": "not_performed",
+      "activated": false
+    },
+    {
+      "source_id": "all_the_places",
+      "status": "implemented_offline_tested",
+      "live_verification": "not_performed",
+      "activated": false
+    },
+    {
+      "source_id": "usda_snap",
+      "status": "implemented_offline_tested",
+      "live_verification": "not_performed",
+      "activated": false
+    },
+    {
+      "source_id": "open_food_facts",
+      "status": "implemented_offline_tested",
+      "live_verification": "not_performed",
+      "activated": false
+    },
+    {
+      "source_id": "open_prices",
+      "status": "implemented_offline_tested",
+      "live_verification": "not_performed",
+      "activated": false
+    },
+    {
+      "source_id": "foodkeeper",
+      "status": "implemented_offline_tested",
+      "live_verification": "not_performed",
+      "activated": false
+    },
+    {
+      "source_id": "woodmans_maps",
+      "status": "implemented_offline_tested",
+      "live_verification": "not_performed",
+      "activated": false
+    }
+  ]
+}

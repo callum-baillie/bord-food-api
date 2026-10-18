@@ -1,6 +1,7 @@
 """Build/run the real image against synthetic data, then remove the test container."""
 
 import json
+import os
 import shutil
 import subprocess
 import tempfile
@@ -18,12 +19,17 @@ def docker(*args, **kwargs):
 
 
 def main():
-    docker("build", "-t", "bord-food-api:local", str(ROOT))
+    image = os.getenv("BORD_SMOKE_IMAGE", "bord-food-api:local")
+    docker("build", "-t", image, str(ROOT))
     name = "bord-food-api-smoke-" + uuid.uuid4().hex[:10]
     volume = name + "-data"
     with tempfile.TemporaryDirectory(prefix="bord-food-api-smoke-") as temporary:
         directory = Path(temporary)
         (directory / "imports").mkdir()
+        policy = directory / "offline.json"
+        policy.write_text(
+            json.dumps({"network": {"mode": "offline"}, "scheduler": {"enabled": False}})
+        )
         shutil.copy(ROOT / "tests/fixtures/foods.json", directory / "imports/foods.json")
         try:
             docker(
@@ -38,11 +44,15 @@ def main():
                 "API_KEY=smoke-local-key",
                 "-e",
                 "AUTO_DOWNLOAD=false",
+                "-e",
+                "BORD_FOOD_CONFIG=/offline.json",
                 "--mount",
                 f"type=volume,src={volume},dst=/data",
                 "--mount",
                 f"type=bind,src={directory / 'imports'},dst=/imports,readonly",
-                "bord-food-api:local",
+                "--mount",
+                f"type=bind,src={policy},dst=/offline.json,readonly",
+                image,
                 capture_output=True,
             )
             address = docker("port", name, "8080/tcp", capture_output=True).stdout.strip()
@@ -58,6 +68,7 @@ def main():
             deadline = time.monotonic() + 45
             while True:
                 try:
+                    assert request("/live")["status"] == "ok"
                     assert request("/health")["totalFoods"] == 6
                     break
                 except (URLError, OSError):

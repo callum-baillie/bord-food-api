@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0.0",
+  "registration_is_not_data_import": true,
+  "sources": [
+    {
+      "source_id": "usda_fdc",
+      "pack": "usda",
+      "default_enabled": true,
+      "implementation_status": "planned",
+      "verification": "documented_not_live_imported",
+      "format": "USDA JSON ZIP",
+      "discovery_url": "https://fdc.nal.usda.gov/download-datasets/",
+      "sync_mode": "release_snapshot_diff",
+      "dataset_license": "CC0-1.0",
+      "code_license": "separate_from_dataset",
+      "source_refs": [
+        "S01"
+      ],
+      "monetary_access": {
+        "amount": 0,
+        "currency": "USD",
+        "unit": "published_bulk_source_fee",
+        "hosting_costs_excluded": true
+      },
+      "crawl_enabled": false,
+      "rights_review": {
+        "local_use": "review_publisher_terms",
+        "redistribution": "source_specific_review",
+        "media": "disabled_until_separate_review"
+      },
+      "resolver": "existing USDA HTML release parser; independently choose selected dataset releases",
+      "allowed_https_hosts": [
+        "fdc.nal.usda.gov"
+      ],
+      "download_url": null,
+      "download_url_status": "resolve_from_official_catalog",
+      "baseline_static_dataset": "sr_legacy"
+    },
+    {
+      "source_id": "all_the_places",
+      "pack": "stores",
+      "default_enabled": true,
+      "implementation_status": "planned",
+      "verification": "documented_not_live_imported",
+      "format": "GeoJSON",
+      "discovery_url": "https://data.alltheplaces.xyz/runs/latest.json",
+      "sync_mode": "per_spider_snapshot_diff",
+      "dataset_license": "CC0-1.0",
+      "code_license": "separate_from_dataset",
+      "source_refs": [
+        "S02"
+      ],
+      "monetary_access": {
+        "amount": 0,
+        "currency": "USD",
+        "unit": "published_bulk_source_fee",
+        "hosting_costs_excluded": true
+      },
+      "crawl_enabled": false,
+      "rights_review": {
+        "local_use": "review_publisher_terms",
+        "redistribution": "source_specific_review",
+        "media": "disabled_until_separate_review"
+      },
+      "download_url_template": "https://data.alltheplaces.xyz/runs/latest/output/{spider_name}.geojson",
+      "history_url": "https://data.alltheplaces.xyz/runs/history.json",
+      "allowed_https_hosts": [
+        "data.alltheplaces.xyz"
+      ],
+      "redirect_policy": "Validate each hop; a newly advertised CDN must be specifically reviewed, never wildcard-enabled.",
+      "source_time": "resolved successful source run; not retrieval time",
+      "descriptor_spiders": [
+        "walmart_us",
+        "aldi_sud_us",
+        "target_us",
+        "kroger_us"
+      ],
+      "spider_output_status": "not_fetched_or_validated",
+      "selection_modes": [
+        "selected_spiders",
+        "published_archive_us_grocery"
+      ],
+      "archive_url_source": "output_url from validated official run manifest"
+    },
+    {
+      "source_id": "usda_snap",
+      "pack": "stores",
+      "default_enabled": false,
+      "implementation_status": "planned",
+      "verification": "documented_not_live_imported",
+      "format": "CSV",
+      "discovery_url": "https://www.fna.usda.gov/snap/retailer-locator",
+      "sync_mode": "current_snapshot_diff",
+      "dataset_license": "verify_current_official_download_terms",
+      "code_license": "separate_from_dataset",
+      "source_refs": [
+        "S03"
+      ],
+      "monetary_access": {
+        "amount": 0,
+        "currency": "USD",
+        "unit": "published_bulk_source_fee",
+        "hosting_costs_excluded": true
+      },
+      "crawl_enabled": false,
+      "rights_review": {
+        "local_use": "review_publisher_terms",
+        "redistribution": "source_specific_review",
+        "media": "disabled_until_separate_review"
+      },
+      "download_url": null,
+      "download_url_status": "unresolved_official_landing_or_operator_override",
+      "allowed_https_hosts": [
+        "www.fna.usda.gov",
+        "www.fns.usda.gov"
+      ],
+      "historical_dataset_substitution": false
+    },
+    {
+      "source_id": "open_food_facts",
+      "pack": "off",
+      "default_enabled": false,
+      "implementation_status": "planned",
+      "verification": "documented_not_live_imported",
+      "format": "JSONL gzip",
+      "discovery_url": "https://openfoodfacts.github.io/openfoodfacts-server/api/",
+      "sync_mode": "baseline_plus_checked_deltas_and_reconciliation",
+      "dataset_license": "ODbL-1.0",
+      "code_license": "separate_from_dataset",
+      "source_refs": [
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "monetary_access": {
+        "amount": 0,
+        "currency": "USD",
+        "unit": "published_bulk_source_fee",
+        "hosting_costs_excluded": true
+      },
+      "crawl_enabled": false,
+      "rights_review": {
+        "local_use": "review_publisher_terms",
+        "redistribution": "source_specific_review",
+        "media": "disabled_until_separate_review"
+      },
+      "download_url": "https://static.openfoodfacts.org/data/openfoodfacts-products.jsonl.gz",
+      "delta_index_url": "https://static.openfoodfacts.org/data/delta/index.txt",
+      "delta_filename_pattern": "^openfoodfacts_products_[0-9]+_[0-9]+\\.json\\.gz$",
+      "allowed_https_hosts": [
+        "static.openfoodfacts.org"
+      ],
+      "parquet_alternative": {
+        "url": "https://huggingface.co/datasets/openfoodfacts/product-database/resolve/main/food.parquet",
+        "phase": "V1.1",
+        "pin_revision": true
+      },
+      "deletion_feed_guaranteed": false,
+      "delta_index_current_health": "not_verified",
+      "baseline_boundary": "must establish compatible interval coverage or overlap safely; never infer from max filtered product timestamp"
+    },
+    {
+      "source_id": "open_prices",
+      "pack": "public_prices",
+      "default_enabled": false,
+      "implementation_status": "planned",
+      "verification": "documented_not_live_imported",
+      "format": "JSONL gzip",
+      "discovery_url": "https://openfoodfacts.github.io/open-prices/guides/import-data/",
+      "sync_mode": "snapshot_diff",
+      "dataset_license": "ODbL-1.0",
+      "code_license": "separate_from_dataset",
+      "source_refs": [
+        "S07"
+      ],
+      "monetary_access": {
+        "amount": 0,
+        "currency": "USD",
+        "unit": "published_bulk_source_fee",
+        "hosting_costs_excluded": true
+      },
+      "crawl_enabled": false,
+      "rights_review": {
+        "local_use": "review_publisher_terms",
+        "redistribution": "source_specific_review",
+        "media": "disabled_until_separate_review"
+      },
+      "download_urls": {
+        "prices": "https://prices.openfoodfacts.org/data/prices.jsonl.gz",
+        "locations": "https://prices.openfoodfacts.org/data/locations.jsonl.gz",
+        "proofs": "https://prices.openfoodfacts.org/data/proofs.jsonl.gz"
+      },
+      "allowed_https_hosts": [
+        "prices.openfoodfacts.org"
+      ],
+      "proof_images": false,
+      "atomic_multi_file_snapshot_guaranteed": false
+    },
+    {
+      "source_id": "foodkeeper",
+      "pack": "guidance",
+      "default_enabled": false,
+      "implementation_status": "planned",
+      "verification": "documented_not_live_imported",
+      "format": "JSON",
+      "discovery_url": "https://catalog.data.gov/dataset/fsis-foodkeeper-data",
+      "sync_mode": "artifact_hash_snapshot",
+      "dataset_license": "CC0-1.0_as_catalogued",
+      "code_license": "separate_from_dataset",
+      "source_refs": [
+        "S08"
+      ],
+      "monetary_access": {
+        "amount": 0,
+        "currency": "USD",
+        "unit": "published_bulk_source_fee",
+        "hosting_costs_excluded": true
+      },
+      "crawl_enabled": false,
+      "rights_review": {
+        "local_use": "review_publisher_terms",
+        "redistribution": "source_specific_review",
+        "media": "disabled_until_separate_review"
+      },
+      "download_url": null,
+      "download_url_status": "resolve_current_official_JSON_resource",
+      "legacy_https_candidate": "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json",
+      "legacy_candidate_verified_download": false,
+      "allowed_https_hosts": [
+        "catalog.data.gov",
+        "www.fsis.usda.gov"
+      ],
+      "allow_http_downgrade": false
+    },
+    {
+      "source_id": "overture_places",
+      "pack": "stores",
+      "default_enabled": false,
+      "implementation_status": "planned",
+      "verification": "documented_not_live_imported",
+      "format": "GeoParquet",
+      "discovery_url": "https://stac.overturemaps.org/catalog.json",
+      "sync_mode": "pinned_release_snapshot_diff",
+      "dataset_license": "source_specific_open_license",
+      "code_license": "separate_from_dataset",
+      "source_refs": [
+        "S09"
+      ],
+      "monetary_access": {
+        "amount": 0,
+        "currency": "USD",
+        "unit": "published_bulk_source_fee",
+        "hosting_costs_excluded": true
+      },
+      "crawl_enabled": false,
+      "rights_review": {
+        "local_use": "review_publisher_terms",
+        "redistribution": "source_specific_review",
+        "media": "disabled_until_separate_review"
+      },
+      "implementation_phase": "V1.1",
+      "s3_template": "s3://overturemaps-us-west-2/release/{release}/theme=places/type=place/",
+      "schema_fields": [
+        "taxonomy",
+        "basic_category"
+      ],
+      "check_source_overlap": true
+    },
+    {
+      "source_id": "osm_indoor",
+      "pack": "maps",
+      "default_enabled": false,
+      "implementation_status": "planned",
+      "verification": "documented_not_live_imported",
+      "format": "OSM PBF or compatible indoor export",
+      "discovery_url": "https://download.geofabrik.de/north-america/us.html",
+      "sync_mode": "optional_regional_snapshot_or_verified_replication",
+      "dataset_license": "ODbL-1.0",
+      "code_license": "separate_from_dataset",
+      "source_refs": [
+        "S10"
+      ],
+      "monetary_access": {
+        "amount": null,
+        "currency": "USD",
+        "unit": "published_bulk_source_fee",
+        "hosting_costs_excluded": true
+      },
+      "crawl_enabled": false,
+      "rights_review": {
+        "local_use": "review_publisher_terms",
+        "redistribution": "source_specific_review",
+        "media": "disabled_until_separate_review"
+      },
+      "implementation_phase": "V1.1",
+      "download_url": null,
+      "nationwide_indoor_coverage_claimed": false
+    }
+  ]
+}

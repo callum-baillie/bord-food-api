@@ -1,0 +1,36 @@
+# Proposed only: the following roles/settings need V1 implementation first.
+# Run against a dedicated reviewed data directory; never point this template at production during coding.
+services:
+  bord-food-api:
+    image: ${BORD_FOOD_API_IMAGE:?Set an implemented and tested image tag}
+    command: ["serve"]
+    environment:
+      DATA_DIR: /data
+      PORT: "8080"
+      BORD_FOOD_CONFIG: /config/production.json
+      API_KEY: ${BORD_FOOD_API_KEY:-}
+    ports: ["8081:8080"]
+    volumes:
+      - bord-food-data:/data
+      - ./production.json:/config/production.json:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/live',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+  bord-food-worker:
+    image: ${BORD_FOOD_API_IMAGE:?Set an implemented and tested image tag}
+    command: ["worker"]
+    environment:
+      DATA_DIR: /data
+      BORD_FOOD_CONFIG: /config/production.json
+    volumes:
+      - bord-food-data:/data
+      - ./production.json:/config/production.json:ro
+    restart: unless-stopped
+    # Must not inherit an API HTTP healthcheck when no API is running in this role.
+    healthcheck:
+      disable: true
+volumes:
+  bord-food-data:

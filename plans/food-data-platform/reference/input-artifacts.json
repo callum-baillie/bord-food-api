@@ -1,0 +1,60 @@
+{
+  "prepared_on": "2026-10-17",
+  "inputs": [
+    {
+      "input_id": "walmart_chain",
+      "supplied_filename": "walmart-chain.example.json",
+      "bytes": 3495,
+      "sha256": "7326964cb8779b82ac83b17b282ab41cda52176e1180c7ab500cc1b0270f5e76",
+      "included_path": "examples/reference-v0.1/walmart-chain.example.json",
+      "status": "dated_conversation_attachment_not_new_live_verification",
+      "production_auto_import": false
+    },
+    {
+      "input_id": "walmart_coralville",
+      "supplied_filename": "walmart-coralville-2827.example.json",
+      "bytes": 2827,
+      "sha256": "28280a8c09b5e474f4080ca60c2097eba3b7a9ed1bb0d33029eff6c3c709560a",
+      "included_path": "examples/reference-v0.1/walmart-coralville-2827.example.json",
+      "status": "dated_conversation_attachment_not_new_live_verification",
+      "production_auto_import": false
+    },
+    {
+      "input_id": "chain_registry",
+      "supplied_filename": "us_supermarket_registry.json",
+      "bytes": 578343,
+      "sha256": "901da98e6ac4bec12efe4e82364681add93c6d47052bf17dffa854ab5cf88878",
+      "included_path": "reference/chain-research/us_supermarket_registry.json",
+      "status": "dated_conversation_attachment_not_new_live_verification",
+      "production_auto_import": false
+    },
+    {
+      "input_id": "ranked_csv",
+      "supplied_filename": "ranked_chains.csv",
+      "bytes": 165664,
+      "sha256": "546c5773fd56e081e341700b38edf7a53b9ff0e5f2a78a0f3c4fc3e7bda3dc3a",
+      "included_path": "reference/chain-research/ranked_chains.csv",
+      "status": "dated_conversation_attachment_not_new_live_verification",
+      "production_auto_import": false
+    },
+    {
+      "input_id": "earlier_expansion_plan",
+      "supplied_filename": "Bord-food-data-expansion-plan.md",
+      "bytes": 80705,
+      "sha256": "21bbfe90f2099063c37e30f2ab7869a14fe70dad0c3a2d5572f39788cd9171d0",
+      "included_path": null,
+      "status": "dated_conversation_attachment_not_new_live_verification",
+      "production_auto_import": false
+    },
+    {
+      "input_id": "earlier_blueprint_zip",
+      "supplied_filename": "Bord-food-data-implementation-blueprint.zip",
+      "bytes": 38651,
+      "sha256": "43dedbf2e6a4305f5e5f8e15b2469e319591856313e21ba201355f2bd2b620d9",
+      "included_path": null,
+      "status": "dated_conversation_attachment_not_new_live_verification",
+      "production_auto_import": false
+    }
+  ],
+  "reason_earlier_plans_not_republished": "The current design supersedes earlier operational/scheduling scope; retained hash inventory documents lineage without giving Codex conflicting active instructions."
+}

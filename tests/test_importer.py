@@ -19,7 +19,7 @@ def test_four_usda_wrappers_and_zip_streaming(tmp_path, foods):
     ]:
         path = tmp_path / (root + ".zip")
         with ZipFile(path, "w") as archive:
-            archive.writestr("../../" + root + ".json", json.dumps({root: [foods[index]]}))
+            archive.writestr("nested/" + root + ".json", json.dumps({root: [foods[index]]}))
             archive.writestr("README.txt", "Ignored")
         paths.append(path)
     database = tmp_path / "test.sqlite"
@@ -78,3 +78,12 @@ def test_official_null_placeholders_are_counted(tmp_path, foods):
     report = build_catalog([path], tmp_path / "foods.sqlite")
     assert report["totalFoods"] == 1
     assert report["sources"][0]["skippedNulls"] == 2
+
+
+def test_unsafe_archive_path_rejected_before_publication(tmp_path, foods):
+    path = tmp_path / "unsafe.zip"
+    with ZipFile(path, "w") as archive:
+        archive.writestr("../../escape.json", json.dumps(foods))
+    with pytest.raises(ValueError, match="unsafe_archive_member"):
+        build_catalog([path], tmp_path / "test.sqlite")
+    assert not (tmp_path / "test.sqlite").exists()

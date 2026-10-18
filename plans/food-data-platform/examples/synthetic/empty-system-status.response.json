@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "data": {
+    "service": "bord-food-api",
+    "state": "empty",
+    "live": true,
+    "ready": false,
+    "packs": {
+      "usda": {
+        "state": "not_loaded",
+        "records": 0
+      },
+      "stores": {
+        "state": "not_loaded",
+        "records": 0
+      }
+    },
+    "acquisition_mode": "offline",
+    "crawl_enabled": false,
+    "jobs": []
+  },
+  "meta": {
+    "catalog_generation": null,
+    "source_refs": [],
+    "warnings": [
+      {
+        "code": "ACQUISITION_DISABLED",
+        "message": "Synthetic offline boot; no data loaded and no source requests allowed."
+      }
+    ],
+    "next_cursor": null,
+    "example_classification": "synthetic"
+  }
+}

@@ -1,0 +1,4463 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bòrd Food API expansion — planning contract",
+    "version": "1.0.0-plan",
+    "description": "Proposed, not an installed server. Generate authoritative OpenAPI from implemented models. Legacy shapes remain intentionally distinct. API has no acquisition/admin write endpoints."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081",
+      "description": "Example local deployment only"
+    }
+  ],
+  "security": [
+    {
+      "ReadKey": []
+    }
+  ],
+  "paths": {
+    "/live": {
+      "get": {
+        "operationId": "liveness",
+        "summary": "Process/control liveness independent of catalog",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "const": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/ready": {
+      "get": {
+        "operationId": "readiness",
+        "summary": "Readiness of configured required packs",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/v1/system/status": {
+      "get": {
+        "operationId": "system_status",
+        "summary": "Sanitized source/bootstrap/job status",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/capabilities": {
+      "get": {
+        "operationId": "capabilities",
+        "summary": "Independent implemented/enabled/available source features",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/generations/current": {
+      "get": {
+        "operationId": "current_generation",
+        "summary": "Published manifest identity and attribution",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "object"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/changes": {
+      "get": {
+        "operationId": "catalog_changes",
+        "summary": "Committed entity changes with expiry-aware cursor",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ChangeEvent"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/chains": {
+      "get": {
+        "operationId": "chains",
+        "summary": "Eligible chains with scoped observed/reported counts",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "US"
+              ]
+            }
+          },
+          {
+            "name": "min_stores",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 2,
+              "default": 2
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Chain"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/chains/{chain_id}": {
+      "get": {
+        "operationId": "chain_detail",
+        "summary": "Canonical chain detail",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "chain_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Chain"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/stores": {
+      "get": {
+        "operationId": "stores",
+        "summary": "Bounded store search and exact distance filtering",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request. Latitude and longitude must be supplied together; radius requires both. Runtime validates cross-parameter constraints.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          {
+            "name": "region_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            }
+          },
+          {
+            "name": "chain_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          {
+            "name": "radius_km",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Store"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/stores/{store_id}": {
+      "get": {
+        "operationId": "store_detail",
+        "summary": "Branch details and evidence",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "store_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Store"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/foods/{source_id}/{record_id}": {
+      "get": {
+        "operationId": "food_detail",
+        "summary": "Underlying food source revision",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "revision",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 160
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Food"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/foods/{source_id}/{record_id}/measures": {
+      "get": {
+        "operationId": "food_measures",
+        "summary": "Source-backed portions and conversion evidence",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "form",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "basis",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 80
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/products": {
+      "get": {
+        "operationId": "products",
+        "summary": "Local product candidates",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 2048
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Product"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/products/{product_id}": {
+      "get": {
+        "operationId": "product_detail",
+        "summary": "Canonical product and source alternatives",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Product"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/products/resolve": {
+      "post": {
+        "operationId": "product_resolve",
+        "summary": "Batch identifier resolution",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "enum": [
+                              "exact",
+                              "candidates",
+                              "invalid",
+                              "not_found"
+                            ]
+                          },
+                          "product_id": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResolveInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/products/{product_id}/retail-evidence": {
+      "get": {
+        "operationId": "retail_evidence",
+        "summary": "Dated branch/banner evidence, not assumed stock",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "store_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "channel",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "in_store",
+                "pickup",
+                "delivery",
+                "marketplace",
+                "unknown"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/RetailEvidence"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/shopping/enrich": {
+      "post": {
+        "operationId": "shopping_enrich",
+        "summary": "Stateless local enrichment without household mutations",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrichInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/stores/{store_id}/maps": {
+      "get": {
+        "operationId": "store_maps",
+        "summary": "Discovery, rights and available map assets",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "store_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "floor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 40
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/MapRecord"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/maps/{map_id}/assets/{variant}": {
+      "get": {
+        "operationId": "map_asset",
+        "summary": "Existing entitled media asset only",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "map_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "variant",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "preview",
+                "original"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Existing permitted asset; safe content-type/disposition and no external proxy request",
+            "content": {
+              "image/webp": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guidance/storage": {
+      "get": {
+        "operationId": "storage_guidance",
+        "summary": "Sourced category/condition guidance",
+        "description": "Proposed V1 contract. Local catalog only; no implicit crawl or paid provider request.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          {
+            "name": "form",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "storage_state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "pantry",
+                "refrigerated",
+                "frozen",
+                "unknown"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema_version",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "schema_version": {
+                      "const": "1.0.0"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "legacy_health",
+        "summary": "Legacy USDA catalog readiness",
+        "description": "Preserve existing USDA/FastAPI response and error semantics. Current implementation is authoritative for legacy details and input bounds.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "totalFoods"
+                  ],
+                  "properties": {
+                    "status": {
+                      "const": "ok"
+                    },
+                    "totalFoods": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/status": {
+      "get": {
+        "operationId": "legacy_status",
+        "summary": "Legacy USDA provenance",
+        "description": "Preserve existing USDA/FastAPI response and error semantics. Current implementation is authoritative for legacy details and input bounds.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fdc/v1/foods/search": {
+      "get": {
+        "operationId": "legacy_search_get",
+        "summary": "USDA-compatible GET search",
+        "description": "Preserve existing USDA/FastAPI response and error semantics. Current implementation is authoritative for legacy details and input bounds.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 20
+            }
+          },
+          {
+            "name": "dataType",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "maxItems": 4,
+              "items": {
+                "enum": [
+                  "Branded",
+                  "Foundation",
+                  "Survey (FNDDS)",
+                  "SR Legacy"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "foods",
+                    "totalHits",
+                    "currentPage",
+                    "totalPages"
+                  ],
+                  "properties": {
+                    "foods": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "totalHits": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "currentPage": {
+                      "type": "integer"
+                    },
+                    "totalPages": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "legacy_search_post",
+        "summary": "USDA-compatible POST search",
+        "description": "Preserve existing USDA/FastAPI response and error semantics. Current implementation is authoritative for legacy details and input bounds.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "foods",
+                    "totalHits",
+                    "currentPage",
+                    "totalPages"
+                  ],
+                  "properties": {
+                    "foods": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "totalHits": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "currentPage": {
+                      "type": "integer"
+                    },
+                    "totalPages": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegacySearchInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fdc/v1/food/{fdcId}": {
+      "get": {
+        "operationId": "legacy_food_detail",
+        "summary": "USDA-compatible source detail",
+        "description": "Preserve existing USDA/FastAPI response and error semantics. Current implementation is authoritative for legacy details and input bounds.",
+        "parameters": [
+          {
+            "name": "fdcId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9223372036854775807
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Read authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Permission or rights denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entity absent in a usable catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cursor/revision expired or conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Query budget exhausted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required pack unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "detail"
+                  ],
+                  "properties": {
+                    "detail": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Chain": {
+        "title": "Store chain example",
+        "type": "object",
+        "required": [
+          "entity_type",
+          "chain_id",
+          "name",
+          "market_country",
+          "formats",
+          "footprint",
+          "provenance"
+        ],
+        "properties": {
+          "entity_type": {
+            "const": "store_chain"
+          },
+          "chain_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parent_company_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "market_country": {
+            "const": "US"
+          },
+          "formats": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "footprint": {
+            "title": "Reported footprint",
+            "type": "object",
+            "required": [
+              "reported_store_count",
+              "directory_coverage"
+            ],
+            "properties": {
+              "reported_store_count": {
+                "title": "Dated count",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "value",
+                  "as_of",
+                  "qualifier",
+                  "scope",
+                  "source_url"
+                ],
+                "properties": {
+                  "value": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "as_of": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date"
+                  },
+                  "qualifier": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "scope": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "includes_sams_club": {
+                    "type": "boolean"
+                  },
+                  "includes_ancillary_small_formats": {
+                    "type": "boolean"
+                  },
+                  "format_counts": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "strict_banner_count": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "source_url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "directory_coverage": {
+                "title": "Directory coverage",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "states_50",
+                  "dc_present",
+                  "checked_on",
+                  "reconciled_with_reported_count"
+                ],
+                "properties": {
+                  "states_50": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0,
+                    "maximum": 50
+                  },
+                  "dc_present": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "territories": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "checked_on": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "date"
+                  },
+                  "reconciled_with_reported_count": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": true
+          },
+          "store_discovery": {
+            "type": "object"
+          },
+          "api_capabilities": {
+            "type": "object"
+          },
+          "map_capabilities": {
+            "type": "object"
+          },
+          "provenance": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": true
+      },
+      "Store": {
+        "title": "Store location example",
+        "type": "object",
+        "required": [
+          "entity_type",
+          "store_id",
+          "chain_id",
+          "name",
+          "external_ids",
+          "address",
+          "coordinates",
+          "contact",
+          "opening_hours",
+          "provenance"
+        ],
+        "properties": {
+          "entity_type": {
+            "const": "store_location"
+          },
+          "store_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "chain_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "external_ids": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "format": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lifecycle_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "address": {
+            "title": "Address",
+            "type": "object",
+            "required": [
+              "line_1",
+              "city",
+              "region_code",
+              "postal_code",
+              "country_code"
+            ],
+            "properties": {
+              "line_1": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "line_2": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "city": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "region_code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[A-Z]{2}$"
+              },
+              "postal_code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "country_code": {
+                "const": "US"
+              }
+            },
+            "additionalProperties": true
+          },
+          "coordinates": {
+            "title": "Coordinates",
+            "type": "object",
+            "required": [
+              "latitude",
+              "longitude",
+              "status"
+            ],
+            "properties": {
+              "latitude": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": -90,
+                "maximum": 90
+              },
+              "longitude": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": -180,
+                "maximum": 180
+              },
+              "status": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": true
+          },
+          "contact": {
+            "title": "Contact",
+            "type": "object",
+            "required": [
+              "phone_e164"
+            ],
+            "properties": {
+              "phone_e164": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\+[1-9][0-9]{7,14}$"
+              }
+            },
+            "additionalProperties": true
+          },
+          "opening_hours": {
+            "title": "Regular hours",
+            "type": "object",
+            "required": [
+              "timezone",
+              "weekly",
+              "date_exceptions_status"
+            ],
+            "properties": {
+              "timezone": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "timezone_basis": {
+                "type": "string",
+                "minLength": 1
+              },
+              "weekly": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "days",
+                    "opens",
+                    "closes",
+                    "end_day_offset"
+                  ],
+                  "properties": {
+                    "days": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": {
+                        "enum": [
+                          "MO",
+                          "TU",
+                          "WE",
+                          "TH",
+                          "FR",
+                          "SA",
+                          "SU"
+                        ]
+                      }
+                    },
+                    "opens": {
+                      "type": "string",
+                      "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"
+                    },
+                    "closes": {
+                      "type": "string",
+                      "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"
+                    },
+                    "end_day_offset": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "date_exceptions": {
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "date_exceptions_status": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": true
+          },
+          "provenance": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": true
+      },
+      "Envelope": {
+        "title": "Native response envelope",
+        "type": "object",
+        "required": [
+          "schema_version",
+          "data",
+          "meta"
+        ],
+        "properties": {
+          "schema_version": {
+            "const": "1.0.0"
+          },
+          "data": {
+            "type": [
+              "object",
+              "array"
+            ]
+          },
+          "meta": {
+            "title": "Response metadata",
+            "type": "object",
+            "required": [
+              "catalog_generation",
+              "source_refs",
+              "warnings",
+              "next_cursor"
+            ],
+            "properties": {
+              "catalog_generation": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "warnings": {
+                "type": "array",
+                "items": {
+                  "title": "Warning",
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "next_cursor": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "example_classification": {
+                "enum": [
+                  "real_dated_reference",
+                  "synthetic",
+                  "not_an_example"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      },
+      "PriceObservation": {
+        "title": "Dated price evidence",
+        "type": "object",
+        "required": [
+          "observation_id",
+          "store_id",
+          "listing_id",
+          "amount_decimal",
+          "currency",
+          "price_basis",
+          "channel",
+          "observed_at",
+          "retrieved_at",
+          "source_id",
+          "source_record_id",
+          "current_stock_inferred"
+        ],
+        "properties": {
+          "observation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "store_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "listing_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount_decimal": {
+            "type": "string",
+            "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "price_basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "channel": {
+            "enum": [
+              "in_store",
+              "pickup",
+              "delivery",
+              "marketplace",
+              "unknown"
+            ]
+          },
+          "observed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "conditions": {
+            "type": "object"
+          },
+          "current_stock_inferred": {
+            "const": false
+          }
+        },
+        "additionalProperties": true
+      },
+      "ChangeEvent": {
+        "title": "Published catalog change event",
+        "type": "object",
+        "required": [
+          "event_id",
+          "generation_id",
+          "entity_type",
+          "entity_id",
+          "operation",
+          "changed_field_groups",
+          "source_id",
+          "normalization_version",
+          "published_at"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "generation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entity_type": {
+            "enum": [
+              "chain",
+              "store",
+              "product",
+              "food",
+              "map",
+              "retail_evidence",
+              "guidance"
+            ]
+          },
+          "entity_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operation": {
+            "enum": [
+              "created",
+              "updated",
+              "withdrawn",
+              "alias_changed"
+            ]
+          },
+          "changed_field_groups": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "normalization_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": true
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message",
+              "retryable"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "retryable": {
+                "type": "boolean"
+              },
+              "details": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "Meta": {
+        "title": "Response metadata",
+        "type": "object",
+        "required": [
+          "catalog_generation",
+          "source_refs",
+          "warnings",
+          "next_cursor"
+        ],
+        "properties": {
+          "catalog_generation": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "title": "Warning",
+              "type": "object",
+              "required": [
+                "code",
+                "message"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "next_cursor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "example_classification": {
+            "enum": [
+              "real_dated_reference",
+              "synthetic",
+              "not_an_example"
+            ]
+          }
+        },
+        "additionalProperties": true
+      },
+      "Identifier": {
+        "type": "object",
+        "required": [
+          "namespace",
+          "value"
+        ],
+        "properties": {
+          "namespace": {
+            "enum": [
+              "gtin",
+              "retailer_sku",
+              "plu"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "chain_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 160
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResolveInput": {
+        "type": "object",
+        "required": [
+          "identifiers"
+        ],
+        "properties": {
+          "identifiers": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/Identifier"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "EnrichInput": {
+        "type": "object",
+        "required": [
+          "lines"
+        ],
+        "properties": {
+          "lines": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "items": {
+              "type": "object",
+              "required": [
+                "line_id"
+              ],
+              "properties": {
+                "line_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160
+                },
+                "product_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 160
+                },
+                "store_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 160
+                },
+                "query": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "maxLength": 200
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "LegacySearchInput": {
+        "type": "object",
+        "required": [
+          "query"
+        ],
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "pageNumber": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "default": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200,
+            "default": 20
+          },
+          "dataType": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "maxItems": 4,
+            "items": {
+              "enum": [
+                "Branded",
+                "Foundation",
+                "Survey (FNDDS)",
+                "SR Legacy"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "Product": {
+        "type": "object",
+        "required": [
+          "product_id",
+          "display_name",
+          "identifiers",
+          "source_records"
+        ],
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Identifier"
+            }
+          },
+          "source_records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "source_id",
+                "record_id",
+                "revision"
+              ],
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "record_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "revision": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "attribution": {
+                  "type": "string"
+                },
+                "license": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "package": {
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        }
+      },
+      "Food": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "record_id",
+          "revision",
+          "data"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "data": {
+            "type": "object"
+          },
+          "measures": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "RetailEvidence": {
+        "type": "object",
+        "required": [
+          "product_id",
+          "assortment_status",
+          "availability",
+          "offers",
+          "placements"
+        ],
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "store_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "assortment_status": {
+            "enum": [
+              "unknown",
+              "source_reported",
+              "listed",
+              "historical_only"
+            ]
+          },
+          "availability": {
+            "enum": [
+              "unknown",
+              "available",
+              "unavailable",
+              "limited"
+            ]
+          },
+          "offers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PriceObservation"
+            }
+          },
+          "placements": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "MapRecord": {
+        "type": "object",
+        "required": [
+          "map_id",
+          "store_id",
+          "discovery_status",
+          "rights_status"
+        ],
+        "properties": {
+          "map_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "store_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "discovery_status": {
+            "enum": [
+              "discovered",
+              "not_found",
+              "blocked",
+              "unsupported",
+              "ambiguous",
+              "stale",
+              "rights_pending"
+            ]
+          },
+          "rights_status": {
+            "enum": [
+              "unknown",
+              "pending",
+              "link_only",
+              "permitted",
+              "revoked"
+            ]
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "image_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "geometry_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ReadKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key",
+        "description": "Configured internal read key; disabling authentication is allowed only in an explicitly trusted deployment. No operator writes granted."
+      }
+    }
+  }
+}

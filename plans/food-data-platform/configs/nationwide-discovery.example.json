@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0.0",
+  "configuration_status": "proposed_requires_implementation",
+  "profile": "production",
+  "network": {
+    "mode": "bulk_only",
+    "allow_live_retail_apis": false,
+    "allow_paid_sources": false,
+    "allow_arbitrary_urls": false,
+    "allow_private_network_sources": false,
+    "crawl_enabled": false
+  },
+  "bootstrap": {
+    "mode": "automatic",
+    "load_examples": false,
+    "load_research_registry": false,
+    "empty_business_catalog_at_install": true,
+    "adopt_legacy_catalog": true,
+    "overwrite_local_imports": false
+  },
+  "geography": {
+    "country_codes": [
+      "US"
+    ],
+    "include_dc": true,
+    "include_territories": false,
+    "min_observed_chain_stores": 2,
+    "exclude_formats": [
+      "fuel_only",
+      "pharmacy_only",
+      "convenience_only",
+      "dollar_store"
+    ]
+  },
+  "runtime": {
+    "required_packs": [
+      "usda",
+      "stores"
+    ],
+    "role": "api_or_worker",
+    "heavy_jobs_max_concurrency": 1,
+    "api_starts_without_catalog": true
+  },
+  "scheduler": {
+    "enabled": true,
+    "tick_seconds": 30,
+    "jitter_fraction": 0.15,
+    "lease_seconds": 120,
+    "heartbeat_seconds": 20,
+    "max_retries": 5,
+    "retry_base_seconds": 60,
+    "retry_max_seconds": 21600,
+    "honor_retry_after": true,
+    "missed_jobs": "coalesce"
+  },
+  "sources": {
+    "usda_fdc": {
+      "enabled": true,
+      "datasets": [
+        "branded",
+        "foundation",
+        "fndds",
+        "sr_legacy"
+      ]
+    },
+    "all_the_places": {
+      "enabled": true,
+      "spiders": [],
+      "selection_mode": "published_archive_us_grocery",
+      "archive_url_source": "output_url from validated official latest run manifest"
+    },
+    "usda_snap": {
+      "enabled": false
+    },
+    "open_food_facts": {
+      "enabled": false
+    },
+    "open_prices": {
+      "enabled": false
+    },
+    "foodkeeper": {
+      "enabled": false
+    },
+    "overture_places": {
+      "enabled": false
+    },
+    "osm_indoor": {
+      "enabled": false
+    }
+  },
+  "crawler": {
+    "enabled": false,
+    "adapters_enabled": [],
+    "operator_contact": null,
+    "obey_robots": true,
+    "per_host_concurrency": 1,
+    "min_delay_seconds": 5,
+    "max_pages_per_run": 50,
+    "max_pages_per_day": 500,
+    "max_html_bytes": 2097152,
+    "max_depth": 2,
+    "max_redirects": 3,
+    "allow_browser": false,
+    "allow_proxy_bypass": false
+  },
+  "media": {
+    "download_product_images": false,
+    "download_map_assets": false,
+    "rehost_without_permission": false,
+    "max_cache_bytes": 1073741824
+  },
+  "retention": {
+    "minimum_generations": 2,
+    "pagination_hours": 24,
+    "change_log_days": 30,
+    "gc_requires_reader_quiescence_or_leases": true
+  },
+  "budgets": {
+    "data_quota_bytes": 53687091200,
+    "free_space_reserve_bytes": 5368709120,
+    "max_artifact_bytes": 21474836480,
+    "max_decompressed_bytes": 214748364800,
+    "planning_estimates_not_benchmarks": true
+  },
+  "watched_store_ids": [],
+  "compatibility": {
+    "honor_explicit_auto_download_false": true,
+    "datasets_env_is_usda_only": true,
+    "legacy_read_routes": true,
+    "legacy_health_semantics": true
+  },
+  "notes": [
+    "Source registration is configuration, not business data.",
+    "Selected ATP spider identifiers require implementation-time descriptor/schema review; no current output health is asserted.",
+    "Optional sources require explicit source-specific license/resource review.",
+    "Data/source traffic during Codex development remains disabled through the offline profile.",
+    "Optional broader bulk profile: worldwide archive transfer can be large; select explicitly after preflight. Filtering is local and not a bandwidth guarantee."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source registry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "registration_is_not_data_import",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "registration_is_not_data_import": {
+      "const": true
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "title": "Source descriptor",
+        "type": "object",
+        "required": [
+          "source_id",
+          "pack",
+          "default_enabled",
+          "implementation_status",
+          "format",
+          "discovery_url",
+          "sync_mode",
+          "dataset_license",
+          "source_refs",
+          "crawl_enabled"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pack": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default_enabled": {
+            "type": "boolean"
+          },
+          "implementation_status": {
+            "enum": [
+              "planned",
+              "implemented_offline",
+              "tested_offline",
+              "live_source_verified"
+            ]
+          },
+          "format": {
+            "type": "string",
+            "minLength": 1
+          },
+          "discovery_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "sync_mode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dataset_license": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "crawl_enabled": {
+            "const": false
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,313 @@
+{
+  "reviewed_on": "2026-10-17",
+  "sources": [
+    {
+      "source_id": "R01",
+      "title": "Food API project instructions",
+      "urls": [
+        "https://github.com/callum-baillie/bord-food-api/blob/13ba74e56f9d383edb2cfc57d4020d2c9943705e/AGENTS.md"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_repository_read",
+      "notes": "Keep immutable serving catalog and offline fixtures; actual checkout instructions prevail."
+    },
+    {
+      "source_id": "R02",
+      "title": "Food API startup and CLI",
+      "urls": [
+        "https://github.com/callum-baillie/bord-food-api/blob/13ba74e56f9d383edb2cfc57d4020d2c9943705e/bord_food_api/__main__.py"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_repository_read",
+      "notes": "Current startup blocks on import; new behavior is intentional."
+    },
+    {
+      "source_id": "R03",
+      "title": "Food API routes and bounds",
+      "urls": [
+        "https://github.com/callum-baillie/bord-food-api/blob/13ba74e56f9d383edb2cfc57d4020d2c9943705e/bord_food_api/api.py"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_repository_read",
+      "notes": ""
+    },
+    {
+      "source_id": "R04",
+      "title": "Food API configuration and download",
+      "urls": [
+        "https://github.com/callum-baillie/bord-food-api/blob/13ba74e56f9d383edb2cfc57d4020d2c9943705e/bord_food_api/settings.py",
+        "https://github.com/callum-baillie/bord-food-api/blob/13ba74e56f9d383edb2cfc57d4020d2c9943705e/bord_food_api/download.py"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_repository_read",
+      "notes": ""
+    },
+    {
+      "source_id": "R05",
+      "title": "Food API catalog and legacy schema",
+      "urls": [
+        "https://github.com/callum-baillie/bord-food-api/blob/13ba74e56f9d383edb2cfc57d4020d2c9943705e/bord_food_api/catalog.py"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "prior_connected_review_same_commit",
+      "notes": "Full implementation reviewed in the prior plan; current tree retains this commit."
+    },
+    {
+      "source_id": "R06",
+      "title": "Food API streamed importer",
+      "urls": [
+        "https://github.com/callum-baillie/bord-food-api/blob/13ba74e56f9d383edb2cfc57d4020d2c9943705e/bord_food_api/importer.py"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "prior_connected_review_same_commit",
+      "notes": "No runtime import/test performed."
+    },
+    {
+      "source_id": "R07",
+      "title": "Food API container and test inventory",
+      "urls": [
+        "https://github.com/callum-baillie/bord-food-api/blob/13ba74e56f9d383edb2cfc57d4020d2c9943705e/Dockerfile",
+        "https://github.com/callum-baillie/bord-food-api/tree/13ba74e56f9d383edb2cfc57d4020d2c9943705e/tests"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_repository_read",
+      "notes": "Dockerfile and current tree inspected; application tests not executed."
+    },
+    {
+      "source_id": "R08",
+      "title": "Bòrd food-data domain",
+      "urls": [
+        "https://github.com/callum-baillie/our-recipes/blob/843cd7c017b6a633a1691c8d8a25d7f70c6ee7bb/src/lib/domain/food-data.ts"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_repository_read",
+      "notes": ""
+    },
+    {
+      "source_id": "R09",
+      "title": "Bòrd food-data service",
+      "urls": [
+        "https://github.com/callum-baillie/our-recipes/blob/843cd7c017b6a633a1691c8d8a25d7f70c6ee7bb/src/lib/services/food-data-service.ts"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_repository_read_partial",
+      "notes": "First 155 lines inspected in this run; provider registry/cache/budgets, not entire application audit."
+    },
+    {
+      "source_id": "R10",
+      "title": "Bòrd supermarket-profile input contract",
+      "urls": [
+        "https://github.com/callum-baillie/our-recipes/blob/843cd7c017b6a633a1691c8d8a25d7f70c6ee7bb/src/lib/domain/list-settings.ts"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_repository_read_partial",
+      "notes": "Profile input and update definitions inspected; exact DB/migration names must be confirmed during implementation."
+    },
+    {
+      "source_id": "S01",
+      "title": "USDA FoodData Central bulk downloads and data guidance",
+      "urls": [
+        "https://fdc.nal.usda.gov/download-datasets/",
+        "https://fdc.nal.usda.gov/api-guide"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_documentation_review",
+      "notes": "Discover current JSON ZIPs; no bulk archive downloaded. CC0 data; keep dataset types and dates separate."
+    },
+    {
+      "source_id": "S02",
+      "title": "All The Places published output and run discovery",
+      "urls": [
+        "https://github.com/alltheplaces/alltheplaces",
+        "https://github.com/alltheplaces/alltheplaces/blob/master/API.md",
+        "https://data.alltheplaces.xyz/runs/latest.json",
+        "https://data.alltheplaces.xyz/runs/latest/output/{spider_name}.geojson"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_documentation_and_connected_code_review",
+      "notes": "Per-spider latest redirects to latest successful non-empty run; no output acquired/validated. Data CC0, code MIT per project."
+    },
+    {
+      "source_id": "S03",
+      "title": "USDA SNAP current retailer download",
+      "urls": [
+        "https://www.fna.usda.gov/snap/retailer-locator"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_indexed_documentation",
+      "notes": "Direct page access was restricted; exact current CSV download resource not verified. Do not invent a filename or ArcGIS ID; current and historical datasets differ."
+    },
+    {
+      "source_id": "S04",
+      "title": "Open Food Facts JSONL data and licensing",
+      "urls": [
+        "https://openfoodfacts.github.io/openfoodfacts-server/api/",
+        "https://static.openfoodfacts.org/data/openfoodfacts-products.jsonl.gz"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_documentation_review",
+      "notes": "Database ODbL; contents/media terms separate. No full data download; endpoint existence/health must be checked at runtime."
+    },
+    {
+      "source_id": "S05",
+      "title": "Open Food Facts official Parquet distribution",
+      "urls": [
+        "https://huggingface.co/datasets/openfoodfacts/product-database",
+        "https://huggingface.co/datasets/openfoodfacts/product-database/resolve/main/food.parquet"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_dataset_card_review",
+      "notes": "Different transformed schema from raw JSONL. Pin dataset revision and resolved assets; do not assume range filtering avoids all download bytes."
+    },
+    {
+      "source_id": "S06",
+      "title": "Open Food Facts delta exporter",
+      "urls": [
+        "https://github.com/openfoodfacts/openfoodfacts-server/blob/main/scripts/mongodb_dump.sh",
+        "https://static.openfoodfacts.org/data/delta/index.txt"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "connected_exporter_code_review",
+      "notes": "Active product last_modified_t intervals (from,to], bounded recent retention; no general deletion-tombstone guarantee. Surfaced index content was stale/cached, not a successful current live-health check."
+    },
+    {
+      "source_id": "S07",
+      "title": "Open Prices bulk exports",
+      "urls": [
+        "https://openfoodfacts.github.io/open-prices/guides/data/",
+        "https://openfoodfacts.github.io/open-prices/guides/import-data/",
+        "https://prices.openfoodfacts.org/data/prices.jsonl.gz",
+        "https://prices.openfoodfacts.org/data/locations.jsonl.gz",
+        "https://prices.openfoodfacts.org/data/proofs.jsonl.gz"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_documentation_review",
+      "notes": "Snapshot exports, ODbL; related files require join/revision checks. Proof image mirroring not required."
+    },
+    {
+      "source_id": "S08",
+      "title": "FoodKeeper official data catalog",
+      "urls": [
+        "https://catalog.data.gov/dataset/fsis-foodkeeper-data",
+        "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_documentation_review",
+      "notes": "Catalog lists JSON/XLS and CC0/irregular updates; runtime resolve safe current URL. Legacy HTTP link is not permission to downgrade TLS."
+    },
+    {
+      "source_id": "S09",
+      "title": "Overture Places and release discovery",
+      "urls": [
+        "https://docs.overturemaps.org/getting-data/",
+        "https://docs.overturemaps.org/guides/places/",
+        "https://stac.overturemaps.org/catalog.json",
+        "https://github.com/OvertureMaps/overturemaps-py"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_documentation_review",
+      "notes": "Current taxonomy/basic_category replaces older categories. Source-dependent licensing/provenance and overlap with ATP; V1.1 extension."
+    },
+    {
+      "source_id": "S10",
+      "title": "OSM regional data and indoor tooling",
+      "urls": [
+        "https://download.geofabrik.de/north-america/us.html",
+        "https://github.com/indoorequal/indoorequal",
+        "https://www.openstreetmap.org/copyright"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "prior_primary_source_research",
+      "notes": "V1.1 geometry extension; actual supermarket interior coverage and rights must be measured, not assumed."
+    },
+    {
+      "source_id": "S11",
+      "title": "Scrapy crawling controls",
+      "urls": [
+        "https://docs.scrapy.org/en/latest/topics/autothrottle.html",
+        "https://docs.scrapy.org/en/latest/topics/settings.html"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_documentation_review",
+      "notes": "Optional implementation library; adaptive rate control does not replace robots, rights, allowlists or budgets."
+    },
+    {
+      "source_id": "S12",
+      "title": "Kroger official developer interfaces",
+      "urls": [
+        "https://developer.kroger.com/reference/api/location-api-public",
+        "https://developer.kroger.com/reference/api/product-api-public",
+        "https://www.postman.com/kroger/the-kroger-co-s-public-workspace"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "prior_official_documentation_research",
+      "notes": "Current account entitlement, response schema, tariff and retention not tested. Disabled non-core integration; reverify before activation."
+    },
+    {
+      "source_id": "S13",
+      "title": "Walmart developer API distinctions",
+      "urls": [
+        "https://walmart.io/docs/opd/quick-start-guide/catalog-store-service-locator",
+        "https://walmart.io/docs/affiliates/search",
+        "https://developer.walmartdataventures.com/apis/reference/nrt-store-inventory-details"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "prior_official_documentation_research",
+      "notes": "Supplier/store-service/affiliate contracts are not universal consumer grocery inventory access. Tariffs and account entitlement unverified."
+    },
+    {
+      "source_id": "S14",
+      "title": "Instacart Developer Platform",
+      "urls": [
+        "https://docs.instacart.com/developer_platform_api/",
+        "https://docs.instacart.com/developer_platform_api/faq/"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "prior_official_documentation_research",
+      "notes": "Retain existing Bòrd shopping handoff. Admission, account entitlement and fee not verified; no marketplace mirror claim."
+    },
+    {
+      "source_id": "S15",
+      "title": "Walmart chain and Coralville dated examples",
+      "urls": [
+        "https://corporate.walmart.com/about/location-facts",
+        "https://www.walmart.com/store-directory",
+        "https://www.walmart.com/store/2827-coralville-ia",
+        "https://www.walmart.com/store/2827-coralville-ia/shopping-services",
+        "https://www.walmart.com/cp/find-an-item-store-maps/6422847",
+        "https://github.com/alltheplaces/alltheplaces/blob/master/locations/spiders/walmart_us.py",
+        "https://www.walmart.com/sitemap_store_main.xml"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "prior_dated_examples_and_source_code_review",
+      "notes": "Examples preserved from supplied files. Store hours/counts are dated facts, not newly fetched production records. Do not copy noncompliant/proxy settings from an upstream crawler."
+    },
+    {
+      "source_id": "S16",
+      "title": "Woodman’s North Aurora store-map link",
+      "urls": [
+        "https://www.woodmans-food.com/store-locations/north-aurora/"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_page_review",
+      "notes": "Observed distinct PDF store-map and geographic map links. No PDF downloaded; no layout currency or reuse permission established."
+    },
+    {
+      "source_id": "S17",
+      "title": "Codex repository guidance",
+      "urls": [
+        "https://developers.openai.com/codex/guides/agents-md",
+        "https://developers.openai.com/cookbook/examples/codex/iterating-development-workflows-with-codex"
+      ],
+      "reviewed_on": "2026-10-17",
+      "evidence_level": "official_documentation_review",
+      "notes": "Prompts rely on repository instructions, scoped tasks and test evidence; no specific model, paid feature, agent count or Goal-mode capability is required."
+    }
+  ],
+  "limitations": [
+    "No crawlers executed.",
+    "No live bulk dataset downloaded or imported for this package.",
+    "No authenticated retailer API, application tests or deployment tested.",
+    "Sources with prior-research evidence labels are not newly verified live endpoints."
+  ]
+}

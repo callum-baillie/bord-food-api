@@ -1,0 +1,13 @@
+# Later operator activation — not part of the implementation run
+
+This document is a runbook for a later, explicitly authorized operation on a deployed tested build. Merely reading it does not authorize acquisition. Do not use it to run a crawler during implementation.
+
+1. Inspect the installed build/version, actual supported CLI, data directory, ownership, free space and backup. Verify `/live`, sanitized status and zero business rows on a fresh installation, or confirm a successful legacy adoption. Never delete an existing catalog to manufacture an empty start.
+2. Validate effective source/network policy locally. Choose 50 states + D.C., required USDA/stores packs, archive/worker budgets, retention and source allowlists. Registered adapters are not imported chains. Review data/media terms. Keep optional expensive/copyleft sources off until expressly chosen.
+3. Enable bulk-only acquisition for USDA and selected ATP outputs. The deployed worker schedules bootstrap and ongoing checks automatically. A plan/dry-run performs no HTTP; the separate source check is networked. Observe real run dates, schemas, complete-scope validation and no-op/change reports before expanding coverage.
+4. Resolve SNAP’s official current download if enabled. Do not substitute history or a guessed URL after a block. Optional OFF/Open Prices/FoodKeeper can be enabled one at a time within measured resource and license budgets. Verify actual deletion/delta behavior and gap recovery.
+5. Leave retailer crawlers disabled unless separately authorized. For a specific approved crawler: verify robots/terms/reuse, exact hosts/paths and branch scope; set a real operator contact, one-host concurrency and small request budget; run a bounded job and inspect results/rights before increasing scope. Unknown map rights remain link-only. Never enable all 300 research candidates at once.
+6. Record actual activation evidence, source date/cost/entitlement and success/failure in the activation register. Use scheduled metadata/delta/hash checks thereafter; no manual weekly catalog rebuild is required. Monitor stale-source warnings and resource pauses.
+7. Test a local Bòrd request and review workflow against the actual deployed API. Confirm no private household data leaked, custom aisles remained intact and local-only mode did not fall back remotely.
+
+Stop on unknown permissions, source health, suspicious volume loss or disk/lease errors. Keep last-good data and explain the blocker. Do not purchase a subscription, provide credentials to a third party or make a destructive change without explicit authorization for that action.

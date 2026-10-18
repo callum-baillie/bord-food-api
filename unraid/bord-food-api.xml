@@ -6,7 +6,7 @@
   <Network>bridge</Network>
   <Privileged>false</Privileged>
   <Shell>sh</Shell>
-  <Overview>Local USDA FoodData Central search and details for Bòrd. Imports supplied JSON ZIPs or downloads the selected datasets on first start.</Overview>
+  <Overview>Local USDA FoodData Central search and details for Bòrd. Read API and supervised bulk worker. Starts empty and publishes immutable catalogs; crawling and paid sources remain disabled.</Overview>
   <Category>HomeAutomation: Productivity:</Category>
   <WebUI>http://[IP]:[PORT:8080]/docs</WebUI>
   <ExtraParams>--user=99:100</ExtraParams>
@@ -14,6 +14,7 @@
   <Config Name="Data" Target="/data" Default="/mnt/user/appdata/bord-food-api" Mode="rw" Description="Database and downloaded ZIPs; must be writable by UID 99/GID 100" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/bord-food-api</Config>
   <Config Name="Supplied datasets" Target="/imports" Default="/mnt/user/appdata/bord-food-api/imports" Mode="ro" Description="Optional USDA JSON or JSON ZIP files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/bord-food-api/imports</Config>
   <Config Name="Datasets" Target="DATASETS" Default="branded,foundation,fndds,sr_legacy" Mode="" Description="Comma-separated datasets to download" Type="Variable" Display="always" Required="true" Mask="false">branded,foundation,fndds,sr_legacy</Config>
-  <Config Name="Automatic first-start download" Target="AUTO_DOWNLOAD" Default="true" Mode="" Description="Download when no catalog or supplied files exist; false requires local files" Type="Variable" Display="always" Required="true" Mask="false">true</Config>
+  <Config Name="Automatic USDA acquisition" Target="AUTO_DOWNLOAD" Default="true" Mode="" Description="Enable automatic USDA bootstrap and updates; explicit false preserves local-only USDA use" Type="Variable" Display="always" Required="true" Mask="false">true</Config>
+  <Config Name="Optional source policy" Target="BORD_FOOD_CONFIG" Default="" Mode="" Description="Optional policy JSON path inside the container, for example /data/policy.json; blank uses bulk-only core defaults" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="Optional API key" Target="API_KEY" Default="" Mode="" Description="Blank disables auth. If set, configure the same value as USDA_FDC_API_KEY on Bòrd." Type="Variable" Display="always" Required="false" Mask="true"></Config>
 </Container>

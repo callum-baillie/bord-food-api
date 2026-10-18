@@ -1,0 +1,29 @@
+{
+  "fixture_kind": "publication_recovery",
+  "synthetic": true,
+  "network_allowed": false,
+  "scenario": {
+    "cases": [
+      {
+        "crash_point": "after_objects_before_pointer",
+        "expected_generation": "old",
+        "checkpoint": "old",
+        "recovery": "abandon_or_resume_prepared"
+      },
+      {
+        "crash_point": "after_pointer_before_control_commit",
+        "expected_generation": "new",
+        "checkpoint": "finalize_to_new",
+        "recovery": "verify_prepared_manifest_fence_then_finalize_outbox"
+      },
+      {
+        "crash_point": "stale_worker_after_lease_takeover",
+        "expected_generation": "unchanged",
+        "checkpoint": "unchanged",
+        "recovery": "reject_stale_fence"
+      }
+    ],
+    "exactly_once_execution_claimed": false,
+    "idempotent_effects_required": true
+  }
+}

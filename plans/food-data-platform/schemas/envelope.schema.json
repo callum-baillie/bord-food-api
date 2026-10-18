@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Native response envelope",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "data",
+    "meta"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "data": {
+      "type": [
+        "object",
+        "array"
+      ]
+    },
+    "meta": {
+      "title": "Response metadata",
+      "type": "object",
+      "required": [
+        "catalog_generation",
+        "source_refs",
+        "warnings",
+        "next_cursor"
+      ],
+      "properties": {
+        "catalog_generation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "title": "Warning",
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "next_cursor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "example_classification": {
+          "enum": [
+            "real_dated_reference",
+            "synthetic",
+            "not_an_example"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

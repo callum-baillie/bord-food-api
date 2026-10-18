@@ -44,7 +44,7 @@ class BodyLimit:
             if message["type"] == "http.disconnect":
                 return
             body.extend(message.get("body", b""))
-            if len(body) > 16384:
+            if len(body) > (65536 if scope["path"].startswith("/v1/") else 16384):
                 return await JSONResponse({"detail": "Request body too large"}, status_code=413)(
                     scope, receive, send
                 )
@@ -67,9 +67,16 @@ def create_app(settings: Settings | None = None):
     app = FastAPI(
         title="Bòrd Food API",
         version=__version__,
-        description="Local USDA FoodData Central search and details. Data: USDA, CC0 1.0.",
+        description="Local food, product and grocery catalogs with USDA-compatible search. "
+        "Attribution and rights are retained per source pack.",
     )
     app.add_middleware(BodyLimit)
+    from .platform import Platform
+
+    platform = Platform(settings.data_dir)
+    from .runtime import apply_rights_policy
+
+    apply_rights_policy(settings, platform.control)
     key_header = APIKeyHeader(name="X-Api-Key", auto_error=False)
 
     def authenticate(key: Annotated[str | None, Depends(key_header)]):
@@ -79,10 +86,16 @@ def create_app(settings: Settings | None = None):
             raise HTTPException(401, "Invalid or missing X-Api-Key")
 
     def database():
-        if not settings.database.exists():
+        if {"usda_fdc", "local_usda"} & platform.control.hidden_sources():
+            raise HTTPException(503, "USDA catalog is unavailable under current source policy")
+        try:
+            path = platform.legacy_path()
+        except (OSError, ValueError) as error:
+            raise HTTPException(503, "Catalog publication is unavailable") from error
+        if not path.exists():
             raise HTTPException(503, "No catalog available; import USDA datasets first")
         try:
-            with catalog.connect(settings.database) as connection:
+            with catalog.connect(path) as connection:
                 deadline = time.monotonic() + 5
                 connection.set_progress_handler(lambda: int(time.monotonic() > deadline), 10000)
                 yield connection
@@ -137,4 +150,7 @@ def create_app(settings: Settings | None = None):
             raise HTTPException(404, "Food not found")
         return catalog.unpack(row["payload"])
 
+    from .native_api import install_routes
+
+    install_routes(app, settings, authenticate)
     return app

@@ -1,0 +1,333 @@
+{
+  "schema_version": "1.0.0",
+  "classification": "synthetic_offline_contract_only",
+  "responses": {
+    "empty_status": {
+      "status": 200,
+      "body": {
+        "schema_version": "1.0.0",
+        "data": {
+          "state": "empty",
+          "catalog_generation": null,
+          "packs": [],
+          "jobs": [],
+          "sources": []
+        },
+        "meta": {
+          "catalog_generation": null,
+          "source_refs": [],
+          "warnings": [],
+          "next_cursor": null
+        }
+      }
+    },
+    "empty_readiness": {
+      "status": 503,
+      "body": {
+        "status": "initializing",
+        "packs": {
+          "usda": {
+            "available": false,
+            "reason": "not_published"
+          },
+          "stores": {
+            "available": false,
+            "reason": "not_published"
+          }
+        }
+      }
+    },
+    "stores_unavailable": {
+      "status": 503,
+      "body": {
+        "error": {
+          "code": "CATALOG_NOT_READY",
+          "message": "The stores catalog has not been published yet.",
+          "retryable": true,
+          "details": {
+            "pack": "stores"
+          }
+        }
+      }
+    },
+    "stores_ready": {
+      "status": 200,
+      "body": {
+        "schema_version": "1.0.0",
+        "data": [
+          {
+            "address": {
+              "region": "IA",
+              "street": "1 Imaginary Lane"
+            },
+            "content_revision": "43a125873ceffadde64c12b9a17cce6b44769f34f313aeaf02aa517202acdeef",
+            "id": "sto_89d80d737078471e9cf1582df9195db1",
+            "latitude": 41.0,
+            "longitude": -91.0,
+            "name": "Synthetic Fixture Branch",
+            "source_refs": [
+              {
+                "parser_version": "1",
+                "record_id": "branch-1",
+                "release_id": "synthetic-v1",
+                "source_id": "synthetic"
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "catalog_generation": "g_9db1173517a14d5c97045879a8e43065",
+          "source_refs": [
+            {
+              "parser_version": "1",
+              "record_id": "branch-1",
+              "release_id": "synthetic-v1",
+              "source_id": "synthetic"
+            }
+          ],
+          "warnings": [],
+          "next_cursor": null
+        }
+      }
+    },
+    "partial_capabilities": {
+      "status": 200,
+      "body": {
+        "schema_version": "1.0.0",
+        "data": {
+          "packs": {
+            "usda": {
+              "implemented": true,
+              "available": false,
+              "enabled": false
+            },
+            "stores": {
+              "implemented": true,
+              "available": true,
+              "enabled": true
+            },
+            "products": {
+              "implemented": true,
+              "available": true,
+              "enabled": false
+            },
+            "prices": {
+              "implemented": true,
+              "available": false,
+              "enabled": false
+            },
+            "guidance": {
+              "implemented": true,
+              "available": false,
+              "enabled": false
+            },
+            "maps": {
+              "implemented": true,
+              "available": true,
+              "enabled": false
+            }
+          },
+          "sources": {
+            "usda_fdc": {
+              "implemented": true,
+              "enabled": false,
+              "available": false,
+              "stale": false
+            },
+            "all_the_places": {
+              "implemented": true,
+              "enabled": true,
+              "available": false,
+              "stale": false
+            },
+            "usda_snap": {
+              "implemented": true,
+              "enabled": false,
+              "available": false,
+              "stale": false
+            },
+            "open_food_facts": {
+              "implemented": true,
+              "enabled": false,
+              "available": true,
+              "stale": false
+            },
+            "open_prices": {
+              "implemented": true,
+              "enabled": false,
+              "available": false,
+              "stale": false
+            },
+            "foodkeeper": {
+              "implemented": true,
+              "enabled": false,
+              "available": false,
+              "stale": false
+            }
+          },
+          "crawling": {
+            "implemented": true,
+            "enabled": false,
+            "available": false
+          },
+          "map_assets": {
+            "implemented": true,
+            "rights_blocked": true
+          },
+          "remote_lookup": {
+            "implemented": false,
+            "enabled": false
+          }
+        },
+        "meta": {
+          "catalog_generation": "g_9db1173517a14d5c97045879a8e43065",
+          "source_refs": [],
+          "warnings": [],
+          "next_cursor": null
+        }
+      }
+    },
+    "source_food_selected": {
+      "status": 200,
+      "body": {
+        "schema_version": "1.0.0",
+        "data": {
+          "chain_evidence": [
+            {
+              "name": "Synthetic Fixture Chain",
+              "scope": "chain"
+            }
+          ],
+          "content_revision": "c352dd24f27d2a69b1d23b940d0e27cbaf7003f81d4f67f50a1d3480efcacaa8",
+          "gtin14": "00012345678905",
+          "id": "prd_0797ff40212b4b098483325933b368e4",
+          "measures": [
+            {
+              "amount": 10,
+              "basis": "mass",
+              "unit": "g"
+            }
+          ],
+          "name": "Synthetic Fixture Oats",
+          "nutrition": {
+            "energy": 0
+          },
+          "source_refs": [
+            {
+              "parser_version": "1",
+              "record_id": "012345678905",
+              "release_id": "synthetic-v1",
+              "source_id": "open_food_facts"
+            }
+          ]
+        },
+        "meta": {
+          "catalog_generation": "g_9db1173517a14d5c97045879a8e43065",
+          "source_refs": [
+            {
+              "parser_version": "1",
+              "record_id": "012345678905",
+              "release_id": "synthetic-v1",
+              "source_id": "open_food_facts"
+            }
+          ],
+          "warnings": [],
+          "next_cursor": null
+        }
+      }
+    },
+    "revision_expired": {
+      "status": 409,
+      "body": {
+        "error": {
+          "code": "REVISION_EXPIRED",
+          "message": "Selected revision is unavailable; review the food again.",
+          "retryable": false,
+          "details": {}
+        }
+      }
+    },
+    "retail_unknown": {
+      "status": 200,
+      "body": {
+        "schema_version": "1.0.0",
+        "data": {
+          "product_id": "prd_0797ff40212b4b098483325933b368e4",
+          "store_id": "sto_89d80d737078471e9cf1582df9195db1",
+          "assortment_status": "unknown",
+          "availability": "unknown",
+          "offers": [],
+          "placements": [],
+          "chain_evidence": [
+            {
+              "name": "Synthetic Fixture Chain",
+              "scope": "chain"
+            }
+          ],
+          "reason": "No imported branch listing or current stock evidence.",
+          "capabilities": {
+            "listing": false,
+            "price": false,
+            "placement": false,
+            "current_stock": false
+          }
+        },
+        "meta": {
+          "catalog_generation": "g_9db1173517a14d5c97045879a8e43065",
+          "source_refs": [],
+          "warnings": [],
+          "next_cursor": null
+        }
+      }
+    },
+    "maps_rights_pending": {
+      "status": 200,
+      "body": {
+        "schema_version": "1.0.0",
+        "data": [
+          {
+            "content_revision": "30b3b74572ff7ce19ac8fb276dddcfcd4f34c80ca5392611a95341e878fed254",
+            "discovery_status": "discovered",
+            "display_permitted": false,
+            "id": "map_02bc320e71f34ab0b3cce95c78d5af27",
+            "rights_status": "pending",
+            "source_refs": [
+              {
+                "parser_version": "1",
+                "record_id": "map-1",
+                "release_id": "synthetic-v1",
+                "source_id": "synthetic"
+              }
+            ],
+            "source_url": "https://retailer.test/store-map.pdf",
+            "store_id": "sto_89d80d737078471e9cf1582df9195db1"
+          }
+        ],
+        "meta": {
+          "catalog_generation": "g_9db1173517a14d5c97045879a8e43065",
+          "source_refs": [
+            {
+              "parser_version": "1",
+              "record_id": "map-1",
+              "release_id": "synthetic-v1",
+              "source_id": "synthetic"
+            }
+          ],
+          "warnings": [],
+          "next_cursor": null
+        }
+      }
+    },
+    "map_asset_rights_blocked": {
+      "status": 403,
+      "body": {
+        "error": {
+          "code": "RIGHTS_BLOCKED",
+          "message": "Map asset display has not been permitted.",
+          "retryable": false,
+          "details": {}
+        }
+      }
+    }
+  }
+}

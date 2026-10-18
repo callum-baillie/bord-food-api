@@ -1,0 +1,919 @@
+{
+  "schema_version": "1.0.0",
+  "status": "v1_api_completed_offline_companion_activation_pending",
+  "tasks": [
+    {
+      "id": "F01",
+      "phase": "P00",
+      "title": "Audit actual checkout and preserve current behavior",
+      "repository": "bord-food-api",
+      "depends_on": [],
+      "acceptance_tests": [
+        "T06"
+      ],
+      "description": "Inspect AGENTS, current diffs, API schema and B\u00f2rd seams. Record baseline and deviations without resetting user work.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "AGENTS.md; main@13ba74e; dirty README/.env/docs/plans preserved",
+        "Baseline: python -m pytest -q => 34 passed; verification-log.md"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "F02",
+      "phase": "P00",
+      "title": "Install offline test boundary and compatibility fixtures",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "F01"
+      ],
+      "acceptance_tests": [
+        "T01",
+        "T06",
+        "T28",
+        "T42"
+      ],
+      "description": "Inject HTTP/clock/storage; fail source-network access in routine tests; freeze legacy payloads.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "tests/conftest.py external DNS/socket guard",
+        "tests/test_api.py; tests/fixtures/foods.json; contracts/fixtures/identifiers.json"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "F03",
+      "phase": "P01",
+      "title": "Define domain schemas, strict IDs and source rights",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "F02"
+      ],
+      "acceptance_tests": [
+        "T28",
+        "T29",
+        "T32"
+      ],
+      "description": "Implement source/transport distinction and provenance; unknown fields stay unknown; preserve legacy validator separately.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "bord_food_api/domain.py; control.py per-action rights; native_api.py Pydantic contracts",
+        "tests/test_platform.py; test_sources.py; test_native_api.py"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "F04",
+      "phase": "P01",
+      "title": "Control migrations and stable identity registry",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "F03"
+      ],
+      "acceptance_tests": [
+        "T13",
+        "T14",
+        "T15"
+      ],
+      "description": "Add persistent ID allocation, source aliases, reversible match decisions and migration tests.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "control.py identity ledger and audited reversible decisions; platform.py frozen transitive redirects",
+        "test_reviewed_alias_chain_is_generation_bound_reversible_and_preserves_assertions; test_empty_identity_alias_and_migration"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "F05",
+      "phase": "P01",
+      "title": "Immutable objects and generation publication",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "F04"
+      ],
+      "acceptance_tests": [
+        "T23",
+        "T24",
+        "T26"
+      ],
+      "description": "Prepare immutable snapshots and generation crosswalk; atomic manifest switch with recovery protocol.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "platform.py private SQLite snapshots/content addressing/fsync/atomic current.json",
+        "test_actual_process_crash_recovery; test_gc_requires_quiescence_and_keeps_old_generations"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "F06",
+      "phase": "P01",
+      "title": "Idempotent source state and pending watermarks",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "F05"
+      ],
+      "acceptance_tests": [
+        "T17",
+        "T19",
+        "T22",
+        "T24"
+      ],
+      "description": "Use fenced leases, pending/committed checkpoint states and replay-safe publication/change events.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "control.py fencing; platform.py prepare/publish/finalize and unique change outbox",
+        "test_fence_and_dedupe; test_actual_process_crash_recovery; test_off_semantic_noop_preserves_newest_source_clock"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "O01",
+      "phase": "P02",
+      "title": "Configuration and effective-policy validation",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "F03"
+      ],
+      "acceptance_tests": [
+        "T01",
+        "T05",
+        "T33"
+      ],
+      "description": "Production bulk-only vs offline modes; source/crawl independent controls and legacy precedence.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "settings.py versioned effective policy and legacy precedence",
+        "tests/test_runtime.py; tests/test_cli.py rights/config tests"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "O02",
+      "phase": "P02",
+      "title": "Nonblocking startup and pack readiness",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "F05",
+        "O01"
+      ],
+      "acceptance_tests": [
+        "T01",
+        "T02",
+        "T04",
+        "T40"
+      ],
+      "description": "API opens without data; separate liveness, legacy health and required-pack readiness.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "api.py; native_api.py /live /ready /v1/system/status; __main__.py nonblocking serve",
+        "test_empty_status_auth_readiness_and_validation; tests/test_cli.py"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "O03",
+      "phase": "P02",
+      "title": "Durable scheduler and worker roles",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "F06",
+        "O01"
+      ],
+      "acceptance_tests": [
+        "T03",
+        "T22",
+        "T33"
+      ],
+      "description": "Single-host scheduling, deduplication, jitter, retry budgets, shutdown and source kill switches.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "runtime.py durable coalescing scheduler, lease heartbeat, retries and supervised roles",
+        "tests/test_runtime.py durability, shutdown, retries, heavy-lock and supervisor tests"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "O04",
+      "phase": "P02",
+      "title": "Safe downloader and resumable artifacts",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "O01"
+      ],
+      "acceptance_tests": [
+        "T07",
+        "T25",
+        "T35"
+      ],
+      "description": "Conditional requests, validator-bound partial resume, bounded redirects/bytes/decompression and source allowlists.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "transport.py pinned HTTPS, redirects, bounded conditional/resumable downloads; sources.py expanded byte bounds",
+        "tests/test_transport.py; tests/test_sources.py decompression/traversal tests"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "O05",
+      "phase": "P02",
+      "title": "Operator CLI and sanitized status",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "O02",
+        "O03"
+      ],
+      "acceptance_tests": [
+        "T01",
+        "T41"
+      ],
+      "description": "Network-free plan, source check, sync/cancel, worker/status and safe error diagnostics.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "__main__.py plan/status/jobs/sources/identity/rights/backup/restore controls",
+        "tests/test_cli.py; docs/platform-runtime.md"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "S01",
+      "phase": "P03",
+      "title": "USDA adapter and legacy catalog adoption",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "O04",
+        "F05"
+      ],
+      "acceptance_tests": [
+        "T04",
+        "T05",
+        "T06",
+        "T07"
+      ],
+      "description": "Reuse existing importer and discovery; per-type release identity, safe adoption and release-level no-op detection.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "sources.py USDA discovery/cache/provenance; runtime.py no-op release detection; platform.py adoption",
+        "tests/test_download.py; test_importer.py; test_runtime.py; test_legacy_adoption_and_backup_restore_rollback"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "S02",
+      "phase": "P03",
+      "title": "ATP pinned-output acquisition",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "O04",
+        "F06"
+      ],
+      "acceptance_tests": [
+        "T08",
+        "T16"
+      ],
+      "description": "Resolve permitted outputs; record actual successful-run dates; no inferred freshness from retrieval. Implement selected-spider and explicitly selected published-archive U.S.-grocery modes with per-member scope and safe streaming; no retailer host auto-approval.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "sources.py resolve_atp, pin_atp_output, streaming selected/archive scope parsers",
+        "tests/test_sources.py selected/archive/old-run/scope fixtures; test_native_api.py capability age test"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "S03",
+      "phase": "P03",
+      "title": "Roster and field-group semantic diff",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "S02",
+        "F04"
+      ],
+      "acceptance_tests": [
+        "T08",
+        "T09",
+        "T10",
+        "T21"
+      ],
+      "description": "Deterministic versioned normalization/hash; minimal work scheduling and complete-scope absence rules.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "refresh.py versioned field hashes, independent audits and justified detail candidates; platform.py snapshot diff",
+        "tests/test_refresh.py; test_store_group_normalization_missing_values_and_due_audits; source transform replay tests"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "S04",
+      "phase": "P03",
+      "title": "Store lifecycle and identity reconciliation",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "S03"
+      ],
+      "acceptance_tests": [
+        "T11",
+        "T12",
+        "T13",
+        "T14",
+        "T15"
+      ],
+      "description": "Source absence is not closure; ambiguous mergers/relocations withheld with review reasons.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "platform.py complete-run absence, relocation withholding and reviewed identity projection",
+        "test_absence_requires_distinct_complete_runs_never_closure; test_snapshot_noop_hours_partial_relocation; reviewed alias tests"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "S05",
+      "phase": "P03",
+      "title": "Optional SNAP CSV/resolver adapter",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "S04"
+      ],
+      "acceptance_tests": [
+        "T11",
+        "T15",
+        "T32"
+      ],
+      "description": "Official current resource discovery or reviewed override; bounded CSV parser, qualified SNAP evidence and unresolved status on access failure.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "sources.py official resolver/override and bounded SNAP CSV parser; no guessed current URL",
+        "tests/test_sources.py SNAP authorization/schema/history/territory fixtures; live resolution not performed"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "S06",
+      "phase": "P03",
+      "title": "Chain/store queries and pagination",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "S04",
+        "O02"
+      ],
+      "acceptance_tests": [
+        "T27",
+        "T40"
+      ],
+      "description": "Nearby/state/text filters, count scope, stable cursor and field freshness; no hidden direct crawling.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "native_api.py chain/store filtering and generation-bound signed cursors; platform.py FTS5/RTree",
+        "tests/test_native_api.py stable cursor/distance/count/no-full-scan/request generation tests"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "P01",
+      "phase": "P04",
+      "title": "OFF JSONL baseline and filtered pack",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "O04",
+        "F03",
+        "F05"
+      ],
+      "acceptance_tests": [
+        "T20",
+        "T29",
+        "T32"
+      ],
+      "description": "Stream JSONL into isolated optional pack; preserve source revisions/formulation/rights; countries filter explicit.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "sources.py OFF filtered streaming JSONL with raw source facts/rights and disk-backed row collapse",
+        "tests/test_sources.py OFF country/nutrition/source-revision fixtures"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "P02",
+      "phase": "P04",
+      "title": "OFF delta continuity and full reconciliation",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "P01",
+        "F06"
+      ],
+      "acceptance_tests": [
+        "T17",
+        "T18",
+        "T19",
+        "T20"
+      ],
+      "description": "Validate intervals, overlap, correction and missed retention; fallback to complete compatible baseline.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "sources.py delta coverage and reconciliation; platform.py independent source clocks and post-publication cursors",
+        "tests/test_sources.py continuity/gap/overlap/empty/alignment/parser-filter replay; tests/test_platform.py cursor and timestamp conflict tests"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "P03",
+      "phase": "P04",
+      "title": "Canonical product search and batch resolve",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "P01",
+        "S06"
+      ],
+      "acceptance_tests": [
+        "T28",
+        "T29",
+        "T30"
+      ],
+      "description": "Identifier-first matches; no name-only merge; no source-network call during queries.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "native_api.py canonical local product search and strict identifier batch resolution",
+        "tests/test_native_api.py; contracts/fixtures/identifiers.json; indexed source lookup test"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "P04",
+      "phase": "P04",
+      "title": "USDA source-backed measures",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "S01",
+        "F03"
+      ],
+      "acceptance_tests": [
+        "T29"
+      ],
+      "description": "Expose valid food portions and exact source facts; never fabricate density or package size.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "native_api.py source food detail/revision and USDA foodPortions measures",
+        "tests/test_native_api.py measures/revision checks; legacy nutrition fixtures unchanged"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "E01",
+      "phase": "P04",
+      "title": "Public retail evidence model and enrichment",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "P03",
+        "S06"
+      ],
+      "acceptance_tests": [
+        "T30",
+        "T31"
+      ],
+      "description": "Distinct catalog/listing/price/stock/placement and pure read enrichment contract.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "native_api.py distinct retail evidence and pure /v1/shopping/enrich",
+        "tests/test_native_api.py unknown retail, historical price/stock and stale map-anchor tests"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "E02",
+      "phase": "P04",
+      "title": "Optional Open Prices adapter",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "E01",
+        "O04"
+      ],
+      "acceptance_tests": [
+        "T30",
+        "T31",
+        "T32"
+      ],
+      "description": "Snapshot diff; related-record joins; source revision and historical conditions; proof media off.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "sources.py SQLite related-record joins and exact Decimal public observations; proof media off",
+        "tests/test_sources.py Open Prices dependency/country/decimal/zero/null fixtures"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "E03",
+      "phase": "P04",
+      "title": "Optional FoodKeeper adapter",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "O04",
+        "F03"
+      ],
+      "acceptance_tests": [
+        "T29",
+        "T32"
+      ],
+      "description": "Resolve official JSON resource, parse source guidance and conditions; no personal expiry guarantee.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "sources.py official FoodKeeper resolver and workbook JSON parser with 32MiB ceiling",
+        "tests/test_sources.py guidance/ranges/HTTPS fixtures"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "C01",
+      "phase": "P05",
+      "title": "Crawler policy enforcement and frontier",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "O03",
+        "O04",
+        "S03"
+      ],
+      "acceptance_tests": [
+        "T33",
+        "T35"
+      ],
+      "description": "Optional Scrapy or equivalent bounded layer; robots, host/contact/reuse approvals, per-host rate/queue budgets.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "crawlers.py bounded frontier/robots/contact/budgets; crawl_runtime.py gated worker bridge",
+        "tests/test_crawlers.py; tests/test_crawl_runtime.py; direct crawling not activated"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "C02",
+      "phase": "P05",
+      "title": "Woodman\u2019s map-link pilot offline implementation",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "C01"
+      ],
+      "acceptance_tests": [
+        "T34"
+      ],
+      "description": "Synthetic fixture distinguishes PDF layout, geographic map and advertising; no live run.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "crawlers.py Woodman map-link extractor and crawl_runtime.py link-only publisher",
+        "tests/test_crawlers.py synthetic indoor-map/geographic-map/advertising distinction; mocked runner fixtures"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "M01",
+      "phase": "P05",
+      "title": "Map registry and permitted asset handling",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "C02",
+        "F03"
+      ],
+      "acceptance_tests": [
+        "T32",
+        "T34",
+        "T35"
+      ],
+      "description": "Rights pending link-only, safe existing-asset endpoints; rendering optional dependency network sandboxed.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "native_api.py fixed asset variants, storage/display rights, digest, size and path checks",
+        "tests/test_native_api.py permitted/pending/corrupt/symlink/SVG asset tests; no rendering enabled"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "M02",
+      "phase": "P05",
+      "title": "Placement/map version invalidation",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "M01",
+        "E01"
+      ],
+      "acceptance_tests": [
+        "T30",
+        "T34"
+      ],
+      "description": "New asset version does not silently reuse stale aisle anchors; fallback ordering remains separate.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "native_api.py placement map-version validation, independent of household ordering",
+        "test_retail_history_does_not_infer_stock_and_stale_map_anchor_is_withheld"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "A01",
+      "phase": "P06",
+      "title": "Native contracts, OpenAPI and client fixture export",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "S06",
+        "P03",
+        "P04",
+        "E01",
+        "M01"
+      ],
+      "acceptance_tests": [
+        "T27",
+        "T40"
+      ],
+      "description": "Generate authoritative FastAPI schema and reviewed TS shapes; validate bounds/error/capability semantics.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "contracts/openapi.json generated by scripts/export-contracts.py; reviewed TypeScript starter and shared fixtures",
+        "OpenAPI --check; standalone TypeScript typecheck; tests/test_native_api.py shared contract fixtures"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "B01",
+      "phase": "P06",
+      "title": "B\u00f2rd companion specification and contract smoke",
+      "repository": "bord-food-api handoff / our-recipes companion",
+      "depends_on": [
+        "A01"
+      ],
+      "acceptance_tests": [
+        "T06",
+        "T36",
+        "T37",
+        "T38",
+        "T39"
+      ],
+      "description": "Deliver exact configuration/migration/client handoff; companion writes only when checkout authorized.",
+      "status": "handoff_complete",
+      "implementation_evidence": [
+        "contracts/BORD-HANDOFF.md and companion prompt; our-recipes inspected read-only",
+        "scripts/smoke-bord-offline.py actual existing USDA provider passed on six synthetic foods",
+        "Companion T36-T39 changes/tests NOT performed; no household/UI/migration writes"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API handoff complete; companion changes and T36-T39 application tests pending"
+    },
+    {
+      "id": "D01",
+      "phase": "P07",
+      "title": "Upgrade and rollback migrations",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "S01",
+        "F05",
+        "O02"
+      ],
+      "acceptance_tests": [
+        "T04",
+        "T05",
+        "T23",
+        "T24"
+      ],
+      "description": "No example seeding; adopt old catalog; compatible backup restore and dry-run migration.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "platform.py original-preserving adoption, backup/restore and recoverable rollback",
+        "tests/test_platform.py legacy adoption, rollback process crashes and rights-safe restore"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "D02",
+      "phase": "P07",
+      "title": "Docker, Compose and Unraid role wiring",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "O03",
+        "D01"
+      ],
+      "acceptance_tests": [
+        "T01",
+        "T02",
+        "T03",
+        "T42"
+      ],
+      "description": "Same-image API/worker roles or supervised single-container option; liveness healthcheck; no runtime data baked into image.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "Dockerfile /live and run; Compose separate roles; Unraid role/config wiring",
+        "scripts/smoke-docker.py offline synthetic smoke passed; empty image no seeds passed; Compose/XML parse passed",
+        "No Unraid/remote deployment or image publication"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "D03",
+      "phase": "P07",
+      "title": "Storage budgeting, backups and safe cleanup",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "D01",
+        "F06"
+      ],
+      "acceptance_tests": [
+        "T25",
+        "T26",
+        "T41"
+      ],
+      "description": "Protect identity and current-generation objects; quiesced/lease-aware GC; no expired restricted data restored.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "transport/importer staging quota and reserve; platform.py consistent backups, retention guards and explicit quiesced GC",
+        "tests/test_platform.py integrity/backup/restore/rights/GC; tests/test_transport.py byte/archive limits; docs/platform-runtime.md"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "Q01",
+      "phase": "P08",
+      "title": "Full offline regression and crash tests",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "D02",
+        "D03",
+        "E02",
+        "E03",
+        "M02",
+        "B01"
+      ],
+      "acceptance_tests": [
+        "T01",
+        "T42"
+      ],
+      "description": "Run all applicable matrix tests, explicit unavailable-environment labels and performance fixtures.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "Full offline regression and final command results: progress/verification-log.md",
+        "scripts/benchmark-offline.py; scripts/smoke-bord-offline.py; scripts/smoke-docker.py",
+        "Final full regression: 209 passed, 1 upstream warning; Ruff/format/OpenAPI/TypeScript/local synthetic Docker and B\u00f2rd provider checks passed"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "Q02",
+      "phase": "P08",
+      "title": "Final security, provenance and documentation review",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "Q01"
+      ],
+      "acceptance_tests": [
+        "T30",
+        "T31",
+        "T32",
+        "T33",
+        "T35",
+        "T41"
+      ],
+      "description": "Inspect implementation vs claims; no stubs declared live; complete operators guide and source gates.",
+      "status": "completed_offline",
+      "implementation_evidence": [
+        "docs/V1-VERIFICATION.md; docs/platform-runtime.md; contracts/BORD-HANDOFF.md",
+        "Targeted publication/rights/generation/transport review and regression tests; final evidence in verification-log.md"
+      ],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": true,
+      "completion_boundary": "API implementation and deterministic offline evidence; source activation separate"
+    },
+    {
+      "id": "X01",
+      "phase": "V1.1",
+      "title": "Overture release/schema adapter",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "Q02"
+      ],
+      "acceptance_tests": [],
+      "description": "Implement only in next explicitly selected milestone; country/taxonomy/STAC release and source-overlap fixtures.",
+      "status": "not_started",
+      "implementation_evidence": [],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": false
+    },
+    {
+      "id": "X02",
+      "phase": "V1.1",
+      "title": "OFF Parquet alternate bootstrap",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "Q02"
+      ],
+      "acceptance_tests": [],
+      "description": "Optional alternate raw format with semantic parity and cost/bandwidth measurement.",
+      "status": "not_started",
+      "implementation_evidence": [],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": false
+    },
+    {
+      "id": "X03",
+      "phase": "V1.1",
+      "title": "Regional OSM/IndoorEqual geometry",
+      "repository": "bord-food-api",
+      "depends_on": [
+        "Q02"
+      ],
+      "acceptance_tests": [],
+      "description": "Only where actual useful map geometry and compatible license is confirmed.",
+      "status": "not_started",
+      "implementation_evidence": [],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": false
+    },
+    {
+      "id": "I01",
+      "phase": "V2",
+      "title": "B\u00f2rd private purchase evidence and package-aware planning",
+      "repository": "bord-food-api handoff / our-recipes companion",
+      "depends_on": [
+        "Q02"
+      ],
+      "acceptance_tests": [],
+      "description": "Reuse existing transaction/deficit pipeline; checkout vs consumed cost and leftovers; no public receipt sharing.",
+      "status": "not_started",
+      "implementation_evidence": [],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": false
+    },
+    {
+      "id": "I02",
+      "phase": "V2",
+      "title": "Entitled live retailer and basket scenarios",
+      "repository": "bord-food-api handoff / our-recipes companion",
+      "depends_on": [
+        "I01"
+      ],
+      "acceptance_tests": [],
+      "description": "Actual permissions/costs first; demand-bound calls, comparable coverage and explicit unknown prices.",
+      "status": "not_started",
+      "implementation_evidence": [],
+      "live_verification": "not_performed",
+      "in_main_v1_scope": false
+    }
+  ]
+}

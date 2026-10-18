@@ -1,0 +1,33 @@
+{
+  "fixture_kind": "delta_continuity",
+  "synthetic": true,
+  "network_allowed": false,
+  "scenario": {
+    "source_id": "synthetic_off",
+    "committed_to": 1000,
+    "files": [
+      {
+        "from_exclusive": 1000,
+        "to_inclusive": 1100,
+        "eligible_rows": 2
+      },
+      {
+        "from_exclusive": 1100,
+        "to_inclusive": 1200,
+        "eligible_rows": 0
+      },
+      {
+        "from_exclusive": 1050,
+        "to_inclusive": 1100,
+        "eligible_rows": 1
+      }
+    ],
+    "expected": {
+      "committed_to_after_successful_publication": 1200,
+      "overlap_replay": "idempotent_skip_older_versions",
+      "advance_on_zero_filtered_rows": true,
+      "require_baseline": false,
+      "commit_before_publication": false
+    }
+  }
+}

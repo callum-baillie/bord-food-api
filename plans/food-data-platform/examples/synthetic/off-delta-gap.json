@@ -1,0 +1,22 @@
+{
+  "fixture_kind": "delta_gap",
+  "synthetic": true,
+  "network_allowed": false,
+  "scenario": {
+    "source_id": "synthetic_off",
+    "committed_to": 1000,
+    "files": [
+      {
+        "from_exclusive": 1100,
+        "to_inclusive": 1200,
+        "eligible_rows": 3
+      }
+    ],
+    "expected": {
+      "committed_to": 1000,
+      "require_baseline": true,
+      "last_good_catalog_remains_visible": true,
+      "status": "delta_gap"
+    }
+  }
+}

@@ -9,7 +9,6 @@ import tempfile
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
-from urllib.request import Request, urlopen
 from zipfile import ZipFile
 
 PAGE = "https://fdc.nal.usda.gov/download-datasets/"
@@ -50,7 +49,15 @@ def discover(html: str) -> dict[str, str]:
 
 
 def open_url(url: str):
-    return urlopen(Request(url, headers={"User-Agent": "bord-food-api/0.1"}), timeout=120)
+    from .transport import Transport
+
+    return Transport(
+        {
+            "mode": "bulk_only",
+            "origins": ["https://fdc.nal.usda.gov"],
+            "max_artifact_bytes": 20 * 1024**3,
+        }
+    ).get(url)
 
 
 def sha256(path: Path) -> str:
@@ -58,8 +65,13 @@ def sha256(path: Path) -> str:
         return hashlib.file_digest(source, "sha256").hexdigest()
 
 
-def download_datasets(names: tuple[str, ...], directory: Path, force=False) -> list[Path]:
-    with open_url(PAGE) as response:
+def download_datasets(
+    names: tuple[str, ...], directory: Path, force=False, *, transport=None
+) -> list[Path]:
+    def request(url):
+        return transport.get(url) if transport is not None else open_url(url)
+
+    with request(PAGE) as response:
         releases = discover(response.read(4 * 1024 * 1024).decode("utf-8"))
     missing = set(names) - releases.keys()
     if missing:
@@ -78,17 +90,19 @@ def download_datasets(names: tuple[str, ...], directory: Path, force=False) -> l
                 LOG.info("Reusing verified download %s", target.name)
                 paths.append(target)
                 continue
-        LOG.info("Downloading %s", url)
+        LOG.info("Downloading dataset %s", name)
         fd, temp_name = tempfile.mkstemp(prefix="download-", suffix=".part", dir=directory)
         temp = Path(temp_name)
         try:
-            with os.fdopen(fd, "wb") as output, open_url(url) as response:
+            with os.fdopen(fd, "wb") as output, request(url) as response:
                 expected = response.headers.get("Content-Length")
                 received = 0
                 progress = 0
                 while chunk := response.read(1024 * 1024):
                     output.write(chunk)
                     received += len(chunk)
+                    if received > 20 * 1024**3:
+                        raise ValueError("Download exceeds artifact byte limit")
                     if received - progress >= 50 * 1024 * 1024:
                         LOG.info("Downloaded %s: %d MiB", name, received // (1024 * 1024))
                         progress = received
@@ -96,6 +110,9 @@ def download_datasets(names: tuple[str, ...], directory: Path, force=False) -> l
                     raise ValueError(f"Incomplete download for {name}")
                 output.flush()
                 os.fsync(output.fileno())
+            from .transport import validate_zip
+
+            validate_zip(temp)
             with ZipFile(temp) as archive:
                 if not any(item.filename.lower().endswith(".json") for item in archive.infolist()):
                     raise ValueError(f"Download for {name} contains no JSON")

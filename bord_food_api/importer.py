@@ -5,6 +5,7 @@ import json
 import logging
 import math
 import os
+import shutil
 import sqlite3
 import tempfile
 import zlib
@@ -57,6 +58,9 @@ def iter_json(stream):
 
 def records(path: Path):
     if path.suffix.lower() == ".zip":
+        from .transport import validate_zip
+
+        validate_zip(path)
         with ZipFile(path) as archive:
             members = [
                 item for item in archive.infolist() if item.filename.lower().endswith(".json")
@@ -132,7 +136,13 @@ def normalize(food: dict) -> dict:
     return food
 
 
-def build_catalog(paths: list[Path], destination: Path) -> dict:
+def build_catalog(
+    paths: list[Path],
+    destination: Path,
+    *,
+    max_staging_bytes=50 * 1024**3,
+    free_space_reserve_bytes=64 * 1024**2,
+) -> dict:
     """Caller holds import_lock. A failed build never replaces the serving catalog."""
     if not paths:
         raise ValueError("Supply at least one USDA JSON or ZIP file")
@@ -184,6 +194,11 @@ def build_catalog(paths: list[Path], destination: Path) -> dict:
                 total += 1
                 if total % 10000 == 0:
                     connection.commit()
+                    if (
+                        staging.stat().st_size > max_staging_bytes
+                        or shutil.disk_usage(staging.parent).free < free_space_reserve_bytes
+                    ):
+                        raise ValueError("Import staging disk budget exceeded")
                     LOG.info("Imported %d foods", total)
             if count == 0:
                 raise ValueError(f"No food records in {path.name}")
@@ -202,6 +217,11 @@ def build_catalog(paths: list[Path], destination: Path) -> dict:
                 if saved.get("sha256") == digest:
                     source["url"] = saved.get("url")
             sources.append(source)
+        if (
+            staging.stat().st_size > max_staging_bytes
+            or shutil.disk_usage(staging.parent).free < free_space_reserve_bytes
+        ):
+            raise ValueError("Import staging disk budget exceeded")
         LOG.info("Building search index for %d foods", total)
         connection.execute("INSERT INTO foods_fts(foods_fts) VALUES ('rebuild')")
         connection.execute("INSERT INTO foods_fts(foods_fts) VALUES ('optimize')")
@@ -222,6 +242,11 @@ def build_catalog(paths: list[Path], destination: Path) -> dict:
         )
         connection.execute(f"PRAGMA user_version={SCHEMA_VERSION}")
         connection.commit()
+        if (
+            staging.stat().st_size > max_staging_bytes
+            or shutil.disk_usage(staging.parent).free < free_space_reserve_bytes
+        ):
+            raise ValueError("Import staging disk budget exceeded")
         if connection.execute("PRAGMA quick_check").fetchone()[0] != "ok":
             raise ValueError("Catalog integrity check failed")
         connection.close()

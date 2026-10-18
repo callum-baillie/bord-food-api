@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0.0",
+  "data": {
+    "entity_type": "store_location",
+    "store_id": "walmart-us-2827",
+    "chain_id": "walmart",
+    "external_ids": {
+      "walmart_us_store_number": "2827"
+    },
+    "name": "Coralville Supercenter",
+    "format": "supercenter",
+    "lifecycle_status": "listed_by_retailer",
+    "address": {
+      "line_1": "2801 Commerce Dr",
+      "line_2": null,
+      "city": "Coralville",
+      "region_code": "IA",
+      "postal_code": "52241",
+      "country_code": "US"
+    },
+    "coordinates": {
+      "latitude": null,
+      "longitude": null,
+      "status": "not_verified"
+    },
+    "contact": {
+      "phone_e164": "+13195456400"
+    },
+    "links": {
+      "official_store_page": "https://www.walmart.com/store/2827-coralville-ia",
+      "grocery_pickup_delivery": "https://www.walmart.com/store/2827-coralville-ia/shopping-services"
+    },
+    "opening_hours": {
+      "timezone": "America/Chicago",
+      "timezone_basis": "derived_from_locality",
+      "weekly": [
+        {
+          "days": [
+            "MO",
+            "TU",
+            "WE",
+            "TH",
+            "FR",
+            "SA",
+            "SU"
+          ],
+          "opens": "06:00",
+          "closes": "23:00",
+          "end_day_offset": 0
+        }
+      ],
+      "date_exceptions": null,
+      "date_exceptions_status": "not_verified"
+    },
+    "sensory_friendly_hours": {
+      "timezone": "America/Chicago",
+      "weekly": [
+        {
+          "days": [
+            "MO",
+            "TU",
+            "WE",
+            "TH",
+            "FR",
+            "SA",
+            "SU"
+          ],
+          "opens": "08:00",
+          "closes": "10:00",
+          "end_day_offset": 0
+        }
+      ]
+    },
+    "departments": {
+      "reported": [
+        "grocery",
+        "bakery",
+        "deli",
+        "pharmacy",
+        "vision_center",
+        "auto_care_center"
+      ],
+      "list_is_exhaustive": false,
+      "department_hours_status": "not_verified"
+    },
+    "shopping_services": {
+      "curbside_pickup": "advertised",
+      "grocery_delivery": "advertised",
+      "delivery_address_eligibility": "not_checked",
+      "available_slots": null,
+      "current_fees": null,
+      "source_url": "https://www.walmart.com/store/2827-coralville-ia/shopping-services"
+    },
+    "payment_programs": {
+      "snap_ebt": {
+        "status": "advertised",
+        "scope": "online_grocery",
+        "source_url": "https://www.walmart.com/store/2827-coralville-ia/shopping-services"
+      },
+      "wic": {
+        "status": "not_verified"
+      }
+    },
+    "interior_map": {
+      "branch_map_status": "not_verified",
+      "image_url": null,
+      "geometry_url": null,
+      "map_version": null,
+      "rehosting_permission": "not_verified"
+    },
+    "retail_data": {
+      "product_listings_status": "not_imported",
+      "inventory_status": "not_fetched",
+      "prices_status": "not_fetched",
+      "aisle_placements_status": "not_verified"
+    },
+    "provenance": {
+      "reviewed_on": "2026-10-17",
+      "source_updated_at": null,
+      "primary_source_url": "https://www.walmart.com/store/2827-coralville-ia",
+      "review_method": "public_store_page_review",
+      "record_status": "example_not_production_import"
+    }
+  },
+  "meta": {
+    "catalog_generation": null,
+    "source_refs": [
+      "S15"
+    ],
+    "warnings": [
+      {
+        "code": "REFERENCE_EXAMPLE_ONLY",
+        "message": "Dated real example from prior research; not freshly imported and never a production seed."
+      }
+    ],
+    "next_cursor": null,
+    "example_classification": "real_dated_reference"
+  }
+}

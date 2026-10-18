@@ -1,5 +1,7 @@
 # Bòrd Food API
 
+V1 expansion code now includes empty startup, a durable bulk worker, native store/product APIs and optional source adapters. See [runtime and migration controls](docs/platform-runtime.md), [native OpenAPI](contracts/openapi.json), [Bòrd handoff](contracts/BORD-HANDOFF.md), and [V1 verification](docs/V1-VERIFICATION.md). Implementation test evidence and any later deployment evidence are recorded separately; verify the installed image revision when updating.
+
 A small, self-hosted USDA FoodData Central API for Bòrd. One Python container, one SQLite database, no separate database server. Search and food details stay local after the initial import.
 
 Container image: **`ghcr.io/callum-baillie/bord-food-api:latest`** (Linux AMD64 and ARM64).
@@ -171,10 +173,10 @@ python3 -m venv .venv
 Run without Docker:
 
 ```sh
-DATA_DIR=./data IMPORT_DIR=./imports .venv/bin/python -m bord_food_api serve
+DATA_DIR=./data IMPORT_DIR=./imports .venv/bin/python -m bord_food_api run
 ```
 
-Local Python execution reads environment variables, not `.env` automatically. Compose reads `.env`. Routine tests use synthetic food fixtures and mocked downloads. See [VERIFICATION.md](VERIFICATION.md) for the actual Docker, real-dataset, and Bòrd compatibility checks performed for this version.
+`serve` starts HTTP without acquisition; `worker` runs acquisition separately, and `run` supervises both. Local Python execution reads environment variables, not `.env` automatically. Compose reads `.env`. Routine tests use synthetic food fixtures and mocked downloads. See [VERIFICATION.md](VERIFICATION.md) for the actual Docker, real-dataset, and Bòrd compatibility checks performed for this version.
 
 To exercise Bòrd's actual TypeScript provider against a running service, from this project directory (with Bòrd checked out beside it):
 

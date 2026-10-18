@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Published catalog change event",
+  "type": "object",
+  "required": [
+    "event_id",
+    "generation_id",
+    "entity_type",
+    "entity_id",
+    "operation",
+    "changed_field_groups",
+    "source_id",
+    "normalization_version",
+    "published_at"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity_type": {
+      "enum": [
+        "chain",
+        "store",
+        "product",
+        "food",
+        "map",
+        "retail_evidence",
+        "guidance"
+      ]
+    },
+    "entity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "enum": [
+        "created",
+        "updated",
+        "withdrawn",
+        "alias_changed"
+      ]
+    },
+    "changed_field_groups": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normalization_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}

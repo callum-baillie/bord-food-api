@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "global_enabled": false,
+  "adapters": [
+    {
+      "adapter_id": "woodmans_map_links",
+      "phase": "V1",
+      "enabled": false,
+      "role": "map_link_discovery",
+      "official_example_url": "https://www.woodmans-food.com/store-locations/north-aurora/",
+      "allowed_hosts": [
+        "www.woodmans-food.com"
+      ],
+      "allowed_path_prefixes": [
+        "/store-locations/"
+      ],
+      "operator_contact": null,
+      "robots_review": "required_at_activation",
+      "reuse_review": "required_at_activation",
+      "download_map_bytes": false,
+      "fixtures_only_until_activation": true,
+      "source_refs": [
+        "S16"
+      ]
+    },
+    {
+      "adapter_id": "walmart_locator",
+      "phase": "extension_specification",
+      "enabled": false,
+      "role": "store_discovery_and_missing_detail",
+      "sitemap_url": "https://www.walmart.com/sitemap_store_main.xml",
+      "allowed_hosts": [
+        "www.walmart.com"
+      ],
+      "allowed_path_prefixes": [
+        "/store/"
+      ],
+      "bulk_preferred": "all_the_places/walmart_us",
+      "current_access": "not_tested",
+      "proxies_or_captcha_bypass": false,
+      "source_refs": [
+        "S15"
+      ]
+    }
+  ],
+  "no_candidate_registry_autodiscovery": true
+}

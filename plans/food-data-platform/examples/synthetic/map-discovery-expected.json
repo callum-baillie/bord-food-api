@@ -1,0 +1,18 @@
+{
+  "fixture_kind": "map_link_classification",
+  "synthetic": true,
+  "network_allowed": false,
+  "scenario": {
+    "html_fixture": "map-discovery.html",
+    "base_url": "https://retailer.example.test/stores/test-001",
+    "expected_candidates": [
+      "https://retailer.example.test/maps/test-001-layout.pdf"
+    ],
+    "reject": [
+      "https://maps.example.test/directions?to=test-001",
+      "https://retailer.example.test/ads/weekly-ad.pdf"
+    ],
+    "rights_status": "pending",
+    "download_asset": false
+  }
+}

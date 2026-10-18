@@ -2,6 +2,7 @@ services:
   bord-food-api:
     image: ghcr.io/callum-baillie/bord-food-api:latest
     container_name: bord-food-api
+    command: ["run"]
     restart: unless-stopped
     user: "99:100"
     ports:
@@ -10,6 +11,7 @@ services:
       API_KEY: ${API_KEY:-}
       DATASETS: ${DATASETS:-branded,foundation,fndds,sr_legacy}
       AUTO_DOWNLOAD: ${AUTO_DOWNLOAD:-true}
+      BORD_FOOD_CONFIG: ${BORD_FOOD_CONFIG:-}
     volumes:
       - /mnt/user/appdata/bord-food-api:/data
       - /mnt/user/appdata/bord-food-api/imports:/imports:ro

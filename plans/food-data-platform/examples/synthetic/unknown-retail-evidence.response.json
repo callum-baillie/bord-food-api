@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "data": {
+    "product_id": "prd_synthetic_only",
+    "store_id": "store_synthetic_only",
+    "assortment_status": "unknown",
+    "availability": "unknown",
+    "offers": [],
+    "placements": []
+  },
+  "meta": {
+    "catalog_generation": "g_synthetic_only",
+    "source_refs": [],
+    "warnings": [
+      {
+        "code": "NO_BRANCH_EVIDENCE",
+        "message": "Identified product does not establish branch listing, price, stock or aisle."
+      }
+    ],
+    "next_cursor": null,
+    "example_classification": "synthetic"
+  }
+}

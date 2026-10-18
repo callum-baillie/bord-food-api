@@ -1,0 +1,13 @@
+{
+  "event_id": "evt_synthetic_1",
+  "generation_id": "g_synthetic_2",
+  "entity_type": "store",
+  "entity_id": "store_synthetic_only",
+  "operation": "updated",
+  "changed_field_groups": [
+    "hours"
+  ],
+  "source_id": "synthetic_directory",
+  "normalization_version": "store-test-v1",
+  "published_at": "2026-10-02T12:00:00Z"
+}

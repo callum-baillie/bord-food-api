@@ -1,0 +1,82 @@
+{
+  "fixture_kind": "complete_roster_diff",
+  "synthetic": true,
+  "network_allowed": false,
+  "scenario": {
+    "source_id": "synthetic_directory",
+    "scope": "synthetic_test_only",
+    "prior": [
+      {
+        "source_key": "TEST-001",
+        "name": "Synthetic Grocery North",
+        "address": "1 Example Road",
+        "region": "IA",
+        "hours": "Mo-Su 08:00-20:00",
+        "phone": "+15550100001"
+      },
+      {
+        "source_key": "TEST-002",
+        "name": "Synthetic Grocery South",
+        "address": "2 Example Road",
+        "region": "IA",
+        "hours": "Mo-Su 08:00-20:00",
+        "phone": "+15550100002"
+      }
+    ],
+    "incoming": [
+      {
+        "source_key": "TEST-001",
+        "name": "Synthetic Grocery North",
+        "address": "1 Example Road",
+        "region": "IA",
+        "hours": "Mo-Su 08:00-20:00",
+        "phone": "+15550100001"
+      },
+      {
+        "source_key": "TEST-002",
+        "name": "Synthetic Grocery South",
+        "address": "2 Example Road",
+        "region": "IA",
+        "hours": "Mo-Su 07:00-21:00",
+        "phone": "+15550100002"
+      },
+      {
+        "source_key": "TEST-003",
+        "name": "Synthetic Grocery East",
+        "address": "3 Example Road",
+        "region": "IA",
+        "hours": "Mo-Su 08:00-20:00",
+        "phone": null
+      }
+    ],
+    "source_run_complete": true,
+    "source_run_healthy": true,
+    "expected": {
+      "new_store_keys": [
+        "TEST-003"
+      ],
+      "unchanged_store_keys": [
+        "TEST-001"
+      ],
+      "changed_store_keys": [
+        "TEST-002"
+      ],
+      "changed_groups": {
+        "TEST-002": [
+          "hours"
+        ]
+      },
+      "address_changes_existing": 0,
+      "confirmed_closures": 0,
+      "crawl_requests_when_disabled": 0,
+      "conditional_missing_field_candidates_if_later_approved": [
+        "TEST-003:phone"
+      ]
+    },
+    "repeat_import": {
+      "new_entities": 0,
+      "new_versions": 0,
+      "new_jobs": 0
+    }
+  }
+}

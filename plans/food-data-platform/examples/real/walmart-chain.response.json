@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "data": {
+    "entity_type": "store_chain",
+    "chain_id": "walmart",
+    "name": "Walmart",
+    "parent_company_name": "Walmart Inc.",
+    "market_country": "US",
+    "formats": [
+      "supercenter",
+      "discount_store",
+      "neighborhood_market"
+    ],
+    "footprint": {
+      "reported_store_count": {
+        "value": 4615,
+        "as_of": "2026-07-31",
+        "qualifier": "reported",
+        "scope": "Walmart U.S. reporting segment",
+        "includes_sams_club": false,
+        "includes_ancillary_small_formats": true,
+        "format_counts": {
+          "supercenter": 3569,
+          "discount_store": 351,
+          "neighborhood_market": 674,
+          "ancillary_small_formats": 21
+        },
+        "strict_banner_count": null,
+        "source_url": "https://corporate.walmart.com/about/location-facts"
+      },
+      "directory_coverage": {
+        "states_50": 50,
+        "dc_present": true,
+        "territories": null,
+        "territories_status": "not_verified",
+        "checked_on": "2026-10-17",
+        "reconciled_with_reported_count": false,
+        "source_url": "https://www.walmart.com/store-directory"
+      }
+    },
+    "store_discovery": {
+      "directory_url": "https://www.walmart.com/store-directory",
+      "page_url_template": "https://www.walmart.com/store/{store_number}-{location_slug}",
+      "template_status": "observed_pattern_not_guaranteed",
+      "verified_example_url": "https://www.walmart.com/store/2827-coralville-ia",
+      "prefer_discovered_canonical_urls": true,
+      "open_dataset": {
+        "provider": "all_the_places",
+        "spider": "walmart_us",
+        "implementation_url": "https://github.com/alltheplaces/alltheplaces/blob/master/locations/spiders/walmart_us.py",
+        "download_url": "https://data.alltheplaces.xyz/runs/latest/output/walmart_us.geojson",
+        "implementation_status": "code_reviewed_not_executed",
+        "download_status": "documented_not_fetched",
+        "source_run_date": null
+      }
+    },
+    "api_capabilities": {
+      "store_information": {
+        "status": "documented_credentials_required",
+        "returns": "store_service_access_points",
+        "documentation_url": "https://walmart.io/docs/opd/quick-start-guide/catalog-store-service-locator"
+      },
+      "product_catalog": {
+        "status": "affiliate_api_documented_access_unverified",
+        "documentation_url": "https://walmart.io/docs/affiliates/search"
+      },
+      "branch_inventory": {
+        "status": "documented_supplier_restricted",
+        "general_app_access": "not_verified",
+        "documentation_url": "https://developer.walmartdataventures.com/apis/reference/nrt-store-inventory-details",
+        "relative_endpoint_template": "/store/{storeNbr}/gtin/{gtin}/available",
+        "http_method": "GET"
+      },
+      "branch_prices": {
+        "status": "general_app_access_not_verified"
+      },
+      "cart": {
+        "status": "not_reviewed"
+      },
+      "authenticated_tests_performed": false,
+      "pricing": {
+        "status": "public_tariff_not_verified",
+        "billing_model": null,
+        "currency": null,
+        "amount": null,
+        "unit": null
+      }
+    },
+    "map_capabilities": {
+      "consumer_app_map": "documented",
+      "consumer_item_locator": "documented",
+      "public_map_export_api": "not_verified",
+      "help_url": "https://www.walmart.com/cp/find-an-item-store-maps/6422847"
+    },
+    "provenance": {
+      "reviewed_on": "2026-10-17",
+      "review_method": "public_documentation_and_source_code_review",
+      "record_status": "example_not_production_import",
+      "bulk_reuse_rights": "source_specific_review_required"
+    }
+  },
+  "meta": {
+    "catalog_generation": null,
+    "source_refs": [
+      "S15"
+    ],
+    "warnings": [
+      {
+        "code": "REFERENCE_EXAMPLE_ONLY",
+        "message": "Dated real example from prior research; not freshly imported and never a production seed."
+      }
+    ],
+    "next_cursor": null,
+    "example_classification": "real_dated_reference"
+  }
+}
