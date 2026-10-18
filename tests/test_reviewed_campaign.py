@@ -232,3 +232,52 @@ def test_advertisement_decision_withholds_candidate_publication(fixture):
         judge(platform.root, config, post).after(
             target, b'<p>10 Synthetic Street</p><a href="/synthetic.pdf">Store Map</a>'
         )
+
+
+def test_review_excerpt_prioritizes_visible_branch_content(fixture):
+    platform, target, config = fixture
+    captured = []
+
+    def post(payload, key):
+        captured.append(payload)
+        return answer(payload, key)
+
+    html = (
+        "<title>Synthetic branch</title><script>"
+        + "javascript_noise " * 1000
+        + "</script><style>css_noise</style><nav><h1>navigation_noise</h1></nav>"
+        + "<div>"
+        + "boilerplate " * 1000
+        + "</div>"
+        + "<main><h1>Synthetic branch</h1><address>10 Synthetic Street</address>"
+        + '<div hidden>hidden_noise</div><span aria-hidden="true">aria_noise</span>'
+        + '<div style="display: none">style_noise</div>'
+        + "<template>template_noise</template><noscript>noscript_noise</noscript>"
+        + '<svg>svg_noise</svg><a href="/synthetic.pdf">Store Map</a></main>'
+    )
+    judge(platform.root, config, post).after(target, html.encode())
+    state = captured[0]["state"]
+    assert state["page_text"].startswith("Synthetic branch 10 Synthetic Street Store Map")
+    assert len(state["page_text"]) <= 4500
+    assert "_noise" not in state["page_text"]
+    with judge(platform.root, config).connect() as db:
+        evidence = json.loads(db.execute("SELECT result FROM decisions").fetchone()[0])
+    assert evidence["request_evidence"] == state
+    assert len(state["html_sha256"]) == 64
+    assert state["observed_links"][0]["url"].endswith("/synthetic.pdf")
+    assert "SYNTHETIC-KEY" not in json.dumps(evidence)
+
+
+def test_off_branch_evidence_remains_subject_to_review(fixture):
+    platform, target, config = fixture
+
+    def post(payload, key):
+        assert "90 Other Street" in payload["state"]["page_text"]
+        result = answer(payload, key)
+        result["answers"]["branch"]["choice"] = "review"
+        return result
+
+    with pytest.raises(campaign.ReviewRequired, match="branch_review_required"):
+        judge(platform.root, config, post).after(
+            target, b"<main><h1>Other branch</h1><p>90 Other Street</p></main>"
+        )
