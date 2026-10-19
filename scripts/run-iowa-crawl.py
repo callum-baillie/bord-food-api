@@ -50,11 +50,20 @@ def validate(config, platform):
     seen = set()
     for target in targets:
         branch = platform.get("store", target["store_id"])
+        observed = target.get("observed_url_evidence") or {}
+        observed_match = (
+            observed.get("store_id") == target["store_id"]
+            and observed.get("url") == target["url"]
+            and observed.get("evidence_url") == target["url"]
+            and observed.get("kind") == "observed_official_branch_page"
+            and observed.get("source_address") == (branch or {}).get("address")
+            and bool(observed.get("reviewed_at"))
+        )
         if (
             not branch
             or str(branch.get("address", {}).get("region", "")).upper() not in ("IA", "IOWA")
             or branch.get("website") != target["source_website"]
-            or target["url"] != target["source_website"]
+            or (target["url"] != target["source_website"] and not observed_match)
             or branch.get("spider") != target["spider"]
             or branch.get("chain_id") != target["chain_id"]
             or branch.get("name") != target["name"]

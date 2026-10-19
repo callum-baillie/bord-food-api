@@ -176,3 +176,24 @@ def test_operator_stop_during_job_releases_fence_and_pauses(configured):
             db.execute("SELECT state FROM jobs WHERE source=?", (campaign.SOURCE,)).fetchone()[0]
             == "failed"
         )
+
+
+def test_observed_official_url_requires_evidence_bound_to_exact_branch(configured):
+    p, c = configured
+    t = c["targets"][0]
+    t["url"] = t["url"].replace("/one/", "/observed-current/")
+    with pytest.raises(ValueError, match="source_backed"):
+        campaign.validate(c, p)
+    branch = p.get("store", t["store_id"])
+    t["observed_url_evidence"] = {
+        "store_id": t["store_id"],
+        "url": t["url"],
+        "evidence_url": t["url"],
+        "kind": "observed_official_branch_page",
+        "source_address": branch["address"],
+        "reviewed_at": 100,
+    }
+    campaign.validate(c, p)
+    t["observed_url_evidence"]["store_id"] = "other_branch"
+    with pytest.raises(ValueError, match="source_backed"):
+        campaign.validate(c, p)
