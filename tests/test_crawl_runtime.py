@@ -241,3 +241,38 @@ def test_request_and_candidate_budgets_preserve_previous_publication(pilot):
     with pytest.raises(CrawlBlocked, match="candidate limit"):
         run(pilot, lambda policy: MockTransport(policy, calls, branch=branch))
     assert platform.current() == before
+
+
+def test_query_branch_requires_exact_operator_target_and_does_not_expand_links(pilot):
+    from bord_food_api.crawl_runtime import validate_map_discovery
+    from bord_food_api.crawlers import safe_link
+
+    _, _, config, _, _ = pilot
+    target = config["approved_targets"][0]
+    target["url"] = "https://retailer.test/store-locations/detail.aspx?s=123"
+    with pytest.raises(CrawlBlocked):
+        validate_map_discovery(config)
+    config["allow_exact_target_queries"] = True
+    policy, _ = validate_map_discovery(config)
+    policy.authorize(target["url"], 0)
+    with pytest.raises(CrawlBlocked):
+        policy.authorize(target["url"].replace("123", "124"), 0)
+    with pytest.raises(CrawlBlocked):
+        safe_link(target["url"], "/store-locations/detail.aspx?s=124")
+    calls = []
+    result = run(pilot, lambda policy: MockTransport(policy, calls))
+    assert result["pages"] == 1 and target["url"] in calls
+    assert calls == ["https://retailer.test/robots.txt", target["url"]]
+
+
+def test_explicit_owner_public_scope_still_obeys_live_robots(pilot):
+    _, _, config, _, _ = pilot
+    config["terms_reviewed"] = False
+    config["owner_public_robots_authorized"] = True
+    calls = []
+    with pytest.raises(CrawlBlocked):
+        run(
+            pilot,
+            lambda policy: MockTransport(policy, calls, robots=b"User-agent: *\nDisallow: /\n"),
+        )
+    assert calls == ["https://retailer.test/robots.txt"]

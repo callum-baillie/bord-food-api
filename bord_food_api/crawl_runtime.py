@@ -31,10 +31,11 @@ def validate_map_discovery(config):
         "global_enabled",
         "adapter_enabled",
         "source_authorized",
-        "terms_reviewed",
         "robots_reviewed",
     )
-    if not all(config.get(name) is True for name in gates):
+    if not all(config.get(name) is True for name in gates) or not (
+        config.get("terms_reviewed") is True or config.get("owner_public_robots_authorized") is True
+    ):
         raise CrawlBlocked("Crawling is disabled or source review is incomplete")
     host = config.get("allowed_host", "")
     origin = f"https://{host}"
@@ -46,7 +47,8 @@ def validate_map_discovery(config):
         global_enabled=True,
         adapter_enabled=True,
         source_authorized=True,
-        terms_reviewed=True,
+        terms_reviewed=config.get("terms_reviewed") is True,
+        owner_public_robots_authorized=config.get("owner_public_robots_authorized") is True,
         robots_reviewed=True,
         contact=config.get("contact") or "",
         allowed_host=host,
@@ -60,6 +62,17 @@ def validate_map_discovery(config):
     targets = config.get("approved_targets")
     if not isinstance(targets, list) or not targets or len(targets) > policy.max_pages_run:
         raise CrawlBlocked("A bounded list of approved branch targets is required")
+    if config.get("allow_exact_target_queries") is True:
+        # Query-bearing branch URLs must be individually operator-approved. This
+        # does not authorize following query links or generating variants.
+        policy = replace(
+            policy,
+            approved_query_urls=tuple(
+                target["url"]
+                for target in targets
+                if isinstance(target, dict) and isinstance(target.get("url"), str)
+            ),
+        )
     seen = set()
     for target in targets:
         if not isinstance(target, dict) or not all(

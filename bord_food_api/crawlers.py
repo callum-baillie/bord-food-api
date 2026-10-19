@@ -20,7 +20,7 @@ class CrawlBlocked(ValueError):
     pass
 
 
-def safe_link(base, target):
+def safe_link(base, target, *, allow_query=False):
     url = urlsplit(urljoin(base, target))
     origin = urlsplit(base)
     if (
@@ -29,12 +29,12 @@ def safe_link(base, target):
         or url.username
         or url.password
         or url.port not in (None, 443)
-        or url.query
+        or (url.query and not allow_query)
     ):
         raise CrawlBlocked("URL is outside approved same-host scope")
     if re.search(r"/(?:account|cart|checkout|search|login)(?:/|$)", url.path, re.IGNORECASE):
         raise CrawlBlocked("URL is outside store discovery scope")
-    return urlunsplit((url.scheme, url.netloc, url.path, "", ""))
+    return urlunsplit((url.scheme, url.netloc, url.path, url.query if allow_query else "", ""))
 
 
 @dataclass(frozen=True)
@@ -52,6 +52,8 @@ class CrawlPolicy:
     max_bytes: int = 2 * 1024 * 1024
     min_spacing: float = 5
     max_depth: int = 2
+    approved_query_urls: tuple[str, ...] = ()
+    owner_public_robots_authorized: bool = False
     robots_allowed: object = field(default=lambda url: False, repr=False)
 
     def authorize(self, url, depth):
@@ -60,7 +62,7 @@ class CrawlPolicy:
                 self.global_enabled,
                 self.adapter_enabled,
                 self.source_authorized,
-                self.terms_reviewed,
+                self.terms_reviewed or self.owner_public_robots_authorized,
                 self.robots_reviewed,
             )
         ):
@@ -78,7 +80,7 @@ class CrawlPolicy:
             or depth > self.max_depth
         ):
             raise CrawlBlocked("Crawl target is outside approved scope")
-        safe_link(f"https://{self.allowed_host}/", url)
+        safe_link(f"https://{self.allowed_host}/", url, allow_query=url in self.approved_query_urls)
         if not self.robots_allowed(url):
             raise CrawlBlocked("Robots policy does not permit this request")
 
