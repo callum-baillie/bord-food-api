@@ -1,0 +1,254 @@
+{
+  "captured_at": 1792524744.049792,
+  "generation": "g_764fdcbc95194f3999643aa4b203f6d4",
+  "preservation": {
+    "all_previous_ids": 9343,
+    "all_previous_ids_preserved": true,
+    "non_iowa_store_payloads_identical": 8574,
+    "chain_payloads_identical": 34,
+    "iowa_original_source_records_preserved": 735,
+    "non_store_packs_unchanged": {
+      "guidance": "objects/catalogs/3daf0649a0fcab8bc669fbb2b71566da48acf3dd66d496b2165ecb398d383978.sqlite",
+      "maps": "objects/catalogs/a9b06e205b0bb0f6e0c1e39c5c767a972f01480c5366971947b559d0ca2150eb.sqlite",
+      "products": "objects/catalogs/4cbea13626fdf2a08ac9893947528858db1d1bce3331da9b9b8cc139875f7f4c.sqlite",
+      "usda": "objects/catalogs/0624d53e2f1a15e64e55f3fcfa16bf9b7adbab0d2899c392f08cb1c576e37d0f.sqlite"
+    }
+  },
+  "counts": {
+    "chain": 34,
+    "store": 9315
+  },
+  "http": {
+    "/live": {
+      "http": 200,
+      "sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+    },
+    "/ready": {
+      "http": 200,
+      "sha256": "f84b379d8a6bc3da12111a24bef258b06aab7f5ff448fcb610228d593fcaa3bf"
+    },
+    "/health": {
+      "http": 200,
+      "sha256": "4152638c7a6fbfb83b6f2af14ab3d36008ae2033b527d9a2b91a70ca29944a68"
+    },
+    "/v1/stores?state=IA&limit=1": {
+      "http": 200,
+      "sha256": "0473d87ee559443af7a7a85c252efc873b7089b0beebc58a1cb03ed838564450"
+    },
+    "/fdc/v1/foods/search?query=apple&pageSize=1": {
+      "http": 200,
+      "sha256": "ed00e92c08f0ef282fd22311a697d38b609b0fe0bb88760f855db4580ebb3388"
+    },
+    "/v1/products?query=apple&limit=1": {
+      "http": 200,
+      "sha256": "0dc02c495ab8fe078d1eb997698a29d3f818e29da0a21cb1aec30fdfc664f4a3"
+    },
+    "/v1/guidance/storage?limit=100": {
+      "http": 200,
+      "sha256": "514dd8827e28f9ba3cac5740ed4f3b43d803dca776d740b8b26b312805ab7bdd"
+    },
+    "without_key": {
+      "http": 401
+    }
+  },
+  "jev": {
+    "calls": 357,
+    "reserved_nanousd": 3570000000,
+    "states": {
+      "answered": 357
+    },
+    "input_tokens": 346745,
+    "billing_measured": false,
+    "ceiling_nanousd": 15000000000
+  },
+  "campaigns": {
+    "iowa-fields-pilot1-20261020": {
+      "campaign_id": "iowa-fields-pilot1-20261020",
+      "state": "finished_with_holds",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "host_blocked": 1,
+        "published": 1,
+        "review_required": 2
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792518586.2443886,
+      "updated_at": 1792518937.8594434,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": null
+    },
+    "iowa-fields-pilot2-20261020": {
+      "campaign_id": "iowa-fields-pilot2-20261020",
+      "state": "paused_error",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "host_blocked": 1,
+        "interrupted_requires_review": 1,
+        "pending": 1,
+        "published": 2
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792519053.5286617,
+      "updated_at": 1792519364.4828572,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": "TypeError"
+    },
+    "iowa-fields-pilot2-repair-20261020": {
+      "campaign_id": "iowa-fields-pilot2-repair-20261020",
+      "state": "paused_error",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "interrupted_requires_review": 1,
+        "pending": 1
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792519477.8197248,
+      "updated_at": 1792519583.9263499,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": "TypeError"
+    },
+    "iowa-fields-pilot3-20261020": {
+      "campaign_id": "iowa-fields-pilot3-20261020",
+      "state": "finished",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "published": 3
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792519863.325397,
+      "updated_at": 1792520048.2369905,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": null
+    },
+    "iowa-fields-pilot4-20261020": {
+      "campaign_id": "iowa-fields-pilot4-20261020",
+      "state": "finished_with_holds",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "host_blocked": 3
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792521833.996649,
+      "updated_at": 1792521981.6615546,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": null
+    },
+    "iowa-fields-redirect-review-20261020": {
+      "campaign_id": "iowa-fields-redirect-review-20261020",
+      "state": "finished_with_holds",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "host_blocked": 3
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792522318.8206043,
+      "updated_at": 1792522402.3097885,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": null
+    },
+    "iowa-fields-pilot5-20261020": {
+      "campaign_id": "iowa-fields-pilot5-20261020",
+      "state": "finished_with_holds",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "prior_history_hold": 1,
+        "published": 1,
+        "review_required": 1
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792524434.4461408,
+      "updated_at": 1792524579.9591057,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": null
+    },
+    "iowa-fields-pilot5-aldi-repair-20261020": {
+      "campaign_id": "iowa-fields-pilot5-aldi-repair-20261020",
+      "state": "finished_with_holds",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "host_blocked": 1
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792524623.6461785,
+      "updated_at": 1792524647.1391046,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": null
+    },
+    "iowa-fields-statewide-20261020": {
+      "campaign_id": "iowa-fields-statewide-20261020",
+      "state": "running",
+      "phase": "primary",
+      "counts": null,
+      "active": null,
+      "passes": {},
+      "started_at": 1792524719.64547,
+      "updated_at": 1792524721.3423064,
+      "active_run": "iowa-fields-statewide-20261020-primary",
+      "planned_targets": 481,
+      "coverage_gaps": 260,
+      "error_type": null
+    },
+    "iowa-fields-statewide-20261020-primary": {
+      "campaign_id": "iowa-fields-statewide-20261020-primary",
+      "state": "starting",
+      "phase": "recovering",
+      "counts": {
+        "missing_branch_url": 260,
+        "pending": 481
+      },
+      "active": null,
+      "passes": null,
+      "started_at": 1792524722.4831378,
+      "updated_at": 1792524722.485549,
+      "active_run": null,
+      "planned_targets": null,
+      "coverage_gaps": null,
+      "error_type": null
+    }
+  },
+  "off": {
+    "base_generation": "g_1d4fbfdf7a5644d1aee9c5ccdef23faf",
+    "chart": false,
+    "completed_at": 1792516864.622782,
+    "error_type": "ValueError",
+    "mode": "apply",
+    "off_scope": [
+      "en:united-states"
+    ],
+    "paid_calls": 0,
+    "phase": "off_streaming_us_snapshot",
+    "selected_products": 597000,
+    "source_network": false,
+    "started_at": 1792514462.199491,
+    "state": "failed",
+    "updated_at": 1792516863.3628032,
+    "usda_projection": false
+  },
+  "free_bytes": 422516207616,
+  "store_enrichment_sha256": "efc76d66a40f597fc9a188bbd8c65d0fccaac7539844643938e25aeb19164aa2",
+  "containers": "/bord-food-api running healthy started=2026-10-20T19:02:36.030370946Z restarts=0 oom=false image=sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3\n/Bord running healthy started=2026-10-20T19:02:26.670347701Z restarts=0 oom=false image=sha256:2cec8d48070c9ad3b38537c0c0d6cccf48d833b9292257e143b9f1e25c7dd26d\n/bord-food-crawl-history running healthy started=2026-10-20T19:29:40.338132707Z restarts=0 oom=false image=sha256:2bed62be6d533db8bacc7637861e7d4cfc9b90cbc6a4eae932ff3db255d446ec\n/bord-food-iowa-fields-statewide-20261020 running  started=2026-10-20T19:31:55.705212779Z restarts=0 oom=false image=sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3\n"
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "from": "sto_a127ee26037b43f5bba5a22d8c15096b",
+    "to": "sto_e51f15f69af34b319dcfa8c42fed9e27",
+    "binding": "41e8340c104219952aeb285c2d9103c8f74df7873139ff4d04544c29d0ebbf9c",
+    "reviewer": "operator-20261020",
+    "reason": "Source-bound exact branch review: same Fareway address and phone, or same Dollar Fresh official branch URL. Postal/city variants reviewed in iowa-quality-20261020 assessment."
+  },
+  {
+    "from": "sto_2814f86b91f04e919f09478b4222d623",
+    "to": "sto_71ee4524d71a445da00f048dc466c4a0",
+    "binding": "89110ed2902b8bf709227107f1381ed83b3577e05f72e5792dc5ce57b4c06d02",
+    "reviewer": "operator-20261020",
+    "reason": "Source-bound exact branch review: same Fareway address and phone, or same Dollar Fresh official branch URL. Postal/city variants reviewed in iowa-quality-20261020 assessment."
+  },
+  {
+    "from": "sto_b86a29e446284815a91c3b97517d03ee",
+    "to": "sto_ba15dd10eabb4abfad184de7d76d0892",
+    "binding": "f5e69197438828d1935162b5a17b6dc7b15e0d5465f307b5fa2f3b63537bffdb",
+    "reviewer": "operator-20261020",
+    "reason": "Source-bound exact branch review: same Fareway address and phone, or same Dollar Fresh official branch URL. Postal/city variants reviewed in iowa-quality-20261020 assessment."
+  },
+  {
+    "from": "sto_6e09b54eb57a464ea12973177af2bfee",
+    "to": "sto_8a5e31bf8d584c1f8c16fab57c3069a9",
+    "binding": "cf7c94fd6dc3a53fa873a85a4200beb88dfb981767eb3b5a319e0846ac0a8999",
+    "reviewer": "operator-20261020",
+    "reason": "Source-bound exact branch review: same Fareway address and phone, or same Dollar Fresh official branch URL. Postal/city variants reviewed in iowa-quality-20261020 assessment."
+  }
+]

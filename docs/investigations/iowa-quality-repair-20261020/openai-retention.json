@@ -1,0 +1,7 @@
+{
+  "directory": "/home/callum/.local/state/bord-food-api/openai",
+  "permissions": "directories 0700 / files 0600",
+  "key_copied": false,
+  "pilot_state": "import_completed",
+  "inference_resubmission": false
+}

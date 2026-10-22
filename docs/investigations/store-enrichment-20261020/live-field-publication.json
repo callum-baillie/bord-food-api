@@ -1,0 +1,31 @@
+{
+  "base_generation": "g_4f21abd0a2134a2b9b30c15045611c47",
+  "changed": 9309,
+  "conflicts": {
+    "opening_hours": 34,
+    "phone": 2,
+    "website": 25
+  },
+  "field_statuses": {
+    "conflicted": 61,
+    "corroborated": 130,
+    "derived": 6257,
+    "stale": 18863,
+    "unverified": 935
+  },
+  "generation": "g_1d4fbfdf7a5644d1aee9c5ccdef23faf",
+  "paid_calls": 0,
+  "prepared_at": 1792514193.4555788,
+  "promoted_or_derived": {
+    "opening_hours": 10,
+    "phone": 103,
+    "timezone": 6257,
+    "website": 17
+  },
+  "release": "fbb70029bca8a6ad444d1d11c3707c17a9ffd8dc3e0f8668dede38d62c195d48",
+  "source_network_requests": 0,
+  "stores": 9309,
+  "state_filter": null,
+  "state": "published",
+  "receipt_metadata_fix": "Separate state scope from successful publication outcome; original receipt preserved"
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "url": "https://feedam.org/api/resources/bulk?state=IA&limit=2&page=1",
+    "status": 200,
+    "bytes": 1023,
+    "content_type": "application/json",
+    "sha256": "2015d1585d6322003090942d061e2bd0ae34b4f64b55021594e5032fc59c3d27"
+  },
+  {
+    "url": "https://feedam.org/api/resources/types",
+    "status": 200,
+    "bytes": 3134,
+    "content_type": "application/json",
+    "sha256": "009b070387caa70b5a8bc3f4d5b2495680d9da58df32f2eba35bb40b9c73c490"
+  },
+  {
+    "url": "https://feedam.org/hsds/v3/datapackage.json",
+    "status": 200,
+    "bytes": 3824,
+    "content_type": "application/json; charset=utf-8",
+    "sha256": "3132b64473c89f3c5829668f0195d044c5b6310c6d1f4d4bd4072607846db0ca"
+  }
+]

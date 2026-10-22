@@ -1,0 +1,247 @@
+{
+  "checked_at": 1792514385.4519663,
+  "generation": "g_1d4fbfdf7a5644d1aee9c5ccdef23faf",
+  "packs": {
+    "guidance": {
+      "bytes": 184320,
+      "counts": {
+        "guidance": 49
+      }
+    },
+    "maps": {
+      "bytes": 217088,
+      "counts": {
+        "map": 108
+      }
+    },
+    "products": {
+      "bytes": 3696787456,
+      "counts": {
+        "product": 455458
+      }
+    },
+    "stores": {
+      "bytes": 86790144,
+      "counts": {
+        "chain": 34,
+        "store": 9309
+      }
+    },
+    "usda": {
+      "bytes": 1106190336,
+      "counts": {
+        "food": 469046
+      }
+    }
+  },
+  "fields": {
+    "all": {
+      "stores": 9309,
+      "fields": {
+        "phone": {
+          "before_present": 4703,
+          "after_present": 4703,
+          "currently_verified": 103
+        },
+        "email": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "website": {
+          "before_present": 6196,
+          "after_present": 6196,
+          "currently_verified": 17
+        },
+        "opening_hours": {
+          "before_present": 0,
+          "after_present": 10,
+          "currently_verified": 10
+        },
+        "hours": {
+          "before_present": 8910,
+          "after_present": 8910,
+          "currently_verified": 0
+        },
+        "timezone": {
+          "before_present": 0,
+          "after_present": 6257,
+          "currently_verified": 0
+        },
+        "hours_exceptions": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "pickup_links": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "delivery_links": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "departments": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "accessibility": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "entrances": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "aisle_category_mappings": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        }
+      },
+      "field_statuses": {
+        "stale": 18863,
+        "derived": 6257,
+        "unverified": 935,
+        "corroborated": 130,
+        "conflicted": 61
+      },
+      "stores_with_conflicts": 46,
+      "dataset_link_sources": {
+        "usda_snap_arcgis": 621,
+        "openstreetmap": 277
+      },
+      "permanently_closed": 0
+    },
+    "IA": {
+      "stores": 735,
+      "fields": {
+        "phone": {
+          "before_present": 287,
+          "after_present": 287,
+          "currently_verified": 103
+        },
+        "email": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "website": {
+          "before_present": 331,
+          "after_present": 331,
+          "currently_verified": 17
+        },
+        "opening_hours": {
+          "before_present": 0,
+          "after_present": 10,
+          "currently_verified": 10
+        },
+        "hours": {
+          "before_present": 357,
+          "after_present": 357,
+          "currently_verified": 0
+        },
+        "timezone": {
+          "before_present": 0,
+          "after_present": 735,
+          "currently_verified": 0
+        },
+        "hours_exceptions": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "pickup_links": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "delivery_links": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "departments": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "accessibility": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "entrances": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        },
+        "aisle_category_mappings": {
+          "before_present": 0,
+          "after_present": 0,
+          "currently_verified": 0
+        }
+      },
+      "field_statuses": {
+        "unverified": 935,
+        "derived": 735,
+        "stale": 29,
+        "corroborated": 130,
+        "conflicted": 61
+      },
+      "stores_with_conflicts": 46,
+      "dataset_link_sources": {
+        "usda_snap_arcgis": 621,
+        "openstreetmap": 277
+      },
+      "permanently_closed": 0
+    }
+  },
+  "http": {
+    "/health": {
+      "http": 200,
+      "sha256": "4152638c7a6fbfb83b6f2af14ab3d36008ae2033b527d9a2b91a70ca29944a68",
+      "returned_records": null
+    },
+    "/ready": {
+      "http": 200,
+      "sha256": "f84b379d8a6bc3da12111a24bef258b06aab7f5ff448fcb610228d593fcaa3bf",
+      "returned_records": null
+    },
+    "/fdc/v1/foods/search?query=apple&pageSize=1": {
+      "http": 200,
+      "sha256": "ed00e92c08f0ef282fd22311a697d38b609b0fe0bb88760f855db4580ebb3388",
+      "returned_records": null
+    },
+    "/v1/stores?state=IA&limit=1": {
+      "http": 200,
+      "sha256": "5d194ca11fc29b494072b0179438b4025b7e1dff1680343b7e4995027a09790f",
+      "returned_records": 1
+    },
+    "/v1/products?query=apple&limit=1": {
+      "http": 200,
+      "sha256": "195fbd0c6c6bd201e60a61de98c67337c9b2d4cb653e1844716c84eee47fc87c",
+      "returned_records": 1
+    },
+    "/v1/guidance/storage?limit=100": {
+      "http": 200,
+      "sha256": "88370d53d9da0fc33e777a2eb6b9e63e9333a989b747dcc1c56c9b144d572265",
+      "returned_records": 49
+    }
+  },
+  "preservation": {
+    "store_chain_ids": true,
+    "chain_payloads": true,
+    "store_source_records_and_refs": true,
+    "usda_object": true,
+    "maps_object": true
+  },
+  "cache_free_bytes": 431578460160,
+  "source_network_requests": 0,
+  "paid_calls": 0
+}

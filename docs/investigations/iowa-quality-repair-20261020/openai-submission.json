@@ -1,0 +1,9 @@
+{
+  "batch_id": "batch_6ad7cbe97efc8190b2b5e8fadc259642",
+  "billing_measured": false,
+  "inference_requests": 9,
+  "input_file_id": "file-Weoexp8uybYYLrKEh4aLgW",
+  "reserved_nanousd": 586806000,
+  "state": "validating",
+  "submitted_at": 1792527337.9010339
+}

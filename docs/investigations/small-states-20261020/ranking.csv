@@ -1,0 +1,51 @@
+rank,state,name,snap_grocery_format_records,retained_roster_assertions,published_stores_before,census_complete
+1,WY,Wyoming,91,43,15,False
+2,AK,Alaska,135,54,17,False
+3,VT,Vermont,151,61,6,False
+4,ND,North Dakota,185,43,12,False
+5,DE,Delaware,197,83,17,False
+6,SD,South Dakota,221,46,18,False
+7,MT,Montana,246,82,19,False
+8,RI,Rhode Island,255,47,14,False
+9,NH,New Hampshire,256,140,28,False
+10,HI,Hawaii,283,77,10,False
+11,ID,Idaho,290,133,35,False
+12,WV,West Virginia,297,138,79,False
+13,NM,New Mexico,322,134,50,False
+14,ME,Maine,343,124,12,False
+15,NV,Nevada,456,222,81,False
+16,UT,Utah,460,161,95,False
+17,NE,Nebraska,465,133,59,False
+18,MS,Mississippi,470,139,79,False
+19,AR,Arkansas,498,126,91,False
+20,KS,Kansas,516,199,134,False
+21,OK,Oklahoma,626,128,82,False
+22,CT,Connecticut,672,211,64,False
+23,IA,Iowa,705,362,735,False
+24,OR,Oregon,774,349,85,False
+25,KY,Kentucky,825,388,180,False
+26,LA,Louisiana,886,250,87,False
+27,SC,South Carolina,899,587,134,False
+28,CO,Colorado,920,497,235,False
+29,AL,Alabama,948,393,136,False
+30,AZ,Arizona,1020,635,238,False
+31,MO,Missouri,1063,434,188,False
+32,WI,Wisconsin,1066,515,271,False
+33,MN,Minnesota,1117,386,187,False
+34,MD,Maryland,1123,480,126,False
+35,IN,Indiana,1135,488,288,False
+36,TN,Tennessee,1219,612,265,False
+37,MA,Massachusetts,1362,358,90,False
+38,WA,Washington,1425,582,163,False
+39,VA,Virginia,1528,836,254,False
+40,MI,Michigan,1809,623,333,False
+41,GA,Georgia,1857,951,372,False
+42,OH,Ohio,1951,907,501,False
+43,NJ,New Jersey,1962,620,136,False
+44,NC,North Carolina,2089,1159,205,False
+45,IL,Illinois,2333,936,462,False
+46,PA,Pennsylvania,2799,951,298,False
+47,FL,Florida,3806,2275,588,False
+48,TX,Texas,4244,1777,669,False
+49,NY,New York,5355,1373,289,False
+50,CA,California,7714,2709,768,False

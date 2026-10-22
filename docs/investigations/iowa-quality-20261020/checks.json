@@ -1,0 +1,17 @@
+{
+  "profile_reproduced_exactly": true,
+  "manifest_stable_during_capture": true,
+  "status_sums_match_field_presence": true,
+  "unique_ids": true,
+  "no_chain_orphans": true,
+  "snapshot_sha256": "cd0b903924498abd6103230cd77d7b1f3d486cb0b73c3ab4184f2a55c6a6c216",
+  "routine_tests_not_run": "Read-only analysis and report artifacts only; application code unchanged.",
+  "notebook_execution": "notebook runner not used; same Python profiling code and assertions were executed directly",
+  "report_delivery": {
+    "state": "blocked",
+    "surface": "portable_html",
+    "code": "horizontal_overflow",
+    "attempts": 2,
+    "targeted_correction": "Shortened table labels and reduced segment table columns; desktop overflow persisted. Canonical artifact retained; HTML not published."
+  }
+}

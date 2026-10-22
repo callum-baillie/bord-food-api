@@ -104,6 +104,8 @@ class CrawlFrontier:
                 CREATE TABLE IF NOT EXISTS crawl_hosts (
                     host TEXT PRIMARY KEY, day INTEGER NOT NULL,
                     requests INTEGER NOT NULL, last_request REAL NOT NULL);
+                CREATE TABLE IF NOT EXISTS crawl_host_backoff (
+                    host TEXT PRIMARY KEY,until REAL NOT NULL,status INTEGER NOT NULL);
             """)
 
     @contextmanager
@@ -141,6 +143,11 @@ class CrawlFrontier:
                 "SELECT day,requests,last_request FROM crawl_hosts WHERE host=?", (host,)
             ).fetchone()
             daily = row[1] if row and row[0] == day else 0
+            backoff = connection.execute(
+                "SELECT until FROM crawl_host_backoff WHERE host=?", (host,)
+            ).fetchone()
+            if backoff and backoff[0] > now:
+                raise CrawlBlocked("Crawl host spacing/backoff is active")
             if self.pages_run >= self.policy.max_pages_run or daily >= self.policy.max_pages_day:
                 raise CrawlBlocked("Crawl request budget exhausted")
             if row and now - row[2] < max(5, self.policy.min_spacing):
@@ -195,8 +202,8 @@ class PageParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if tag == "a":
-            self.anchor = {"href": attrs.get("href", ""), "text": ""}
-        if tag == "script" and attrs.get("type", "").lower() == "application/ld+json":
+            self.anchor = {"href": attrs.get("href") or "", "text": ""}
+        if tag == "script" and (attrs.get("type") or "").lower() == "application/ld+json":
             self.script = ""
 
     def handle_data(self, data):

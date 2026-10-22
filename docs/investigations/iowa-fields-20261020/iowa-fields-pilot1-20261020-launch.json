@@ -1,0 +1,19 @@
+{
+  "campaign_id": "iowa-fields-pilot1-20261020",
+  "release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/6f3dd59d15407a36d2cab4239b9299b75707c53c4475971f108c855d3cb52f9d",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "plan": {
+    "campaign_id": "iowa-fields-pilot1-20261020",
+    "targets": 4,
+    "network": false,
+    "budget": {
+      "can_start": true,
+      "total_reserved_nanousd": 3470000000,
+      "campaign_reserved_nanousd": 0,
+      "campaign_calls": 0,
+      "remaining_nanousd": 100000000
+    }
+  },
+  "launched": true,
+  "container_id": "259add400adfae1fdd1b84a4fc27774086c7d80eb81bb4f69fcae64537029a46"
+}

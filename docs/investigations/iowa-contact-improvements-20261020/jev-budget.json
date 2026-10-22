@@ -1,0 +1,10 @@
+{
+  "new_requests": 8,
+  "new_reservations_usd": 0.08,
+  "ledger_answered_requests": 389,
+  "ledger_reservations_usd": 3.89,
+  "prior_pilot_allowance_usd": 0.0001,
+  "global_cap_usd": 15,
+  "billing_measured": false,
+  "openai_requests": 0
+}

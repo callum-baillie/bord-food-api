@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "archive_members": 5641,
+  "expanded_bytes": 27992816145,
+  "elapsed_seconds": 160.1,
+  "needle_member_matches": {
+    "newpi.coop": [],
+    "new pioneer": [],
+    "newpioneer": [],
+    "bendersfoods": [],
+    "bender's foods": [],
+    "hometownfoods": [
+      "output/iga.geojson"
+    ],
+    "s international market": []
+  },
+  "limitations": [
+    "Exact ASCII name/domain probes only; not a fuzzy national store census.",
+    "A missing spelling may still occur under an untested alias or escaped Unicode spelling."
+  ]
+}

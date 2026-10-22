@@ -1,0 +1,25 @@
+{
+  "generation": "g_10a421dc12cc41fea612fc6f132a1382",
+  "stop_requested": true,
+  "status": {
+    "active_run": "iowa-quality-continuation-20261020-primary",
+    "campaign_id": "iowa-quality-continuation-20261020",
+    "coverage_gaps": 258,
+    "directory_stores": 735,
+    "passes": {},
+    "phase": "primary",
+    "planned_targets": 197,
+    "started_at": 1792527422.2224972,
+    "state": "running",
+    "updated_at": 1792527423.2640836
+  },
+  "captured_at": 1792530600.1294723,
+  "canonical_iowa": 735,
+  "counts": {
+    "phone": 502,
+    "website": 474,
+    "opening_hours": 312
+  },
+  "full_snapshot_retained_on_unraid": "/data/backups/20261020-before-contact-improvements",
+  "workstation_original_snapshot_sha256": "00c43beafb4c88d491f67d9dcc2297c9e8a51c5a6a571825c93c64ad7325f461"
+}

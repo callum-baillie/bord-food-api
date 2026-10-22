@@ -1,0 +1,19 @@
+{
+  "campaign_id": "iowa-fields-pilot5-aldi-repair-20261020",
+  "release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/28d60800261366ea5d2f3ac025a84dafd7e3589e95dca6da2d59f5eb630b3b89",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "plan": {
+    "campaign_id": "iowa-fields-pilot5-aldi-repair-20261020",
+    "targets": 1,
+    "network": false,
+    "budget": {
+      "can_start": true,
+      "total_reserved_nanousd": 3570000000,
+      "campaign_reserved_nanousd": 0,
+      "campaign_calls": 0,
+      "remaining_nanousd": 150000000
+    }
+  },
+  "launched": true,
+  "container_id": "1a58206fccf0df4353799e10083f59eed9b589bd24f8fc3a5d79648b3fc42064"
+}

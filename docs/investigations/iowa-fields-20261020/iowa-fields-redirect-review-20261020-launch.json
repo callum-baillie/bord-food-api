@@ -1,0 +1,19 @@
+{
+  "campaign_id": "iowa-fields-redirect-review-20261020",
+  "release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/cfa911edf4a0c341a667762e9fc741d5d63c2b9ba3240e9b565b1d7624df0c2b",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "plan": {
+    "campaign_id": "iowa-fields-redirect-review-20261020",
+    "targets": 3,
+    "network": false,
+    "budget": {
+      "can_start": true,
+      "total_reserved_nanousd": 3550000000,
+      "campaign_reserved_nanousd": 0,
+      "campaign_calls": 0,
+      "remaining_nanousd": 150000000
+    }
+  },
+  "launched": true,
+  "container_id": "88b3c551c6b9883d9d6433d171ac745f6222f45886d71b5909a44917109e125e"
+}

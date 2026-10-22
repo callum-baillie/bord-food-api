@@ -449,6 +449,14 @@ def test_mocked_atp_acquisition_never_fetches_retailer_urls(tmp_path, host):
             url: json.dumps(
                 collection(feature(brand="Walmart", website="https://untrusted.retailer.test"))
             ).encode(),
+            f"https://{host}/runs/2026-10-01/stats/walmart_us.json": json.dumps(
+                {
+                    "finish_reason": "finished",
+                    "item_scraped_count": 1,
+                    "scheduler/enqueued": 2,
+                    "scheduler/dequeued": 2,
+                }
+            ).encode(),
         },
         {url: f"https://{host}/runs/2026-10-01/output/walmart_us.geojson"},
     )
@@ -457,7 +465,8 @@ def test_mocked_atp_acquisition_never_fetches_retailer_urls(tmp_path, host):
     )
     assert scope["release"].startswith("2026-10-01:")
     assert len(list(scope["records"])) == 1
-    assert len(transport.calls) == 2
+    assert len(transport.calls) == 3
+    assert scope["complete"]
     assert all("untrusted" not in url for _, url in transport.calls)
 
 
@@ -681,6 +690,14 @@ def test_atp_same_bytes_replay_after_parser_change_has_new_transform_identity(tm
         {
             ATP_MANIFEST: json.dumps({"run_id": "2026-10-15"}).encode(),
             url: json.dumps(collection(feature(brand="Walmart"))).encode(),
+            "https://data.alltheplaces.xyz/runs/2026-10-01/stats/walmart_us.json": json.dumps(
+                {
+                    "finish_reason": "finished",
+                    "item_scraped_count": 1,
+                    "scheduler/enqueued": 2,
+                    "scheduler/dequeued": 2,
+                }
+            ).encode(),
         },
         {url: "https://data.alltheplaces.xyz/runs/2026-10-01/output/walmart_us.geojson"},
     )
@@ -990,3 +1007,42 @@ def test_mocked_foodkeeper_acquisition_publishes_immutable_guidance(tmp_path):
     assert replay["no_change"] is True
     assert hashlib.sha256(path.read_bytes()).hexdigest() == digest
     assert platform.current()["generation"] == manifest["generation"]
+
+
+def test_atp_finished_stats_cannot_certify_a_short_export(tmp_path):
+    url = "https://data.alltheplaces.xyz/runs/latest/output/walmart_us.geojson"
+    stats_url = "https://data.alltheplaces.xyz/runs/2026-10-01/stats/walmart_us.json"
+    transport = MockTransport(
+        {
+            ATP_MANIFEST: json.dumps({"run_id": "2026-10-01"}).encode(),
+            url: json.dumps(collection(feature(brand="Walmart"))).encode(),
+            stats_url: json.dumps(
+                {
+                    "finish_reason": "finished",
+                    "item_scraped_count": 2,
+                    "scheduler/enqueued": 2,
+                    "scheduler/dequeued": 2,
+                }
+            ).encode(),
+        },
+        {url: url.replace("/latest/", "/2026-10-01/")},
+    )
+    scope = next(acquire_source("all_the_places", {"spiders": ["walmart_us"]}, transport, tmp_path))
+    assert not scope["complete"]
+    assert "export_item_count_mismatch" in scope["metadata"]["upstream_quality"]["reasons"]
+    assert len(list(scope["records"])) == 1
+
+
+@pytest.mark.parametrize(
+    "source,previous_fingerprint",
+    [
+        ("usda_fdc", "40d81efbd6bfb10eb4a5d88aa65d1f693caf496e0730ac27dbd23ee356596635"),
+        ("open_food_facts", "45c5ae13cb7a7d475254c91ba46b77d4f6dbc80af3cf74599ce014ecf4afc594"),
+        ("foodkeeper", "f6d11837290aa5c417de12e16f38dad802adcd05b1db0485556ea5dc9cf8b054"),
+    ],
+)
+def test_atp_quality_guard_preserves_other_sources_persisted_cache_identity(
+    source, previous_fingerprint
+):
+    # Known checkpoint fingerprints from the serving revision before this guard.
+    assert source_filter_fingerprint(source, {}) == previous_fingerprint

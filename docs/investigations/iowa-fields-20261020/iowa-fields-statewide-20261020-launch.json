@@ -1,0 +1,12 @@
+{
+  "campaign_id": "iowa-fields-statewide-20261020",
+  "release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/28d60800261366ea5d2f3ac025a84dafd7e3589e95dca6da2d59f5eb630b3b89",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "plan": {
+    "network": false,
+    "planned_targets": 481,
+    "passes": 2
+  },
+  "launched": true,
+  "container_id": "55792743cb4184a210370e58b8876b8e902fc4c1657f4acacb147c42f5eae7bc"
+}

@@ -1,0 +1,39 @@
+{
+  "generation": "g_06c5c35bb5174eab98572bb872b95436",
+  "iowa_records": 735,
+  "total_store_records": 9309,
+  "new_records": 373,
+  "all_previous_store_payloads_identical": true,
+  "preserved_previous_store_records": 8936,
+  "new_native_provider": {
+    "osm": 40,
+    "snap": 333
+  },
+  "review_assertions": 501,
+  "review_reasons": {
+    "required_address_or_name_missing": 236,
+    "nearby_identity_requires_review": 105,
+    "store_type_requires_review": 92,
+    "possible_specialist_format": 11,
+    "address_identity_conflict": 9,
+    "nearby_new_identity_requires_review": 14,
+    "new_address_identity_conflict": 33,
+    "conflicting_state": 1
+  },
+  "review_providers": {
+    "usda_snap_arcgis": 113,
+    "openstreetmap": 388
+  },
+  "excluded_assertions": 2149,
+  "new_with_website": 12,
+  "census_complete": false,
+  "paid_calls_this_run": 0,
+  "retailer_requests_this_run": 0,
+  "source_requests": 35,
+  "new_pack_bytes": {
+    "maps": 217088,
+    "stores": 44830720,
+    "usda": 1106190336
+  },
+  "source_note": "Per-URL receipt for SNAP layer metadata was overwritten by same-URL after-check; source_requests includes that second metadata request."
+}

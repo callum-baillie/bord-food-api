@@ -1,0 +1,23 @@
+{
+  "scope": "Read-only Unraid snapshot and offline dataset review; no production/source/paid changes",
+  "snapshot": "2026-10-20T14:26:23.693491+00:00",
+  "pytest": {
+    "passed": 317,
+    "warnings": 1,
+    "seconds": 13.13
+  },
+  "ruff": "passed",
+  "format": {
+    "passed": true,
+    "files": 134
+  },
+  "git_diff_check": "passed",
+  "analysis_assertions": "passed: native-key uniqueness, directory IDs, crosswalk references, reconciled source outcomes and notebook replay",
+  "html_report": {
+    "status": "blocked",
+    "reason": "Packaged renderer horizontal_overflow at 1440px persists after targeted table sizing correction",
+    "attempts_after_valid_metadata": 2
+  },
+  "primary_review": "findings.md",
+  "notebook": "analysis.ipynb"
+}

@@ -1,0 +1,649 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Iowa store data review",
+    "description": "Discovery, crawler yield and useful enrichment gaps.",
+    "generatedAt": "2026-10-20T14:26:23.693491+00:00",
+    "filters": [],
+    "cards": [],
+    "charts": [
+      {
+        "id": "outcomes",
+        "title": "Statewide target outcomes",
+        "subtitle": "319 records in this comparison",
+        "type": "bar",
+        "dataset": "outcomes",
+        "sourceId": "data-outcomes",
+        "valueFormat": "number",
+        "encodings": {
+          "x": {
+            "field": "outcome",
+            "type": "nominal",
+            "label": "Outcome"
+          },
+          "y": {
+            "field": "records",
+            "type": "quantitative",
+            "label": "Records"
+          },
+          "tooltip": [
+            {
+              "field": "share",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "Share of denominator"
+            }
+          ]
+        }
+      },
+      {
+        "id": "fields",
+        "title": "Published field availability",
+        "subtitle": "735 records in this comparison",
+        "type": "bar",
+        "dataset": "fields",
+        "sourceId": "data-fields",
+        "valueFormat": "number",
+        "encodings": {
+          "x": {
+            "field": "field",
+            "type": "nominal",
+            "label": "Field"
+          },
+          "y": {
+            "field": "records",
+            "type": "quantitative",
+            "label": "Records"
+          },
+          "tooltip": [
+            {
+              "field": "share",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "Share of denominator"
+            }
+          ]
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "counts",
+        "title": "Source and crawl counts",
+        "dataset": "counts",
+        "sourceId": "data-counts",
+        "defaultSort": {
+          "field": "records",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "population",
+            "label": "Population",
+            "type": "text",
+            "sizing": "content"
+          },
+          {
+            "field": "records",
+            "label": "Records",
+            "format": "number",
+            "sizing": "content"
+          },
+          {
+            "field": "meaning",
+            "label": "Scope",
+            "type": "text",
+            "sizing": "content"
+          }
+        ]
+      },
+      {
+        "id": "crawler-fields",
+        "title": "Structured crawler fields",
+        "dataset": "crawler-fields",
+        "sourceId": "data-crawler-fields",
+        "defaultSort": {
+          "field": "pages",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "field",
+            "label": "Field",
+            "type": "text",
+            "sizing": "content"
+          },
+          {
+            "field": "pages",
+            "label": "Pages",
+            "format": "number",
+            "sizing": "content"
+          },
+          {
+            "field": "saved_pages",
+            "label": "Saved pages",
+            "format": "number",
+            "sizing": "content"
+          }
+        ]
+      },
+      {
+        "id": "opportunities",
+        "title": "Missing-field candidates",
+        "dataset": "opportunities",
+        "sourceId": "data-opportunities",
+        "defaultSort": {
+          "field": "records",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "field",
+            "label": "Field",
+            "type": "text",
+            "sizing": "content"
+          },
+          {
+            "field": "records",
+            "label": "Records",
+            "format": "number",
+            "sizing": "content"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "profile",
+        "label": "Iowa directory and crawler quality audit",
+        "path": "profile.json"
+      },
+      {
+        "id": "ledger",
+        "label": "Jev post-fetch review counts",
+        "path": "jev-stage-counts.json",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT campaign,stage,state,count(*) FROM decisions GROUP BY campaign,stage,state",
+          "tables_used": [
+            "jev-crawl-budget.sqlite: decisions"
+          ],
+          "filters": [
+            "Iowa campaign rows for page-review interpretation"
+          ],
+          "executed_at": "2026-10-20T14:26:23.693491+00:00"
+        }
+      },
+      {
+        "id": "data-outcomes",
+        "label": "Iowa audit: outcomes",
+        "path": "profile.json",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "WITH p AS (SELECT json(:profile) j), counts AS (\n SELECT 'Saved' outcome, json_extract(j,'$.crawl.saved_evidence_pages') records, json_extract(j,'$.crawl.target_count') denominator FROM p\n UNION ALL SELECT 'Post-fetch hold',json_extract(j,'$.crawl.review_reasons.page_review'),json_extract(j,'$.crawl.target_count') FROM p\n UNION ALL SELECT 'Pre-fetch hold',json_extract(j,'$.crawl.review_reasons.pre_fetch_confidence'),json_extract(j,'$.crawl.target_count') FROM p\n UNION ALL SELECT 'Host hold',json_extract(j,'$.crawl.target_outcomes.host_blocked'),json_extract(j,'$.crawl.target_count') FROM p\n) SELECT *,1.0*records/denominator share FROM counts",
+          "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+          "tables_used": [
+            "profile.json"
+          ],
+          "filters": [
+            "Iowa only; source/crawl denominators as labeled"
+          ],
+          "executed_at": "2026-10-20T14:26:23.693491+00:00"
+        }
+      },
+      {
+        "id": "data-fields",
+        "label": "Iowa audit: fields",
+        "path": "profile.json",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT CASE json_extract(value,'$.field') WHEN 'Usable postal address' THEN 'Address' WHEN 'Known opening or closure status' THEN 'Open/closed' ELSE json_extract(value,'$.field') END field,\n json_extract(value,'$.present') records, json_extract(value,'$.total') denominator,\n 1.0*json_extract(value,'$.present')/json_extract(value,'$.total') share\nFROM json_each(:profile,'$.published_directory_fields')\nWHERE json_extract(value,'$.field') NOT IN ('Name','Structured street and city')",
+          "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+          "tables_used": [
+            "profile.json"
+          ],
+          "filters": [
+            "Iowa only; source/crawl denominators as labeled"
+          ],
+          "executed_at": "2026-10-20T14:26:23.693491+00:00"
+        }
+      },
+      {
+        "id": "data-crawler-fields",
+        "label": "Iowa audit: crawler fields",
+        "path": "profile.json",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT json_extract(value,'$.field') field,json_extract(value,'$.pages') pages,\n json_extract(value,'$.saved_pages') saved_pages FROM json_each(:profile,'$.crawler_fields_single_branch')",
+          "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+          "tables_used": [
+            "profile.json"
+          ],
+          "filters": [
+            "Iowa only; source/crawl denominators as labeled"
+          ],
+          "executed_at": "2026-10-20T14:26:23.693491+00:00"
+        }
+      },
+      {
+        "id": "data-opportunities",
+        "label": "Iowa audit: opportunities",
+        "path": "profile.json",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT CASE key WHEN 'Missing coordinates with linked SNAP coordinates' THEN 'Coordinates (SNAP)'\n WHEN 'Missing phone with linked OSM phone' THEN 'Phone (OSM)' WHEN 'Missing hours with linked OSM hours' THEN 'Hours (OSM)'\n WHEN 'Missing website with linked OSM website' THEN 'Website (OSM)' END field,value records\nFROM json_each(:profile,'$.enrichment_opportunities')",
+          "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+          "tables_used": [
+            "profile.json"
+          ],
+          "filters": [
+            "Iowa only; source/crawl denominators as labeled"
+          ],
+          "executed_at": "2026-10-20T14:26:23.693491+00:00"
+        }
+      },
+      {
+        "id": "data-counts",
+        "label": "Iowa audit: counts",
+        "path": "profile.json",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "WITH p AS (SELECT json(:profile) j)\n SELECT 'SNAP retailers' population,json_extract(j,'$.raw_source_counts.snap') records,'All Iowa retailer types' meaning FROM p\n UNION ALL SELECT 'SNAP broad grocery types',json_extract(j,'$.snap_broad_grocery_types_before_exclusions'),'Before format exclusions' FROM p\n UNION ALL SELECT 'OSM places',json_extract(j,'$.raw_source_counts.osm'),'Five queried shop categories' FROM p\n UNION ALL SELECT 'OSM grocery tags',json_extract(j,'$.osm_shop_types.supermarket')+json_extract(j,'$.osm_shop_types.grocery'),'Supermarket or grocery tags' FROM p\n UNION ALL SELECT 'Published directory',json_extract(j,'$.directory_records'),'Combined source-backed records' FROM p\n UNION ALL SELECT 'Completed Iowa page checks',json_extract(j,'$.crawl.completed_iowa_stores_all_campaigns'),'Unique stores across two runs' FROM p\n UNION ALL SELECT 'Saved statewide page evidence',json_extract(j,'$.crawl.saved_evidence_pages'),'Retained rich evidence files' FROM p",
+          "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+          "tables_used": [
+            "profile.json"
+          ],
+          "filters": [
+            "Iowa only; source/crawl denominators as labeled"
+          ],
+          "executed_at": "2026-10-20T14:26:23.693491+00:00"
+        }
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Iowa store data review"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "body": "## Executive Summary\n\n- **Discovery is ahead of crawl enrichment.** The directory has 735 Iowa records. Across the Iowa pilot and statewide run, 96 unique stores completed retailer-page checks; the statewide run retained 95 rich evidence files.\n- **SNAP and OSM substantially broaden the reference base.** The downloaded Iowa subsets contain 2,882 SNAP retailer assertions and 666 OSM place candidates. Their categories differ and their records overlap.\n- **The crawler has not yet produced accepted aisle or map data.** Only 41 saved pages have one structured branch match. All saved evidence remains pending acceptance, and no interior map or item-to-aisle placement was found.\n- **Use existing evidence before increasing crawl volume.** Linked downloads contain candidates for missing coordinates, phones, hours and websites. Address normalization and selection of the primary grocery business are immediate verification gaps.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "definitions",
+        "type": "markdown",
+        "body": "## Separate discovery, page checks and usable facts\n\nA source assertion is one provider record. A published directory record is a canonical API record, not a certified count of distinct operating stores. A completed page check can publish a \u201cnot found\u201d map result. A retained evidence file contains source excerpts and structured candidates; it does not imply that its fields have been accepted into the API.\n\nThe comparison is an October 20, 2026 snapshot. Completeness percentages use the 735 published Iowa directory records, not all groceries actually operating in Iowa. The original statewide campaign covered 362 directory records and 319 URLs, before the subsequent directory expansion.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "source-comparison",
+        "type": "markdown",
+        "body": "## The reference sources are much larger than the completed crawl\n\n**SNAP lists many retailers outside our grocery scope.** Its broad Grocery Store, Supermarket and Super Store categories contain 705 rows before pharmacy and other format checks. Some grocers also occur in Other, so 705 is not an exact grocery census. OSM has 508 supermarket-tagged records and five grocery-tagged records, plus 153 candidates in department-store, wholesale and general-shop categories.\n\nThe exact counts below are different populations, not parts of one total. SNAP and OSM native assertions have been linked conservatively to 621 and 276 published directory records; 211 records have links to both sources. Among the 96 completed Iowa page checks, 69 have a confirmed SNAP link and 46 have a confirmed OSM link. An unresolved link does not prove the store is absent from the provider.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "counts-block",
+        "type": "table",
+        "tableId": "counts"
+      },
+      {
+        "id": "queue",
+        "type": "markdown",
+        "body": "## Most current directory records have no saved crawler evidence\n\n**The statewide run saved evidence for 95 stores, or 12.9% of the current directory.** An earlier pilot contributes one additional completed store check, making 96 unique completed checks overall, or 13.1% of the directory.\n\nThe chart splits the 319 statewide targets into mutually exclusive outcomes. Host holds include inherited blocks and failed requests; they do not mean all 133 stores were individually fetched. The 43 original records without usable URLs were outside that target list. The 373 subsequently added directory records were also outside this campaign.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "outcomes-block",
+        "type": "chart",
+        "chartId": "outcomes"
+      },
+      {
+        "id": "review-stage",
+        "type": "markdown",
+        "body": "**There were 97 statewide post-fetch Jev reviews:** the 95 saved page checks and two pages held after review. The earlier pilot had nine post-fetch reviews; most repeated stores from the statewide run. Across both Iowa runs, the records identify 98 unique stores reaching page review. Those two held pages did not produce retained rich evidence files. Earlier request-attempt flags are incomplete, so they cannot establish a precise historical HTTP request total."
+      },
+      {
+        "id": "captured",
+        "type": "markdown",
+        "body": "## The crawler saved useful candidates, with limited app-ready enrichment\n\n**Every saved statewide page has a source URL, retrieval time, content hash and visible-text excerpt.** Of 95 files, 41 have exactly one matching structured branch, ten have two matching business candidates, and 44 have no matching structured candidate. The ten ambiguous Walmart pages all contain Grocery and Photo Center descriptions. Selection of the grocery business needs to use business type and page hierarchy as well as address.\n\nThe table counts fields on the 41 singly matched pages. All remain review-required. The nine department records describe services or departments; they are not aisle numbers or an interior route graph. No interior map links, geographic map links or item-placement candidates were retained by this campaign.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "crawler-fields-block",
+        "type": "table",
+        "tableId": "crawler-fields"
+      },
+      {
+        "id": "acceptance",
+        "type": "markdown",
+        "body": "**No saved evidence bundle has been promoted to accepted enrichment.** All 96 Iowa map-pack records are \u201cnot found\u201d results, not 96 maps. Separately, earlier Woodman\u2019s work outside Iowa retained map-link candidates; it does not establish Iowa map coverage.\n\nText excerpts are bounded: 21 of the 95 reach the 4,500-character limit. The retained evidence is not a complete archive of the page. Address-matching failures and unsupported page structures can therefore look like missing fields even when a human can see them on the website.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "directory-fields",
+        "type": "markdown",
+        "body": "## Basic location coverage is strong; contact and opening details are uneven\n\n**Every published record has a name and usable postal address.** Only 610 have separate street/city fields and coordinates: 125 existing Hy-Vee records retain full postal-address strings without structured coordinates.\n\nThe chart measures populated API fields across all 735 records. A populated value may come from bulk data and is not necessarily recently verified. All 357 populated hours fields and all 287 populated phone fields come from the older ATP-backed records; none of the 373 newly added records has those normalized fields yet. Opening status and timezone remain unknown throughout this snapshot.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "fields-block",
+        "type": "chart",
+        "chartId": "fields"
+      },
+      {
+        "id": "quick-wins",
+        "type": "markdown",
+        "body": "## Linked source data can fill some gaps without new retailer requests\n\n**There are concrete enrichment leads in already downloaded, identity-linked assertions.** Counts below are distinct directory records per missing field; a store may appear in several rows, so do not add them. These are candidates for field review, not pre-approved replacements. Preserve conflicting values and source freshness rather than silently choosing one.\n\nThe wider OSM download contains 349 phone tags, 275 hours tags, 245 website tags and 16 wheelchair tags. Many are already-known values, unresolved identities or candidates outside the final grocery scope; those raw tag counts are not counts of additional verified app fields.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "opportunities-block",
+        "type": "table",
+        "tableId": "opportunities"
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## Prioritize verification and promotion before another broad crawl\n\n1. **Join reference evidence into each crawler target.** Supply canonical IDs, source-native IDs, structured addresses, coordinates, matching websites and conflicts to deterministic checks and Jev. Review the 501 unresolved discovery assertions without treating them as 501 distinct missing shops.\n2. **Improve branch extraction.** Normalize address abbreviations and full postal strings, retain JSON-LD business types and parent/department context, and distinguish the main grocer from co-located Photo Center or pharmacy entries. Support bounded visible-HTML evidence when JSON-LD is absent.\n3. **Review the existing missing-field candidates.** Promote corroborated coordinates, contact details and hours into immutable directory updates, with field-level source and verification dates. Preserve all canonical IDs and household overrides.\n4. **Make opening-hours data usable.** Store an explicit timezone, holiday exceptions and freshness before the app presents an \u201copen now\u201d claim. Unknown must remain distinct from closed.\n5. **Collect the shopping details B\u00f2rd needs.** Prioritize branch-specific pickup/delivery links, department names, entrance/directions and accessibility evidence. For navigation, retain reviewed category-to-aisle mappings, map version, branch association and display rights.\n6. **Keep product inventory outside this crawl.** Prices, availability and full assortment are intentionally absent. If later required, use appropriate product/price providers and B\u00f2rd\u2019s private purchase history, with date and branch identity; preserve the current no-inventory crawl scope.",
+        "sourceId": "profile"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## Further questions that determine the next validation pass\n\n- Can a complete current Iowa grocery-license roster be reconciled with SNAP, OSM and the directory? Without that denominator, 100% statewide coverage remains unverified.\n- Which unresolved assertions describe existing stores, stale businesses or out-of-scope formats?\n- Which saved page descriptions can be safely promoted after improved extraction, without fetching again?\n- Which branches matter most for household shopping, so limited requests and paid review can focus on missing useful fields?",
+        "sourceId": "profile"
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "body": "## Caveats and assumptions\n\nSource counts refer to downloaded Iowa subsets, not national exports. Source record presence, SNAP enrollment, OSM tagging, a recent snapshot clock and current store operation are distinct facts. The SNAP reference\u2019s data clock is October 7, 2026; the statewide page evidence was retrieved October 18\u201319, Central time. OSM snapshot time does not establish when every individual field was checked.\n\nSome identity matching is intentionally conservative. Published canonical IDs and native crosswalks are unique, but physical-location completeness and all stale/duplicate business assertions have not been independently certified. Field presence is not a freshness or accuracy score. This review performed no new crawler requests, paid calls, serving data changes or companion app changes.",
+        "sourceId": "profile"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-10-20T14:26:23.693491+00:00",
+    "status": "ready",
+    "datasets": {
+      "counts": [
+        {
+          "population": "SNAP retailers",
+          "records": 2882,
+          "meaning": "All Iowa retailer types"
+        },
+        {
+          "population": "SNAP broad grocery types",
+          "records": 705,
+          "meaning": "Before format exclusions"
+        },
+        {
+          "population": "OSM places",
+          "records": 666,
+          "meaning": "Five queried shop categories"
+        },
+        {
+          "population": "OSM grocery tags",
+          "records": 513,
+          "meaning": "Supermarket or grocery tags"
+        },
+        {
+          "population": "Published directory",
+          "records": 735,
+          "meaning": "Combined source-backed records"
+        },
+        {
+          "population": "Completed Iowa page checks",
+          "records": 96,
+          "meaning": "Unique stores across two runs"
+        },
+        {
+          "population": "Saved statewide page evidence",
+          "records": 95,
+          "meaning": "Retained rich evidence files"
+        }
+      ],
+      "outcomes": [
+        {
+          "outcome": "Saved",
+          "records": 95,
+          "denominator": 319,
+          "share": 0.29780564263322884
+        },
+        {
+          "outcome": "Post-fetch hold",
+          "records": 2,
+          "denominator": 319,
+          "share": 0.006269592476489028
+        },
+        {
+          "outcome": "Pre-fetch hold",
+          "records": 89,
+          "denominator": 319,
+          "share": 0.27899686520376177
+        },
+        {
+          "outcome": "Host hold",
+          "records": 133,
+          "denominator": 319,
+          "share": 0.4169278996865204
+        }
+      ],
+      "fields": [
+        {
+          "field": "Address",
+          "records": 735,
+          "denominator": 735,
+          "share": 1.0
+        },
+        {
+          "field": "Coordinates",
+          "records": 610,
+          "denominator": 735,
+          "share": 0.8299319727891157
+        },
+        {
+          "field": "Website",
+          "records": 331,
+          "denominator": 735,
+          "share": 0.45034013605442175
+        },
+        {
+          "field": "Phone",
+          "records": 287,
+          "denominator": 735,
+          "share": 0.3904761904761905
+        },
+        {
+          "field": "Hours",
+          "records": 357,
+          "denominator": 735,
+          "share": 0.4857142857142857
+        },
+        {
+          "field": "Timezone",
+          "records": 0,
+          "denominator": 735,
+          "share": 0.0
+        },
+        {
+          "field": "Open/closed",
+          "records": 0,
+          "denominator": 735,
+          "share": 0.0
+        }
+      ],
+      "crawler-fields": [
+        {
+          "field": "Address",
+          "pages": 41,
+          "saved_pages": 95
+        },
+        {
+          "field": "Phone",
+          "pages": 41,
+          "saved_pages": 95
+        },
+        {
+          "field": "Hours",
+          "pages": 9,
+          "saved_pages": 95
+        },
+        {
+          "field": "Coordinates",
+          "pages": 9,
+          "saved_pages": 95
+        },
+        {
+          "field": "Departments",
+          "pages": 9,
+          "saved_pages": 95
+        }
+      ],
+      "opportunities": [
+        {
+          "field": "Coordinates (SNAP)",
+          "records": 94
+        },
+        {
+          "field": "Phone (OSM)",
+          "records": 89
+        },
+        {
+          "field": "Hours (OSM)",
+          "records": 27
+        },
+        {
+          "field": "Website (OSM)",
+          "records": 44
+        }
+      ]
+    },
+    "access_issues": []
+  },
+  "sources": [
+    {
+      "id": "profile",
+      "label": "Iowa directory and crawler quality audit",
+      "path": "profile.json"
+    },
+    {
+      "id": "ledger",
+      "label": "Jev post-fetch review counts",
+      "path": "jev-stage-counts.json",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT campaign,stage,state,count(*) FROM decisions GROUP BY campaign,stage,state",
+        "tables_used": [
+          "jev-crawl-budget.sqlite: decisions"
+        ],
+        "filters": [
+          "Iowa campaign rows for page-review interpretation"
+        ],
+        "executed_at": "2026-10-20T14:26:23.693491+00:00"
+      }
+    },
+    {
+      "id": "data-outcomes",
+      "label": "Iowa audit: outcomes",
+      "path": "profile.json",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "WITH p AS (SELECT json(:profile) j), counts AS (\n SELECT 'Saved' outcome, json_extract(j,'$.crawl.saved_evidence_pages') records, json_extract(j,'$.crawl.target_count') denominator FROM p\n UNION ALL SELECT 'Post-fetch hold',json_extract(j,'$.crawl.review_reasons.page_review'),json_extract(j,'$.crawl.target_count') FROM p\n UNION ALL SELECT 'Pre-fetch hold',json_extract(j,'$.crawl.review_reasons.pre_fetch_confidence'),json_extract(j,'$.crawl.target_count') FROM p\n UNION ALL SELECT 'Host hold',json_extract(j,'$.crawl.target_outcomes.host_blocked'),json_extract(j,'$.crawl.target_count') FROM p\n) SELECT *,1.0*records/denominator share FROM counts",
+        "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+        "tables_used": [
+          "profile.json"
+        ],
+        "filters": [
+          "Iowa only; source/crawl denominators as labeled"
+        ],
+        "executed_at": "2026-10-20T14:26:23.693491+00:00"
+      }
+    },
+    {
+      "id": "data-fields",
+      "label": "Iowa audit: fields",
+      "path": "profile.json",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT CASE json_extract(value,'$.field') WHEN 'Usable postal address' THEN 'Address' WHEN 'Known opening or closure status' THEN 'Open/closed' ELSE json_extract(value,'$.field') END field,\n json_extract(value,'$.present') records, json_extract(value,'$.total') denominator,\n 1.0*json_extract(value,'$.present')/json_extract(value,'$.total') share\nFROM json_each(:profile,'$.published_directory_fields')\nWHERE json_extract(value,'$.field') NOT IN ('Name','Structured street and city')",
+        "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+        "tables_used": [
+          "profile.json"
+        ],
+        "filters": [
+          "Iowa only; source/crawl denominators as labeled"
+        ],
+        "executed_at": "2026-10-20T14:26:23.693491+00:00"
+      }
+    },
+    {
+      "id": "data-crawler-fields",
+      "label": "Iowa audit: crawler fields",
+      "path": "profile.json",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT json_extract(value,'$.field') field,json_extract(value,'$.pages') pages,\n json_extract(value,'$.saved_pages') saved_pages FROM json_each(:profile,'$.crawler_fields_single_branch')",
+        "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+        "tables_used": [
+          "profile.json"
+        ],
+        "filters": [
+          "Iowa only; source/crawl denominators as labeled"
+        ],
+        "executed_at": "2026-10-20T14:26:23.693491+00:00"
+      }
+    },
+    {
+      "id": "data-opportunities",
+      "label": "Iowa audit: opportunities",
+      "path": "profile.json",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT CASE key WHEN 'Missing coordinates with linked SNAP coordinates' THEN 'Coordinates (SNAP)'\n WHEN 'Missing phone with linked OSM phone' THEN 'Phone (OSM)' WHEN 'Missing hours with linked OSM hours' THEN 'Hours (OSM)'\n WHEN 'Missing website with linked OSM website' THEN 'Website (OSM)' END field,value records\nFROM json_each(:profile,'$.enrichment_opportunities')",
+        "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+        "tables_used": [
+          "profile.json"
+        ],
+        "filters": [
+          "Iowa only; source/crawl denominators as labeled"
+        ],
+        "executed_at": "2026-10-20T14:26:23.693491+00:00"
+      }
+    },
+    {
+      "id": "data-counts",
+      "label": "Iowa audit: counts",
+      "path": "profile.json",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "WITH p AS (SELECT json(:profile) j)\n SELECT 'SNAP retailers' population,json_extract(j,'$.raw_source_counts.snap') records,'All Iowa retailer types' meaning FROM p\n UNION ALL SELECT 'SNAP broad grocery types',json_extract(j,'$.snap_broad_grocery_types_before_exclusions'),'Before format exclusions' FROM p\n UNION ALL SELECT 'OSM places',json_extract(j,'$.raw_source_counts.osm'),'Five queried shop categories' FROM p\n UNION ALL SELECT 'OSM grocery tags',json_extract(j,'$.osm_shop_types.supermarket')+json_extract(j,'$.osm_shop_types.grocery'),'Supermarket or grocery tags' FROM p\n UNION ALL SELECT 'Published directory',json_extract(j,'$.directory_records'),'Combined source-backed records' FROM p\n UNION ALL SELECT 'Completed Iowa page checks',json_extract(j,'$.crawl.completed_iowa_stores_all_campaigns'),'Unique stores across two runs' FROM p\n UNION ALL SELECT 'Saved statewide page evidence',json_extract(j,'$.crawl.saved_evidence_pages'),'Retained rich evidence files' FROM p",
+        "description": "Execute this query with :profile bound to the saved profile.json. The underlying profile was computed by analyze.py from a read-only Unraid snapshot.",
+        "tables_used": [
+          "profile.json"
+        ],
+        "filters": [
+          "Iowa only; source/crawl denominators as labeled"
+        ],
+        "executed_at": "2026-10-20T14:26:23.693491+00:00"
+      }
+    }
+  ]
+}

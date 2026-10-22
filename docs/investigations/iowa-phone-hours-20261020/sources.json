@@ -1,0 +1,122 @@
+[
+  {
+    "id": "overture",
+    "label": "Overture Places schema",
+    "url": "https://docs.overturemaps.org/schema/reference/places/place/",
+    "reviewed": "2026-10-20",
+    "use": "Phones, websites and social discovery leads. No weekly-hours field in current schema. Existing Iowa extract already retained; first repair strict joins and provider/department scope.",
+    "activation": "No new source download"
+  },
+  {
+    "id": "osm",
+    "label": "OSM opening-hours documentation",
+    "url": "https://wiki.openstreetmap.org/wiki/Key:opening_hours",
+    "reviewed": "2026-10-20",
+    "use": "Phone/contact/weekly-hours source with ODbL provenance. Preserve unknown days, original syntax and check_date:opening_hours. Distinguish partial from contradictory schedules.",
+    "activation": "Retained 666 Iowa assertions analyzed offline"
+  },
+  {
+    "id": "ncg",
+    "label": "National Co+op Grocers member directory",
+    "url": "https://www.ncg.coop/find-co-op",
+    "reviewed": "2026-10-20",
+    "use": "Primary network directory: Iowa co-op address, phone, official website. Provides exact Oneota lead; directory and member site may share lineage.",
+    "activation": "Research only"
+  },
+  {
+    "id": "oneota",
+    "label": "Oneota official store website",
+    "url": "https://oneotacoop.com/",
+    "reviewed": "2026-10-20",
+    "use": "Exact 312 West Water St, Decorah premises, phone 563-382-4666, daily 09:00\u201320:00 posted. Catalog lacks phone/hours/website. Candidate requires source transport/robots/branch checks before import.",
+    "activation": "Research lead, not published"
+  },
+  {
+    "id": "awg",
+    "label": "Hometown Market official locations page / AWG platform example",
+    "url": "https://earlhammarket.com/locations/",
+    "reviewed": "2026-10-20",
+    "use": "Address-bound phone and full week on /locations/. Reusable retailer platform profile valuable for independents; existing crawl has now populated Earlham.",
+    "activation": "Research example, no new connector"
+  },
+  {
+    "id": "iga",
+    "label": "IGA official store locator",
+    "url": "https://www.iga.com/find-a-store",
+    "reviewed": "2026-10-20",
+    "use": "Independent network discovery; main phone label plus exact address/retailer links. Iowa coverage yield not measured; no private API assumed.",
+    "activation": "Research only"
+  },
+  {
+    "id": "hartley",
+    "label": "City of Hartley Fiesta Foods listing",
+    "url": "https://www.hartleyiowa.com/business/grocery-convenience-store/fiesta-foods",
+    "reviewed": "2026-10-20",
+    "use": "Municipal/community listing with main phone and website. Scope to business card; city footer phone must never become store contact.",
+    "activation": "Research only"
+  },
+  {
+    "id": "travel",
+    "label": "Travel Iowa Zamora listing",
+    "url": "https://www.traveliowa.com/places/zamora-fresh-market/7208/",
+    "reviewed": "2026-10-20",
+    "use": "Exact store address/phone lead where catalog is missing both. Page warns its information has not been updated within 12 months; stale lead only, not fresh verification. Restaurant/service hours cannot establish grocery hours.",
+    "activation": "Research only"
+  },
+  {
+    "id": "dial",
+    "label": "Iowa DIAL licensing",
+    "url": "https://dial.iowa.gov/licenses/food-establishments-hotels",
+    "reviewed": "2026-10-20",
+    "use": "Identity/scope and active retail-food license denominator; no complete reviewed export or branch-hours coverage verified. Application contact may be owner rather than store.",
+    "activation": "No export acquired"
+  },
+  {
+    "id": "wic",
+    "label": "Iowa WIC vendor resources",
+    "url": "https://hhs.iowa.gov/assistance-programs/food-assistance/wic-Iowa/wic-vendors",
+    "reviewed": "2026-10-20",
+    "use": "Request current public roster/schema if available; historical 2022 list has phone leads but cannot prove current membership/hours. Not a priority hours source.",
+    "activation": "No new roster acquired"
+  },
+  {
+    "id": "fsq",
+    "label": "Foursquare Open Source schema",
+    "url": "https://docs.foursquare.com/data-products/docs/places-os-data-schema",
+    "reviewed": "2026-10-20",
+    "use": "Free OS phone/website and social handles; no weekly-hours field documented. Large global source: first measure incremental Iowa coverage beyond existing Overture Foursquare records.",
+    "activation": "No new extract or paid calls"
+  },
+  {
+    "id": "fsqp",
+    "label": "Foursquare Premium schema",
+    "url": "https://docs.foursquare.com/data-products/docs/places-pro-and-premium",
+    "reviewed": "2026-10-20",
+    "use": "Premium explicitly documents hours. Evaluate a small licensed sample and storage/redistribution terms before any purchase; no price/yield asserted.",
+    "activation": "No account/purchase/calls"
+  },
+  {
+    "id": "google",
+    "label": "Google Places policies",
+    "url": "https://developers.google.com/maps/documentation/places/web-service/policies",
+    "reviewed": "2026-10-20",
+    "use": "Storage/caching restrictions make Places unsuitable as an assumed permanent self-hosted catalog backfill. A separately designed live lookup is a different use.",
+    "activation": "No connector/calls"
+  },
+  {
+    "id": "here",
+    "label": "HERE place results",
+    "url": "https://docs.here.com/geocoding-and-search/docs/result-types-place",
+    "reviewed": "2026-10-20",
+    "use": "Documents contacts and hours; evaluate only with explicit persistent catalog/redistribution permission and measured Iowa sample.",
+    "activation": "No connector/calls"
+  },
+  {
+    "id": "tomtom",
+    "label": "TomTom POI search",
+    "url": "https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search",
+    "reviewed": "2026-10-20",
+    "use": "Documents phone, opening-hours and timezone options. A 20-store evaluation could test coverage after storage rights and budget are approved; hours response window must be distinguished from recurring schedule.",
+    "activation": "No connector/calls"
+  }
+]

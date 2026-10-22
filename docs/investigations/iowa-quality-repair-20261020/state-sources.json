@@ -1,0 +1,54 @@
+{
+  "reviewed_at": "2026-10-20",
+  "automatic_activation": false,
+  "sources": [
+    {
+      "id": "ia_dial_safher",
+      "state": "IA",
+      "url": "https://dial.iowa.gov/licenses/food-establishments-hotels",
+      "role": "licensed establishment identity, classification, public inspection references",
+      "status": "portal live; no reviewed bulk endpoint obtained",
+      "caveat": "mixed restaurants/retail; source rights/export review required; absence or licensing status is not physical closure"
+    },
+    {
+      "id": "ia_wic_vendors",
+      "state": "IA",
+      "url": "https://hhs.iowa.gov/assistance-programs/food-assistance/wic-Iowa/wic-vendors",
+      "role": "grocery-format corroboration and WIC acceptance",
+      "status": "current vendor resources verified; linked older public roster is dated July2022",
+      "caveat": "historical roster cannot establish current acceptance or current hours; no product stock inference"
+    },
+    {
+      "id": "ia_liquor_licenses",
+      "state": "IA",
+      "url": "https://data.iowa.gov/catalog/dataset/1028",
+      "role": "secondary native license ID/address/coordinate corroboration",
+      "status": "metadata research only; no new import",
+      "caveat": "liquor license is neither grocery format nor business closure; mixed convenience/liquor/restaurant records need filters"
+    },
+    {
+      "id": "ny_retail_food",
+      "state": "NY",
+      "url": "https://data.ny.gov/Economic-Development/Retail-Food-Stores/9a8c-vfzj",
+      "role": "retail food license roster, addresses and geospatial cross-check",
+      "status": "official catalog verified; no activation",
+      "caveat": "read agency limitations and establishment taxonomy before reuse; not all food retailers fit supermarket scope"
+    },
+    {
+      "id": "mi_mdard",
+      "state": "MI",
+      "url": "https://www.michigan.gov/mdard/licensing/food",
+      "role": "licensed food establishment identity and retail classification",
+      "status": "official licensing guidance verified; export not obtained",
+      "caveat": "broad license covers warehouses/convenience/gas; filter license subtype and local food service jurisdictions"
+    },
+    {
+      "id": "us_census_geocoder",
+      "state": "ALL_US",
+      "url": "https://www.census.gov/programs-surveys/geography/technical-documentation/complete-technical-documentation/census-geocoder.html",
+      "role": "optional exact-address batch geocode fallback",
+      "status": "official batch API reviewed; no live submission in this implementation",
+      "caveat": "TIGER address-range interpolation, not entrance/rooftop/physical-store verification; store precision separately"
+    }
+  ]
+}

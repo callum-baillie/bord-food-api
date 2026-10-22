@@ -1,0 +1,35 @@
+{
+  "campaign_id": "food-assistance-after-small-states-20261021",
+  "states": [
+    "IA",
+    "WY",
+    "AK",
+    "VT",
+    "ND",
+    "DE",
+    "SD",
+    "MT",
+    "RI",
+    "NH",
+    "HI",
+    "ID",
+    "WV"
+  ],
+  "after_campaigns": [
+    "small-states-20261020"
+  ],
+  "policy_path": "food-assistance-policy.json",
+  "operator_crawl_enabled": true,
+  "operator_contact": "hello@foldlab.app",
+  "max_operator_pages": 25,
+  "pass_interval_seconds": 21600,
+  "reviewed_operator_hosts": [
+    "foodbankiowa.org",
+    "www.foodbankiowa.org",
+    "www.neifb.org",
+    "www.hacap.org",
+    "riverbendfoodbank.org"
+  ],
+  "jev_enabled": true,
+  "jev_key_file": "/run/secrets/jev-api-key"
+}

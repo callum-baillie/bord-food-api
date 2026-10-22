@@ -1,0 +1,15 @@
+{
+  "audit.py": "495348e30feae6384204222d3e42b0fc6f9af91c05d06e18749cca1bad597f2e",
+  "source-audit.json": "c6c840aa1ba9b8746c3070fbf286901e575db96768d2c5b1a0ac6b40b14a16aa",
+  "live-summary.json": "be4ed516743fc8b6a70900bae63365a8abb76c874c4bd3ac2b753d3315f61d36",
+  "walmart-upstream-stats.json": "a66479373bc4855c60f37228451e8019d6080fbadc5c54b508799fd09b3ca4be",
+  "references.json": "5395802790be28090e504ad8cf7a7201016bb2c90f0266fb7f3775a618916ac4",
+  "artifact.json": "a488c61848b15786132c4591e3b2d7c834ef3509f80d11cace9bc3164c3e624a",
+  "report-notes.json": "a67ad355fd6992a8d725c7a06a8947fc3e3ba630c1e13b6964d6bd0bdcb46fbe",
+  "archive-name-search.json": "89c7c3316e97cc4d1879ec60558c79bf04a3a3e0cfb9a1cf9361f22a9f20605d",
+  "capture-live.py": "08c711482c527970cd86fa87102034540631444831cf0d1a32b68e73d5465458",
+  "README.md": "e4357e72dd61e500515984d15c90ccb6655355e080507cc400dfa1c2fe284a04",
+  "analysis.ipynb": "d8ff69a425209e7792a3cb8fa68a1d2f34f3c162baacfe3cfb795b5182867b2e",
+  "findings.md": "5e54faa1f7aebcc0da5027a77127c6e1fa65dc0684c7bafc18ab237603d48ef3",
+  "verification.json": "c481b7d2a2f5a761fe0b2456edd3075c64a2498ed61b73e79eebcdf5dcf3e718"
+}

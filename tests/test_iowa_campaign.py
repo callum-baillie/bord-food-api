@@ -1,4 +1,5 @@
 import importlib.util
+import json
 from pathlib import Path
 
 import pytest
@@ -25,7 +26,13 @@ def configured(tmp_path):
                 "spider": "synthetic_grocer",
                 "chain_key": f"chain:{i}",
                 "chain_name": f"Synthetic {i}",
-                "address": {"region": "IA"},
+                "country": "US",
+                "address": {
+                    "street_address": "1 Fixture Street",
+                    "locality": "Ames",
+                    "region": "IA",
+                    "postal_code": "50010",
+                },
                 "website": f"https://retailer{i}.test/stores/one/",
             },
         }
@@ -195,5 +202,101 @@ def test_observed_official_url_requires_evidence_bound_to_exact_branch(configure
     }
     campaign.validate(c, p)
     t["observed_url_evidence"]["store_id"] = "other_branch"
+    with pytest.raises(ValueError, match="source_backed"):
+        campaign.validate(c, p)
+
+
+def test_state_batch_supports_other_states_and_requires_current_address(configured):
+    p, c = configured
+    c["state"] = "NY"
+    # Iowa catalog records cannot be reused for an arbitrary state's activation.
+    with pytest.raises(ValueError):
+        campaign.validate(c, p)
+    c["state"] = "IA"
+    c["collection_profile"] = "public-store-layout-evidence-v1"
+    with pytest.raises(ValueError, match="current_branch_address"):
+        campaign.validate(c, p)
+    for target in c["targets"]:
+        target["source_address"] = p.get("store", target["store_id"])["address"]
+    assert len(campaign.validate(c, p)) == 2
+
+
+def test_saved_page_fields_publish_without_another_request_or_model_call(configured):
+    import json
+
+    p, c = configured
+    c["collection_profile"] = campaign.PROFILE
+    for target in c["targets"]:
+        target["source_address"] = p.get("store", target["store_id"])["address"]
+    calls = []
+
+    def discover(platform, job, config, **kwargs):
+        target = config["approved_targets"][0]
+        calls.append(target["store_id"])
+        node = {
+            "@type": "GroceryStore",
+            "name": target["name"],
+            "address": {"streetAddress": "1 Fixture Street", "postalCode": "50010"},
+            "telephone": "+15155551234",
+        }
+        config["_evidence_sink"](
+            '<script type="application/ld+json">' + json.dumps(node) + "</script>", target
+        )
+        return {"map_records": 0}
+
+    result = campaign.run(c, p.root, judge_factory=Judge, discover=discover)
+    assert len(calls) == 2
+    assert all(r["field_enrichment"]["state"] == "published" for r in result["completed"])
+    for target in c["targets"]:
+        row = p.get("store", target["store_id"])
+        assert row["field_evidence"] and row["field_evidence"][0]["store_id"] == target["store_id"]
+        assert row["timezone"] == "America/Chicago"
+        assert row["phone"] == "+15155551234"
+        assert row["field_provenance"]["phone"]["status"] == "source_reported"
+        assert row["field_provenance"]["phone"]["verified_at"] is None
+
+
+def test_provider_website_candidate_needs_pinned_extract_and_cannot_claim_official_authority(
+    configured,
+):
+    from bord_food_api.crawl_evidence import collect_evidence
+    from bord_food_api.store_enrichment import reconcile_fields
+
+    p, c = configured
+    c["field_focus"] = True
+    t = c["targets"][0]
+    s = p.get("store", t["store_id"])
+    t["source_address"] = s["address"]
+    t["url"] = t["url"] + "/details"
+    t["source_authority"] = "community"
+    t["observed_url_evidence"] = {
+        "store_id": s["id"],
+        "url": t["url"],
+        "evidence_url": t["url"],
+        "kind": "provider_branch_website_candidate",
+        "source_id": "overture_places",
+        "record_id": "fixture-gers",
+        "extract_sha256": "a" * 64,
+        "source_address": s["address"],
+        "reviewed_at": 1792519000,
+    }
+    campaign.validate(c, p)
+    node = {
+        "@type": "GroceryStore",
+        "address": {"streetAddress": "1 Fixture Street", "postalCode": "50010"},
+        "telephone": "5155551234",
+    }
+    e = collect_evidence(
+        '<script type="application/ld+json">' + json.dumps(node) + "</script>",
+        t,
+        retrieved_at=1792519000,
+    )
+    rows = [r for r in e["field_assertions"] if r["field"] == "phone"]
+    assert rows and all(r["authority"] == "community" for r in rows)
+    result = reconcile_fields(s, rows, now=1792519000)
+    assert result["field_provenance"]["phone"]["status"] == "source_reported"
+    assert result["field_provenance"]["phone"]["verified_at"] is None
+    assert result["field_provenance"]["phone"]["method"] == "provider_branch_report"
+    t["observed_url_evidence"]["extract_sha256"] = "missing"
     with pytest.raises(ValueError, match="source_backed"):
         campaign.validate(c, p)

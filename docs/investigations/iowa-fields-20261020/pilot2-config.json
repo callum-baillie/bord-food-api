@@ -1,0 +1,243 @@
+{
+  "campaign_id": "iowa-fields-pilot2-20261020",
+  "activation_enabled": true,
+  "state": "IA",
+  "collection_profile": "public-store-layout-evidence-v1",
+  "field_focus": true,
+  "capture_prices": false,
+  "capture_product_inventory": false,
+  "capture_product_catalog": false,
+  "targets": [
+    {
+      "store_id": "sto_2a998e50d4db4ae99134bb9ab03abbfc",
+      "name": "Wheatsfield Cooperative",
+      "source_website": "https://www.wheatsfield.coop/",
+      "url": "https://www.wheatsfield.coop/",
+      "source_address": {
+        "city": "Ames",
+        "postal_code": "50010",
+        "region": "IA",
+        "street": "413 Northwestern Avenue",
+        "unit": null
+      },
+      "spider": null,
+      "chain_id": null,
+      "expected_branch": "Wheatsfield Cooperative",
+      "country": "US",
+      "single_store_site": true
+    },
+    {
+      "store_id": "sto_5d632927fab14c58a4aba281303fcb64",
+      "name": "Cedar Rapids",
+      "source_website": "https://www.naturalgrocers.com/store/cedar-rapids",
+      "url": "https://www.naturalgrocers.com/store/cedar-rapids",
+      "source_address": {
+        "city": "Cedar Rapids",
+        "country": "US",
+        "postal_code": "52402",
+        "region": "IA",
+        "street": "931 Blairs Ferry Rd NE"
+      },
+      "spider": "natural_grocers_us",
+      "chain_id": "chn_78a980cbfaaa4ecda48f23b492b51acf",
+      "expected_branch": "Natural Grocers Cedar Rapids",
+      "country": "US",
+      "banner": "Natural Grocers"
+    },
+    {
+      "store_id": "sto_968bcbc29c8e48b2a2336e46803f037c",
+      "name": "Save-A-Lot",
+      "source_website": "https://savealot.com/stores/24967",
+      "url": "https://savealot.com/stores/24967",
+      "source_address": {
+        "city": "Sioux City",
+        "country": "US",
+        "postal_code": "51105",
+        "region": "IA",
+        "street": "1730 Pierce St"
+      },
+      "spider": "save_a_lot_us",
+      "chain_id": "chn_56341a3be72b4b788a0c2714f34cc715",
+      "expected_branch": "Save-A-Lot",
+      "country": "US"
+    },
+    {
+      "store_id": "sto_ed456a1d0d3446f2a93c596ba9cad372",
+      "name": "Sam's Main Street Market",
+      "source_website": "https://samsmsm.com/",
+      "url": "https://samsmsm.com/",
+      "source_address": {
+        "city": "Solon",
+        "postal_code": "52333",
+        "region": "IA",
+        "street": "123 East Main Street",
+        "unit": null
+      },
+      "spider": null,
+      "chain_id": null,
+      "expected_branch": "Sam's Main Street Market",
+      "country": "US",
+      "single_store_site": true
+    },
+    {
+      "store_id": "sto_f9bfdcf5f44441a7b7586f2e64d5c7c2",
+      "name": "Whole Foods Market",
+      "source_website": "https://www.wholefoodsmarket.com/stores/westdesmoines",
+      "url": "https://www.wholefoodsmarket.com/stores/westdesmoines",
+      "source_address": {
+        "city": "West Des Moines",
+        "country": "US",
+        "postal_code": "50266-5958",
+        "region": "IA",
+        "street": "4100 University Ave"
+      },
+      "spider": "whole_foods",
+      "chain_id": "chn_a6f0e80a634f490d87f6310d47b02cd4",
+      "expected_branch": "Whole Foods Market",
+      "country": "US"
+    }
+  ],
+  "scopes": {
+    "www.wheatsfield.coop": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.wheatsfield.coop",
+        "scope_prefix": "/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    },
+    "www.naturalgrocers.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.naturalgrocers.com",
+        "scope_prefix": "/store/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    },
+    "savealot.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "savealot.com",
+        "scope_prefix": "/stores/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    },
+    "samsmsm.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "samsmsm.com",
+        "scope_prefix": "/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    },
+    "www.wholefoodsmarket.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.wholefoodsmarket.com",
+        "scope_prefix": "/stores/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    }
+  },
+  "duration_seconds": 7200,
+  "directory_stores": 735,
+  "missing_branch_urls": 0,
+  "decisions": {
+    "budget_nanousd": 100000000,
+    "max_calls": 10,
+    "key_file": "/run/secrets/jev-api-key",
+    "retain_branch_html": true,
+    "review_every_page": true,
+    "global_budget_nanousd": 15000000000
+  }
+}

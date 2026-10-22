@@ -1,0 +1,399 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Why Iowa locations are missing",
+    "description": "Source completeness and crawl-enrichment diagnosis.",
+    "generatedAt": "2026-10-20T01:19:25.183609+00:00",
+    "filters": [],
+    "cards": [],
+    "charts": [
+      {
+        "id": "outcomes",
+        "title": "Iowa record outcomes",
+        "subtitle": "362 stored records; website-check outcomes are not statewide completeness",
+        "type": "bar",
+        "dataset": "outcomes",
+        "sourceId": "live",
+        "valueFormat": "number",
+        "encodings": {
+          "x": {
+            "field": "outcome",
+            "type": "nominal",
+            "label": "Outcome"
+          },
+          "y": {
+            "field": "records",
+            "type": "quantitative",
+            "label": "Records"
+          },
+          "tooltip": [
+            {
+              "field": "share",
+              "type": "quantitative",
+              "format": "percent",
+              "label": "Share of stored Iowa records"
+            }
+          ]
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "scopes",
+        "title": "Iowa source selection",
+        "subtitle": "All 14 contributing scopes from the pinned October 10 snapshot",
+        "dataset": "scopes",
+        "sourceId": "source_audit",
+        "defaultSort": {
+          "field": "published",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "spider",
+            "label": "Source scope",
+            "type": "text"
+          },
+          {
+            "field": "eligible",
+            "label": "Eligible",
+            "format": "number"
+          },
+          {
+            "field": "published",
+            "label": "Published",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "live",
+        "label": "Live Iowa directory and crawl ledger",
+        "path": "live-summary.json",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT CASE key WHEN 'published' THEN 'Page checked' WHEN 'review_required' THEN 'Review hold' WHEN 'host_blocked' THEN 'Host hold' END outcome, value records, value/362.0 share, 'IA' state, 362 denominator FROM json_each(:live, '$.counts') UNION ALL SELECT 'Missing URL', json_extract(:live,'$.missing_branch_urls'), json_extract(:live,'$.missing_branch_urls')/362.0, 'IA', 362",
+          "description": "Read-only current immutable store pack, campaign status and Jev ledger; no keys or request bodies exported.",
+          "tables_used": [
+            "live-summary.json counts",
+            "live-summary.json missing_branch_urls"
+          ],
+          "filters": [
+            "Iowa store records",
+            "campaign_id=iowa-statewide-20261019"
+          ],
+          "executed_at": "2026-10-20T01:14:17.122177+00:00"
+        }
+      },
+      {
+        "id": "source_audit",
+        "label": "Pinned archive selection replay",
+        "path": "source-audit.json",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "description": "Run audit.py against the pinned ATP archive and compare accepted source IDs with live SQLite entities.",
+          "sql": "SELECT json_extract(value,'$.spider') spider, json_extract(value,'$.member_sha256') member_sha256, json_extract(value,'$.raw_iowa') raw_iowa, json_extract(value,'$.eligible') eligible, json_extract(value,'$.published') published, json_extract(value,'$.missing_website') missing_website FROM json_each(:audit, '$.scope_replay')",
+          "tables_used": [
+            "source-audit.json scope_replay"
+          ],
+          "filters": [
+            "US country",
+            "Iowa explicit state or postal suffix",
+            "Existing format/banner/native-ID rules",
+            "All 14 Iowa-contributing scopes"
+          ],
+          "executed_at": "2026-10-20T01:19:25.183609+00:00"
+        }
+      },
+      {
+        "id": "upstream",
+        "label": "ATP Walmart run statistics",
+        "path": "walmart-upstream-stats.json",
+        "url": "https://alltheplaces-data.openaddresses.io/runs/2026-10-10-13-32-41/stats/walmart_us.json"
+      },
+      {
+        "id": "references",
+        "label": "Official location cross-checks",
+        "path": "references.json"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Why Iowa locations are missing"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "body": "## Executive Summary\n\n- **The directory inherits gaps from its bulk source.** Walmart's upstream collection stopped after eight hours with requests still queued. Our importer retained every eligible Iowa record supplied by the 14 contributing source scopes.\n- **Regional chains need another discovery path.** New Pioneer and Bender\u2019s have official Iowa locations but no records in the current directory; their absence is separate from website crawl failures.\n- **Website failures reduce enrichment, not store-record retention.** All 362 store records remain present. The crawl finished with 95 completed page checks, 91 review holds, 133 host holds and 43 records without website URLs.\n- **The statewide missing total remains unknown.** Six named missing locations can be demonstrated in this investigation; the earlier estimate of 50\u201390 missing locations remains an unverified planning scenario."
+      },
+      {
+        "id": "definitions",
+        "type": "markdown",
+        "body": "## Count directory coverage separately from website completion\n\nA directory record is a source-backed store assertion. A page check is a request to enrich an existing record with store details, hours, aisle or map evidence. The denominator below is **362 stored Iowa records**, not all stores operating in Iowa. The bulk snapshot began October 10, 2026; this review reads the live directory and finished campaign on October 19, 2026, Central time.\n\nThe four outcomes sum to the stored directory. A completed page check does not imply a usable map, accepted aisle data or a unique physical location.",
+        "sourceId": "live"
+      },
+      {
+        "id": "outcome_chart",
+        "type": "chart",
+        "chartId": "outcomes"
+      },
+      {
+        "id": "walmart",
+        "type": "markdown",
+        "body": "## Walmart\u2019s upstream collection ended before its queue was empty\n\n**The missing Walmart rows are already absent before our importer runs.** The pinned export supplies 28 Iowa Walmart records and all 28 are imported. It contains 1,484 Walmart features overall. Its detailed upstream statistics say `closespider_timeout`: the run ended after 28,800.74 seconds, with 4,262 requests enqueued and 1,490 dequeued. The difference is **2,772 unprocessed requests**, not a count of missing stores.\n\nThe aggregate results file reports zero errors for this spider. Successful HTTP responses and valid JSON therefore do not establish complete source coverage. The ingestion path currently does not inspect this detailed finish reason. It marks the regional import partial, which protects against interpreting omissions as closures, but it does not recover missing locations."
+      },
+      {
+        "id": "official_examples",
+        "type": "markdown",
+        "body": "## Official directories expose concrete missing locations\n\n**Ames Walmart #4256 at 534 South Duff Avenue is a confirmed example.** Walmart\u2019s official Ames directory lists it alongside #749 at 3105 Grand Avenue; the pinned export contains only #749. [Official Ames directory](https://www.walmart.com/store-directory/ia/ames).\n\n[New Pioneer](https://newpi.coop/) lists three retail stores: Cedar Rapids, Coralville and Iowa City. [Bender\u2019s](https://bendersfoods.com/) lists two Iowa stores: Bellevue and Guttenberg. None of those five appears in the current 14-banner directory. The archive name/domain probe and source-member inventory are retained with the supporting evidence; those probes cannot detect every possible alias.\n\nThese six examples establish real omissions, but do not validate an exact statewide denominator. Discovering them does not automatically add them to production or authorize broader crawling.",
+        "sourceId": "references"
+      },
+      {
+        "id": "importer",
+        "type": "markdown",
+        "body": "## The importer retained all 362 eligible source identities\n\n**No eligible record was lost between the contributing source scopes and the published Iowa directory.** Replaying the existing country, state, format, banner and native-ID checks yields exactly the same 362 source identities, with no duplicate source keys. Across these 14 scopes, 33 additional Iowa rows are deliberately excluded: 24 pharmacy rows and nine Sam\u2019s Club fuel-site rows. Hy-Vee accounts for 23 of the pharmacy exclusions; its 125 accepted rows were not reduced by crawl holds.\n\nThe table compares raw Iowa source features with eligible and published records. It proves transfer fidelity for the contributing scopes, not statewide source completeness. Rows outside those scopes and unrecognized aliases remain outside this targeted replay.",
+        "sourceId": "source_audit"
+      },
+      {
+        "id": "scope_table",
+        "type": "table",
+        "tableId": "scopes"
+      },
+      {
+        "id": "enrichment",
+        "type": "markdown",
+        "body": "## Host holds and Jev uncertainty explain the unfinished enrichment\n\n**All 91 review holds are Hy-Vee targets.** Jev answered \u201cfetch\u201d for 89 but with confidence below the 0.8 threshold, so no page request was made for those targets. Two more were withheld after page review because branch confidence was below 0.8. The exact reason for low confidence is not established by the saved choice/confidence fields; it requires review of the branch context rather than assuming a model failure.\n\n**Fareway accounts for 87 host-held targets.** One branch request returned HTTP 500 and the controller conservatively held the rest of that hostname. Other host holds cover Target (22), Walmart (18), Costco (four) and Trader Joe\u2019s (two). Those locations remain in the directory. Transient server failures should be tracked separately from robots or access denials when designing a bounded retry policy.\n\n**The 43 missing URLs are source sparsity:** 41 ALDI records and two Fresh Thyme records have no website field in the supplied bulk rows. The enrichment worker requires an approved branch URL and does not invent one.",
+        "sourceId": "live"
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## Repair discovery before expanding the enrichment crawl\n\n1. **Add upstream completeness checks.** Read per-spider finish reason and queue statistics; compare counts with prior successful releases and official totals. Retain partial records and provenance, while preventing partial runs from asserting absence or closure.\n2. **Add source-backed discovery for uncovered chains.** Reconcile official branch directories or suitable public bulk sources for New Pioneer, Bender\u2019s and other regional groups. Keep native identities, addresses and source dates; check duplicates before publication.\n3. **Resolve the 43 missing branch URLs.** Bind observed official URLs to exact existing stores and retain evidence; do not guess URL slugs or use generic homepages as branch evidence.\n4. **Review enrichment holds by cause.** Improve branch context for Jev review; design bounded cooldown/retry for transient HTTP 5xx separately from access blocks. Preserve robots, pacing, history and the existing paid-call cap.\n5. **Report two coverage measures.** Track discovered locations against a reviewed external roster separately from completed website checks. A higher daily request allowance cannot repair missing discovery inputs."
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## The remaining count requires a reconciled roster\n\nHow many qualifying chains and locations exist under the intended scope? Which specialist meat markets, pharmacies, convenience stores and warehouse clubs should count? Are other failed source scopes hiding Iowa grocers under different names? These questions require a state-and-format reference roster; the 350/450 planning estimates cannot answer them alone."
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "body": "## Caveats and boundaries\n\nThis is a source and pipeline diagnosis, not a complete Iowa census. Source identities are not proof of unique physical locations. The replay covers all Iowa-contributing scopes; the separate archive string search is an exact name/domain probe, not semantic entity resolution. The national scan previously reported 375 unusable source scopes, but that figure is not an Iowa missing-store count. No trend series was fabricated from this one snapshot.\n\nThe investigation performed read-only production queries, offline archive checks and bounded public-document/statistics lookups. It did not restart a crawler, download a new bulk export, call Jev/OpenAI, import stores, change production configuration or deploy software."
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-10-20T01:19:25.183609+00:00",
+    "status": "ready",
+    "datasets": {
+      "outcomes": [
+        {
+          "outcome": "Host hold",
+          "records": 133,
+          "share": 0.3674033149171271,
+          "state": "IA",
+          "denominator": 362
+        },
+        {
+          "outcome": "Page checked",
+          "records": 95,
+          "share": 0.26243093922651933,
+          "state": "IA",
+          "denominator": 362
+        },
+        {
+          "outcome": "Review hold",
+          "records": 91,
+          "share": 0.2513812154696133,
+          "state": "IA",
+          "denominator": 362
+        },
+        {
+          "outcome": "Missing URL",
+          "records": 43,
+          "share": 0.11878453038674033,
+          "state": "IA",
+          "denominator": 362
+        }
+      ],
+      "scopes": [
+        {
+          "spider": "albertsons",
+          "member_sha256": "c841071bfc851be8fc5ce6107b434185e8bcc9169c5a16af47dfaa1a232a3c07",
+          "raw_iowa": 2,
+          "eligible": 1,
+          "published": 1,
+          "missing_website": 0
+        },
+        {
+          "spider": "aldi_sud_us",
+          "member_sha256": "1f7e592dfedefebdffe331431e098794c0f719da653c3cea95ca19999e218dea",
+          "raw_iowa": 41,
+          "eligible": 41,
+          "published": 41,
+          "missing_website": 41
+        },
+        {
+          "spider": "costco_ca_gb_us",
+          "member_sha256": "3fbae45a3a04ce503e2af8fd81db12f92efd61ff03fe064f4b3e30fe6b952c2b",
+          "raw_iowa": 4,
+          "eligible": 4,
+          "published": 4,
+          "missing_website": 0
+        },
+        {
+          "spider": "family_fare_us",
+          "member_sha256": "8424b1cd0b1bb03e6be45742ff6252b5bb22d014d8019596c50d4f1fd6ceaf0c",
+          "raw_iowa": 1,
+          "eligible": 1,
+          "published": 1,
+          "missing_website": 0
+        },
+        {
+          "spider": "fareway_us",
+          "member_sha256": "fd26294a59798fe33d772301e55616b1166c5f6f7e1b07ab0918902f23aec20d",
+          "raw_iowa": 119,
+          "eligible": 119,
+          "published": 119,
+          "missing_website": 0
+        },
+        {
+          "spider": "fresh_thyme_us",
+          "member_sha256": "8aa2b6bb009d52a307595a4423cea74177cc7291cf5c9d9286b93dac90f01cac",
+          "raw_iowa": 2,
+          "eligible": 2,
+          "published": 2,
+          "missing_website": 2
+        },
+        {
+          "spider": "hy_vee_us",
+          "member_sha256": "c67e1338f4bb48ebbe4f5179022aff5fe702a638f353333ff180967271297b06",
+          "raw_iowa": 148,
+          "eligible": 125,
+          "published": 125,
+          "missing_website": 0
+        },
+        {
+          "spider": "natural_grocers_us",
+          "member_sha256": "293f261a1e2307777b8220ac396d86db1e190bcb73850ff14edda9f799551a23",
+          "raw_iowa": 6,
+          "eligible": 6,
+          "published": 6,
+          "missing_website": 0
+        },
+        {
+          "spider": "sams_club",
+          "member_sha256": "67baaea52680801545ea8ab4c108e5ecf4d0c4a5e62369bdcd323efe32273893",
+          "raw_iowa": 18,
+          "eligible": 9,
+          "published": 9,
+          "missing_website": 0
+        },
+        {
+          "spider": "save_a_lot_us",
+          "member_sha256": "66dea248cc9740bd9b26fb8a8a1dd7cf0c288dfc628158db6d75a393c625babb",
+          "raw_iowa": 1,
+          "eligible": 1,
+          "published": 1,
+          "missing_website": 0
+        },
+        {
+          "spider": "target_us",
+          "member_sha256": "d328dcf393ab496a6880053ffd9aaf874a2a240326d4287a81d06d079cea55f9",
+          "raw_iowa": 22,
+          "eligible": 22,
+          "published": 22,
+          "missing_website": 0
+        },
+        {
+          "spider": "trader_joes_us",
+          "member_sha256": "9c4adefeca02b3e7a1d2c54eb7a5fc9270d2bd80196c668d90b14d466a81a46b",
+          "raw_iowa": 2,
+          "eligible": 2,
+          "published": 2,
+          "missing_website": 0
+        },
+        {
+          "spider": "walmart_us",
+          "member_sha256": "4b5a0ea193bb7efce4b5554e486fe4e17e6084aba691a83da3bff3d71c3b0dc9",
+          "raw_iowa": 28,
+          "eligible": 28,
+          "published": 28,
+          "missing_website": 0
+        },
+        {
+          "spider": "whole_foods",
+          "member_sha256": "2b43f75fca7a40e8a0c09bddbd3463a994f2fdaeb2f1d6b0a08f3eac34abcea8",
+          "raw_iowa": 1,
+          "eligible": 1,
+          "published": 1,
+          "missing_website": 0
+        }
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "live",
+      "label": "Live Iowa directory and crawl ledger",
+      "path": "live-summary.json",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT CASE key WHEN 'published' THEN 'Page checked' WHEN 'review_required' THEN 'Review hold' WHEN 'host_blocked' THEN 'Host hold' END outcome, value records, value/362.0 share, 'IA' state, 362 denominator FROM json_each(:live, '$.counts') UNION ALL SELECT 'Missing URL', json_extract(:live,'$.missing_branch_urls'), json_extract(:live,'$.missing_branch_urls')/362.0, 'IA', 362",
+        "description": "Read-only current immutable store pack, campaign status and Jev ledger; no keys or request bodies exported.",
+        "tables_used": [
+          "live-summary.json counts",
+          "live-summary.json missing_branch_urls"
+        ],
+        "filters": [
+          "Iowa store records",
+          "campaign_id=iowa-statewide-20261019"
+        ],
+        "executed_at": "2026-10-20T01:14:17.122177+00:00"
+      }
+    },
+    {
+      "id": "source_audit",
+      "label": "Pinned archive selection replay",
+      "path": "source-audit.json",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "description": "Run audit.py against the pinned ATP archive and compare accepted source IDs with live SQLite entities.",
+        "sql": "SELECT json_extract(value,'$.spider') spider, json_extract(value,'$.member_sha256') member_sha256, json_extract(value,'$.raw_iowa') raw_iowa, json_extract(value,'$.eligible') eligible, json_extract(value,'$.published') published, json_extract(value,'$.missing_website') missing_website FROM json_each(:audit, '$.scope_replay')",
+        "tables_used": [
+          "source-audit.json scope_replay"
+        ],
+        "filters": [
+          "US country",
+          "Iowa explicit state or postal suffix",
+          "Existing format/banner/native-ID rules",
+          "All 14 Iowa-contributing scopes"
+        ],
+        "executed_at": "2026-10-20T01:19:25.183609+00:00"
+      }
+    },
+    {
+      "id": "upstream",
+      "label": "ATP Walmart run statistics",
+      "path": "walmart-upstream-stats.json",
+      "url": "https://alltheplaces-data.openaddresses.io/runs/2026-10-10-13-32-41/stats/walmart_us.json"
+    },
+    {
+      "id": "references",
+      "label": "Official location cross-checks",
+      "path": "references.json"
+    }
+  ]
+}

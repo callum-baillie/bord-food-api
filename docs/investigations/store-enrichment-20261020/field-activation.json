@@ -1,0 +1,23 @@
+{
+  "preflight": {
+    "python_image_preflight": "passed",
+    "network": "none",
+    "files": {
+      "control.py": "f03242df51c8c96a5bffb96f3ce015e29a97b2a7283b032fe065de73e44f26e8",
+      "platform.py": "d7b87e8b4e5846b7e8e730ebdc81fc18b8c11af2ad36474619aba1155d5b05d5",
+      "refresh.py": "2e5d9aa74ab25cf5f43b57c1c9ea2a6fdb04337740b44e7cf1277ccec1d92bd3",
+      "store_enrichment.py": "d4c4f846d02f49b23b8ff51a29fa8173970bb434b4e74132630664c4c2d23ce8",
+      "store_hours.py": "b175d5850bd6299a468822b2cfa734babfebdc2e2971b4bda8a3a9156a162df5"
+    }
+  },
+  "release": "/mnt/cache/git/compose/productivity/config/operator-releases/e06058bad8e1e446b6efdf4e59fef13d4d3c7681808622881b961de630a80d73",
+  "base_image": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "api_started_at": "2026-10-20T16:43:01.407058813Z",
+  "related_services_not_recreated": [
+    "Bord",
+    "bord-food-crawl-history"
+  ],
+  "compose_before_sha256": "892b7ae68c9376fff862bd240c79f277ab90e9a527d01b04207b4c4b648ffb8f",
+  "compose_after_sha256": "1aa46477fcfbde1fd57fa9383ea568e24e29b9252f946ad996baf8d78d8d372d",
+  "source_policy_unchanged": true
+}

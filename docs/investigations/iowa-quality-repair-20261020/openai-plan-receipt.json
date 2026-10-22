@@ -1,0 +1,12 @@
+{
+  "state": "prepared",
+  "model": "gpt-5.4-mini-2026-03-17",
+  "inference_requests": 9,
+  "stores_in_requests": 195,
+  "deferred_stores": 16,
+  "stores_without_eligible_evidence": 524,
+  "reservation_nanousd": 586806000,
+  "ceiling_nanousd": 2000000000,
+  "tools": false,
+  "key_values_read_or_logged": false
+}

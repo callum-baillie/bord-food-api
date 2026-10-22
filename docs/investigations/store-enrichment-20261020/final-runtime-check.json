@@ -1,0 +1,42 @@
+{
+  "http": {
+    "/health": {
+      "http": 200,
+      "sha256": "4152638c7a6fbfb83b6f2af14ab3d36008ae2033b527d9a2b91a70ca29944a68"
+    },
+    "/ready": {
+      "http": 200,
+      "sha256": "f84b379d8a6bc3da12111a24bef258b06aab7f5ff448fcb610228d593fcaa3bf"
+    },
+    "/fdc/v1/foods/search?query=apple&pageSize=1": {
+      "http": 200,
+      "sha256": "ed00e92c08f0ef282fd22311a697d38b609b0fe0bb88760f855db4580ebb3388"
+    },
+    "/v1/products?query=apple&limit=1": {
+      "http": 200,
+      "sha256": "1820b9e234efd3f850ece6349661e35d927c88a9e70a0152b18dfda492f747be"
+    },
+    "/v1/guidance/storage?limit=100": {
+      "http": 200,
+      "sha256": "88370d53d9da0fc33e777a2eb6b9e63e9333a989b747dcc1c56c9b144d572265"
+    }
+  },
+  "off": {
+    "base_generation": "g_1d4fbfdf7a5644d1aee9c5ccdef23faf",
+    "chart": false,
+    "mode": "apply",
+    "off_scope": [
+      "en:united-states"
+    ],
+    "paid_calls": 0,
+    "phase": "off_streaming_us_snapshot",
+    "selected_products": 93000,
+    "source_network": false,
+    "started_at": 1792514462.199491,
+    "state": "running",
+    "updated_at": 1792514807.7092233,
+    "usda_projection": false
+  },
+  "platform_sha256": "d7b87e8b4e5846b7e8e730ebdc81fc18b8c11af2ad36474619aba1155d5b05d5",
+  "containers": "/bord-food-api 2026-10-20T16:43:01.407058813Z running healthy restarts=0 oom=false\n/Bord 2026-10-18T14:38:21.975997354Z running healthy restarts=0 oom=false\n/bord-food-crawl-history 2026-10-19T02:50:26.302830987Z running healthy restarts=0 oom=false\n/bord-food-off-us-snapshot-20261020-r2 2026-10-20T16:41:01.432921515Z running  restarts=0 oom=false\n"
+}

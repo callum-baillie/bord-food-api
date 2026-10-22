@@ -1,0 +1,16 @@
+{
+  "base_generation": "g_1d4fbfdf7a5644d1aee9c5ccdef23faf",
+  "chart": false,
+  "mode": "apply",
+  "off_scope": [
+    "en:united-states"
+  ],
+  "paid_calls": 0,
+  "phase": "off_streaming_us_snapshot",
+  "selected_products": 172000,
+  "source_network": false,
+  "started_at": 1792514462.199491,
+  "state": "running",
+  "updated_at": 1792515220.4560893,
+  "usda_projection": false
+}

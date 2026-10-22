@@ -1,0 +1,19 @@
+{
+  "release": "/mnt/cache/git/compose/productivity/config/operator-releases/77eb4f9131d1ae60c407cca40091f20a14ac85a74ebbca4f5678e4b27dbeb6b4",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "container_id": "6ff6305bf2f5c48ddd54b7af94b6f139a4239c5b5a5172c324e6aa086829a740",
+  "backup": "/data/backups/20261020-before-products-enrichment",
+  "plan": {
+    "mode": "plan",
+    "base_generation": "g_06c5c35bb5174eab98572bb872b95436",
+    "usda_projection": true,
+    "off_scope": [
+      "en:united-states"
+    ],
+    "source_network": false,
+    "paid_calls": 0,
+    "chart": true
+  },
+  "source_network": false,
+  "paid_calls": 0
+}

@@ -1,0 +1,26 @@
+{
+  "checked_utc": "2026-10-20T01:19:25.183609+00:00",
+  "sources": [
+    {
+      "id": "walmart_ames",
+      "url": "https://www.walmart.com/store-directory/ia/ames",
+      "finding": "Official directory lists two Ames stores: #4256, 534 S Duff Ave, and #749, 3105 Grand Ave. Only #749 is in the pinned export."
+    },
+    {
+      "id": "new_pioneer",
+      "url": "https://newpi.coop/",
+      "finding": "Three retail locations: Cedar Rapids, Coralville and Iowa City. No records in current directory."
+    },
+    {
+      "id": "benders",
+      "url": "https://bendersfoods.com/",
+      "finding": "Two Iowa locations: Bellevue and Guttenberg. No records in current directory."
+    },
+    {
+      "id": "upstream_stats",
+      "url": "https://alltheplaces-data.openaddresses.io/runs/2026-10-10-13-32-41/stats/walmart_us.json",
+      "finding": "closespider_timeout after 28800.735 seconds; 4262 requests enqueued, 1490 dequeued, 1484 items."
+    }
+  ],
+  "six_example_locations_are_not_a_statewide_missing_total": true
+}

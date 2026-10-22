@@ -1,0 +1,38 @@
+{
+  "audience": "product stakeholders",
+  "delivery_mode": "html",
+  "required_structure": {
+    "Title": "title",
+    "Executive summary": "summary",
+    "Key findings with visual evidence": [
+      "definitions",
+      "outcome_chart",
+      "walmart",
+      "official_examples",
+      "importer",
+      "scope_table",
+      "enrichment"
+    ],
+    "Recommended next steps": "next",
+    "Further questions": "questions",
+    "Caveats and assumptions": "caveats"
+  },
+  "chart_map": [
+    {
+      "segment": "definitions",
+      "chart": "outcomes",
+      "question": "How much enrichment was completed for existing records?",
+      "family": "bar",
+      "fields": [
+        "outcome",
+        "records"
+      ],
+      "claim": "All outcomes still belong to the same 362 stored records."
+    }
+  ],
+  "table_rationale": "Exact scope counts and one-to-one import reconciliation require an audit table.",
+  "omitted_trend": "Only one source snapshot is being investigated; no time trend is supportable.",
+  "scope": "No application or production changes; no paid decisions or crawler restarts.",
+  "html_delivery_status": "blocked",
+  "html_delivery_blocker": "Packaged enhanced-reader browser verifier reports horizontal_overflow at 1440px, persisting after one table-column correction. HTML not released; findings.md and canonical artifact retained."
+}

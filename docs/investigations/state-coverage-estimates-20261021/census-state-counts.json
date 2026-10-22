@@ -1,0 +1,620 @@
+{
+  "source_url": "https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23st.zip",
+  "sha256": "9fc306ecc4f9633092e2432c2db2acdf53798da0480e6f6beeb953d583b41ede",
+  "download_bytes": 11115845,
+  "retrieved_at": "2026-10-21",
+  "rows": [
+    {
+      "fipstate": "01",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "782"
+    },
+    {
+      "fipstate": "01",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "146"
+    },
+    {
+      "fipstate": "02",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "210"
+    },
+    {
+      "fipstate": "02",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "27"
+    },
+    {
+      "fipstate": "04",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "802"
+    },
+    {
+      "fipstate": "04",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "200"
+    },
+    {
+      "fipstate": "05",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "459"
+    },
+    {
+      "fipstate": "05",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "104"
+    },
+    {
+      "fipstate": "06",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "8044"
+    },
+    {
+      "fipstate": "06",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "705"
+    },
+    {
+      "fipstate": "08",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "780"
+    },
+    {
+      "fipstate": "08",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "156"
+    },
+    {
+      "fipstate": "09",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "767"
+    },
+    {
+      "fipstate": "09",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "77"
+    },
+    {
+      "fipstate": "10",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "174"
+    },
+    {
+      "fipstate": "10",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "19"
+    },
+    {
+      "fipstate": "11",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "169"
+    },
+    {
+      "fipstate": "11",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "11"
+    },
+    {
+      "fipstate": "12",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "3850"
+    },
+    {
+      "fipstate": "12",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "488"
+    },
+    {
+      "fipstate": "13",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "1769"
+    },
+    {
+      "fipstate": "13",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "259"
+    },
+    {
+      "fipstate": "15",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "272"
+    },
+    {
+      "fipstate": "15",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "29"
+    },
+    {
+      "fipstate": "16",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "278"
+    },
+    {
+      "fipstate": "16",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "55"
+    },
+    {
+      "fipstate": "17",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "2647"
+    },
+    {
+      "fipstate": "17",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "335"
+    },
+    {
+      "fipstate": "18",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "954"
+    },
+    {
+      "fipstate": "18",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "204"
+    },
+    {
+      "fipstate": "19",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "615"
+    },
+    {
+      "fipstate": "19",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "94"
+    },
+    {
+      "fipstate": "20",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "485"
+    },
+    {
+      "fipstate": "20",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "91"
+    },
+    {
+      "fipstate": "21",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "721"
+    },
+    {
+      "fipstate": "21",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "123"
+    },
+    {
+      "fipstate": "22",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "886"
+    },
+    {
+      "fipstate": "22",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "124"
+    },
+    {
+      "fipstate": "23",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "357"
+    },
+    {
+      "fipstate": "23",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "35"
+    },
+    {
+      "fipstate": "24",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "1256"
+    },
+    {
+      "fipstate": "24",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "125"
+    },
+    {
+      "fipstate": "25",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "1348"
+    },
+    {
+      "fipstate": "25",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "130"
+    },
+    {
+      "fipstate": "26",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "1685"
+    },
+    {
+      "fipstate": "26",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "314"
+    },
+    {
+      "fipstate": "27",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "998"
+    },
+    {
+      "fipstate": "27",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "192"
+    },
+    {
+      "fipstate": "28",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "405"
+    },
+    {
+      "fipstate": "28",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "83"
+    },
+    {
+      "fipstate": "29",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "955"
+    },
+    {
+      "fipstate": "29",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "183"
+    },
+    {
+      "fipstate": "30",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "260"
+    },
+    {
+      "fipstate": "30",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "30"
+    },
+    {
+      "fipstate": "31",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "422"
+    },
+    {
+      "fipstate": "31",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "57"
+    },
+    {
+      "fipstate": "32",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "362"
+    },
+    {
+      "fipstate": "32",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "67"
+    },
+    {
+      "fipstate": "33",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "240"
+    },
+    {
+      "fipstate": "33",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "46"
+    },
+    {
+      "fipstate": "34",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "2405"
+    },
+    {
+      "fipstate": "34",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "171"
+    },
+    {
+      "fipstate": "35",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "246"
+    },
+    {
+      "fipstate": "35",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "57"
+    },
+    {
+      "fipstate": "36",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "8320"
+    },
+    {
+      "fipstate": "36",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "285"
+    },
+    {
+      "fipstate": "37",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "2007"
+    },
+    {
+      "fipstate": "37",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "244"
+    },
+    {
+      "fipstate": "38",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "168"
+    },
+    {
+      "fipstate": "38",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "23"
+    },
+    {
+      "fipstate": "39",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "1893"
+    },
+    {
+      "fipstate": "39",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "312"
+    },
+    {
+      "fipstate": "40",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "499"
+    },
+    {
+      "fipstate": "40",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "120"
+    },
+    {
+      "fipstate": "41",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "753"
+    },
+    {
+      "fipstate": "41",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "183"
+    },
+    {
+      "fipstate": "42",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "2543"
+    },
+    {
+      "fipstate": "42",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "271"
+    },
+    {
+      "fipstate": "44",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "204"
+    },
+    {
+      "fipstate": "44",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "18"
+    },
+    {
+      "fipstate": "45",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "911"
+    },
+    {
+      "fipstate": "45",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "122"
+    },
+    {
+      "fipstate": "46",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "199"
+    },
+    {
+      "fipstate": "46",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "25"
+    },
+    {
+      "fipstate": "47",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "1077"
+    },
+    {
+      "fipstate": "47",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "176"
+    },
+    {
+      "fipstate": "48",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "3739"
+    },
+    {
+      "fipstate": "48",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "693"
+    },
+    {
+      "fipstate": "49",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "411"
+    },
+    {
+      "fipstate": "49",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "87"
+    },
+    {
+      "fipstate": "50",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "221"
+    },
+    {
+      "fipstate": "50",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "8"
+    },
+    {
+      "fipstate": "51",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "1483"
+    },
+    {
+      "fipstate": "51",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "224"
+    },
+    {
+      "fipstate": "53",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "1587"
+    },
+    {
+      "fipstate": "53",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "208"
+    },
+    {
+      "fipstate": "54",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "260"
+    },
+    {
+      "fipstate": "54",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "49"
+    },
+    {
+      "fipstate": "55",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "976"
+    },
+    {
+      "fipstate": "55",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "159"
+    },
+    {
+      "fipstate": "56",
+      "naics": "445110",
+      "lfo": "-",
+      "est": "93"
+    },
+    {
+      "fipstate": "56",
+      "naics": "452311",
+      "lfo": "-",
+      "est": "17"
+    }
+  ]
+}

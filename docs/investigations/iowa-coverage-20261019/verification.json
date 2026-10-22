@@ -1,0 +1,17 @@
+{
+  "offline_source_replay": "passed: all 362 eligible source IDs equal published IDs across 14 scopes",
+  "archive_name_probe": "complete: 5641 members, 27992816145 expanded bytes, 160.1s",
+  "pytest": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 289,
+    "warnings": 1,
+    "seconds": 9.54
+  },
+  "ruff_check": "passed",
+  "ruff_format": "122 files already formatted",
+  "git_diff_check": "passed",
+  "html_report": "blocked: horizontal overflow at desktop width after one targeted correction; not released",
+  "production_changes": false,
+  "paid_calls": 0,
+  "crawler_restarts": 0
+}

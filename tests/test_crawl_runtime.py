@@ -2,6 +2,7 @@
 
 import io
 import time
+from itertools import pairwise
 
 import pytest
 
@@ -88,6 +89,52 @@ def run(pilot, factory):
     return run_map_discovery(
         platform, job, config, transport_factory=factory, clock=clock, sleep=sleep
     )
+
+
+@pytest.mark.parametrize("robots_delay", [0, 120])
+def test_random_pacing_adds_one_sample_to_robots_minimum_and_cached_requests(pilot, robots_delay):
+    platform, job, config, clock, sleep = pilot
+    config.update(min_spacing=45, spacing_jitter_seconds=45)
+    samples = iter([0, 17, 23])
+    draws, requests = [], []
+
+    def sample(low, high):
+        draws.append((low, high))
+        return next(samples)
+
+    class TimedTransport(MockTransport):
+        def get(self, url, headers=None):
+            requests.append((url, clock()))
+            return super().get(url, headers)
+
+    def factory(policy):
+        return TimedTransport(
+            policy,
+            [],
+            robots=f"User-agent: *\nAllow: /\nCrawl-delay: {robots_delay}\n".encode(),
+        )
+
+    for _ in range(2):
+        run_map_discovery(
+            platform,
+            job,
+            config,
+            transport_factory=factory,
+            clock=clock,
+            sleep=sleep,
+            random_uniform=sample,
+        )
+    assert len(requests) == 3  # second invocation reuses cached robots
+    assert draws == [(0, 45)] * 3  # no resampling in the one-second sleep loop
+    assert requests[1][1] - requests[0][1] == max(45, robots_delay) + 17
+    assert requests[2][1] - requests[1][1] == max(45, robots_delay) + 23
+
+
+@pytest.mark.parametrize("jitter", [-1, 301, float("nan"), float("inf"), True, "45"])
+def test_invalid_jitter_is_rejected_before_transport(pilot, jitter):
+    pilot[2]["spacing_jitter_seconds"] = jitter
+    with pytest.raises(CrawlBlocked, match="spacing jitter"):
+        run(pilot, lambda policy: pytest.fail("transport constructed before validation"))
 
 
 @pytest.mark.parametrize(
@@ -276,3 +323,82 @@ def test_explicit_owner_public_scope_still_obeys_live_robots(pilot):
             lambda policy: MockTransport(policy, calls, robots=b"User-agent: *\nDisallow: /\n"),
         )
     assert calls == ["https://retailer.test/robots.txt"]
+
+
+def test_optional_rich_evidence_sink_uses_only_approved_html(pilot):
+    _, _, config, _, _ = pilot
+    captured = []
+    calls = []
+    config["_evidence_sink"] = lambda html, target: captured.append((html, target["store_id"]))
+    result = run(pilot, lambda p: MockTransport(p, calls))
+    assert result["map_records"] == 1 and len(captured) == 1
+    assert captured[0][1] == config["approved_targets"][0]["store_id"]
+    assert "Store Map" in captured[0][0]
+    assert len(calls) == 2 and not any(url.endswith(".pdf") for url in calls)
+
+
+def test_conditional_page_refresh_reuses_bound_body_but_still_checks_robots(pilot):
+    platform, job, c, clock, sleep = pilot
+    c.update(page_cache_enabled=True, can_store_raw=True, _fields_only=True)
+    observed = []
+    requests = []
+    step = [0]
+    c["_evidence_sink"] = lambda html, target: observed.append(html)
+
+    class Conditional(MockTransport):
+        def get(self, url, headers=None):
+            requests.append((url, headers))
+            if url.endswith("/robots.txt"):
+                return Response(b"User-agent: *\nAllow: /\n", "text/plain")
+            if step[0] == 0:
+                step[0] += 1
+                return Response(b"<main>branch</main>", headers={"ETag": '"v1"'})
+            assert headers["If-None-Match"] == '"v1"'
+            r = Response(b"")
+            r.status = 304
+            return r
+
+    factory = lambda policy: Conditional(policy, [])
+    before = platform.current()["generation"]
+    run_map_discovery(platform, job, c, transport_factory=factory, clock=clock, sleep=sleep)
+    run_map_discovery(platform, job, c, transport_factory=factory, clock=clock, sleep=sleep)
+    assert observed == ["<main>branch</main>"] * 2
+    assert len(requests) == 3 and sum(u.endswith("/robots.txt") for u, h in requests) == 1
+    assert platform.current()["generation"] == before  # Field fetch cannot publish map records.
+
+
+@pytest.mark.parametrize("allowed", [True, False])
+def test_reviewed_robots_www_alias_is_paced_and_cannot_authorize_denied_branch(pilot, allowed):
+    from bord_food_api.transport import RedirectNotice
+
+    p, job, c, clock, sleep = pilot
+    c.update(
+        robots_redirect_hosts=["www.retailer.test"],
+        max_pages_run=3,
+        min_spacing=45,
+        _fields_only=True,
+    )
+    calls = []
+
+    class Alias:
+        def __init__(self, policy):
+            self.policy = policy
+
+        def get(self, url, headers=None):
+            calls.append((url, clock()))
+            if url == "https://retailer.test/robots.txt":
+                raise RedirectNotice("https://www.retailer.test/robots.txt", 301)
+            if url == "https://www.retailer.test/robots.txt":
+                return Response(
+                    b"User-agent: *\n" + (b"Allow: /\n" if allowed else b"Disallow: /\n"),
+                    "text/plain",
+                )
+            return Response(b"<h1>Imaginary North Branch</h1>")
+
+    if allowed:
+        run_map_discovery(p, job, c, transport_factory=Alias, clock=clock, sleep=sleep)
+    else:
+        with pytest.raises(CrawlBlocked, match="Robots policy"):
+            run_map_discovery(p, job, c, transport_factory=Alias, clock=clock, sleep=sleep)
+    assert len(calls) == (3 if allowed else 2)
+    assert all(b[1] - a[1] >= 45 for a, b in pairwise(calls))

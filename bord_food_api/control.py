@@ -89,6 +89,34 @@ class Control:
             )
             return entity_id
 
+    def identity_batch(self, source, keys):
+        """Reserve a bounded streamed batch in one durable transaction.
+
+        Identity edits hold the publisher lock; sync callers already own it.
+        Previously reserved IDs survive retries and are never regenerated.
+        """
+        keys = list(dict.fromkeys((kind, str(key)) for kind, key in keys))
+        if len(keys) > 1024:
+            raise ValueError("Identity batch exceeds bounded size")
+        prefixes = {"chain": "chn", "store": "sto", "product": "prd"}
+        result = {}
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            for kind, key in keys:
+                row = db.execute(
+                    "SELECT id FROM identities WHERE source=? AND kind=? AND source_key=?",
+                    (source, kind, key),
+                ).fetchone()
+                if row:
+                    result[kind, key] = row[0]
+                else:
+                    identity = f"{prefixes.get(kind, kind)}_{uuid.uuid4().hex}"
+                    db.execute(
+                        "INSERT INTO identities VALUES (?,?,?,?)", (source, kind, key, identity)
+                    )
+                    result[kind, key] = identity
+        return result
+
     @contextmanager
     def identity_edit(self):
         with (self.root / "control/publisher.lock").open("a") as handle:
@@ -251,13 +279,20 @@ class Control:
     def denied_sources(self, now=None):
         now = time.time() if now is None else now
         with self.connect() as db:
-            return {
+            denied = {
                 row[0]
                 for row in db.execute(
                     "SELECT source FROM rights WHERE denied=1 OR (retention_until IS NOT NULL AND retention_until<=?)",
                     (now,),
                 )
             }
+            if denied & {"usda_fdc", "local_usda"}:
+                denied.add("usda_products")
+            if "retailer_maps" in denied:
+                denied.add("retailer_page")
+            if "usda_snap" in denied:
+                denied.add("usda_snap_arcgis")
+            return denied
 
     def restrict_source(
         self, source, *, retention_until=None, denied=True, reason="operator_rights_revocation"
@@ -289,9 +324,16 @@ class Control:
 
     def hidden_sources(self, action="can_display"):
         with self.connect() as db:
-            return self.denied_sources() | {
+            hidden = self.denied_sources() | {
                 row[0]
                 for row in db.execute(
                     "SELECT source FROM policy_actions WHERE action=? AND allowed=0", (action,)
                 )
             }
+            if hidden & {"usda_fdc", "local_usda"}:
+                hidden.add("usda_products")
+            if "retailer_maps" in hidden:
+                hidden.add("retailer_page")
+            if "usda_snap" in hidden:
+                hidden.add("usda_snap_arcgis")
+            return hidden

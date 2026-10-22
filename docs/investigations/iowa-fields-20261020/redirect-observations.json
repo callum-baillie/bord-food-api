@@ -1,0 +1,69 @@
+{
+  "active": null,
+  "blocked_hosts": {
+    "info.aldi.us": "RedirectNotice",
+    "valleyfreshmkt.com": "RedirectNotice",
+    "www.grazianobrothers.com": "RedirectNotice"
+  },
+  "budget": {
+    "campaign_calls": 0,
+    "campaign_reserved_nanousd": 0,
+    "can_start": true,
+    "remaining_nanousd": 150000000,
+    "total_reserved_nanousd": 3550000000
+  },
+  "campaign_id": "iowa-fields-redirect-review-20261020",
+  "completed_at": 1792522402.2892582,
+  "config_sha256": "ecf811c8022950456a1371364da44c6863ef6b9b4849b92fbb58127ab54fe72e",
+  "counts": {
+    "host_blocked": 3
+  },
+  "directory_stores": 741,
+  "last_host": "www.grazianobrothers.com",
+  "missing_branch_urls": 0,
+  "phase": "robots_and_branch_fetch",
+  "started_at": 1792522318.8206043,
+  "state": "finished_with_holds",
+  "targets": {
+    "sto_00c8a79f06144b46b7438039b42776c0": {
+      "attempt_started_at": 1792522401.268317,
+      "error_type": "RedirectNotice",
+      "finished_at": 1792522401.7014256,
+      "host": "valleyfreshmkt.com",
+      "http_status": 301,
+      "job_id": "job_92866cc8b7cf4a95a97c591dad6239e2",
+      "network_attempted": true,
+      "reason": "redirect_requires_review",
+      "redirect_candidate": "https://www.valleyfreshmkt.com/robots.txt",
+      "stage": "robots",
+      "state": "host_blocked"
+    },
+    "sto_58c96f33b6d54d9d975d86000004b902": {
+      "attempt_started_at": 1792522401.74179,
+      "error_type": "RedirectNotice",
+      "finished_at": 1792522402.2547143,
+      "host": "www.grazianobrothers.com",
+      "http_status": 301,
+      "job_id": "job_4a6082cbf13541c0b1874b388d57df48",
+      "network_attempted": true,
+      "reason": "redirect_requires_review",
+      "redirect_candidate": "https://grazianobrothers.com/robots.txt",
+      "stage": "robots",
+      "state": "host_blocked"
+    },
+    "sto_81fde73c743b43dd8aaf4fce4172a01e": {
+      "attempt_started_at": 1792522400.7621999,
+      "error_type": "RedirectNotice",
+      "finished_at": 1792522401.2288558,
+      "host": "info.aldi.us",
+      "http_status": 301,
+      "job_id": "job_e67a4016c8cf4be7bec4d7c0e5d5857f",
+      "network_attempted": true,
+      "reason": "redirect_requires_review",
+      "redirect_candidate": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+      "stage": "branch_page",
+      "state": "host_blocked"
+    }
+  },
+  "updated_at": 1792522402.3097885
+}

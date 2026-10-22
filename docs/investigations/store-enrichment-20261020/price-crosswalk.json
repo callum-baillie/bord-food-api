@@ -1,0 +1,13 @@
+{
+  "generation": "g_06c5c35bb5174eab98572bb872b95436",
+  "counts": {
+    "retained_us_observations": 42822
+  },
+  "retained_us_osm_locations": 368,
+  "reviewed_iowa_osm_crosswalk_keys": 277,
+  "exact_matching_osm_locations": 0,
+  "exact_matching_canonical_stores": 0,
+  "match_semantics": "native OSM type/id only; no banner/proximity inference; historical observations do not establish current stock",
+  "source_network_requests": 0,
+  "paid_calls": 0
+}

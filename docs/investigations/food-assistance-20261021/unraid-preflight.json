@@ -1,0 +1,38 @@
+{
+  "network": "none",
+  "file_hashes_verified": 66,
+  "api": {
+    "/live": 200,
+    "/v1/capabilities": 200,
+    "/v1/food-assistance/sites": 200,
+    "/v1/food-assistance/services?state=IA": 200,
+    "/v1/food-assistance/sites?dataset=osm&lat=41.6&lon=-93.6": 200
+  },
+  "offline_plan": {
+    "state": "staged",
+    "states": [
+      "IA",
+      "WY",
+      "AK",
+      "VT",
+      "ND",
+      "DE",
+      "SD",
+      "MT",
+      "RI",
+      "NH",
+      "HI",
+      "ID",
+      "WV"
+    ],
+    "after_campaigns": [
+      "small-states-20261020"
+    ],
+    "source_requests": 0,
+    "paid_calls": 0,
+    "config_sha256": "2b18326db865345893217249986bb03de937ac24bfe1d95001a63078953261fd"
+  },
+  "synthetic_sites": 1,
+  "synthetic_services": 1,
+  "no_live_import": true
+}

@@ -11,7 +11,7 @@ import re
 import unicodedata
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
-NORMALIZER_VERSION = "store-groups-v1"
+NORMALIZER_VERSION = "store-groups-v2"
 DAY = 86400
 GROUP_FIELDS = {
     "identity": ("chain_id", "chain_key", "banner", "operator", "brand", "store_number"),
@@ -26,8 +26,18 @@ GROUP_FIELDS = {
         "postal_code",
     ),
     "contact": ("phone", "website", "email"),
-    "hours": ("hours", "opening_hours", "department_hours", "hours_exceptions"),
-    "services": ("services", "amenities"),
+    "hours": ("hours", "opening_hours", "department_hours", "hours_exceptions", "timezone"),
+    "services": (
+        "services",
+        "amenities",
+        "pickup_links",
+        "delivery_links",
+        "departments",
+        "entrances",
+        "accessibility",
+        "aisle_category_mappings",
+    ),
+    "operating_status": ("operating_status", "permanently_closed", "lifecycle"),
     "maps": ("map_url", "map_asset_id", "map_version", "map_hash"),
 }
 INTERVAL_DAYS = {
@@ -38,6 +48,7 @@ INTERVAL_DAYS = {
     "hours": 60,
     "services": 30,
     "maps": 90,
+    "operating_status": 14,
 }
 IGNORED_FIELDS = {
     "retrieved_at",

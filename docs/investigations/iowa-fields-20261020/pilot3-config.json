@@ -1,0 +1,159 @@
+{
+  "campaign_id": "iowa-fields-pilot3-20261020",
+  "activation_enabled": true,
+  "state": "IA",
+  "collection_profile": "public-store-layout-evidence-v1",
+  "field_focus": true,
+  "capture_prices": false,
+  "capture_product_inventory": false,
+  "capture_product_catalog": false,
+  "targets": [
+    {
+      "store_id": "sto_2a998e50d4db4ae99134bb9ab03abbfc",
+      "name": "Wheatsfield Cooperative",
+      "source_website": "https://www.wheatsfield.coop/",
+      "url": "https://www.wheatsfield.coop/",
+      "source_address": {
+        "city": "Ames",
+        "postal_code": "50010",
+        "region": "IA",
+        "street": "413 Northwestern Avenue",
+        "unit": null
+      },
+      "spider": null,
+      "chain_id": null,
+      "expected_branch": "Wheatsfield Cooperative",
+      "country": "US",
+      "single_store_site": true
+    },
+    {
+      "store_id": "sto_f9bfdcf5f44441a7b7586f2e64d5c7c2",
+      "name": "Whole Foods Market",
+      "source_website": "https://www.wholefoodsmarket.com/stores/westdesmoines",
+      "url": "https://www.wholefoodsmarket.com/stores/westdesmoines",
+      "source_address": {
+        "city": "West Des Moines",
+        "country": "US",
+        "postal_code": "50266-5958",
+        "region": "IA",
+        "street": "4100 University Ave"
+      },
+      "spider": "whole_foods",
+      "chain_id": "chn_a6f0e80a634f490d87f6310d47b02cd4",
+      "expected_branch": "Whole Foods Market",
+      "country": "US"
+    },
+    {
+      "store_id": "sto_0bf49383f84f4a4986bce9ee1bdadb05",
+      "name": "Dollar Fresh Hy-Vee",
+      "source_website": "https://www.hy-vee.com/stores/detail.aspx?s=3701",
+      "url": "https://www.hy-vee.com/stores/detail.aspx?s=3701",
+      "source_address": {
+        "city": null,
+        "country": "US",
+        "full": "102 West Carlisle, Maquoketa, IA 52060",
+        "postal_code": null,
+        "region": "IA",
+        "street": null
+      },
+      "spider": "hy_vee_us",
+      "chain_id": "chn_f4e7ec97e7b24a0c9ade4dbb36bfd94d",
+      "expected_branch": "Dollar Fresh Hy-Vee",
+      "country": "US"
+    }
+  ],
+  "scopes": {
+    "www.wheatsfield.coop": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.wheatsfield.coop",
+        "scope_prefix": "/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true
+      }
+    },
+    "www.wholefoodsmarket.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.wholefoodsmarket.com",
+        "scope_prefix": "/stores/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true
+      }
+    },
+    "www.hy-vee.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.hy-vee.com",
+        "scope_prefix": "/stores/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true
+      }
+    }
+  },
+  "duration_seconds": 7200,
+  "directory_stores": 735,
+  "missing_branch_urls": 0,
+  "decisions": {
+    "budget_nanousd": 150000000,
+    "max_calls": 15,
+    "key_file": "/run/secrets/jev-api-key",
+    "retain_branch_html": true,
+    "review_every_page": true,
+    "global_budget_nanousd": 15000000000
+  }
+}

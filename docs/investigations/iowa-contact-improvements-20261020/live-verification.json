@@ -1,0 +1,104 @@
+{
+  "captured_at": 1792532349.5777133,
+  "generation": "g_181575524c2f4786ba0a581d6eeb727c",
+  "canonical_all_stores": 9309,
+  "canonical_iowa": 735,
+  "raw_ids_retained": 9315,
+  "non_iowa_identical": 8574,
+  "all_original_source_refs_unchanged": true,
+  "all_original_source_records_unchanged": true,
+  "non_store_packs_unchanged": true,
+  "aliases_redirect": 4,
+  "scope_exclusions": 2,
+  "complete_week": 351,
+  "counts": {
+    "phone": 508,
+    "website": 479,
+    "opening_hours": 365,
+    "timezone": 735,
+    "email": 86,
+    "departments": 24,
+    "pickup_links": 1,
+    "delivery_links": 1,
+    "accessibility": 11,
+    "hours_exceptions": 0,
+    "entrances": 0,
+    "aisle_category_mappings": 0,
+    "structured_addresses": 735,
+    "coordinates": 695
+  },
+  "same_canonical_cohort_before": {
+    "phone": 502,
+    "website": 474,
+    "opening_hours": 312
+  },
+  "independent_unmapped": {
+    "stores": 336,
+    "phone": 142,
+    "website": 108,
+    "opening_hours": 18
+  },
+  "conflicts": {
+    "assertions": 220,
+    "stores": 188
+  },
+  "api": {
+    "/live": 200,
+    "/ready": 200,
+    "/health": 200,
+    "/v1/stores?region=IA&limit=1": 200,
+    "/v1/products?limit=1": 200,
+    "/v1/guidance/storage?limit=1": 200,
+    "/fdc/v1/foods/search?query=apple&pageSize=1": 200,
+    "missing_key": 401
+  },
+  "campaign": {
+    "iowa-quality-continuation-20261020": {
+      "state": "stopped",
+      "phase": "primary",
+      "counts": null,
+      "active": null,
+      "error_type": null,
+      "updated_at": 1792530602.6150248,
+      "jev": null
+    },
+    "iowa-quality-continuation-20261020-primary": {
+      "state": "stopped",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "host_blocked": 26,
+        "interrupted_requires_review": 1,
+        "missing_branch_url": 258,
+        "pending": 133,
+        "published": 22,
+        "review_required": 15
+      },
+      "active": null,
+      "error_type": null,
+      "updated_at": 1792530601.0963838,
+      "jev": null
+    },
+    "iowa-contact-pilot1-20261020": {
+      "state": "finished_with_holds",
+      "phase": "primary",
+      "counts": null,
+      "active": null,
+      "error_type": null,
+      "updated_at": 1792531956.9925866,
+      "jev": null
+    },
+    "iowa-contact-pilot1-20261020-primary": {
+      "state": "finished_with_holds",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "published": 1,
+        "review_required": 4
+      },
+      "active": null,
+      "error_type": null,
+      "updated_at": 1792531956.9552827,
+      "jev": null
+    }
+  },
+  "manifest_stable": true
+}

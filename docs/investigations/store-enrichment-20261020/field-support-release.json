@@ -1,0 +1,13 @@
+{
+  "release": "/mnt/cache/git/compose/productivity/config/operator-releases/e06058bad8e1e446b6efdf4e59fef13d4d3c7681808622881b961de630a80d73",
+  "previous_release": "/mnt/cache/git/compose/productivity/config/operator-releases/78ba5768b07b59fc55200607e303031ebe42f07afee057092e20d7ab71ea330a",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "files": {
+    "control.py": "f03242df51c8c96a5bffb96f3ce015e29a97b2a7283b032fe065de73e44f26e8",
+    "platform.py": "d7b87e8b4e5846b7e8e730ebdc81fc18b8c11af2ad36474619aba1155d5b05d5",
+    "refresh.py": "2e5d9aa74ab25cf5f43b57c1c9ea2a6fdb04337740b44e7cf1277ccec1d92bd3",
+    "store_enrichment.py": "d4c4f846d02f49b23b8ff51a29fa8173970bb434b4e74132630664c4c2d23ce8",
+    "store_hours.py": "b175d5850bd6299a468822b2cfa734babfebdc2e2971b4bda8a3a9156a162df5",
+    "enrich-retained-stores.py": "67ecacf645c5005dd66c6a7a7dc4bc489b9d33274d79f17ae5ea1777875b6a5f"
+  }
+}
