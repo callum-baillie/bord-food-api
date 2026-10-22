@@ -70,5 +70,8 @@
   },
   "runtime": {
     "required_packs": []
+  },
+  "budgets": {
+    "data_quota_bytes": 274877906944
   }
 }

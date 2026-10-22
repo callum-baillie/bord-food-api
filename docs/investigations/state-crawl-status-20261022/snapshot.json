@@ -1,0 +1,1183 @@
+{
+  "captured_at": 1792696813.3158212,
+  "generation": "g_ac25d3a075a04068b44f08817f607a95",
+  "counts": {
+    "NY": {
+      "records": 289,
+      "phone": 109,
+      "website": 143,
+      "opening_hours": 289,
+      "timezone": 289,
+      "hours_timezone": 289
+    },
+    "OR": {
+      "records": 85,
+      "phone": 73,
+      "website": 85,
+      "opening_hours": 85,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "WV": {
+      "records": 121,
+      "phone": 85,
+      "website": 96,
+      "opening_hours": 106,
+      "timezone": 121,
+      "hours_timezone": 106
+    },
+    "VA": {
+      "records": 254,
+      "phone": 128,
+      "website": 178,
+      "opening_hours": 254,
+      "timezone": 254,
+      "hours_timezone": 254
+    },
+    "OH": {
+      "records": 501,
+      "phone": 263,
+      "website": 320,
+      "opening_hours": 500,
+      "timezone": 501,
+      "hours_timezone": 500
+    },
+    "MO": {
+      "records": 188,
+      "phone": 47,
+      "website": 83,
+      "opening_hours": 188,
+      "timezone": 188,
+      "hours_timezone": 188
+    },
+    "NJ": {
+      "records": 136,
+      "phone": 56,
+      "website": 67,
+      "opening_hours": 136,
+      "timezone": 136,
+      "hours_timezone": 136
+    },
+    "AL": {
+      "records": 136,
+      "phone": 34,
+      "website": 76,
+      "opening_hours": 136,
+      "timezone": 136,
+      "hours_timezone": 136
+    },
+    "KY": {
+      "records": 180,
+      "phone": 124,
+      "website": 152,
+      "opening_hours": 180,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "CO": {
+      "records": 235,
+      "phone": 200,
+      "website": 235,
+      "opening_hours": 235,
+      "timezone": 235,
+      "hours_timezone": 235
+    },
+    "IL": {
+      "records": 462,
+      "phone": 186,
+      "website": 245,
+      "opening_hours": 456,
+      "timezone": 462,
+      "hours_timezone": 456
+    },
+    "AZ": {
+      "records": 238,
+      "phone": 186,
+      "website": 217,
+      "opening_hours": 238,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "MI": {
+      "records": 333,
+      "phone": 174,
+      "website": 206,
+      "opening_hours": 333,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "TX": {
+      "records": 669,
+      "phone": 366,
+      "website": 539,
+      "opening_hours": 669,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "IA": {
+      "records": 735,
+      "phone": 508,
+      "website": 479,
+      "opening_hours": 383,
+      "timezone": 735,
+      "hours_timezone": 383
+    },
+    "OK": {
+      "records": 82,
+      "phone": 15,
+      "website": 50,
+      "opening_hours": 82,
+      "timezone": 82,
+      "hours_timezone": 82
+    },
+    "WI": {
+      "records": 271,
+      "phone": 151,
+      "website": 183,
+      "opening_hours": 258,
+      "timezone": 271,
+      "hours_timezone": 258
+    },
+    "CA": {
+      "records": 768,
+      "phone": 611,
+      "website": 659,
+      "opening_hours": 768,
+      "timezone": 768,
+      "hours_timezone": 768
+    },
+    "PA": {
+      "records": 298,
+      "phone": 79,
+      "website": 124,
+      "opening_hours": 298,
+      "timezone": 298,
+      "hours_timezone": 298
+    },
+    "MS": {
+      "records": 79,
+      "phone": 36,
+      "website": 59,
+      "opening_hours": 79,
+      "timezone": 79,
+      "hours_timezone": 79
+    },
+    "GA": {
+      "records": 372,
+      "phone": 216,
+      "website": 278,
+      "opening_hours": 372,
+      "timezone": 372,
+      "hours_timezone": 372
+    },
+    "TN": {
+      "records": 265,
+      "phone": 146,
+      "website": 198,
+      "opening_hours": 265,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "LA": {
+      "records": 87,
+      "phone": 23,
+      "website": 55,
+      "opening_hours": 87,
+      "timezone": 87,
+      "hours_timezone": 87
+    },
+    "RI": {
+      "records": 44,
+      "phone": 34,
+      "website": 34,
+      "opening_hours": 32,
+      "timezone": 44,
+      "hours_timezone": 32
+    },
+    "DC": {
+      "records": 9,
+      "phone": 4,
+      "website": 6,
+      "opening_hours": 9,
+      "timezone": 9,
+      "hours_timezone": 9
+    },
+    "MN": {
+      "records": 187,
+      "phone": 72,
+      "website": 104,
+      "opening_hours": 187,
+      "timezone": 187,
+      "hours_timezone": 187
+    },
+    "ID": {
+      "records": 132,
+      "phone": 117,
+      "website": 99,
+      "opening_hours": 115,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "NC": {
+      "records": 205,
+      "phone": 57,
+      "website": 109,
+      "opening_hours": 204,
+      "timezone": 205,
+      "hours_timezone": 204
+    },
+    "FL": {
+      "records": 588,
+      "phone": 136,
+      "website": 242,
+      "opening_hours": 588,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "SD": {
+      "records": 46,
+      "phone": 34,
+      "website": 40,
+      "opening_hours": 46,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "MT": {
+      "records": 77,
+      "phone": 68,
+      "website": 74,
+      "opening_hours": 70,
+      "timezone": 77,
+      "hours_timezone": 70
+    },
+    "IN": {
+      "records": 288,
+      "phone": 165,
+      "website": 200,
+      "opening_hours": 288,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "NV": {
+      "records": 81,
+      "phone": 65,
+      "website": 76,
+      "opening_hours": 81,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "HI": {
+      "records": 74,
+      "phone": 74,
+      "website": 74,
+      "opening_hours": 74,
+      "timezone": 74,
+      "hours_timezone": 74
+    },
+    "KS": {
+      "records": 134,
+      "phone": 80,
+      "website": 105,
+      "opening_hours": 134,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "NH": {
+      "records": 70,
+      "phone": 51,
+      "website": 60,
+      "opening_hours": 69,
+      "timezone": 70,
+      "hours_timezone": 69
+    },
+    "SC": {
+      "records": 134,
+      "phone": 36,
+      "website": 76,
+      "opening_hours": 134,
+      "timezone": 134,
+      "hours_timezone": 134
+    },
+    "MD": {
+      "records": 126,
+      "phone": 40,
+      "website": 55,
+      "opening_hours": 126,
+      "timezone": 126,
+      "hours_timezone": 126
+    },
+    "MA": {
+      "records": 90,
+      "phone": 51,
+      "website": 64,
+      "opening_hours": 90,
+      "timezone": 90,
+      "hours_timezone": 90
+    },
+    "NM": {
+      "records": 50,
+      "phone": 33,
+      "website": 50,
+      "opening_hours": 50,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "DE": {
+      "records": 57,
+      "phone": 45,
+      "website": 46,
+      "opening_hours": 55,
+      "timezone": 57,
+      "hours_timezone": 55
+    },
+    "NE": {
+      "records": 59,
+      "phone": 26,
+      "website": 46,
+      "opening_hours": 59,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "CT": {
+      "records": 64,
+      "phone": 24,
+      "website": 29,
+      "opening_hours": 64,
+      "timezone": 64,
+      "hours_timezone": 64
+    },
+    "WA": {
+      "records": 163,
+      "phone": 146,
+      "website": 163,
+      "opening_hours": 163,
+      "timezone": 163,
+      "hours_timezone": 163
+    },
+    "UT": {
+      "records": 95,
+      "phone": 76,
+      "website": 95,
+      "opening_hours": 95,
+      "timezone": 95,
+      "hours_timezone": 95
+    },
+    "ND": {
+      "records": 42,
+      "phone": 34,
+      "website": 39,
+      "opening_hours": 42,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "AR": {
+      "records": 91,
+      "phone": 35,
+      "website": 69,
+      "opening_hours": 91,
+      "timezone": 91,
+      "hours_timezone": 91
+    },
+    "VT": {
+      "records": 43,
+      "phone": 38,
+      "website": 40,
+      "opening_hours": 43,
+      "timezone": 43,
+      "hours_timezone": 43
+    },
+    "AK": {
+      "records": 51,
+      "phone": 48,
+      "website": 49,
+      "opening_hours": 45,
+      "timezone": 0,
+      "hours_timezone": 0
+    },
+    "WY": {
+      "records": 42,
+      "phone": 39,
+      "website": 37,
+      "opening_hours": 36,
+      "timezone": 42,
+      "hours_timezone": 36
+    },
+    "ME": {
+      "records": 12,
+      "phone": 6,
+      "website": 11,
+      "opening_hours": 12,
+      "timezone": 12,
+      "hours_timezone": 12
+    }
+  },
+  "supermarket_campaign": {
+    "active": null,
+    "active_run": null,
+    "campaign_id": "small-states-20261020",
+    "config_sha256": "73b78bdaa67c9cbdd9b123a6c7f7f96391182cf7cdef8b15169b73d3b1894a44",
+    "started_at": 1792542564.5806627,
+    "state": "finished_with_holds",
+    "states": {
+      "AK": {
+        "gaps": 17,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-ak-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-ak-b00-primary",
+                "counts": {
+                  "host_blocked": 2,
+                  "published": 3
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-ak-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-ak-b01-primary",
+                "counts": {
+                  "prior_history_hold": 8,
+                  "published": 17
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-ak-b02",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-ak-b02-primary",
+                "counts": {
+                  "prior_history_hold": 2,
+                  "published": 2
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 34
+      },
+      "DE": {
+        "gaps": 21,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-de-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-de-b00-primary",
+                "counts": {
+                  "host_blocked": 1,
+                  "published": 4
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-de-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-de-b01-primary",
+                "counts": {
+                  "host_blocked": 7,
+                  "published": 18
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-de-b02",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-de-b02-primary",
+                "counts": {
+                  "published": 6
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 36
+      },
+      "HI": {
+        "gaps": 18,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-hi-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-hi-b00-primary",
+                "counts": {
+                  "host_blocked": 2,
+                  "published": 3
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-hi-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-hi-b01-primary",
+                "counts": {
+                  "prior_history_hold": 10,
+                  "published": 15
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-hi-b02",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-hi-b02-primary",
+                "counts": {
+                  "prior_history_hold": 15,
+                  "published": 10
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-hi-b03",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-hi-b03-primary",
+                "counts": {
+                  "prior_history_hold": 1
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 56
+      },
+      "ID": {
+        "gaps": 80,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-id-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-id-b00-primary",
+                "counts": {
+                  "published": 5
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          },
+          {
+            "campaign_id": "small-states-20261020-id-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-id-b01-primary",
+                "counts": {
+                  "published": 25
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          },
+          {
+            "campaign_id": "small-states-20261020-id-b02",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-id-b02-primary",
+                "counts": {
+                  "published": 22
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 52
+      },
+      "MT": {
+        "gaps": 31,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-mt-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-mt-b00-primary",
+                "counts": {
+                  "published": 5
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          },
+          {
+            "campaign_id": "small-states-20261020-mt-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-mt-b01-primary",
+                "counts": {
+                  "published": 25
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          },
+          {
+            "campaign_id": "small-states-20261020-mt-b02",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-mt-b02-primary",
+                "counts": {
+                  "published": 16
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 46
+      },
+      "ND": {
+        "gaps": 14,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-nd-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-nd-b00-primary",
+                "counts": {
+                  "published": 4,
+                  "review_required": 1
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-nd-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-nd-b01-primary",
+                "counts": {
+                  "published": 14,
+                  "review_required": 9
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 28
+      },
+      "NH": {
+        "gaps": 33,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-nh-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-nh-b00-primary",
+                "counts": {
+                  "published": 4,
+                  "review_required": 1
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-nh-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-nh-b01-primary",
+                "counts": {
+                  "published": 25
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          },
+          {
+            "campaign_id": "small-states-20261020-nh-b02",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-nh-b02-primary",
+                "counts": {
+                  "published": 7
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 37
+      },
+      "RI": {
+        "gaps": 28,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-ri-b00",
+            "passes": {
+              "canonical": {
+                "campaign_id": "small-states-20261020-ri-b00-canonical",
+                "counts": {
+                  "host_blocked": 1
+                },
+                "state": "finished_with_holds"
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-ri-b00-primary",
+                "counts": {
+                  "host_blocked": 1,
+                  "published": 3,
+                  "review_required": 1
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-ri-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-ri-b01-primary",
+                "counts": {
+                  "published": 7,
+                  "review_required": 4
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 16
+      },
+      "SD": {
+        "gaps": 23,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-sd-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-sd-b00-primary",
+                "counts": {
+                  "published": 4,
+                  "review_required": 1
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-sd-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-sd-b01-primary",
+                "counts": {
+                  "published": 17,
+                  "review_required": 1
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 23
+      },
+      "VT": {
+        "gaps": 8,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-vt-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-vt-b00-primary",
+                "counts": {
+                  "published": 5
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          },
+          {
+            "campaign_id": "small-states-20261020-vt-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-vt-b01-primary",
+                "counts": {
+                  "published": 25
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          },
+          {
+            "campaign_id": "small-states-20261020-vt-b02",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-vt-b02-primary",
+                "counts": {
+                  "published": 5
+                },
+                "state": "finished"
+              }
+            },
+            "state": "finished"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 35
+      },
+      "WV": {
+        "gaps": 58,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-wv-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-wv-b00-primary",
+                "counts": {
+                  "host_blocked": 2,
+                  "published": 2,
+                  "review_required": 1
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-wv-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-wv-b01-primary",
+                "counts": {
+                  "prior_history_hold": 12,
+                  "published": 12,
+                  "review_required": 1
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-wv-b02",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-wv-b02-primary",
+                "counts": {
+                  "prior_history_hold": 20,
+                  "published": 5
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-wv-b03",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-wv-b03-primary",
+                "counts": {
+                  "prior_history_hold": 8
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 63
+      },
+      "WY": {
+        "gaps": 12,
+        "phases": [
+          {
+            "campaign_id": "small-states-20261020-wy-b00",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-wy-b00-primary",
+                "counts": {
+                  "host_blocked": 2,
+                  "published": 3
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          },
+          {
+            "campaign_id": "small-states-20261020-wy-b01",
+            "passes": {
+              "canonical": {
+                "state": "not_needed",
+                "targets": 0
+              },
+              "primary": {
+                "campaign_id": "small-states-20261020-wy-b01-primary",
+                "counts": {
+                  "host_blocked": 7,
+                  "published": 18
+                },
+                "state": "finished_with_holds"
+              }
+            },
+            "state": "finished_with_holds"
+          }
+        ],
+        "state": "finished_with_holds",
+        "targets": 30
+      }
+    },
+    "updated_at": 1792578504.7489047
+  },
+  "assistance_campaign": {
+    "actual_billing": "not_measured",
+    "config_sha256": "37229e8239bf7f0c5f5b628639c237f8bd5712201f7fd0b2688b6f66e994bbe7",
+    "duplicate_candidates": 1,
+    "gaps": 23,
+    "jev_ledger_after": {
+      "answered": 0,
+      "reservations": 0,
+      "reserved_nanousd": 0
+    },
+    "jev_ledger_before": {
+      "answered": 0,
+      "reservations": 0,
+      "reserved_nanousd": 0
+    },
+    "next_pass_at": 1792712354.4137592,
+    "operator_runs": [
+      {
+        "campaign_id": "food-assistance-after-small-states-20261022-r2-1792690754-0",
+        "completed_at": 1792690754.2918603,
+        "started_at": 1792690754.2210267,
+        "state": "finished_with_holds",
+        "targets": {
+          "osm_assistance_site_3bb6d809eae9436aae94e8c686b7c407": {
+            "error_type": "CrawlBlocked",
+            "http_status": null,
+            "reason": "historical_detail_unavailable",
+            "state": "host_blocked"
+          }
+        }
+      },
+      {
+        "campaign_id": "food-assistance-after-small-states-20261022-r2-1792690754-1",
+        "completed_at": 1792690754.3924494,
+        "started_at": 1792690754.3230994,
+        "state": "finished_with_holds",
+        "targets": {
+          "osm_assistance_site_4f752d836dba4263999d7e2ac4c00a52": {
+            "error_type": "CrawlBlocked",
+            "http_status": null,
+            "reason": "historical_detail_unavailable",
+            "state": "host_blocked"
+          }
+        }
+      }
+    ],
+    "prepared_targets": 2,
+    "source_jobs": [
+      {
+        "job_id": "job_58f0da1a87524637b7443a8adbdb4129",
+        "reason": "transient_transport_error",
+        "state": "retry_wait"
+      }
+    ],
+    "source_status": [
+      {
+        "id": "job_58f0da1a87524637b7443a8adbdb4129",
+        "reason": "transient_transport_error",
+        "source": "osm_food_assistance",
+        "state": "retry_wait"
+      }
+    ],
+    "state": "finished_with_holds",
+    "supermarket_dependency": {
+      "ready": true,
+      "reason": "supermarket_passes_terminal"
+    },
+    "updated_at": 1792690754.4137614
+  },
+  "manifest_stable": true
+}

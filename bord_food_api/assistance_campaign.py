@@ -139,6 +139,22 @@ def run_pass(
                     cancellation=cancellation,
                 )
             )
+    # Keep unresolved source failures visible on idle passes, rather than reporting
+    # success merely because the scheduler has no job due this time.
+    source_status = []
+    with p.control.connect() as db:
+        for source in sorted(SOURCES):
+            if not policy["sources"][source]["enabled"]:
+                continue
+            latest = db.execute(
+                "SELECT id,state,reason FROM jobs WHERE source=? AND operation='sync' ORDER BY due DESC,rowid DESC LIMIT 1",
+                (source,),
+            ).fetchone()
+            source_status.append(
+                {"source": source, **dict(latest)}
+                if latest
+                else {"source": source, "state": "not_acquired", "reason": None}
+            )
     # A phase can enrich retained last-good rows even if one source failed; status is explicit.
     prepared = target_plan(p, states)
     directory = p.root / "crawl-campaigns" / config["campaign_id"]
@@ -212,9 +228,11 @@ def run_pass(
     return {
         "state": "finished_with_holds"
         if prepared["gaps"]
+        or any(row["state"] != "succeeded" for row in source_status)
         or any(r["state"] not in {"succeeded", "finished"} for r in outcomes + completed)
         else "finished",
         "source_jobs": outcomes,
+        "source_status": source_status,
         "operator_runs": completed,
         "prepared_targets": len(prepared["targets"]),
         "gaps": len(prepared["gaps"]),

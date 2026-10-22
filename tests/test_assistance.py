@@ -631,6 +631,58 @@ def test_post_pass_runs_only_due_assistance_source_and_retains_provenance(tmp_pa
     )
 
 
+def test_post_pass_keeps_prior_source_failure_visible(tmp_path, monkeypatch):
+    from bord_food_api.assistance_campaign import run_pass
+    from bord_food_api.platform import atomic_json
+    from bord_food_api.settings import SOURCE_DEFAULTS
+
+    policy = tmp_path / "policy.json"
+    policy.write_text(
+        json.dumps(
+            {
+                "network": {"mode": "bulk_only"},
+                "sources": {
+                    name: {"enabled": name == "osm_food_assistance"} for name in SOURCE_DEFAULTS
+                },
+            }
+        )
+    )
+    monkeypatch.setenv("BORD_FOOD_CONFIG", str(policy))
+    root = tmp_path / "data"
+    p = Platform(root)
+    p.initialize()
+    atomic_json(root / "crawl-campaigns/supermarkets/status.json", {"state": "finished"})
+    config = {
+        "campaign_id": "assistance",
+        "states": ["IA"],
+        "after_campaigns": ["supermarkets"],
+        "operator_crawl_enabled": False,
+    }
+    from bord_food_api.transport import PolicyError
+
+    def quota_block(*_):
+        raise PolicyError("installation_quota_exhausted")
+
+    failed = run_pass(Settings(data_dir=root), config, acquisition=quota_block)
+    assert failed["source_jobs"][0]["reason"] == "installation_quota_exhausted"
+    identifier = failed["source_jobs"][0]["job_id"]
+    result = run_pass(
+        Settings(data_dir=root),
+        config,
+        acquisition=lambda *_: (_ for _ in ()).throw(AssertionError("idle pass fetched")),
+    )
+    assert result["state"] == "finished_with_holds"
+    assert result["source_jobs"] == []
+    assert result["source_status"] == [
+        {
+            "source": "osm_food_assistance",
+            "id": identifier,
+            "state": "blocked_by_policy",
+            "reason": "installation_quota_exhausted",
+        }
+    ]
+
+
 def test_source_relocation_and_contact_conflicts_are_retained_for_review(tmp_path):
     p = Platform(tmp_path)
     p.sync("feed_america", "IA", "r1", feed_records(), complete=False)

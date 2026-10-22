@@ -1,0 +1,16 @@
+{
+  "release": "/mnt/cache/git/compose/productivity/config/food-assistance-releases/c70c937a683f19b1b8772b5e5058a1bf48c5788bbb681ed597e3e1d00ae6cf83",
+  "campaign": "food-assistance-after-small-states-20261022-r2",
+  "recovery_job": "job_58f0da1a87524637b7443a8adbdb4129",
+  "quota_bytes": 274877906944,
+  "only_assistance_recreated": true,
+  "no_image_build_or_push": true,
+  "compile_preflight_files": 64,
+  "compile_preflight_network": "none",
+  "preparation_errors": [
+    "Initial one-shot helper resolved old /app package; no enqueue occurred.",
+    "Corrected helper used image default UID without data access; no enqueue occurred.",
+    "Enqueue performed successfully through deployed worker UID99."
+  ],
+  "recorded_at": 1792690706.150857
+}

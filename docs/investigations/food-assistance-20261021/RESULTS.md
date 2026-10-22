@@ -46,3 +46,51 @@ filesystem and was not imported into production.
 Runtime deployment/launch and final checks are recorded in separate receipts when performed.
 No national food-assistance completeness, live Feed America/211 import or companion activation
 should be inferred from implementation or the synthetic qualification.
+
+
+## Deployed runtime and October 22 recovery
+
+The API source overlay was deployed October 21; pinned image reused, no image build or Git
+push. Direct liveness/readiness/health/products/storage/USDA requests passed. The initial
+network-none qualification used synthetic data only. See `deployment.json` and `launch.json`.
+The full supermarket controller has now finished with holds, releasing the assistance phase.
+
+The initial assistance import was blocked by the inherited 50 GiB installation quota against
+approximately 116 GiB of existing retained data. Idle passes incorrectly hid the outstanding
+failure as finished. Fixed persistent source-status reporting, allowlisted safe budget failure
+reasons, and an explicit 256 GiB worker quota (5 GiB free reserve, unchanged small source caps).
+Regression exercises a real mocked quota failure and verifies it remains visible next pass.
+
+Only the assistance worker was replaced with frozen recovery release `c70c937a…ae6cf83`,
+campaign `food-assistance-after-small-states-20261022-r2`. Prior campaign, job and history are
+retained. One explicit new job was enqueued. Two one-shot preparation helpers failed without
+enqueuing (old package path, then default UID); enqueue succeeded through the worker's UID99.
+Source jobs subsequently ran under the new quota. Recovery and rollback are in
+`recovery-deployment.json` and the Tower service runbook.
+
+**Actual live result:** Iowa OSM partition published **25 sites and 25 services**, zero dated
+events, source clock `2026-10-22T17:37:51Z`. All25 have coordinates,13 structured streets,
+5phones,3websites,3raw schedules, no independently verified records. These are sparse OSM
+assertions, not a complete pantry census or proof of walk-in availability.23 operator targets
+lack required identity/contact details; two eligible targets were held by existing crawl
+history without new operator page requests. One duplicate candidate is retained for review.
+Jev reservations/answers remain zero for this campaign.
+
+A later state request failed transiently; the source job is `retry_wait`. The background
+worker remains healthy with automatic retries and six-hour passes; the other12 states have
+not yet published. A primary diagnostic returned502; a single separately reviewed Private.coffee
+qualification timed out. No fallback rotation or restricted-source access was activated.
+
+Direct authenticated Iowa assistance search now returns200. USDA/products/storage and existing
+health endpoints remain200; unrelated pack refs match the pre-import snapshot and the735Iowa
+store count remains. API/Bòrd/history container start times were unchanged during recovery.
+See `runtime-verification-20261022.json`, `baseline-quality.json` and source job checkpoints.
+Feed America,211 and jurisdiction imports remain rights/profile gated. USDA program metadata,
+aggregate food-access analytics, operator moderation and the Bòrd food-assistance UI are not
+implemented/activated here. The companion handoff is `docs/BORD-FOOD-ASSISTANCE-HANDOFF.md`.
+
+Final validation: **437 tests passed in30.88s**, one existing Starlette/httpx deprecation warning;
+`ruff check .`, OpenAPI check and whitespace check passed.64frozen Python files compiled on the
+actual image with network disabled. Tower repository validation passed with existing generated/
+sensitive-archive warnings. Isolated audit attempted; development VM unreachable, canonical
+inventory untouched. No paid requests during this resume. See `checks.json`.

@@ -1,0 +1,157 @@
+{
+  "verified_at": 1792690774.6883273,
+  "campaigns": {
+    "small-states-20261020": {
+      "state": "finished_with_holds",
+      "active": null,
+      "active_run": null,
+      "updated_at": 1792578504.7489047
+    },
+    "food-assistance-after-small-states-20261022-r2": {
+      "actual_billing": "not_measured",
+      "config_sha256": "37229e8239bf7f0c5f5b628639c237f8bd5712201f7fd0b2688b6f66e994bbe7",
+      "duplicate_candidates": 1,
+      "gaps": 23,
+      "jev_ledger_after": {
+        "answered": 0,
+        "reservations": 0,
+        "reserved_nanousd": 0
+      },
+      "jev_ledger_before": {
+        "answered": 0,
+        "reservations": 0,
+        "reserved_nanousd": 0
+      },
+      "next_pass_at": 1792712354.4137592,
+      "operator_runs": [
+        {
+          "campaign_id": "food-assistance-after-small-states-20261022-r2-1792690754-0",
+          "completed_at": 1792690754.2918603,
+          "started_at": 1792690754.2210267,
+          "state": "finished_with_holds",
+          "targets": {
+            "osm_assistance_site_3bb6d809eae9436aae94e8c686b7c407": {
+              "error_type": "CrawlBlocked",
+              "http_status": null,
+              "reason": "historical_detail_unavailable",
+              "state": "host_blocked"
+            }
+          }
+        },
+        {
+          "campaign_id": "food-assistance-after-small-states-20261022-r2-1792690754-1",
+          "completed_at": 1792690754.3924494,
+          "started_at": 1792690754.3230994,
+          "state": "finished_with_holds",
+          "targets": {
+            "osm_assistance_site_4f752d836dba4263999d7e2ac4c00a52": {
+              "error_type": "CrawlBlocked",
+              "http_status": null,
+              "reason": "historical_detail_unavailable",
+              "state": "host_blocked"
+            }
+          }
+        }
+      ],
+      "prepared_targets": 2,
+      "source_jobs": [
+        {
+          "job_id": "job_58f0da1a87524637b7443a8adbdb4129",
+          "reason": "transient_transport_error",
+          "state": "retry_wait"
+        }
+      ],
+      "source_status": [
+        {
+          "id": "job_58f0da1a87524637b7443a8adbdb4129",
+          "reason": "transient_transport_error",
+          "source": "osm_food_assistance",
+          "state": "retry_wait"
+        }
+      ],
+      "state": "finished_with_holds",
+      "supermarket_dependency": {
+        "ready": true,
+        "reason": "supermarket_passes_terminal"
+      },
+      "updated_at": 1792690754.4137614
+    }
+  },
+  "source_jobs": [
+    {
+      "id": "job_60d9e079bbb64a99a162b00c56fffc5c",
+      "source": "osm_food_assistance",
+      "state": "blocked_by_policy",
+      "reason": "source_policy_blocked",
+      "attempt": 1,
+      "due": 1792578521.548632,
+      "checkpoint": "{\"phase\": \"discovering\"}"
+    },
+    {
+      "id": "job_58f0da1a87524637b7443a8adbdb4129",
+      "source": "osm_food_assistance",
+      "state": "retry_wait",
+      "reason": "transient_transport_error",
+      "attempt": 1,
+      "due": 1792690803.151245,
+      "checkpoint": "{\"generation\": \"g_ac25d3a075a04068b44f08817f607a95\", \"partition\": \"IA\", \"phase\": \"published\", \"transferred_bytes\": 8889}"
+    }
+  ],
+  "packs": {
+    "assistance_osm": "objects/catalogs/ae9b8a0d7a37a1fa400d6d5f176d5db99db7310fd4ee03c9ba0b71a4980838ea.sqlite",
+    "guidance": "objects/catalogs/3daf0649a0fcab8bc669fbb2b71566da48acf3dd66d496b2165ecb398d383978.sqlite",
+    "maps": "objects/catalogs/a9b06e205b0bb0f6e0c1e39c5c767a972f01480c5366971947b559d0ca2150eb.sqlite",
+    "products": "objects/catalogs/4cbea13626fdf2a08ac9893947528858db1d1bce3331da9b9b8cc139875f7f4c.sqlite",
+    "stores": "objects/catalogs/299574cbc71469da924e22f1f854424f273e51cb7311b8cc764a332826a0fa8c.sqlite",
+    "usda": "objects/catalogs/0624d53e2f1a15e64e55f3fcfa16bf9b7adbab0d2899c392f08cb1c576e37d0f.sqlite"
+  },
+  "counts": {
+    "assistance_site": 0,
+    "osm_assistance_site": 25,
+    "assistance_service": 0,
+    "osm_assistance_service": 25,
+    "assistance_event": 0,
+    "osm_assistance_event": 0
+  },
+  "iowa_records": 735,
+  "iowa_sha256": "569435eef758c5ff168dc82f385dbafc31fc325e5497ad3dc7520460c2fe0a1a",
+  "api": {
+    "/live": 200,
+    "/ready": 200,
+    "/health": 200,
+    "/v1/products?limit=1": 200,
+    "/v1/guidance/storage?limit=1": 200,
+    "/fdc/v1/foods/search?query=apple&pageSize=1": 200,
+    "/v1/food-assistance/sites?dataset=osm&state=IA&limit=1": 200
+  },
+  "containers": [
+    {
+      "name": "bord-food-api",
+      "status": "running",
+      "started": "2026-10-21T06:28:50.819044922Z",
+      "health": "healthy",
+      "oom": false
+    },
+    {
+      "name": "Bord",
+      "status": "running",
+      "started": "2026-10-20T19:02:26.670347701Z",
+      "health": "healthy",
+      "oom": false
+    },
+    {
+      "name": "bord-food-crawl-history",
+      "status": "running",
+      "started": "2026-10-20T19:29:40.338132707Z",
+      "health": "healthy",
+      "oom": false
+    },
+    {
+      "name": "bord-food-assistance",
+      "status": "running",
+      "started": "2026-10-22T17:37:02.167830254Z",
+      "health": "healthy",
+      "oom": false
+    }
+  ]
+}

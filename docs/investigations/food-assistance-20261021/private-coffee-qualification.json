@@ -1,0 +1,11 @@
+{
+  "checked_at": 1792690665.8783622,
+  "source": "https://overpass.private.coffee/api/interpreter",
+  "state": "IA",
+  "outcome": "TimeoutError",
+  "catalog_publication": false,
+  "fallback_activated": false,
+  "user_agent": "BordFoodData/1.0 (operator: hello@foldlab.app)",
+  "terms_reviewed": "https://overpass.private.coffee/",
+  "scope": "one serial bounded public source qualification"
+}

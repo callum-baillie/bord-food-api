@@ -75,8 +75,8 @@ stock is derived from these records.
 ## Enrichment follows supermarket crawling
 
 ```
-python scripts/run-food-assistance.py config/food-assistance-campaign.json --data-dir /data
-python scripts/run-food-assistance.py config/food-assistance-campaign.json --data-dir /data --run --resume
+PYTHONPATH=. python scripts/run-food-assistance.py config/food-assistance-campaign.json --data-dir /data
+PYTHONPATH=. python scripts/run-food-assistance.py config/food-assistance-campaign.json --data-dir /data --run --resume
 ```
 
 The first command stages/inspects only, with zero source or paid requests. The second is the
@@ -159,3 +159,17 @@ See [dated evidence](investigations/food-assistance-20261021/RESULTS.md).
 
 Bòrd assistance UI, mobile calendar/reminders, household pantry recognition and corrections
 moderation are companion work, not changes made to the household app by this API feature.
+
+## Production quota and source health
+
+The assistance worker shares retained downloads, catalogs and backups under `/data`.
+Its explicit 256 GiB installation quota includes all of those files; the former inherited
+50 GiB default was smaller than the existing approximately 116 GiB and blocked the first
+import before downloading. The reserve remains 5 GiB; each assistance response is capped
+at 16 MiB and each source pass at 128 MiB. This changes no quota in the API's own policy.
+
+The October 22 recovery uses campaign `food-assistance-after-small-states-20261022-r2`;
+the October 21 campaign and failed job remain inspectable. Every pass now includes the latest
+`source_status`, including unresolved failures on idle passes. `finished_with_holds` does
+not mean a baseline was acquired. Inspect source jobs and published pack counts. Transient
+HTTP failures retain their ordinary retry/backoff; policy blocks require operator review.
