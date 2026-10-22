@@ -281,7 +281,7 @@ def install_routes(app, settings, authenticate):
         etag = '"' + hashlib.sha256(canonical(body)).hexdigest() + '"'
         return JSONResponse(body, headers={"ETag": etag})
 
-    def page(kind, pack, filters, limit, cursor, predicate):
+    def page(kind, pack, filters, limit, cursor, predicate, transform=None):
         if len(re.findall(r"[^\W_]+", filters.get("query") or "", flags=re.UNICODE)) > 20:
             fail(422, "INVALID_INPUT", "Use at most 20 search terms.")
         require(pack)
@@ -307,7 +307,7 @@ def install_routes(app, settings, authenticate):
             ) as records:
                 for record in records:
                     if predicate(record, gen):
-                        values.append(record)
+                        values.append(transform(record, gen) if transform else record)
                     if len(values) > limit:
                         break
         except (ValueError, FileNotFoundError):
@@ -380,6 +380,9 @@ def install_routes(app, settings, authenticate):
             "open_food_facts": "products",
             "open_prices": "prices",
             "foodkeeper": "guidance",
+            "feed_america": "assistance",
+            "community_food_assistance": "assistance",
+            "osm_food_assistance": "assistance_osm",
         }
         published_sources = snapshot.get("sources", {})
         checked = {
@@ -413,6 +416,15 @@ def install_routes(app, settings, authenticate):
                             )
                             observed = observed.timestamp()
                             basis = "published_source_run"
+                        except ValueError:
+                            pass
+                elif source in {"osm_food_assistance", "feed_america", "community_food_assistance"}:
+                    source_time = cursor.get("source_observed_at")
+                    if isinstance(source_time, str):
+                        try:
+                            parsed = datetime.fromisoformat(source_time)
+                            if parsed.tzinfo is not None:
+                                observed, basis = parsed.timestamp(), "published_source_snapshot"
                         except ValueError:
                             pass
                 elif source == "open_food_facts":
@@ -495,7 +507,16 @@ def install_routes(app, settings, authenticate):
                             if source_packs[source] == name
                         ),
                     }
-                    for name in ("usda", "stores", "products", "prices", "guidance", "maps")
+                    for name in (
+                        "usda",
+                        "stores",
+                        "products",
+                        "prices",
+                        "guidance",
+                        "maps",
+                        "assistance",
+                        "assistance_osm",
+                    )
                 },
                 "sources": sources,
                 "crawling": {
@@ -582,6 +603,21 @@ def install_routes(app, settings, authenticate):
         require("stores")
         gen = generation()
         return response(find("chain", chain_id, gen), gen)
+
+    from .assistance_api import register_assistance_routes
+
+    register_assistance_routes(
+        router,
+        platform=platform,
+        page=page,
+        response=response,
+        find=find,
+        require=require,
+        generation=generation,
+        fail=fail,
+        envelope=Envelope,
+        errors=errors,
+    )
 
     @router.get("/v1/stores", response_model=Envelope[list[dict[str, Any]]], responses=errors)
     def stores(

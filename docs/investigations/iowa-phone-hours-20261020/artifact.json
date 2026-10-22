@@ -1,0 +1,472 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Improve Iowa phone and hours coverage",
+    "description": "Iowa contact and hours missingness, source research and recommended execution order.",
+    "generatedAt": "2026-10-20T20:53:51.571936+00:00",
+    "cards": [],
+    "charts": [
+      {
+        "id": "missing-hours",
+        "title": "Missing weekly hours by store group",
+        "subtitle": "October 20, 2026; eight largest groups, canonical Iowa branches. Partial and complete selected schedules both count as present.",
+        "type": "horizontalBar",
+        "dataset": "segments",
+        "sourceId": "catalog",
+        "encodings": {
+          "x": {
+            "field": "segment",
+            "type": "nominal",
+            "label": "Store group"
+          },
+          "y": {
+            "field": "missing_hours",
+            "type": "quantitative",
+            "label": "Stores missing schedules"
+          },
+          "tooltip": [
+            {
+              "field": "stores",
+              "type": "quantitative",
+              "label": "All stores"
+            },
+            {
+              "field": "missing_phone",
+              "type": "quantitative",
+              "label": "Missing phones"
+            },
+            {
+              "field": "opening_hours",
+              "type": "quantitative",
+              "label": "Schedules present"
+            }
+          ]
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "retained-tail",
+        "title": "Retained source candidates for currently missing fields",
+        "subtitle": "Exact name/address candidates, not accepted facts. New leads lack a previous field assertion from the same source. Sources overlap.",
+        "dataset": "tail",
+        "sourceId": "catalog",
+        "defaultSort": {
+          "field": "hours_candidates",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "source",
+            "label": "Source"
+          },
+          {
+            "field": "phone_candidates",
+            "label": "Phones",
+            "type": "number"
+          },
+          {
+            "field": "hours_candidates",
+            "label": "Hours",
+            "type": "number"
+          },
+          {
+            "field": "phone_without_prior_source_assertion",
+            "label": "New phone leads",
+            "type": "number"
+          },
+          {
+            "field": "hours_without_prior_source_assertion",
+            "label": "New hours leads",
+            "type": "number"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "catalog",
+        "label": "Iowa canonical branch and crawl snapshot",
+        "path": "analysis.json",
+        "query": {
+          "engine": "SQLite + Python",
+          "sql": "SELECT payload FROM entities WHERE kind='store'",
+          "description": "Stable immutable store pack read; canonical redirect/scope filtering and the exact Python calculations in analyze.py.",
+          "executed_at": "2026-10-20T20:53:51.571936+00:00",
+          "tables_used": [
+            "stores.entities"
+          ],
+          "filters": [
+            "Iowa region IA",
+            "Manifest redirect origins and directory_scope excluded removed",
+            "Generation g_55952b0eaf534c1e817cc5507ae1cf6b",
+            "Snapshot Oct 20, 2026 20:53:51 UTC; ongoing worker may change subsequent counts"
+          ],
+          "metric_definitions": [
+            "Phone/hours presence = count of canonical branch rows with nonempty selected value. Not a freshness or independent-verification score.",
+            "Missing = 735 minus presence.",
+            "Seven-day coverage = unique normalized day entries across all seven weekdays, not a holiday guarantee.",
+            "Segment = canonical chain name, known profile family or Independent / unmapped. Unmapped is not proof of independent ownership."
+          ]
+        }
+      },
+      {
+        "id": "research",
+        "label": "Reviewed primary source registry",
+        "path": "sources.json"
+      },
+      {
+        "id": "overture",
+        "label": "Overture Places schema",
+        "href": "https://docs.overturemaps.org/schema/reference/places/place/"
+      },
+      {
+        "id": "osm",
+        "label": "OSM opening-hours documentation",
+        "href": "https://wiki.openstreetmap.org/wiki/Key:opening_hours"
+      },
+      {
+        "id": "ncg",
+        "label": "National Co+op Grocers member directory",
+        "href": "https://www.ncg.coop/find-co-op"
+      },
+      {
+        "id": "oneota",
+        "label": "Oneota official store website",
+        "href": "https://oneotacoop.com/"
+      },
+      {
+        "id": "awg",
+        "label": "Hometown Market official locations page / AWG platform example",
+        "href": "https://earlhammarket.com/locations/"
+      },
+      {
+        "id": "iga",
+        "label": "IGA official store locator",
+        "href": "https://www.iga.com/find-a-store"
+      },
+      {
+        "id": "hartley",
+        "label": "City of Hartley Fiesta Foods listing",
+        "href": "https://www.hartleyiowa.com/business/grocery-convenience-store/fiesta-foods"
+      },
+      {
+        "id": "travel",
+        "label": "Travel Iowa Zamora listing",
+        "href": "https://www.traveliowa.com/places/zamora-fresh-market/7208/"
+      },
+      {
+        "id": "dial",
+        "label": "Iowa DIAL licensing",
+        "href": "https://dial.iowa.gov/licenses/food-establishments-hotels"
+      },
+      {
+        "id": "wic",
+        "label": "Iowa WIC vendor resources",
+        "href": "https://hhs.iowa.gov/assistance-programs/food-assistance/wic-Iowa/wic-vendors"
+      },
+      {
+        "id": "fsq",
+        "label": "Foursquare Open Source schema",
+        "href": "https://docs.foursquare.com/data-products/docs/places-os-data-schema"
+      },
+      {
+        "id": "fsqp",
+        "label": "Foursquare Premium schema",
+        "href": "https://docs.foursquare.com/data-products/docs/places-pro-and-premium"
+      },
+      {
+        "id": "google",
+        "label": "Google Places policies",
+        "href": "https://developers.google.com/maps/documentation/places/web-service/policies"
+      },
+      {
+        "id": "here",
+        "label": "HERE place results",
+        "href": "https://docs.here.com/geocoding-and-search/docs/result-types-place"
+      },
+      {
+        "id": "tomtom",
+        "label": "TomTom POI search",
+        "href": "https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Improve Iowa phone and hours coverage"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "sourceId": "catalog",
+        "body": "## Executive Summary\n\n- **Find official websites before expanding the same crawl.** Of 237 missing phones, 210 have no usable URL in the current queue; 249 of 423 missing hours have the same obstacle.\n- **Fix evidence reconciliation offline first.** Thirteen held schedules agree on overlapping days and already have a full-week source. Retained bulk data offers a smaller additional tail, not a complete solution.\n- **Focus on independents and unmapped stores.** This group contributes 196 missing phones and 319 missing schedules. Keep direct contacts, partial schedules and current verification separate from simple presence."
+      },
+      {
+        "id": "definitions",
+        "type": "markdown",
+        "sourceId": "catalog",
+        "body": "## What the counts measure\n\nOne canonical in-scope Iowa branch per row: **735 stores**, October 20, 2026 at **20:53 UTC**. Four redirect origins and two format exclusions are removed. Phones are present on **498** stores; normalized hours on **312**. Only **298** have explicit seven-day entries; **14** have partial representations. Fifteen present phones are marked chain contacts. Presence includes provisional/stale/conflicted values and is not a guarantee of direct contact or current opening."
+      },
+      {
+        "id": "independent",
+        "type": "markdown",
+        "sourceId": "catalog",
+        "body": "## Independents account for most missing fields\n\nAmong 336 independent/unmapped stores, 140 have phones and only 17 have schedules. That is 82.7% of the statewide missing phones and 75.4% of missing hours. The label includes unresolved chain affiliations. Treat this as the first discovery cohort; larger chains still need targeted hours work."
+      },
+      {
+        "id": "chart",
+        "type": "chart",
+        "chartId": "missing-hours"
+      },
+      {
+        "id": "extract",
+        "type": "markdown",
+        "sourceId": "catalog",
+        "body": "## Retained evidence can yield smaller, cheaper gains\n\nThere are 25 missing phones and 34 missing schedules with eligible but conflicting assertions. Thirteen schedule groups agree on every overlapping weekday and have a fuller seven-day source; 21 disagree on overlapping days. Compare day coverage and contact role before resolving them. Do not assume an omitted day is closed or count a partial source as verifying the unreported day.\n\nThe current snapshot has 212 missing phones and 352 missing hours with no retained field assertion at all. These need acquisition. There are also parser limits around seven-day am/pm schema values and source-specific time-range syntax. More AI calls over the same empty evidence cannot provide those facts."
+      },
+      {
+        "id": "source-tail",
+        "type": "table",
+        "tableId": "retained-tail"
+      },
+      {
+        "id": "new-sources",
+        "type": "markdown",
+        "sourceId": "research",
+        "body": "## Add primary networks and civic directories as discovery sources\n\nPrioritize [NCG member listings](https://www.ncg.coop/find-co-op), [IGA\u2019s locator](https://www.iga.com/find-a-store), official independent websites and municipal/chamber directories. [Oneota\u2019s official page](https://oneotacoop.com/) supplies the exact Decorah premise, phone and daily hours currently missing from the catalog. [Earlham\u2019s public locations page](https://earlhammarket.com/locations/) illustrates an AWG platform pattern; its fields are now populated by the existing crawl.\n\nMunicipal/community listings can supply rural store phones and website leads, as [Fiesta Foods in Hartley](https://www.hartleyiowa.com/business/grocery-convenience-store/fiesta-foods) demonstrates. [Travel Iowa\u2019s Zamora listing](https://www.traveliowa.com/places/zamora-fresh-market/7208/) is an exact phone lead but warns it has not been updated within twelve months: preserve it as stale, not fresh verification. Directory and store copies may share an origin."
+      },
+      {
+        "id": "paid",
+        "type": "markdown",
+        "sourceId": "research",
+        "body": "## Free place datasets do not solve weekly hours alone\n\n[Overture](https://docs.overturemaps.org/schema/reference/places/place/) and [Foursquare Open Source](https://docs.foursquare.com/data-products/docs/places-os-data-schema) document contact fields but no weekly-hours field. Foursquare is already an upstream source in parts of our retained Overture data; measure additional Iowa coverage before acquiring it separately. [Premium](https://docs.foursquare.com/data-products/docs/places-pro-and-premium) explicitly documents hours. [HERE](https://docs.here.com/geocoding-and-search/docs/result-types-place) and [TomTom](https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search) also expose hours/contact functionality, with storage/redistribution rights and actual coverage still to assess.\n\n[Google Places policy](https://developers.google.com/maps/documentation/places/web-service/policies) restricts storing/caching content, so it is a poor default for a permanent self-hosted backfill. DIAL licensing is valuable for scope/identity but is not a verified statewide hours source. No additional paid/source API calls were made."
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## Recommended order\n\n1. Prepare offline repairs for overlap-compatible schedules, am/pm schema values, contact roles and exact retained joins. Publish only reviewed/source-bound facts.\n2. Pilot **20 independents** across missing URLs, redirects/fetch failures, partial schedules and conflicts. This is a proposed pilot, not another activated crawl.\n3. Add reusable AWG/public location and CMS contact-panel profiles; discover observed same-site contact/locations links with fresh robots/branch checks.\n4. Measure new direct phones, complete schedules, official URLs, false branch/department matches and requests per accepted field. A crawl publication alone is not phone/hours success.\n5. Run the proven missing-field pass for Iowa. Keep old holds/counters; do not edit the currently frozen running campaign. Use a bounded AI evidence review only after acquiring new fragments and authorizing another paid pass."
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## What still needs checking\n\nCan a current public Iowa DIAL/WIC roster supply branch contacts rather than owner personal numbers? How much new Iowa coverage would Foursquare add beyond Overture? Which independent site platform has the best field yield in the proposed pilot? Store-owner corrections with proof/date/expiry may be needed for the long tail. No outreach was sent."
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "sourceId": "catalog",
+        "body": "## Limits and freshness\n\nThis is a stable point-in-time snapshot, not a complete Iowa census. The current worker is still running. Candidate joins are review ceilings, not accepted new facts; multiple sources overlap. Source copies do not create independent votes, and data retrieval dates do not prove recent surveys. Fourteen present schedules still lack explicit entries for all weekdays. No production publication, deployment, new crawl or paid job was performed by this investigation. The initial raw-row diagnostic was corrected to use manifest redirects before all reported calculations."
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-10-20T20:53:51.571936+00:00",
+    "status": "ready",
+    "datasets": {
+      "segments": [
+        {
+          "segment": "Independent / unmapped",
+          "stores": 336,
+          "phone": 140,
+          "website": 107,
+          "opening_hours": 17,
+          "missing_phone": 196,
+          "missing_hours": 319
+        },
+        {
+          "segment": "Walmart",
+          "stores": 62,
+          "phone": 49,
+          "website": 43,
+          "opening_hours": 30,
+          "missing_phone": 13,
+          "missing_hours": 32
+        },
+        {
+          "segment": "Target",
+          "stores": 22,
+          "phone": 22,
+          "website": 22,
+          "opening_hours": 4,
+          "missing_phone": 0,
+          "missing_hours": 18
+        },
+        {
+          "segment": "Fareway",
+          "stores": 121,
+          "phone": 119,
+          "website": 119,
+          "opening_hours": 105,
+          "missing_phone": 2,
+          "missing_hours": 16
+        },
+        {
+          "segment": "ALDI",
+          "stores": 43,
+          "phone": 21,
+          "website": 34,
+          "opening_hours": 29,
+          "missing_phone": 22,
+          "missing_hours": 14
+        },
+        {
+          "segment": "Hy-Vee",
+          "stores": 124,
+          "phone": 124,
+          "website": 124,
+          "opening_hours": 113,
+          "missing_phone": 0,
+          "missing_hours": 11
+        },
+        {
+          "segment": "Sam's Club",
+          "stores": 9,
+          "phone": 9,
+          "website": 9,
+          "opening_hours": 2,
+          "missing_phone": 0,
+          "missing_hours": 7
+        },
+        {
+          "segment": "Natural Grocers",
+          "stores": 6,
+          "phone": 2,
+          "website": 6,
+          "opening_hours": 5,
+          "missing_phone": 4,
+          "missing_hours": 1
+        }
+      ],
+      "tail": [
+        {
+          "source": "openstreetmap",
+          "phone_candidates": 28,
+          "hours_candidates": 46,
+          "phone_without_prior_source_assertion": 6,
+          "hours_without_prior_source_assertion": 22
+        },
+        {
+          "source": "overture_places",
+          "phone_candidates": 27,
+          "hours_candidates": 0,
+          "phone_without_prior_source_assertion": 2,
+          "hours_without_prior_source_assertion": 0
+        }
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "catalog",
+      "label": "Iowa canonical branch and crawl snapshot",
+      "path": "analysis.json",
+      "query": {
+        "engine": "SQLite + Python",
+        "sql": "SELECT payload FROM entities WHERE kind='store'",
+        "description": "Stable immutable store pack read; canonical redirect/scope filtering and the exact Python calculations in analyze.py.",
+        "executed_at": "2026-10-20T20:53:51.571936+00:00",
+        "tables_used": [
+          "stores.entities"
+        ],
+        "filters": [
+          "Iowa region IA",
+          "Manifest redirect origins and directory_scope excluded removed",
+          "Generation g_55952b0eaf534c1e817cc5507ae1cf6b",
+          "Snapshot Oct 20, 2026 20:53:51 UTC; ongoing worker may change subsequent counts"
+        ],
+        "metric_definitions": [
+          "Phone/hours presence = count of canonical branch rows with nonempty selected value. Not a freshness or independent-verification score.",
+          "Missing = 735 minus presence.",
+          "Seven-day coverage = unique normalized day entries across all seven weekdays, not a holiday guarantee.",
+          "Segment = canonical chain name, known profile family or Independent / unmapped. Unmapped is not proof of independent ownership."
+        ]
+      }
+    },
+    {
+      "id": "research",
+      "label": "Reviewed primary source registry",
+      "path": "sources.json"
+    },
+    {
+      "id": "overture",
+      "label": "Overture Places schema",
+      "href": "https://docs.overturemaps.org/schema/reference/places/place/"
+    },
+    {
+      "id": "osm",
+      "label": "OSM opening-hours documentation",
+      "href": "https://wiki.openstreetmap.org/wiki/Key:opening_hours"
+    },
+    {
+      "id": "ncg",
+      "label": "National Co+op Grocers member directory",
+      "href": "https://www.ncg.coop/find-co-op"
+    },
+    {
+      "id": "oneota",
+      "label": "Oneota official store website",
+      "href": "https://oneotacoop.com/"
+    },
+    {
+      "id": "awg",
+      "label": "Hometown Market official locations page / AWG platform example",
+      "href": "https://earlhammarket.com/locations/"
+    },
+    {
+      "id": "iga",
+      "label": "IGA official store locator",
+      "href": "https://www.iga.com/find-a-store"
+    },
+    {
+      "id": "hartley",
+      "label": "City of Hartley Fiesta Foods listing",
+      "href": "https://www.hartleyiowa.com/business/grocery-convenience-store/fiesta-foods"
+    },
+    {
+      "id": "travel",
+      "label": "Travel Iowa Zamora listing",
+      "href": "https://www.traveliowa.com/places/zamora-fresh-market/7208/"
+    },
+    {
+      "id": "dial",
+      "label": "Iowa DIAL licensing",
+      "href": "https://dial.iowa.gov/licenses/food-establishments-hotels"
+    },
+    {
+      "id": "wic",
+      "label": "Iowa WIC vendor resources",
+      "href": "https://hhs.iowa.gov/assistance-programs/food-assistance/wic-Iowa/wic-vendors"
+    },
+    {
+      "id": "fsq",
+      "label": "Foursquare Open Source schema",
+      "href": "https://docs.foursquare.com/data-products/docs/places-os-data-schema"
+    },
+    {
+      "id": "fsqp",
+      "label": "Foursquare Premium schema",
+      "href": "https://docs.foursquare.com/data-products/docs/places-pro-and-premium"
+    },
+    {
+      "id": "google",
+      "label": "Google Places policies",
+      "href": "https://developers.google.com/maps/documentation/places/web-service/policies"
+    },
+    {
+      "id": "here",
+      "label": "HERE place results",
+      "href": "https://docs.here.com/geocoding-and-search/docs/result-types-place"
+    },
+    {
+      "id": "tomtom",
+      "label": "TomTom POI search",
+      "href": "https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search"
+    }
+  ]
+}

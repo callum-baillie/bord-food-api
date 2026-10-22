@@ -1,0 +1,34 @@
+{
+  "pytest": {
+    "command": ".venv/bin/python -m pytest",
+    "passed": 374,
+    "warnings": 1,
+    "seconds": 14.51
+  },
+  "ruff_check": "passed",
+  "ruff_format_check": {
+    "state": "passed",
+    "files": 179
+  },
+  "openapi_export_check": "passed",
+  "git_diff_check": "passed",
+  "plan_package": {
+    "state": "passed",
+    "groups": 13,
+    "checksums": 93
+  },
+  "tower_repository_validator": {
+    "exit_code": 0,
+    "existing_generated_output_info": true,
+    "existing_sensitive_archive_warnings": true
+  },
+  "tower_audit": {
+    "isolated_copy": true,
+    "vm_unreachable_exit": 255,
+    "canonical_inventory_unchanged": true
+  },
+  "forgejo_issue": {
+    "status": 502,
+    "created": false
+  }
+}

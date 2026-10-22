@@ -1,0 +1,38 @@
+[
+  {
+    "name": "/bord-food-api",
+    "image": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+    "started": "2026-10-20T21:21:22.602468387Z",
+    "status": "running",
+    "health": "healthy",
+    "restarts": 0,
+    "oom": false
+  },
+  {
+    "name": "/Bord",
+    "image": "sha256:2cec8d48070c9ad3b38537c0c0d6cccf48d833b9292257e143b9f1e25c7dd26d",
+    "started": "2026-10-20T19:02:26.670347701Z",
+    "status": "running",
+    "health": "healthy",
+    "restarts": 0,
+    "oom": false
+  },
+  {
+    "name": "/bord-food-crawl-history",
+    "image": "sha256:2bed62be6d533db8bacc7637861e7d4cfc9b90cbc6a4eae932ff3db255d446ec",
+    "started": "2026-10-20T19:29:40.338132707Z",
+    "status": "running",
+    "health": "healthy",
+    "restarts": 0,
+    "oom": false
+  },
+  {
+    "name": "/bord-food-iowa-quality-continuation-20261020",
+    "image": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+    "started": "2026-10-20T20:16:59.133832627Z",
+    "status": "exited",
+    "health": null,
+    "restarts": 0,
+    "oom": false
+  }
+]

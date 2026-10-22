@@ -1,0 +1,426 @@
+{
+  "campaign_id": "iowa-contact-pilot1-20261020",
+  "activation_enabled": true,
+  "state": "IA",
+  "collection_profile": "public-store-layout-evidence-v1",
+  "field_focus": true,
+  "capture_prices": false,
+  "capture_product_inventory": false,
+  "capture_product_catalog": false,
+  "targets": [
+    {
+      "name": "Oneota Community Coop",
+      "chain_id": null,
+      "spider": null,
+      "store_id": "sto_00771498a3124edca3ced134b7c84326",
+      "expected_branch": "Oneota Community Coop",
+      "source_website": null,
+      "source_address": {
+        "city": "Decorah",
+        "postal_code": "52101",
+        "region": "IA",
+        "street": "312 W Water St",
+        "unit": null
+      },
+      "url": "https://oneotacoop.com/",
+      "single_store_site": true,
+      "canonical_review_required": true,
+      "observed_url_evidence": {
+        "kind": "observed_official_branch_page",
+        "store_id": "sto_00771498a3124edca3ced134b7c84326",
+        "source_address": {
+          "city": "Decorah",
+          "postal_code": "52101",
+          "region": "IA",
+          "street": "312 W Water St",
+          "unit": null
+        },
+        "url": "https://oneotacoop.com/",
+        "evidence_url": "https://oneotacoop.com/",
+        "reviewed_at": 1792531494.271162,
+        "reviewer": "operator-20261020",
+        "review_document_sha256": "f676f5dd403cf8d6635286914b5b9e1ecb5f98e955487f2a41b0cac41d47a458"
+      },
+      "site_identity_review": {
+        "store_id": "sto_00771498a3124edca3ced134b7c84326",
+        "source_address": {
+          "city": "Decorah",
+          "postal_code": "52101",
+          "region": "IA",
+          "street": "312 W Water St",
+          "unit": null
+        },
+        "evidence_sha256": "f676f5dd403cf8d6635286914b5b9e1ecb5f98e955487f2a41b0cac41d47a458",
+        "reviewer": "operator-20261020",
+        "scope": "single_premise_contact"
+      }
+    },
+    {
+      "name": "Hometown Market Of Earlham Llc",
+      "chain_id": null,
+      "spider": null,
+      "store_id": "sto_435e9d56edea4d1d915cfeb7170dae81",
+      "expected_branch": "Hometown Market Of Earlham Llc",
+      "source_website": "https://earlhammarket.com",
+      "source_address": {
+        "city": "Earlham",
+        "postal_code": "50072",
+        "region": "IA",
+        "street": "145 N Chestnut Ave",
+        "unit": null
+      },
+      "url": "https://earlhammarket.com/locations/",
+      "single_store_site": true,
+      "canonical_review_required": true,
+      "observed_url_evidence": {
+        "kind": "observed_official_branch_page",
+        "store_id": "sto_435e9d56edea4d1d915cfeb7170dae81",
+        "source_address": {
+          "city": "Earlham",
+          "postal_code": "50072",
+          "region": "IA",
+          "street": "145 N Chestnut Ave",
+          "unit": null
+        },
+        "url": "https://earlhammarket.com/locations/",
+        "evidence_url": "https://earlhammarket.com/locations/",
+        "reviewed_at": 1792531494.2711735,
+        "reviewer": "operator-20261020",
+        "review_document_sha256": "f676f5dd403cf8d6635286914b5b9e1ecb5f98e955487f2a41b0cac41d47a458"
+      },
+      "site_identity_review": {
+        "store_id": "sto_435e9d56edea4d1d915cfeb7170dae81",
+        "source_address": {
+          "city": "Earlham",
+          "postal_code": "50072",
+          "region": "IA",
+          "street": "145 N Chestnut Ave",
+          "unit": null
+        },
+        "evidence_sha256": "f676f5dd403cf8d6635286914b5b9e1ecb5f98e955487f2a41b0cac41d47a458",
+        "reviewer": "operator-20261020",
+        "scope": "single_premise_contact"
+      }
+    },
+    {
+      "name": "Wheatsfield Cooperative",
+      "chain_id": null,
+      "spider": null,
+      "store_id": "sto_2a998e50d4db4ae99134bb9ab03abbfc",
+      "expected_branch": "Wheatsfield Cooperative",
+      "source_website": "https://www.wheatsfield.coop",
+      "source_address": {
+        "city": "Ames",
+        "postal_code": "50010",
+        "region": "IA",
+        "street": "413 Northwestern Avenue",
+        "unit": null
+      },
+      "url": "https://www.wheatsfield.coop/",
+      "single_store_site": true,
+      "canonical_review_required": true,
+      "observed_url_evidence": {
+        "kind": "observed_official_branch_page",
+        "store_id": "sto_2a998e50d4db4ae99134bb9ab03abbfc",
+        "source_address": {
+          "city": "Ames",
+          "postal_code": "50010",
+          "region": "IA",
+          "street": "413 Northwestern Avenue",
+          "unit": null
+        },
+        "url": "https://www.wheatsfield.coop/",
+        "evidence_url": "https://www.wheatsfield.coop/",
+        "reviewed_at": 1792531494.2711792,
+        "reviewer": "operator-20261020",
+        "review_document_sha256": "f676f5dd403cf8d6635286914b5b9e1ecb5f98e955487f2a41b0cac41d47a458"
+      },
+      "site_identity_review": {
+        "store_id": "sto_2a998e50d4db4ae99134bb9ab03abbfc",
+        "source_address": {
+          "city": "Ames",
+          "postal_code": "50010",
+          "region": "IA",
+          "street": "413 Northwestern Avenue",
+          "unit": null
+        },
+        "evidence_sha256": "f676f5dd403cf8d6635286914b5b9e1ecb5f98e955487f2a41b0cac41d47a458",
+        "reviewer": "operator-20261020",
+        "scope": "single_premise_contact"
+      }
+    },
+    {
+      "name": "New Pioneer Cooperative Society 2",
+      "chain_id": null,
+      "spider": null,
+      "store_id": "sto_df167da017874693bac1abf35f125608",
+      "expected_branch": "New Pioneer Cooperative Society 2",
+      "source_website": null,
+      "source_address": {
+        "city": "Coralville",
+        "postal_code": "52241",
+        "region": "IA",
+        "street": "1101 2nd St",
+        "unit": null
+      },
+      "url": "https://newpi.coop/contact/",
+      "single_store_site": false,
+      "canonical_review_required": true,
+      "observed_url_evidence": {
+        "kind": "observed_official_branch_page",
+        "store_id": "sto_df167da017874693bac1abf35f125608",
+        "source_address": {
+          "city": "Coralville",
+          "postal_code": "52241",
+          "region": "IA",
+          "street": "1101 2nd St",
+          "unit": null
+        },
+        "url": "https://newpi.coop/contact/",
+        "evidence_url": "https://newpi.coop/contact/",
+        "reviewed_at": 1792531494.2711847,
+        "reviewer": "operator-20261020",
+        "review_document_sha256": "f676f5dd403cf8d6635286914b5b9e1ecb5f98e955487f2a41b0cac41d47a458"
+      },
+      "site_identity_review": {
+        "store_id": "sto_df167da017874693bac1abf35f125608",
+        "source_address": {
+          "city": "Coralville",
+          "postal_code": "52241",
+          "region": "IA",
+          "street": "1101 2nd St",
+          "unit": null
+        },
+        "evidence_sha256": "f676f5dd403cf8d6635286914b5b9e1ecb5f98e955487f2a41b0cac41d47a458",
+        "reviewer": "operator-20261020",
+        "scope": "multi_branch_contact_panel"
+      }
+    },
+    {
+      "store_id": "sto_00c8a79f06144b46b7438039b42776c0",
+      "name": "Valley Fresh Market",
+      "chain_id": null,
+      "spider": null,
+      "source_website": "https://valleyfreshmkt.com",
+      "url": "https://www.valleyfreshmkt.com/",
+      "source_address": {
+        "city": "Elgin",
+        "postal_code": "52141",
+        "region": "IA",
+        "street": "244 Center St",
+        "unit": null
+      },
+      "expected_branch": "Valley Fresh Market Elgin",
+      "country": "US",
+      "observed_url_evidence": {
+        "kind": "provider_branch_website_candidate",
+        "source_id": "overture_places",
+        "record_id": "8d72e717-0303-4f1c-b4af-2f3357d7bf4b",
+        "extract_sha256": "55a9f0dbc6cc4bb280218f7193b06b407ea44e3991b587ad6c933df8b93e2ea6",
+        "provider_reported_url": "https://valleyfreshmkt.com/",
+        "source_address": {
+          "city": "Elgin",
+          "postal_code": "52141",
+          "region": "IA",
+          "street": "244 Center St",
+          "unit": null
+        },
+        "store_id": "sto_00c8a79f06144b46b7438039b42776c0",
+        "url": "https://www.valleyfreshmkt.com/",
+        "evidence_url": "https://www.valleyfreshmkt.com/",
+        "reviewed_at": 1792521808.318878,
+        "normalization": "Operator reviewed HTTPS www alias in observed robots redirect. Branch path unchanged",
+        "redirect_proof": {
+          "source_url": "https://valleyfreshmkt.com/robots.txt",
+          "location": "https://www.valleyfreshmkt.com/robots.txt",
+          "http_status": 301,
+          "checked_at": 1792522401.7014256
+        }
+      },
+      "source_authority": "community",
+      "single_store_site": true,
+      "missing_field_priority": 2
+    }
+  ],
+  "scopes": {
+    "oneotacoop.com": {
+      "state": "approved",
+      "review_evidence": "Owner public robots authorization; exact source branch/site identity review in site-identity-reviews.txt or retained provider proof; no inventory/prices",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "oneotacoop.com",
+        "scope_prefix": "/",
+        "max_pages_run": 3,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 6291456,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 600,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true,
+        "report_redirects": true,
+        "robots_redirect_hosts": [
+          "oneotacoop.com",
+          "www.oneotacoop.com"
+        ]
+      }
+    },
+    "earlhammarket.com": {
+      "state": "approved",
+      "review_evidence": "Owner public robots authorization; exact source branch/site identity review in site-identity-reviews.txt or retained provider proof; no inventory/prices",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "earlhammarket.com",
+        "scope_prefix": "/",
+        "max_pages_run": 3,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 6291456,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 600,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true,
+        "report_redirects": true,
+        "robots_redirect_hosts": [
+          "earlhammarket.com",
+          "www.earlhammarket.com"
+        ]
+      }
+    },
+    "www.wheatsfield.coop": {
+      "state": "approved",
+      "review_evidence": "Owner public robots authorization; exact source branch/site identity review in site-identity-reviews.txt or retained provider proof; no inventory/prices",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.wheatsfield.coop",
+        "scope_prefix": "/",
+        "max_pages_run": 3,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 6291456,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 600,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true,
+        "report_redirects": true,
+        "robots_redirect_hosts": [
+          "wheatsfield.coop",
+          "www.wheatsfield.coop"
+        ]
+      }
+    },
+    "newpi.coop": {
+      "state": "approved",
+      "review_evidence": "Owner public robots authorization; exact source branch/site identity review in site-identity-reviews.txt or retained provider proof; no inventory/prices",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "newpi.coop",
+        "scope_prefix": "/",
+        "max_pages_run": 3,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 6291456,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 600,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true,
+        "report_redirects": true,
+        "robots_redirect_hosts": [
+          "newpi.coop",
+          "www.newpi.coop"
+        ]
+      }
+    },
+    "www.valleyfreshmkt.com": {
+      "state": "approved",
+      "review_evidence": "Owner public robots authorization; exact source branch/site identity review in site-identity-reviews.txt or retained provider proof; no inventory/prices",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.valleyfreshmkt.com",
+        "scope_prefix": "/",
+        "max_pages_run": 3,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 6291456,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 600,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true,
+        "report_redirects": true,
+        "robots_redirect_hosts": [
+          "valleyfreshmkt.com",
+          "www.valleyfreshmkt.com"
+        ]
+      }
+    }
+  },
+  "duration_seconds": 86400,
+  "directory_stores": 5,
+  "missing_branch_urls": 0,
+  "decisions": {
+    "budget_nanousd": 1000000000,
+    "max_calls": 100,
+    "key_file": "/run/secrets/jev-api-key",
+    "retain_branch_html": true,
+    "review_every_page": true,
+    "global_budget_nanousd": 15000000000
+  },
+  "canonical_followup_enabled": true,
+  "coverage_gaps": [],
+  "post_pass_review": {
+    "enabled": false
+  },
+  "previous_campaign": "iowa-fields-statewide-20261020",
+  "continuation_policy": "only previous pending/deferred targets; previous successes, actual failures and interrupted attempts retained without automatic retry",
+  "prior_outcomes": []
+}

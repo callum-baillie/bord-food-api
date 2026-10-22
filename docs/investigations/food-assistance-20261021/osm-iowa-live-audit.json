@@ -1,0 +1,7 @@
+{
+  "status": "source_access_unavailable",
+  "error_type": "TransportError",
+  "source_http_status": 502,
+  "published": false,
+  "automatic_retry": false
+}

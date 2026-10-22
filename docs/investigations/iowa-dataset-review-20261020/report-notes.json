@@ -1,0 +1,56 @@
+{
+  "audience": "product stakeholders",
+  "delivery_mode": "html",
+  "runtime_reason": "Unclassified runtime; portable HTML selected by report skill. No hosted publication.",
+  "required_structure": {
+    "Title": "title",
+    "Executive Summary": "summary",
+    "Key findings with visual evidence": [
+      "definitions",
+      "source-comparison",
+      "queue",
+      "captured",
+      "directory-fields",
+      "quick-wins"
+    ],
+    "Recommended next steps": "next",
+    "Further questions": "questions",
+    "Caveats and assumptions": "caveats"
+  },
+  "chart_map": [
+    {
+      "id": "outcomes",
+      "question": "Where did the statewide target queue stop?",
+      "family": "comparison bar",
+      "grain": "319 target records, mutually exclusive outcomes",
+      "palette": "shared default categorical/neutral",
+      "qa": "packaged portable verifier"
+    },
+    {
+      "id": "fields",
+      "question": "Which published fields are populated?",
+      "family": "comparison bar",
+      "grain": "735 directory records for every field",
+      "palette": "shared default",
+      "qa": "packaged portable verifier"
+    }
+  ],
+  "table_rationale": "Source populations have incomparable scopes, so exact lookup is clearer than one misleading coverage bar. Structured crawler fields and enrichment candidates need exact count lookup.",
+  "omitted_trend": "Only one serving snapshot; no current-accuracy or temporal trend is supported.",
+  "scope": "Read-only live snapshot plus offline analysis; no source/paid requests or serving changes.",
+  "notebook": "Code cells executed directly with the repository Python interpreter; actual stdout retained. No Jupyter kernel dependency.",
+  "html_correction": "Preserved all report content, sources and datasets; set table columns to content sizing after desktop horizontal overflow. Removed block-wide source from mixed ledger/profile paragraph.",
+  "html_delivery_status": "blocked",
+  "html_delivery_blocker": "Canonical portable builder rejected desktop horizontal overflow at 1440px after a targeted table content-sizing correction; no HTML released. Full findings.md, profile and canonical artifact retained.",
+  "source_capture": "2026-10-20T14:26:23.693491+00:00",
+  "analysis_validation": "Assertions reconcile all native source outcomes and current crosswalk targets; field counts and distinct-store grains checked.",
+  "quality_checks": {
+    "unique_directory_ids": true,
+    "unique_native_candidate_keys": true,
+    "all_crosswalk_targets_resolve": true,
+    "orphan_chain_links": 0,
+    "shared_normalized_address_groups": 1,
+    "coordinates_outside_iowa_rectangle": 0
+  },
+  "shared_address_note": "Target and Hy-Vee both use 3500 Dodge St, Dubuque. Distinct businesses at a shared address are not automatically duplicates."
+}

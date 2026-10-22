@@ -1,0 +1,51 @@
+state,name,rough_target,planning_low,planning_high,census_2023_groceries,census_2023_clubs_supercenters,census_2023_combined,snap_grocery_format_records,catalog_records,catalog_to_target_ratio,count_signal,source_disagreement,confidence,census_complete
+AL,Alabama,930,780,1140,782,146,928,948,136,0.1462,below_planning_range,moderate_or_small,low,False
+AK,Alaska,200,110,290,210,27,237,135,51,0.255,below_planning_range,material,low,False
+AZ,Arizona,1010,850,1230,802,200,1002,1020,238,0.2356,below_planning_range,moderate_or_small,low,False
+AR,Arkansas,540,420,680,459,104,563,498,91,0.1685,below_planning_range,moderate_or_small,low,False
+CA,California,8400,6550,10500,8044,705,8749,7714,768,0.0914,below_planning_range,moderate_or_small,low,False
+CO,Colorado,930,780,1130,780,156,936,920,235,0.2527,below_planning_range,moderate_or_small,low,False
+CT,Connecticut,790,570,1020,767,77,844,672,64,0.081,below_planning_range,moderate_or_small,low,False
+DE,Delaware,190,160,240,174,19,193,197,57,0.3,below_planning_range,moderate_or_small,low,False
+FL,Florida,4160,3230,5210,3850,488,4338,3806,588,0.1413,below_planning_range,moderate_or_small,low,False
+GA,Georgia,1970,1570,2440,1769,259,2028,1857,372,0.1888,below_planning_range,moderate_or_small,low,False
+HI,Hawaii,300,240,370,272,29,301,283,10,0.0333,below_planning_range,moderate_or_small,low,False
+ID,Idaho,320,240,400,278,55,333,290,35,0.1094,below_planning_range,moderate_or_small,low,False
+IL,Illinois,2770,1980,3580,2647,335,2982,2333,462,0.1668,below_planning_range,moderate_or_small,low,False
+IN,Indiana,1150,960,1390,954,204,1158,1135,288,0.2504,below_planning_range,moderate_or_small,low,False
+IA,Iowa,710,590,860,615,94,709,705,735,1.0352,within_planning_range_review_still_required,moderate_or_small,low,False
+KS,Kansas,560,430,700,485,91,576,516,134,0.2393,below_planning_range,moderate_or_small,low,False
+KY,Kentucky,840,700,1020,721,123,844,825,180,0.2143,below_planning_range,moderate_or_small,low,False
+LA,Louisiana,970,750,1220,886,124,1010,886,87,0.0897,below_planning_range,moderate_or_small,low,False
+ME,Maine,380,290,480,357,35,392,343,12,0.0316,below_planning_range,moderate_or_small,low,False
+MD,Maryland,1300,950,1660,1256,125,1381,1123,126,0.0969,below_planning_range,moderate_or_small,low,False
+MA,Massachusetts,1440,1150,1780,1348,130,1478,1362,90,0.0625,below_planning_range,moderate_or_small,low,False
+MI,Michigan,1940,1530,2400,1685,314,1999,1809,333,0.1716,below_planning_range,moderate_or_small,low,False
+MN,Minnesota,1170,940,1430,998,192,1190,1117,187,0.1598,below_planning_range,moderate_or_small,low,False
+MS,Mississippi,480,390,590,405,83,488,470,79,0.1646,below_planning_range,moderate_or_small,low,False
+MO,Missouri,1110,900,1370,955,183,1138,1063,188,0.1694,below_planning_range,moderate_or_small,low,False
+MT,Montana,280,200,350,260,30,290,246,77,0.275,below_planning_range,moderate_or_small,low,False
+NE,Nebraska,470,390,580,422,57,479,465,59,0.1255,below_planning_range,moderate_or_small,low,False
+NV,Nevada,440,360,550,362,67,429,456,81,0.1841,below_planning_range,moderate_or_small,low,False
+NH,New Hampshire,280,210,350,240,46,286,256,28,0.1,below_planning_range,moderate_or_small,low,False
+NJ,New Jersey,2370,1660,3100,2405,171,2576,1962,136,0.0574,below_planning_range,moderate_or_small,low,False
+NM,New Mexico,310,250,390,246,57,303,322,50,0.1613,below_planning_range,moderate_or_small,low,False
+NY,New York,7520,4550,10330,8320,285,8605,5355,289,0.0384,below_planning_range,material,low,False
+NC,North Carolina,2200,1770,2710,2007,244,2251,2089,205,0.0932,below_planning_range,moderate_or_small,low,False
+ND,North Dakota,190,150,230,168,23,191,185,42,0.2211,below_planning_range,moderate_or_small,low,False
+OH,Ohio,2120,1650,2650,1893,312,2205,1951,501,0.2363,below_planning_range,moderate_or_small,low,False
+OK,Oklahoma,620,520,760,499,120,619,626,82,0.1323,below_planning_range,moderate_or_small,low,False
+OR,Oregon,880,650,1130,753,183,936,774,85,0.0966,below_planning_range,moderate_or_small,low,False
+PA,Pennsylvania,2810,2370,3380,2543,271,2814,2799,298,0.106,below_planning_range,moderate_or_small,low,False
+RI,Rhode Island,230,180,310,204,18,222,255,14,0.0609,below_planning_range,moderate_or_small,low,False
+SC,South Carolina,990,760,1240,911,122,1033,899,134,0.1354,below_planning_range,moderate_or_small,low,False
+SD,South Dakota,220,180,270,199,25,224,221,46,0.2091,below_planning_range,moderate_or_small,low,False
+TN,Tennessee,1240,1030,1510,1077,176,1253,1219,265,0.2137,below_planning_range,moderate_or_small,low,False
+TX,Texas,4370,3600,5320,3739,693,4432,4244,669,0.1531,below_planning_range,moderate_or_small,low,False
+UT,Utah,490,390,600,411,87,498,460,95,0.1939,below_planning_range,moderate_or_small,low,False
+VT,Vermont,200,120,280,221,8,229,151,43,0.215,below_planning_range,material,low,False
+VA,Virginia,1650,1290,2050,1483,224,1707,1528,254,0.1539,below_planning_range,moderate_or_small,low,False
+WA,Washington,1670,1210,2160,1587,208,1795,1425,163,0.0976,below_planning_range,moderate_or_small,low,False
+WV,West Virginia,310,250,380,260,49,309,297,79,0.2548,below_planning_range,moderate_or_small,low,False
+WI,Wisconsin,1110,900,1370,976,159,1135,1066,271,0.2441,below_planning_range,moderate_or_small,low,False
+WY,Wyoming,100,70,140,93,17,110,91,42,0.42,below_planning_range,moderate_or_small,low,False

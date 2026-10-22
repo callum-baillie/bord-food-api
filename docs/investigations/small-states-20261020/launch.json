@@ -1,0 +1,72 @@
+{
+  "container": "8fd409f1e2a7c43120c0490efa4787fe0dfe1a801b1394cdd91c0963653e6b16",
+  "name": "bord-food-small-states-20261020",
+  "release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/a1a566edb7e2e8e6b6794b12903a180761a3a6d0b4b2ad4a2cb944af8ae80a35",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "launched": true,
+  "offline_plan": {
+    "state": "staged",
+    "states": [
+      "WY",
+      "AK",
+      "VT",
+      "ND",
+      "DE",
+      "SD",
+      "MT",
+      "RI",
+      "NH",
+      "HI",
+      "ID",
+      "WV"
+    ],
+    "batches": [
+      {
+        "batch": 1,
+        "states": [
+          "WY",
+          "AK",
+          "VT"
+        ],
+        "snap_reference_workload": 377
+      },
+      {
+        "batch": 2,
+        "states": [
+          "ND",
+          "DE",
+          "SD"
+        ],
+        "snap_reference_workload": 603
+      },
+      {
+        "batch": 3,
+        "states": [
+          "MT",
+          "RI"
+        ],
+        "snap_reference_workload": 501
+      },
+      {
+        "batch": 4,
+        "states": [
+          "NH",
+          "HI"
+        ],
+        "snap_reference_workload": 539
+      },
+      {
+        "batch": 5,
+        "states": [
+          "ID",
+          "WV"
+        ],
+        "snap_reference_workload": 587
+      }
+    ],
+    "source_requests": 0,
+    "paid_calls": 0
+  },
+  "auto_restart": false,
+  "state": "starting"
+}

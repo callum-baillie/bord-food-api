@@ -1,0 +1,97 @@
+{
+  "campaign_id": "iowa-fields-pilot5-aldi-repair-20261020",
+  "activation_enabled": true,
+  "state": "IA",
+  "collection_profile": "public-store-layout-evidence-v1",
+  "field_focus": true,
+  "capture_prices": false,
+  "capture_product_inventory": false,
+  "capture_product_catalog": false,
+  "targets": [
+    {
+      "store_id": "sto_81fde73c743b43dd8aaf4fce4172a01e",
+      "name": "Aldi",
+      "chain_id": "chn_af1cd7c0a37e4b39aaeee6076ac52e51",
+      "spider": "aldi_sud_us",
+      "source_website": null,
+      "url": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+      "source_address": {
+        "city": "Muscatine",
+        "country": "US",
+        "postal_code": "52761",
+        "region": "IA",
+        "street": "3200 Northport Drive"
+      },
+      "expected_branch": "ALDI Aldi Muscatine",
+      "country": "US",
+      "observed_url_evidence": {
+        "evidence_url": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+        "kind": "observed_official_branch_page",
+        "note": "Observed official branch URL; actual branch consistency still subject to live Jev review. ALDI locator may render its details with JavaScript.",
+        "reviewed_at": 1792372745.240606,
+        "source_address": {
+          "city": "Muscatine",
+          "country": "US",
+          "postal_code": "52761",
+          "region": "IA",
+          "street": "3200 Northport Drive"
+        },
+        "store_id": "sto_81fde73c743b43dd8aaf4fce4172a01e",
+        "url": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+        "redirect_proof": {
+          "source_url": "https://info.aldi.us/stores/l/ia/muscatine/3200-northport-drive/l086",
+          "location": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+          "http_status": 301,
+          "checked_at": 1792522401.2288558
+        }
+      },
+      "missing_field_priority": 12
+    }
+  ],
+  "scopes": {
+    "www.aldi.us": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized Iowa public source branch refresh; pinned SNAP/OSM/Overture evidence; robots required at request time; no product inventory or pricing",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.aldi.us",
+        "scope_prefix": "/",
+        "max_pages_run": 3,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 6291456,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 600,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true,
+        "page_cache_enabled": true,
+        "report_redirects": true,
+        "robots_redirect_hosts": [
+          "aldi.us"
+        ]
+      }
+    }
+  },
+  "duration_seconds": 7200,
+  "directory_stores": 741,
+  "missing_branch_urls": 0,
+  "decisions": {
+    "budget_nanousd": 150000000,
+    "max_calls": 15,
+    "key_file": "/run/secrets/jev-api-key",
+    "retain_branch_html": true,
+    "review_every_page": true,
+    "global_budget_nanousd": 15000000000
+  },
+  "canonical_followup_enabled": false,
+  "coverage_gaps": []
+}

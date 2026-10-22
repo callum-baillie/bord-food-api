@@ -1,0 +1,353 @@
+{
+  "base_generation": "g_06c5c35bb5174eab98572bb872b95436",
+  "state": null,
+  "prepared_at": 1792513234.1374507,
+  "stores": 9309,
+  "field_statuses": {
+    "stale": 18863,
+    "derived": 6257,
+    "unverified": 935,
+    "corroborated": 130,
+    "conflicted": 61
+  },
+  "promoted_or_derived": {
+    "timezone": 6257,
+    "phone": 103,
+    "opening_hours": 10,
+    "website": 17
+  },
+  "conflicts": {
+    "website": 25,
+    "opening_hours": 34,
+    "phone": 2
+  },
+  "blocks": [
+    {
+      "source": "retailer_page",
+      "store_id": "sto_f0f1a9c2fe584c70bf83b0b4335e10e7",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/09260c57d70dfe13f270038a4d8ca0fb6d003062f99ac76da00d8ff3fc4e1df0.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_b02b6b3ea9cf4e9996b42b64de5cd80d",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/0b071913ba06cebf647ee914d17594190ca33d67c113eb5e3148f2c4f205b3f2.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_b17a835d9d9d4cbfa4bd2cffd4384b1d",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/0e04c27f5cc325049b8e3a67092c173188e03d3641a0acc1914f0bec62f08f69.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_e2cd3b6770c74b19aa66dea229dbbbce",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/131fb823f0d92dba9fd6881ad12724037105a3e623e0e2eec8db994d3775d62e.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_81970f275fc84368b4a7662fc2ed4ecd",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/1a561708e2cb3031e591f073c247a81269a823a136466a4af9d95edaeb91d478.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_968bcbc29c8e48b2a2336e46803f037c",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/1d8d4b0e038fcc58345017507aa0fe27f2ee754c51456956794f203b245de7cb.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_9ccb9631587440bc99c33dc5e620871d",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/248695b613358088f5a6e1b6a84e79fba5bd8bb5262a2850db0067e128a4104d.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_9913fc9857d945769dd7bb54ccaefbb9",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/2686b2d6f49c28ac0205e910d669f970b9114dc10dc968aa548506bb88a99bce.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_de8f756c7e4e49bea4b57454714afd91",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/27568d5f715f0fe88c4d57dfc7426e69ffb916a248d0aaa22f38ef640d538e58.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_f9bfdcf5f44441a7b7586f2e64d5c7c2",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/2e69b54c75dda3e3691f89b0566f843d700393af91c0546b43f60b23f062183a.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_6092252501f34ceeb7484a3f60f4ae9e",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/361b82abb0cbfe9cddd4b0b834b0c9432c18e516fb743bd722353a2c1b6902e8.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_6bf9a65a4e70412b973545b8a7f02cb8",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/3767ae71aafb0d68df1f9c11656bed774447d2318663b1bee2a019233b12de92.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_707fb2b489f04db5b911b531a184af22",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/38088de00fd79110cba2b63c362c4dfc948f6c3debc06695286f95bd33777df4.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_19d01b8f34764c689659c86f006e7611",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/38a097c6838c5c561cef1e43084f9fc719b87d367ff50563042f81126574a2a5.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_d9260a29535e4a4a82c4af5796f1df34",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/38de534584993b0249a490680beea503e484cb79cab0c3828820491e92f8fd76.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_88932aec920d4385b0e8896c82796d75",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/41377475e4480b2e24ecaf1964bd9842b98a29af0fdc8b4a2109462aa2a748ad.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_41bca8c585c74b88aacd35171966b516",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/48a03d17653dbf5dace35b2cf08617d191a640eda9baa7c08d49e4e09f7e4ad6.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_14eb494e9a6549d785cfb7e118aeaa7f",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/49ebda63283af4dee4c32e115f57e329f67777187098b331f5fd0f82fdcac56a.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_5619f471e98549768c258921d5204276",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/4f6c5b37fbd99ba6752900eb9b5235b689b1b7c137c0948c47eeeb7b04ca295a.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_70218818c824468291a960b98ce30c5b",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/58a204457f787714f072b9d81b86b8f884981fe4df75a12730c9f06321aa5906.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_0d8d4c1024ee4af68c89a3aab868b0f3",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/58b35a702c12fc7fdf21e2a54b9bb482b67f94a764ef71f8cedbbca30ec54f1a.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_2ae341699ae04cd5a7991fdd6c1fac70",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/5d0cb742b2d49f15916832aff25f616322c917bd3a719d257854342804f5f1be.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_25e74182d8474be39d320353e9f72ef2",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/672f5fece65b63c904c5323a01c41a81550ebe256295d55b19b701a96c68d024.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_61507a4b4f7241dc98e11a6d09a6a050",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/6c1a51edf1f90bccf7dfa609f1dc8345ae2345a3610e9def5431c2b29c4bbd14.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_84e5e05f79e648508f9174d38697e11b",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/737697c65d3529f74eb6844fba042d21ea27105ec1b6ffe622b93be5577a01a7.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_2d82021654064919a386ea881e3d7491",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/74e36ebf1525bf030e1b29c99f17e7cbc56af524eb3ccf01d9daf4c7b947de4c.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_ceb8a0b79eb548ec849f1e67271773c2",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/7b19203c9105b341b37915f989e339ab8b0ccbe258e7ce55e8432180a8c9c2d1.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_0bf49383f84f4a4986bce9ee1bdadb05",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/7c8b66b7954c75228edfc4132a41e9b8b031d8ea05d4d0f22d3170eb8b971e8f.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_544970825def4709a2b1598c51bab0c4",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/7fa2461cb9b61bd0ff4135d872d6f7676b95e5d0d26db7bb8f4771e955022ecc.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_a92974d1c4c745f09ae615e3a139efce",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/807848b50d98879599a1c498ed0fb5f629fca63408f450a285c57af2c6573d77.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_8ad6a0d1e5864119aed59958a731c595",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/80f979ddfbfd98843fdc1acab199718de59c1ea354701f53ba762a2035ce889e.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_f69dd6e1f6c44f1897724f9f5829d9d4",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/89a052883729c72a0847625c0ec4d1e430926c4a6e5a385482f02f4db8281e0e.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_74056cd3ef2c4136ad2973a92f54db83",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/8b75a8c6608b2303605b8ddaa0ea98e64cc96b66a32771506067455e11cde2d7.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_41357d7c1e8349f8909f42798f6ecdd2",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/8f5f23b28cba9e6f554ecc8475974332b003068ca19828c22dfbfa6058c6895b.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_20dff370712c4279b00de7db1a665227",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/8f66a36527c5c63b159157c669cc09214f20b02b2ed11706b29117ee1cf4f4b3.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_8ea9c503dbad473d9dbd0a460fa7b707",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/8f705da3848111113c9e6dcd746f89faf51c4eb72180a762134245176ef09a04.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_3b9931f1755c4609a767446d90e3155f",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/98fbf425a77bbd15a7a1a063864215dd62f8f507b0a39300795e8d4140969059.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_33e50a065376430eac706111f959ac91",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/9e5e72b0d0e5ee63b6e38013a856b30bcdf0f160a6655d93ca3a0d833fee4deb.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_73f8f80d373a4969ad5ead05f0a520ac",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/a265bb90bbd1a9466c50967220e4d5bbd723d71ece0d0bafa1dc535734e69b78.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_35d1e5a4df1849c9a4a7f80a102ba27a",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/b0cc46c356fde5068712533c21f46067c6184fd809a13c11a82e8fc0384d8033.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_2dcf360b30b24042b76bd879cef41fe6",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/c8d4379cfa3225269c58b2212c3884d89d4511d37ee71bd6e01967d13ad14bb4.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_70b3915b350d4f428bf3e5527f168466",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/cdd5d5aff5e2fd7886a5f4d20f7a34ed11b274ac99a41d9e2d8777e47f262997.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_5d632927fab14c58a4aba281303fcb64",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/ce370db66d9b551e3fb9f4e151c82da2ebadb720c0aed1afb928d8b2a29758ed.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_6d74e599e4814f5da9016b0b62383fe1",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/d24efb4a3af7dc124b02ccabbf4b67a34b2d821c43574de90ca9ad6c661d171c.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_d4b2e20d3f844e71874ddcb84f2741d9",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/d2bc7f1877adf66823445ea9043fd45b779d4ff1855165acc7abf14f771bb25e.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_4bd95c84f149484a98adacb563bdcc8a",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/dac46b67aa32890bf9b297ebef27231931674cead268a87434ea5e1589d315af.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_79f1cf3321444e18b707ccc34282ccd8",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/dd48eec69e96dc88e7699b0dacc052d6cc2db288004cd6ec7c1111a6d8b2d525.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_9966b36500464d96ae8731d5039a1742",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/df3527f742e26d4f21c83aa57d9cd86ce604a84139e05c0d5ac0b32d610bf2fd.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_e0f750b5429345cfab2c590aa537dd03",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/e29be33e35eb51deddb38df016a45fe2fb9d0c10ea2afc1ab1bab13ba31ccc9c.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_431880b402404df8a232c6b2a25bbafc",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/e54a663648aefaa35e8d0876368172b6001c4821eb0eee6b5e7cb8db22ae1949.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_bd44aa33d6174730aec4fdb717c4da2c",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/e6bc426e03b6d55c3eb6c9633887dbb9717a80b6a9269cbb1f6cf0639fb79c1b.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_216c6741fbec4785b912b3e3e750a631",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/ecdc228586b2633cae78cbc3d34f0bc82ba8299c8a1852e56b1b67dcc3581230.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_20562cd078cb4b3c99590ca0640586ab",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/ed6f8fb7f548956d868a7c6064f1138e6875011fc5bcc6f5165fa108e029a667.json"
+    },
+    {
+      "source": "retailer_page",
+      "store_id": "sto_608e7af995754f3698fb6e4f1300556c",
+      "reason": "ambiguous_legacy_page_evidence",
+      "file": "crawl-campaigns/iowa-statewide-20261019/evidence/fcde9ee5cf6543c848f92ccf5e0a7f97d56690f2a75f59abf995fe2f54399691.json"
+    }
+  ],
+  "release": "281a0ee01d1d1de0a7e1033e0f571a3d3fb6aa9cd96380009ef5b32a7902ab6a",
+  "source_network_requests": 0,
+  "paid_calls": 0
+}

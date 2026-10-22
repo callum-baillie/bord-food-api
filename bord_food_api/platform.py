@@ -9,16 +9,31 @@ import sqlite3
 import tempfile
 import time
 import uuid
+from collections import OrderedDict
 from contextlib import contextmanager
 from datetime import UTC, datetime
 from pathlib import Path
+from threading import Lock
 
+from .assistance import ASSISTANCE_KINDS
 from .control import SCHEMA_VERSION as CONTROL_SCHEMA_VERSION
 from .control import Control
 from .domain import US_STATES, business_payload, content_hash, encoded
 from .refresh import GROUP_FIELDS, field_groups, plan_store_refresh
 
+# Sealed objects are immutable. Avoid rereading multi-GB packs on every idle
+# scheduler tick, while detecting replacement, writes or permission changes.
+_VALIDATED_OBJECTS = OrderedDict()
+_VALIDATION_LOCK = Lock()
+
+
+def _object_signature(path):
+    stat = path.stat()
+    return (stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns)
+
+
 PACKS = {
+    **ASSISTANCE_KINDS,
     "chain": "stores",
     "store": "stores",
     "product": "products",
@@ -30,6 +45,24 @@ PACKS = {
     "map": "maps",
     "guidance": "guidance",
 }
+SEARCH_FIELDS = (
+    "id",
+    "name",
+    "description",
+    "brand",
+    "brands",
+    "category",
+    "categories",
+    "address",
+    "gtin14",
+    "gtin",
+    "code",
+    "phone",
+    "email",
+    "website",
+    "source_id",
+)
+
 PACK_SCHEMA = """
 CREATE TABLE entities(kind TEXT, id TEXT, source TEXT, partition TEXT, source_key TEXT,
  revision TEXT, payload TEXT, PRIMARY KEY(kind,id));
@@ -72,6 +105,46 @@ def atomic_json(path, value):
         fsync_dir(path.parent)
     finally:
         Path(name).unlink(missing_ok=True)
+
+
+def _identity_records(records, control, source):
+    """Bound RAM and fsync frequency without materializing a source export."""
+
+    def batch_ids(batch):
+        keys = [(r["kind"], str(r["source_key"])) for r in batch]
+        keys.extend(
+            ("chain", str(r["payload"]["chain_key"]))
+            for r in batch
+            if r["kind"] == "store" and r["payload"].get("chain_key")
+        )
+        for record in batch:
+            if record["kind"] in ASSISTANCE_KINDS:
+                for relation in ("site", "service"):
+                    if record["payload"].get(relation + "_key"):
+                        prefix = (
+                            "osm_assistance_"
+                            if record["kind"].startswith("osm_")
+                            else "assistance_"
+                        )
+                        keys.append((prefix + relation, str(record["payload"][relation + "_key"])))
+        return control.identity_batch(source, keys)
+
+    batch, size = [], 0
+    for record in records:
+        if record.get("kind") not in PACKS or not str(record.get("source_key", "")):
+            raise ValueError("Invalid source record")
+        weight = len(encoded(record).encode())
+        if batch and (len(batch) >= 256 or size + weight > 8 * 1024**2):
+            identities = batch_ids(batch)
+            for item in batch:
+                yield item, identities
+            batch, size = [], 0
+        batch.append(record)
+        size += weight
+    if batch:
+        identities = batch_ids(batch)
+        for item in batch:
+            yield item, identities
 
 
 class Platform:
@@ -185,17 +258,29 @@ class Platform:
         with self.writer():
             self._recover()
 
-    def validate_manifest(self, manifest):
+    def validate_manifest(self, manifest, *, force=False):
         if manifest.get("schema_version") != "1.0.0":
             raise ValueError("Unsupported generation schema")
         for relative in manifest["packs"].values():
             path = self.object_path(relative)
+            signature = _object_signature(path)
+            with _VALIDATION_LOCK:
+                validated = not force and _VALIDATED_OBJECTS.get(path) == signature
+            if validated:
+                continue
             with path.open("rb") as handle:
                 if hashlib.file_digest(handle, "sha256").hexdigest() != path.stem:
                     raise ValueError("Catalog object checksum mismatch")
             with _sqlite(path.resolve().as_uri() + "?mode=ro", uri=True) as db:
                 if db.execute("PRAGMA quick_check").fetchone()[0] != "ok":
                     raise ValueError("Catalog object corrupt")
+            if _object_signature(path) != signature:
+                raise ValueError("Catalog changed during integrity validation")
+            with _VALIDATION_LOCK:
+                _VALIDATED_OBJECTS[path] = signature
+                _VALIDATED_OBJECTS.move_to_end(path)
+                while len(_VALIDATED_OBJECTS) > 128:
+                    _VALIDATED_OBJECTS.popitem(last=False)
 
     def _publish(
         self,
@@ -345,7 +430,12 @@ class Platform:
                 for row in db.execute(
                     "SELECT payload,source,id FROM entities WHERE kind=? ORDER BY id", (kind,)
                 )
-                if row[1] not in denied and row[2] not in redirects
+                if row[1] not in denied
+                and row[2] not in redirects
+                and (
+                    kind != "store"
+                    or json.loads(row[0]).get("directory_scope", {}).get("status") != "excluded"
+                )
             ]
 
     def get(self, kind, entity_id, generation=None):
@@ -514,7 +604,9 @@ class Platform:
                     return connections[pack]
 
                 try:
-                    for record in records:
+                    for record, reserved_identities in _identity_records(
+                        records, self.control, source
+                    ):
                         kind = record["kind"]
                         if kind not in PACKS or not str(record["source_key"]):
                             raise ValueError("Invalid source record")
@@ -533,7 +625,7 @@ class Platform:
                             ):
                                 raise ValueError("Disk budget exceeded")
                         payload = dict(record["payload"])
-                        entity_id = self.control.identity(source, kind, source_key)
+                        entity_id = reserved_identities[kind, source_key]
                         # Source assertions retain their own row even after a reviewed canonical merge.
                         existing_assertion = (
                             pack_db(PACKS[kind])
@@ -545,10 +637,16 @@ class Platform:
                         )
                         if existing_assertion:
                             entity_id = existing_assertion[0]
+                        if kind in ASSISTANCE_KINDS:
+                            payload["kind"] = kind
+                            prefix = "osm_assistance_" if kind.startswith("osm_") else "assistance_"
+                            for relation in ("site", "service"):
+                                if payload.get(relation + "_key"):
+                                    payload[relation + "_id"] = reserved_identities[
+                                        prefix + relation, str(payload[relation + "_key"])
+                                    ]
                         if kind == "store" and payload.get("chain_key"):
-                            chain_id = self.control.identity(
-                                source, "chain", str(payload["chain_key"])
-                            )
+                            chain_id = reserved_identities["chain", str(payload["chain_key"])]
                             payload["chain_id"] = chain_id
                             chain_names[chain_id] = (
                                 payload.get("chain_name") or payload["chain_key"]
@@ -580,6 +678,20 @@ class Platform:
                             "SELECT payload FROM entities WHERE kind=? AND id=?", (kind, entity_id)
                         ).fetchone()
                         old_payload = json.loads(old[0]) if old else None
+                        if (
+                            kind
+                            in {
+                                "assistance_site",
+                                "osm_assistance_site",
+                                "assistance_service",
+                                "osm_assistance_service",
+                            }
+                            and old_payload
+                        ):
+                            from .assistance import retain_source_update
+
+                            payload = retain_source_update(old_payload, payload)
+                        source_snapshot_payload = dict(payload)
                         if source == "open_food_facts":
                             observed = db.execute(
                                 "SELECT source_revision,raw_hash FROM observations WHERE kind=? AND id=?",
@@ -686,7 +798,24 @@ class Platform:
                                     **business_payload(old_payload),
                                     **{k: v for k, v in payload.items() if v is not None},
                                 }
+                        if (
+                            kind == "store"
+                            and old_payload
+                            and old_payload.get("field_enrichment_version")
+                        ):
+                            from .store_enrichment import retain_verified_update
+
+                            payload = retain_verified_update(
+                                old_payload,
+                                payload,
+                                source,
+                                checked_at=time.time(),
+                                source_snapshot=source_snapshot_payload,
+                            )
                         if kind == "store":
+                            from .store_quality import clean_store
+
+                            payload = clean_store(payload)
                             refresh = plan_store_refresh(
                                 old_payload, payload, time.time(), crawl_authorized=False
                             )
@@ -754,19 +883,23 @@ class Platform:
                     if complete:
                         for pack in set(connections):
                             db = connections[pack]
-                            prior_rows = db.execute(
+                            # Do not materialize complete product payloads here: a
+                            # retained bulk export can contain millions of rows.
+                            total = absent_count = 0
+                            for kind, key in db.execute(
+                                "SELECT kind,source_key FROM entities WHERE source=? AND partition=?",
+                                (source, partition),
+                            ):
+                                total += 1
+                                absent_count += kind != "chain" and (kind, key) not in seen
+                            if absent_count >= 10 and absent_count > total * 0.2:
+                                raise ValueError("Snapshot coverage drop requires review")
+                            for kind, entity_id, key, raw in db.execute(
                                 "SELECT kind,id,source_key,payload FROM entities WHERE source=? AND partition=?",
                                 (source, partition),
-                            ).fetchall()
-                            absent = [
-                                r
-                                for r in prior_rows
-                                if (r[0], r[2]) not in seen and r[0] != "chain"
-                            ]
-                            total = len(prior_rows)
-                            if len(absent) >= 10 and len(absent) > total * 0.2:
-                                raise ValueError("Snapshot coverage drop requires review")
-                            for kind, entity_id, key, raw in absent:
+                            ):
+                                if kind == "chain" or (kind, key) in seen:
+                                    continue
                                 # Missing source membership never proves physical closure.
                                 payload = json.loads(raw)
                                 state = payload.get("source_membership", {})
@@ -906,16 +1039,7 @@ class Platform:
                                 (
                                     kind,
                                     entity_id,
-                                    " ".join(
-                                        str(payload.get(k, ""))
-                                        for k in (
-                                            "name",
-                                            "description",
-                                            "brand",
-                                            "category",
-                                            "address",
-                                        )
-                                    ),
+                                    " ".join(str(payload.get(k, "")) for k in SEARCH_FIELDS),
                                 ),
                             )
                             coordinates = (
@@ -926,7 +1050,9 @@ class Platform:
                                     "longitude": payload.get("longitude"),
                                 }
                             )
-                            if kind == "store" and isinstance(coordinates, dict):
+                            if (kind == "store" or kind in ASSISTANCE_KINDS) and isinstance(
+                                coordinates, dict
+                            ):
                                 lat, lon = (
                                     coordinates.get("latitude", coordinates.get("lat")),
                                     coordinates.get("longitude", coordinates.get("lon")),
@@ -988,6 +1114,55 @@ class Platform:
                 for item in payload["source_alternatives"]
                 if item.get("source_id") not in denied
             ]
+        if "dataset_links" in payload:
+            payload["dataset_links"] = [
+                r
+                for r in payload["dataset_links"]
+                if r.get("source_id") not in denied
+                and not (r.get("source_id") == "usda_snap_arcgis" and "usda_snap" in denied)
+            ]
+        if "field_evidence" in payload:
+            evidence = payload["field_evidence"]
+            hidden_ids = {r["id"] for r in evidence if r.get("source_id") in denied}
+            payload["field_evidence"] = [r for r in evidence if r.get("source_id") not in denied]
+            for field, state in payload.get("field_provenance", {}).items():
+                state["assertion_ids"] = [
+                    i for i in state.get("assertion_ids", []) if i not in hidden_ids
+                ]
+                if hidden_ids.intersection(state.get("supporting_ids", [])):
+                    baseline = payload.get("field_baselines", {}).get(field, {})
+                    if baseline.get("present") and baseline.get("source_id") not in denied:
+                        payload[field] = baseline.get("value")
+                    else:
+                        payload.pop(field, None)
+                    state.update(status="rights_restricted", supporting_ids=[], verified_at=None)
+            payload["field_conflicts"] = [
+                {**r, "assertion_ids": [i for i in r["assertion_ids"] if i not in hidden_ids]}
+                for r in payload.get("field_conflicts", [])
+            ]
+            payload["field_baselines"] = {
+                k: v
+                for k, v in payload.get("field_baselines", {}).items()
+                if v.get("source_id") not in denied
+            }
+            if (
+                payload.get("field_provenance", {}).get("operating_status", {}).get("status")
+                == "rights_restricted"
+            ):
+                payload.update(
+                    permanently_closed=None,
+                    operating_status="unknown",
+                    lifecycle="unknown",
+                    closure_reported_at=None,
+                )
+            payload["last_verified_at"] = max(
+                (
+                    r.get("verified_at")
+                    for r in payload.get("field_provenance", {}).values()
+                    if r.get("verified_at")
+                ),
+                default=None,
+            )
         if "source_refs" in payload:
             payload["source_refs"] = [
                 item for item in payload["source_refs"] if item.get("source_id") not in denied
@@ -1138,9 +1313,13 @@ class Platform:
                 if sources & denied:
                     raise ValueError("Catalog includes rights-restricted data")
                 for (raw,) in db.execute("SELECT payload FROM entities"):
+                    payload = json.loads(raw)
                     if any(
                         item.get("source_id") in denied
-                        for item in json.loads(raw).get("source_alternatives", [])
+                        for item in payload.get("source_alternatives", [])
+                        + payload.get("field_evidence", [])
+                        + payload.get("dataset_links", [])
+                        + list(payload.get("field_baselines", {}).values())
                     ):
                         raise ValueError("Catalog includes rights-restricted source alternatives")
 
@@ -1187,6 +1366,36 @@ class Platform:
                             db.execute("DELETE FROM entities WHERE source=?", (source,))
                     with _sqlite(path) as db:
                         self._project_aliases(db, events)
+                        for kind, identity, raw in db.execute(
+                            "SELECT kind,id,payload FROM entities"
+                        ).fetchall():
+                            old = json.loads(raw)
+                            payload = self._visible_payload(json.loads(raw), denied)
+                            if payload == old:
+                                continue
+                            revision = self._revision(kind, payload)
+                            payload["content_revision"] = revision
+                            db.execute(
+                                "UPDATE entities SET payload=?,revision=? WHERE kind=? AND id=?",
+                                (encoded(payload), revision, kind, identity),
+                            )
+                            db.execute("DELETE FROM search WHERE kind=? AND id=?", (kind, identity))
+                            db.execute(
+                                "INSERT INTO search VALUES (?,?,?)",
+                                (
+                                    kind,
+                                    identity,
+                                    " ".join(str(payload.get(k, "")) for k in SEARCH_FIELDS),
+                                ),
+                            )
+                            events.append(
+                                {
+                                    "id": identity,
+                                    "kind": kind,
+                                    "operation": "rights_removed",
+                                    "revision": revision,
+                                }
+                            )
                     packs[pack] = self._seal(path)
                 sources = {
                     key: ack
@@ -1416,6 +1625,10 @@ class Platform:
             db.set_progress_handler(lambda: int(time.monotonic() > deadline), 10000)
             joins = []
             where = ["e.kind=?", "e.id>?"]
+            if kind == "store":
+                where.append(
+                    "coalesce(json_extract(e.payload, '$.directory_scope.status'),'included') != 'excluded'"
+                )
             params = [kind, last]
             redirects = manifest.get("redirects", {})
             if redirects:

@@ -1,0 +1,126 @@
+{
+  "campaign_id": "iowa-contact-gated-plan-20261020",
+  "state": "IA",
+  "wait_for": "iowa-contact-pilot1-20261020",
+  "deadline": 1793137119.794326,
+  "baseline": {
+    "sto_00771498a3124edca3ced134b7c84326": {
+      "phone": null,
+      "opening_hours": null
+    },
+    "sto_435e9d56edea4d1d915cfeb7170dae81": {
+      "phone": "+15157582749",
+      "opening_hours": [
+        {
+          "closed": false,
+          "closes": "20:00",
+          "day": "Mo",
+          "opens": "07:00"
+        },
+        {
+          "closed": false,
+          "closes": "20:00",
+          "day": "Tu",
+          "opens": "07:00"
+        },
+        {
+          "closed": false,
+          "closes": "20:00",
+          "day": "We",
+          "opens": "07:00"
+        },
+        {
+          "closed": false,
+          "closes": "20:00",
+          "day": "Th",
+          "opens": "07:00"
+        },
+        {
+          "closed": false,
+          "closes": "20:00",
+          "day": "Fr",
+          "opens": "07:00"
+        },
+        {
+          "closed": false,
+          "closes": "20:00",
+          "day": "Sa",
+          "opens": "07:00"
+        },
+        {
+          "closed": false,
+          "closes": "20:00",
+          "day": "Su",
+          "opens": "08:00"
+        }
+      ]
+    },
+    "sto_2a998e50d4db4ae99134bb9ab03abbfc": {
+      "phone": "+15152324094",
+      "opening_hours": null
+    },
+    "sto_df167da017874693bac1abf35f125608": {
+      "phone": null,
+      "opening_hours": null
+    },
+    "sto_00c8a79f06144b46b7438039b42776c0": {
+      "phone": "+15634265549",
+      "opening_hours": [
+        {
+          "closed": false,
+          "closes": "19:00",
+          "day": "Mo",
+          "opens": "07:30"
+        },
+        {
+          "closed": false,
+          "closes": "19:00",
+          "day": "Tu",
+          "opens": "07:30"
+        },
+        {
+          "closed": false,
+          "closes": "19:00",
+          "day": "We",
+          "opens": "07:30"
+        },
+        {
+          "closed": false,
+          "closes": "19:00",
+          "day": "Th",
+          "opens": "07:30"
+        },
+        {
+          "closed": false,
+          "closes": "19:00",
+          "day": "Fr",
+          "opens": "07:30"
+        },
+        {
+          "closed": false,
+          "closes": "19:00",
+          "day": "Sa",
+          "opens": "07:30"
+        },
+        {
+          "closed": false,
+          "closes": "17:00",
+          "day": "Su",
+          "opens": "09:00"
+        }
+      ]
+    }
+  },
+  "minimum_gains": 2,
+  "phases": [
+    {
+      "campaign_id": "iowa-contact-pilot2-20261020",
+      "config": "/phase-config/pilot2-config.json",
+      "minimum_gains": 1
+    },
+    {
+      "campaign_id": "iowa-contact-missing-fields-20261020",
+      "config": "/phase-config/iowa-missing-config.json"
+    }
+  ]
+}

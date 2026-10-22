@@ -1,0 +1,10 @@
+{
+  "container_id": "861e1c3b7694d6beb840720668a42d719491a903db5a5ab209a2ca643b3483a0",
+  "release": "/mnt/cache/git/compose/productivity/config/operator-releases/78ba5768b07b59fc55200607e303031ebe42f07afee057092e20d7ab71ea330a",
+  "network": "none",
+  "paid_calls": 0,
+  "scope": [
+    "en:united-states"
+  ],
+  "waiting_for_store_publication": true
+}

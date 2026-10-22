@@ -1,0 +1,73 @@
+Cold Food Storage Chart | FoodSafety.gov (https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts)
+citeturn71view0 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts","lineno":null}); Total lines: 82
+L0: Navigation
+L1: 
+L2:   * cite0†Recalls & Outbreaks L3:   * cite1†Food Safety Charts L4:     * cite2†Cold Food Storage L5:     * cite3†Food Safety During Power Outage L6:     * cite4†Meat and Poultry L7:     * cite5†Safe Minimum Internal Temperatures L8:   * cite6†Keep Food Safe L9:   * cite7†Food Poisoning L10:   * cite8†People At Risk L11: # Cold Food Storage Chart
+L12: 
+L13: Follow the guidelines below for storing food in the refrigerator and freezer. The short time limits for home-refrigerated foods will help keep them from spoiling or becoming dangerous to eat. The guidelines for freezer storage are for quality only—frozen foods stored continuously at 0°F (-18°C) or below can be kept indefinitely.
+L14: 
+L15: Looking for a specific item? Check out cite9†FoodKeeper to find storage tips for over 650 food and beverages.
+L16: cite10†Download Cold Food Storage Chart as PDF L17: Food  | Type  | Refrigerator [40°F (4°C) or below]  | Freezer [0°F (-18°C) or below]
+L18: --- | --- | --- | ---
+L19: Salad  | Egg, chicken, ham, tuna, and macaroni salads  | 3 to 4 days  | Does not freeze well
+L20: Hot dogs  | Opened package  | 1 week  | 1 to 2 months
+L21: Unopened package  | 2 weeks  | 1 to 2 months
+L22: Luncheon meat  | Opened package or deli sliced  | 3 to 5 days  | 1 to 2 months
+L23: Unopened package  | 2 weeks  | 1 to 2 months
+L24: Bacon and sausage  | Bacon  | 1 week  | 1 month
+L25: Sausage, raw, from chicken, turkey, pork, or beef  | 1 to 2 days  | 1 to 2 months
+L26: Sausage, fully cooked, from chicken, turkey, pork, or beef  | 1 week  | 1 to 2 months
+L27: Sausage, purchased frozen  | After cooking, 3-4 days  | 1-2 months from date of purchase
+L28: Hamburger, ground meats and ground poultry  | Hamburger, ground beef, turkey, chicken, other poultry, veal, pork, lamb, and mixtures of them  | 1 to 2 days  | 3 to 4 months
+L29: Fresh beef, veal, lamb, and pork  | Steaks  | 3 to 5 days  | 4 to 12 months
+L30: Chops  | 3 to 5 days  | 4 to 12 months
+L31: Roasts  | 3 to 5 days  | 4 to 12 months
+L32: cite11†Ham†www.fsis.usda.gov | Fresh, uncured, uncooked  | 3 to 5 days  | 6 months
+L33: Fresh, uncured, cooked  | 3 to 4 days  | 3 to 4 months
+L34: Cured, cook-before-eating, uncooked  | 5 to 7 days or “use by” date  | 3 to 4 months
+L35: Fully-cooked, vacuum-sealed at plant, unopened  | 2 weeks or “use by” date  | 1 to 2 months
+L36: Cooked, store-wrapped, whole  | 1 week  | 1 to 2 months
+L37: Cooked, store-wrapped, slices, half, or spiral cut  | 3 to 5 days  | 1 to 2 months
+L38: Country ham, cooked  | 1 week  | 1 month
+L39: Canned, labeled "Keep Refrigerated," unopened  | 6 to 9 months  | Do not freeze
+L40: Canned, shelf-stable, opened Note: An unopened, shelf-stable, canned ham can be stored at room temperature for 2 years.  | 3 to 4 days  | 1 to 2 months
+L41: Prosciutto, Parma or Serrano ham, dry Italian or Spanish type, cut  | 2 to 3 months  | 1 month
+L42: Fresh poultry  | Chicken or turkey, whole  | 1 to 2 days  | 1 year
+L43: Chicken or turkey, pieces  | 1 to 2 days  | 9 months
+L44: Fin Fish  | Fatty Fish (bluefish, catfish, mackerel, mullet, salmon, tuna, etc.)  | 1 - 3 Days  | 2 - 3 Months
+L45: Lean Fish (cod, flounder, haddock, halibut, sole, etc.)  | 6 - 8 Months
+L46: Lean Fish (pollock, ocean perch, rockfish, sea trout.)  | 4 - 8 Months
+L47: Shellfish  | Fresh Crab Meat  | 2 - 4 Days  | 2 - 4 Months
+L48: Fresh Lobster  | 2 - 4 Days  | 2 - 4 Months
+L49: Live Crab, Lobster  | 1 day .  | Not recommended
+L50: Live Clams, Mussels, Oysters, and Scallops  | 5 - 10 Days  | Not recommended
+L51: Shrimp, Crayfish  | 3 - 5 Days  | 6 - 18 Months
+L52: Shucked Clams, Mussels, Oysters, and Scallops  | 3 - 10 Days  | 3 - 4 Months
+L53: Squid  | 1 - 3 Days  | 6 - 18 Months
+L54: Eggs  | Raw eggs in shell  | 3 to 5 weeks  | Do not freeze in shell. Beat yolks and whites together, then freeze.
+L55: Raw egg whites and yolks
+L56: Note: Yolks do not freeze well  | 2 to 4 days  | 12 months
+L57: Raw egg accidentally frozen in shell
+L58: Note: Toss any frozen eggs with a broken shell  | Use immediately after thawing  | Keep frozen, then
+L59: refrigerate to thaw
+L60: Hard-cooked eggs  | 1 week  | Do not freeze
+L61: Egg substitutes, liquid, unopened  | 1 week  | Do not freeze
+L62: Egg substitutes, liquid, opened  | 3 days  | Do not freeze
+L63: Egg substitutes, frozen, unopened  | After thawing, 1 week or refer to “use by” date  | 12 months
+L64: Egg substitutes, frozen, opened  | After thawing, 3 to 4 days or refer to “use by” date  | Do not freeze
+L65: Casseroles with eggs  | After baking, 3 to 4 days  | After baking, 2 to 3 months
+L66: Eggnog, commercial  | 3 to 5 days  | 6 months
+L67: Eggnog, homemade  | 2 to 4 days  | Do not freeze
+L68: Pies: Pumpkin or pecan  | After baking, 3 to 4 days  | After baking, 1 to 2 months
+L69: Pies: Custard and chiffon  | After baking, 3 to 4 days  | Do not freeze
+L70: Quiche with filling  | After baking, 3 to 5 days  | After baking, 2 to 3 months
+L71: Soups and stews  | Vegetable or meat added  | 3 to 4 days  | 2 to 3 months
+L72: Leftovers  | Cooked meat or poultry  | 3 to 4 days  | 2 to 6 months
+L73: Chicken nuggets or patties  | 3 to 4 days  | 1 to 3 months
+L74: Pizza  | 3 to 4 days  | 1 to 2 months
+L75: Date Last Reviewed
+L76: 
+L77: September 19, 2023
+L78: 
+L79: cite12†Return to top L80: 
+L81: cite13†iframe†www.googletagmanager.com 

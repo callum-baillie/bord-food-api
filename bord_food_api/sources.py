@@ -230,6 +230,36 @@ def pin_atp_output(artifact: Artifact, final_url: str) -> Artifact:
     )
 
 
+def atp_run_quality(stats, previous_count=None):
+    """Valid JSON or zero logged errors does not establish roster completeness."""
+    stats = stats if isinstance(stats, dict) else {}
+    count = stats.get("item_scraped_count")
+    enqueued, dequeued = stats.get("scheduler/enqueued"), stats.get("scheduler/dequeued")
+    reasons = []
+    if stats.get("finish_reason") != "finished":
+        reasons.append("upstream_not_finished")
+    if type(count) is not int or count <= 0:
+        reasons.append("upstream_count_unverified")
+    if not all(type(n) is int and n >= 0 for n in (enqueued, dequeued)) or enqueued != dequeued:
+        reasons.append("upstream_queue_incomplete")
+    if (
+        type(previous_count) is int
+        and previous_count > 0
+        and type(count) is int
+        and count < previous_count * 0.8
+    ):
+        reasons.append("upstream_count_drop_requires_review")
+    return {
+        "complete": not reasons,
+        "reasons": reasons,
+        "finish_reason": stats.get("finish_reason"),
+        "item_count": count if type(count) is int else None,
+        "pending_requests": max(0, enqueued - dequeued)
+        if all(type(n) is int for n in (enqueued, dequeued))
+        else None,
+    }
+
+
 class _Links(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -1139,7 +1169,23 @@ def source_filter_fingerprint(source: str, policy: dict) -> str:
         "include_territories": bool(policy.get("include_territories", False)),
         "parser_version": str(policy.get("parser_version", "1")),
         "normalizer_version": str(policy.get("normalizer_version", "1")),
+        **(
+            {"assistance_profiles": policy.get("profiles", [])}
+            if source == "community_food_assistance"
+            else {}
+        ),
+        **(
+            {
+                "states": sorted(policy.get("states", ["IA"])),
+                "rights_reviewed": policy.get("rights_reviewed", False),
+                "approved_upstream_sources": sorted(policy.get("approved_upstream_sources", [])),
+            }
+            if source in {"feed_america", "osm_food_assistance"}
+            else {}
+        ),
     }
+    if source == "all_the_places":
+        selectors["atp_completeness_version"] = "run-stats-v1"
     return hashlib.sha256(
         json.dumps(selectors, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
@@ -1301,19 +1347,40 @@ def _acquire_source(source, policy, transport, directory: Path, cursor=None):
                     max_member_bytes=int(policy.get("max_member_bytes", 2 * 1024**3)),
                     include_territories=bool(policy.get("include_territories", False)),
                 ):
+                    # Archive members can be syntactically valid partial exports.
+                    # Until separately reconciled, they cannot assert absence.
                     yield {
                         **scope,
+                        "complete": False,
                         "records": observed_records(
                             scope["records"],
                             artifact.release,
                             artifact.metadata.get("source_observed_at"),
                         ),
                         "release": f"{artifact.release}:{scope['member_sha256']}",
-                        "cursor": {"source_run": artifact.release},
+                        "cursor": {"source_run": artifact.release, "completeness": "unverified"},
                         "metadata": {**artifact.metadata, **metadata},
                     }
             else:
                 artifact = pin_atp_output(artifact, metadata.get("url", artifact.url))
+                stats_url = artifact.url.replace(
+                    f"/output/{artifact.partition}.geojson", f"/stats/{artifact.partition}.json"
+                )
+                try:
+                    stats_path, _ = fetch(Artifact("run_stats", stats_url, artifact.release))
+                    if stats_path.stat().st_size > 2 * 1024**2:
+                        raise ValueError("ATP stats exceed metadata budget")
+                    stats = json.loads(stats_path.read_text())
+                except (OSError, ValueError):
+                    stats = None  # Useful partial rows remain usable; no absence evidence.
+                prior = cursor.get("partitions", {}).get(artifact.partition, cursor)
+                quality = atp_run_quality(stats, prior.get("upstream_item_count"))
+                with open_source(path) as exported:
+                    raw_count = sum(1 for _ in ijson.items(exported, "features.item"))
+                quality["export_item_count"] = raw_count
+                if quality["item_count"] != raw_count:
+                    quality["complete"] = False
+                    quality["reasons"].append("export_item_count_mismatch")
                 yield {
                     "partition": artifact.partition,
                     "release": f"{artifact.release}:{metadata['sha256']}",
@@ -1326,9 +1393,16 @@ def _acquire_source(source, policy, transport, directory: Path, cursor=None):
                         ),
                         artifact.release,
                     ),
-                    "complete": True,
-                    "cursor": {"source_run": artifact.release},
-                    "metadata": {**metadata, **artifact.metadata},
+                    "complete": quality["complete"],
+                    "cursor": {
+                        "source_run": artifact.release,
+                        "upstream_item_count": quality["item_count"]
+                        if quality["complete"]
+                        else prior.get("upstream_item_count"),
+                        "observed_upstream_item_count": quality["item_count"],
+                        "upstream_quality": quality,
+                    },
+                    "metadata": {**metadata, **artifact.metadata, "upstream_quality": quality},
                 }
     elif source in {"usda_snap", "snap_current"}:
         override = policy.get("url_override") or policy.get("download_url")
@@ -1347,6 +1421,23 @@ def _acquire_source(source, policy, transport, directory: Path, cursor=None):
             "cursor": {"sha256": metadata["sha256"]},
             "metadata": {**artifact.metadata, **metadata},
         }
+    elif source == "community_food_assistance":
+        from .assistance_sources import acquire_reviewed_exports
+
+        yield from acquire_reviewed_exports(
+            policy, directory, fetch, check=policy.get("_check", lambda: None)
+        )
+    elif source in {"feed_america", "osm_food_assistance"}:
+        from .assistance_sources import acquire_assistance
+
+        yield from acquire_assistance(
+            source,
+            policy,
+            directory,
+            fetch,
+            check=policy.get("_check", lambda: None),
+            cursor=cursor,
+        )
     elif source == "foodkeeper":
         override = policy.get("url_override") or policy.get("download_url")
         artifact = resolve_foodkeeper("" if override else text(FOODKEEPER_PAGE), override)

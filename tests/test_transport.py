@@ -242,3 +242,28 @@ def test_interrupted_strong_validator_transfer_preserves_resumable_partial(tmp_p
     )
     assert client.fetch("https://bulk.example/file", destination)["bytes"] == 6
     assert destination.read_bytes() == b"abcdef"
+
+
+def test_crawler_redirect_notice_does_not_request_new_origin_or_expose_secret_in_error():
+    from bord_food_api.crawl_history import exception_details
+    from bord_food_api.transport import RedirectNotice
+
+    calls = []
+    client = transport(
+        [
+            Response(
+                status=301,
+                headers={"Location": "https://canonical.example/store?token=synthetic-secret"},
+            )
+        ],
+        calls,
+        max_redirects=0,
+        report_redirects=True,
+    )
+    with pytest.raises(RedirectNotice) as caught:
+        client.get("https://bulk.example/store")
+    assert len(calls) == 1
+    assert "synthetic-secret" not in str(caught.value)
+    details = exception_details(caught.value)
+    assert details["reason"] == "redirect_requires_review" and details["http_status"] == 301
+    assert "synthetic-secret" not in json.dumps(details)

@@ -1,0 +1,7 @@
+{
+  "pid": 1408423,
+  "log": "/tmp/iowa-quality-openai/collector.log",
+  "bounded_hours": 26,
+  "inference_resubmission": false,
+  "key_copied_to_unraid": false
+}

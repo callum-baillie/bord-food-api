@@ -1,0 +1,43 @@
+{
+  "analysis": {
+    "canonical_stores": 735,
+    "snapshot_manifest_stable": true,
+    "offline_retained_source_analysis": "passed",
+    "notebook_code_cells_executed": 2,
+    "notebook_exact_saved_analysis_equality": "passed",
+    "production_mutations": false,
+    "new_upstream_bulk_downloads": false,
+    "paid_calls": 0
+  },
+  "pytest_initial": {
+    "passed": 384,
+    "failed": 4,
+    "seconds": 15.36,
+    "cause": "/tmp tmpfs free space 3.6GiB below production import reserve 5GiB; USDA local-import tests enforced reserve",
+    "code_fix": false
+  },
+  "pytest_rerun": {
+    "passed": 388,
+    "warnings": 1,
+    "seconds": 73.21,
+    "command": ".venv/bin/python -m pytest --basetemp <new dedicated workstation cache directory>",
+    "fixture_directory_removed_after_run": true,
+    "reason": "Use /home filesystem with sufficient free space, retaining the normal import guard"
+  },
+  "ruff_check": "passed",
+  "ruff_format_check": {
+    "state": "passed",
+    "files": 198
+  },
+  "git_diff_check": "passed",
+  "report": {
+    "canonical_validation": "passed",
+    "payload_structural_verification": "passed",
+    "full_browser_verification": "failed: shared toolbar horizontal overflow with classic scrollbars",
+    "manual_headless_content_and_chart_inspection": "passed; classic-scrollbar issue reproduced and localized to analytics-top-bar",
+    "layout_failure_screenshot": "report-layout-failure.png",
+    "artifact_css_attempt_removed": true,
+    "plugin_source_modified": false,
+    "report_publication": "local file only; no Sites deployment"
+  }
+}

@@ -416,3 +416,90 @@ def test_restore_rejects_future_control_before_copying_payloads(tmp_path):
         target.restore(tmp_path / "backup")
     assert target.current() is None
     assert list((target.root / "objects/catalogs").iterdir()) == []
+
+
+def test_batch_identity_reservations_reuse_aliases_and_rollback_limits(tmp_path):
+    control = Control(tmp_path)
+    first = control.identity_batch(
+        "fixture", [("product", "1"), ("product", "1"), ("product", "2")]
+    )
+    assert len(first) == 2
+    control.alias("fixture", "product", "1", first["product", "2"], "reviewed duplicate")
+    again = control.identity_batch("fixture", [("product", "1"), ("product", "3")])
+    assert again["product", "1"] == first["product", "2"]
+    assert again["product", "3"] == control.identity("fixture", "product", "3")
+    with pytest.raises(ValueError, match="bounded"):
+        control.identity_batch("fixture", [("product", str(i)) for i in range(1025)])
+
+
+def test_complete_product_snapshot_does_not_materialize_all_payloads(tmp_path, monkeypatch):
+    import sqlite3
+
+    from bord_food_api import platform as module
+
+    real_connect = sqlite3.connect
+
+    class Cursor(sqlite3.Cursor):
+        def fetchall(self):
+            if self.description and [r[0] for r in self.description] == [
+                "kind",
+                "id",
+                "source_key",
+                "payload",
+            ]:
+                raise AssertionError("Bulk snapshot payload materialized")
+            return super().fetchall()
+
+    class Connection(sqlite3.Connection):
+        def execute(self, *args, **kwargs):
+            return self.cursor(factory=Cursor).execute(*args, **kwargs)
+
+    monkeypatch.setattr(
+        module.sqlite3,
+        "connect",
+        lambda *args, **kwargs: real_connect(*args, factory=Connection, **kwargs),
+    )
+    platform = Platform(tmp_path)
+
+    def products(count):
+        for i in range(count):
+            yield {
+                "kind": "product",
+                "source_key": str(i),
+                "payload": {"name": f"Fixture {i}", "source_record": {"text": "x" * 1024}},
+            }
+
+    first = platform.sync("fixture", "products", "r1", products(100))
+    assert first["changed"] == 100
+    second = platform.sync("fixture", "products", "r2", products(99))
+    assert second["changed"] == 1
+    missing = next(r for r in platform.records("product") if r["name"] == "Fixture 99")
+    assert missing["source_membership"]["status"] == "withdrawn_from_complete_snapshot"
+
+
+def test_immutable_pack_validation_cache_rechecks_changed_objects(tmp_path, monkeypatch):
+    from bord_food_api import platform as module
+
+    p = Platform(tmp_path)
+    manifest = p.sync("fixture", "stores", "r1", [store()])["manifest"]
+    real = module.hashlib.file_digest
+    calls = []
+
+    def digest(handle, algorithm):
+        calls.append(handle.name)
+        return real(handle, algorithm)
+
+    monkeypatch.setattr(module.hashlib, "file_digest", digest)
+    Platform(tmp_path).recover()
+    assert calls == []  # Same process, exact same immutable inode/stat signature.
+    p.validate_manifest(manifest, force=True)
+    assert len(calls) == 1
+    path = p.object_path(manifest["packs"]["stores"])
+    original = path.read_bytes()
+    path.chmod(0o644)
+    path.write_bytes(original)
+    p.recover()
+    assert len(calls) == 2  # Same bytes still trigger full validation after a write.
+    path.write_bytes(b"corrupt")
+    with pytest.raises(ValueError, match="checksum"):
+        p.recover()

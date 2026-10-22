@@ -1,0 +1,33 @@
+{
+  "published": {
+    "generation": "g_4f21abd0a2134a2b9b30c15045611c47",
+    "packs": {
+      "guidance": "objects/catalogs/3daf0649a0fcab8bc669fbb2b71566da48acf3dd66d496b2165ecb398d383978.sqlite",
+      "maps": "objects/catalogs/a9b06e205b0bb0f6e0c1e39c5c767a972f01480c5366971947b559d0ca2150eb.sqlite",
+      "products": "objects/catalogs/4cbea13626fdf2a08ac9893947528858db1d1bce3331da9b9b8cc139875f7f4c.sqlite",
+      "stores": "objects/catalogs/0b7b438ebb43cea69e9d3eda77d16dbe3e5a48ade2bf19e4bc49f38eb5dc7396.sqlite",
+      "usda": "objects/catalogs/0624d53e2f1a15e64e55f3fcfa16bf9b7adbab0d2899c392f08cb1c576e37d0f.sqlite"
+    }
+  },
+  "worker_checkpoint": {
+    "base_generation": "g_06c5c35bb5174eab98572bb872b95436",
+    "chart": true,
+    "guidance_changed": 49,
+    "mode": "apply",
+    "off_scope": [
+      "en:united-states"
+    ],
+    "paid_calls": 0,
+    "phase": "off_streaming_us_snapshot",
+    "projected_usda_records": 455000,
+    "source_network": false,
+    "started_at": 1792513358.5034382,
+    "state": "stopped_after_usda_and_guidance",
+    "updated_at": 1792513745.303653,
+    "usda_products_changed": 455458,
+    "usda_projection": true,
+    "completed_at": 1792514153.1043906,
+    "reason": "prioritize_store_fields_then_resume_off_in_separate_worker",
+    "off_completed": false
+  }
+}

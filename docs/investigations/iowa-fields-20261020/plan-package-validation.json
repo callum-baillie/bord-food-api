@@ -1,0 +1,95 @@
+{
+  "artifact": "Bord-Food-API-Codex-Implementation-Plan",
+  "prepared_on": "2026-10-17",
+  "status": "passed",
+  "scope": "planning_package_only",
+  "checks": [
+    {
+      "check": "json_parse_and_unique_keys",
+      "status": "passed",
+      "detail": 38
+    },
+    {
+      "check": "json_schema_validity",
+      "status": "passed",
+      "detail": 8
+    },
+    {
+      "check": "example_schema_validation",
+      "status": "passed",
+      "detail": "Native, real, synthetic, price and change examples validate"
+    },
+    {
+      "check": "real_fact_preservation",
+      "status": "passed",
+      "detail": "Original facts retained; links and count arithmetic valid; missing coordinates remain null"
+    },
+    {
+      "check": "activation_policy",
+      "status": "passed",
+      "detail": "No seeds; offline implementation; automatic bulk-only runtime; crawling/paid sources off"
+    },
+    {
+      "check": "source_registry",
+      "status": "passed",
+      "detail": {
+        "descriptors": 8,
+        "evidence_entries": 27
+      }
+    },
+    {
+      "check": "reference_integrity",
+      "status": "passed",
+      "detail": "120 ranked + 180 candidates; retained files match original checksums"
+    },
+    {
+      "check": "task_dag",
+      "status": "passed",
+      "detail": {
+        "total_tasks": 40,
+        "v1_tasks": 35
+      }
+    },
+    {
+      "check": "synthetic_expectations",
+      "status": "passed",
+      "detail": "Roster comparisons and identifier arithmetic checked; not app tests"
+    },
+    {
+      "check": "illustrative_sql_in_memory",
+      "status": "passed",
+      "detail": {
+        "catalog-pack-schema.sql": "empty schema executes and integrity checks pass",
+        "control-schema.sql": "empty schema executes and integrity checks pass"
+      }
+    },
+    {
+      "check": "openapi_structural_checks",
+      "status": "passed",
+      "detail": {
+        "paths": 24,
+        "operations": 25,
+        "full_openapi_semantic_validation": "not_run"
+      }
+    },
+    {
+      "check": "markdown_relative_links",
+      "status": "passed",
+      "detail": "All destinations exist"
+    },
+    {
+      "check": "sha256_manifest",
+      "status": "passed",
+      "detail": 93
+    }
+  ],
+  "not_performed": [
+    "Application implementation or tests",
+    "TypeScript example compilation",
+    "Full OpenAPI semantic validation",
+    "Source crawlers",
+    "Live bulk data acquisition/import",
+    "Authenticated retailer API requests",
+    "Docker/Unraid deployment"
+  ]
+}

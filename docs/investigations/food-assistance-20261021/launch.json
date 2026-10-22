@@ -1,0 +1,81 @@
+{
+  "container": "bord-food-assistance",
+  "release": "/mnt/cache/git/compose/productivity/config/food-assistance-releases/27981dfa8fe615d734fc9d109f8490cc0de3b4b078d8d4f8de2308ff51472d8d",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "status": {
+    "config_sha256": "2b18326db865345893217249986bb03de937ac24bfe1d95001a63078953261fd",
+    "dependency": {
+      "campaign": "small-states-20261020",
+      "ready": false,
+      "reason": "waiting_for_supermarkets",
+      "supermarket_state": "running"
+    },
+    "state": "waiting_for_supermarkets",
+    "updated_at": 1792564655.8129945
+  },
+  "containers": [
+    {
+      "name": "bord-food-api",
+      "status": "running",
+      "started": "2026-10-21T06:28:50.819044922Z",
+      "health": "healthy",
+      "restarts": 0,
+      "oom": false
+    },
+    {
+      "name": "Bord",
+      "status": "running",
+      "started": "2026-10-20T19:02:26.670347701Z",
+      "health": "healthy",
+      "restarts": 0,
+      "oom": false
+    },
+    {
+      "name": "bord-food-crawl-history",
+      "status": "running",
+      "started": "2026-10-20T19:29:40.338132707Z",
+      "health": "healthy",
+      "restarts": 0,
+      "oom": false
+    },
+    {
+      "name": "bord-food-small-states-20261020",
+      "status": "running",
+      "started": "2026-10-21T00:29:23.92014924Z",
+      "health": null,
+      "restarts": 0,
+      "oom": false
+    },
+    {
+      "name": "bord-food-assistance",
+      "status": "running",
+      "started": "2026-10-21T06:34:34.127849374Z",
+      "health": "healthy",
+      "restarts": 0,
+      "oom": false
+    }
+  ],
+  "counters": {
+    "assistance_model_reservations": 0,
+    "assistance_source_jobs": 0
+  },
+  "compose_validated": true,
+  "protected_key_readable": true,
+  "automatic_updates_configured": true,
+  "state_scope": [
+    "IA",
+    "WY",
+    "AK",
+    "VT",
+    "ND",
+    "DE",
+    "SD",
+    "MT",
+    "RI",
+    "NH",
+    "HI",
+    "ID",
+    "WV"
+  ],
+  "verified_at": 1792564656.247776
+}

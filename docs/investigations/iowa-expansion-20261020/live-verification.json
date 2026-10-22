@@ -1,0 +1,51 @@
+{
+  "source_sha256": "ed6605ef77d378ebb1d58df61c1018be121e5ec16719513d0c9582f29680e6fc",
+  "timeout_guard": {
+    "complete": false,
+    "reasons": [
+      "upstream_not_finished",
+      "upstream_queue_incomplete"
+    ],
+    "finish_reason": "closespider_timeout",
+    "item_count": 1484,
+    "pending_requests": 2772
+  },
+  "http": {
+    "/live": {
+      "status": 200
+    },
+    "/ready": {
+      "status": 200
+    },
+    "/health": {
+      "status": 200
+    },
+    "/fdc/v1/foods/search?query=apple&pageSize=1": {
+      "status": 200
+    },
+    "/v1/stores?state=IA&query=New%20Pioneer&limit=10": {
+      "status": 200,
+      "records": 3,
+      "ids": [
+        "sto_3ab16fd64c4d4812b409c934134c6dcf",
+        "sto_5fcba55d94c346fd8be2b76c90912463",
+        "sto_df167da017874693bac1abf35f125608"
+      ]
+    },
+    "/v1/stores?state=IA&query=Benders&limit=10": {
+      "status": 200,
+      "records": 2,
+      "ids": [
+        "sto_27e780a159c042cfae8ad327514a5abb",
+        "sto_b99fd3bc9f524358a267059d7fe1d751"
+      ]
+    },
+    "/v1/stores?state=IA&query=4256&limit=10": {
+      "status": 200,
+      "records": 1,
+      "ids": [
+        "sto_fc8c9599b9a846acb5bd4f6155d9d7cf"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "audience": "product stakeholders",
+  "delivery": "portable html; no Sites lifecycle exposed",
+  "required_structure": {
+    "Title": "title",
+    "Executive Summary": "summary",
+    "Key findings with visual evidence": [
+      "definitions",
+      "independent",
+      "chart",
+      "extract",
+      "source-tail",
+      "new-sources",
+      "paid"
+    ],
+    "Recommended next steps": "next",
+    "Further questions": "questions",
+    "Caveats and assumptions": "caveats"
+  },
+  "chart_contract": {
+    "family": "comparison/ranking",
+    "chart": "horizontal bar",
+    "unit": "canonical Iowa branch",
+    "field": "missing_hours",
+    "categories": "eight largest branch groups",
+    "denominators": "stores and missing_phone retained in tooltip dataset",
+    "reason": "show concentration of missing schedules; tables used separately for candidate field lookup",
+    "palette": "one repeated missing-hours measure, neutral categorical labels; no redundant legend"
+  },
+  "temporal_limit": "No time trend chart; only point-in-time snapshot and an in-flight campaign.",
+  "methods": "analyze.py and analysis.ipynb; candidate ceilings not causal gains",
+  "renderer_correction": "Portable verifier detected 8px toolbar overflow with classic scrollbars (shared analytics-top-bar viewport width). Artifact-only scoped HTML correction did not affect shared toolbar and was removed; plugin source not changed. Report generated from canonical builder; full browser verifier remains failed, manual headless chart/content check and structural validation recorded separately."
+}

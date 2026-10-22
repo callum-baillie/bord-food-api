@@ -1,0 +1,1 @@
+{"backup": "/data/backups/20261020-before-iowa-quality-repair", "generation": "g_c8a12e5d543740178d9adf9df4f74ba1", "checks": {"control/crawl_frontier.sqlite": "ok", "control/jev-crawl-budget.sqlite": "ok", "control/crawl-history/history.sqlite": "ok"}, "worker_state": "stopped"}

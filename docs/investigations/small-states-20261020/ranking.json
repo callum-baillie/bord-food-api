@@ -1,0 +1,458 @@
+{
+  "grain": "one state; SNAP grocery-format records before brand/format review, not all physical groceries",
+  "source_url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0",
+  "source_clock": 1791394759439,
+  "acquired_at": 1792542069.1004462,
+  "states": [
+    {
+      "rank": 1,
+      "state": "WY",
+      "name": "Wyoming",
+      "snap_grocery_format_records": 91,
+      "retained_roster_assertions": 43,
+      "published_stores_before": 15,
+      "census_complete": false
+    },
+    {
+      "rank": 2,
+      "state": "AK",
+      "name": "Alaska",
+      "snap_grocery_format_records": 135,
+      "retained_roster_assertions": 54,
+      "published_stores_before": 17,
+      "census_complete": false
+    },
+    {
+      "rank": 3,
+      "state": "VT",
+      "name": "Vermont",
+      "snap_grocery_format_records": 151,
+      "retained_roster_assertions": 61,
+      "published_stores_before": 6,
+      "census_complete": false
+    },
+    {
+      "rank": 4,
+      "state": "ND",
+      "name": "North Dakota",
+      "snap_grocery_format_records": 185,
+      "retained_roster_assertions": 43,
+      "published_stores_before": 12,
+      "census_complete": false
+    },
+    {
+      "rank": 5,
+      "state": "DE",
+      "name": "Delaware",
+      "snap_grocery_format_records": 197,
+      "retained_roster_assertions": 83,
+      "published_stores_before": 17,
+      "census_complete": false
+    },
+    {
+      "rank": 6,
+      "state": "SD",
+      "name": "South Dakota",
+      "snap_grocery_format_records": 221,
+      "retained_roster_assertions": 46,
+      "published_stores_before": 18,
+      "census_complete": false
+    },
+    {
+      "rank": 7,
+      "state": "MT",
+      "name": "Montana",
+      "snap_grocery_format_records": 246,
+      "retained_roster_assertions": 82,
+      "published_stores_before": 19,
+      "census_complete": false
+    },
+    {
+      "rank": 8,
+      "state": "RI",
+      "name": "Rhode Island",
+      "snap_grocery_format_records": 255,
+      "retained_roster_assertions": 47,
+      "published_stores_before": 14,
+      "census_complete": false
+    },
+    {
+      "rank": 9,
+      "state": "NH",
+      "name": "New Hampshire",
+      "snap_grocery_format_records": 256,
+      "retained_roster_assertions": 140,
+      "published_stores_before": 28,
+      "census_complete": false
+    },
+    {
+      "rank": 10,
+      "state": "HI",
+      "name": "Hawaii",
+      "snap_grocery_format_records": 283,
+      "retained_roster_assertions": 77,
+      "published_stores_before": 10,
+      "census_complete": false
+    },
+    {
+      "rank": 11,
+      "state": "ID",
+      "name": "Idaho",
+      "snap_grocery_format_records": 290,
+      "retained_roster_assertions": 133,
+      "published_stores_before": 35,
+      "census_complete": false
+    },
+    {
+      "rank": 12,
+      "state": "WV",
+      "name": "West Virginia",
+      "snap_grocery_format_records": 297,
+      "retained_roster_assertions": 138,
+      "published_stores_before": 79,
+      "census_complete": false
+    },
+    {
+      "rank": 13,
+      "state": "NM",
+      "name": "New Mexico",
+      "snap_grocery_format_records": 322,
+      "retained_roster_assertions": 134,
+      "published_stores_before": 50,
+      "census_complete": false
+    },
+    {
+      "rank": 14,
+      "state": "ME",
+      "name": "Maine",
+      "snap_grocery_format_records": 343,
+      "retained_roster_assertions": 124,
+      "published_stores_before": 12,
+      "census_complete": false
+    },
+    {
+      "rank": 15,
+      "state": "NV",
+      "name": "Nevada",
+      "snap_grocery_format_records": 456,
+      "retained_roster_assertions": 222,
+      "published_stores_before": 81,
+      "census_complete": false
+    },
+    {
+      "rank": 16,
+      "state": "UT",
+      "name": "Utah",
+      "snap_grocery_format_records": 460,
+      "retained_roster_assertions": 161,
+      "published_stores_before": 95,
+      "census_complete": false
+    },
+    {
+      "rank": 17,
+      "state": "NE",
+      "name": "Nebraska",
+      "snap_grocery_format_records": 465,
+      "retained_roster_assertions": 133,
+      "published_stores_before": 59,
+      "census_complete": false
+    },
+    {
+      "rank": 18,
+      "state": "MS",
+      "name": "Mississippi",
+      "snap_grocery_format_records": 470,
+      "retained_roster_assertions": 139,
+      "published_stores_before": 79,
+      "census_complete": false
+    },
+    {
+      "rank": 19,
+      "state": "AR",
+      "name": "Arkansas",
+      "snap_grocery_format_records": 498,
+      "retained_roster_assertions": 126,
+      "published_stores_before": 91,
+      "census_complete": false
+    },
+    {
+      "rank": 20,
+      "state": "KS",
+      "name": "Kansas",
+      "snap_grocery_format_records": 516,
+      "retained_roster_assertions": 199,
+      "published_stores_before": 134,
+      "census_complete": false
+    },
+    {
+      "rank": 21,
+      "state": "OK",
+      "name": "Oklahoma",
+      "snap_grocery_format_records": 626,
+      "retained_roster_assertions": 128,
+      "published_stores_before": 82,
+      "census_complete": false
+    },
+    {
+      "rank": 22,
+      "state": "CT",
+      "name": "Connecticut",
+      "snap_grocery_format_records": 672,
+      "retained_roster_assertions": 211,
+      "published_stores_before": 64,
+      "census_complete": false
+    },
+    {
+      "rank": 23,
+      "state": "IA",
+      "name": "Iowa",
+      "snap_grocery_format_records": 705,
+      "retained_roster_assertions": 362,
+      "published_stores_before": 735,
+      "census_complete": false
+    },
+    {
+      "rank": 24,
+      "state": "OR",
+      "name": "Oregon",
+      "snap_grocery_format_records": 774,
+      "retained_roster_assertions": 349,
+      "published_stores_before": 85,
+      "census_complete": false
+    },
+    {
+      "rank": 25,
+      "state": "KY",
+      "name": "Kentucky",
+      "snap_grocery_format_records": 825,
+      "retained_roster_assertions": 388,
+      "published_stores_before": 180,
+      "census_complete": false
+    },
+    {
+      "rank": 26,
+      "state": "LA",
+      "name": "Louisiana",
+      "snap_grocery_format_records": 886,
+      "retained_roster_assertions": 250,
+      "published_stores_before": 87,
+      "census_complete": false
+    },
+    {
+      "rank": 27,
+      "state": "SC",
+      "name": "South Carolina",
+      "snap_grocery_format_records": 899,
+      "retained_roster_assertions": 587,
+      "published_stores_before": 134,
+      "census_complete": false
+    },
+    {
+      "rank": 28,
+      "state": "CO",
+      "name": "Colorado",
+      "snap_grocery_format_records": 920,
+      "retained_roster_assertions": 497,
+      "published_stores_before": 235,
+      "census_complete": false
+    },
+    {
+      "rank": 29,
+      "state": "AL",
+      "name": "Alabama",
+      "snap_grocery_format_records": 948,
+      "retained_roster_assertions": 393,
+      "published_stores_before": 136,
+      "census_complete": false
+    },
+    {
+      "rank": 30,
+      "state": "AZ",
+      "name": "Arizona",
+      "snap_grocery_format_records": 1020,
+      "retained_roster_assertions": 635,
+      "published_stores_before": 238,
+      "census_complete": false
+    },
+    {
+      "rank": 31,
+      "state": "MO",
+      "name": "Missouri",
+      "snap_grocery_format_records": 1063,
+      "retained_roster_assertions": 434,
+      "published_stores_before": 188,
+      "census_complete": false
+    },
+    {
+      "rank": 32,
+      "state": "WI",
+      "name": "Wisconsin",
+      "snap_grocery_format_records": 1066,
+      "retained_roster_assertions": 515,
+      "published_stores_before": 271,
+      "census_complete": false
+    },
+    {
+      "rank": 33,
+      "state": "MN",
+      "name": "Minnesota",
+      "snap_grocery_format_records": 1117,
+      "retained_roster_assertions": 386,
+      "published_stores_before": 187,
+      "census_complete": false
+    },
+    {
+      "rank": 34,
+      "state": "MD",
+      "name": "Maryland",
+      "snap_grocery_format_records": 1123,
+      "retained_roster_assertions": 480,
+      "published_stores_before": 126,
+      "census_complete": false
+    },
+    {
+      "rank": 35,
+      "state": "IN",
+      "name": "Indiana",
+      "snap_grocery_format_records": 1135,
+      "retained_roster_assertions": 488,
+      "published_stores_before": 288,
+      "census_complete": false
+    },
+    {
+      "rank": 36,
+      "state": "TN",
+      "name": "Tennessee",
+      "snap_grocery_format_records": 1219,
+      "retained_roster_assertions": 612,
+      "published_stores_before": 265,
+      "census_complete": false
+    },
+    {
+      "rank": 37,
+      "state": "MA",
+      "name": "Massachusetts",
+      "snap_grocery_format_records": 1362,
+      "retained_roster_assertions": 358,
+      "published_stores_before": 90,
+      "census_complete": false
+    },
+    {
+      "rank": 38,
+      "state": "WA",
+      "name": "Washington",
+      "snap_grocery_format_records": 1425,
+      "retained_roster_assertions": 582,
+      "published_stores_before": 163,
+      "census_complete": false
+    },
+    {
+      "rank": 39,
+      "state": "VA",
+      "name": "Virginia",
+      "snap_grocery_format_records": 1528,
+      "retained_roster_assertions": 836,
+      "published_stores_before": 254,
+      "census_complete": false
+    },
+    {
+      "rank": 40,
+      "state": "MI",
+      "name": "Michigan",
+      "snap_grocery_format_records": 1809,
+      "retained_roster_assertions": 623,
+      "published_stores_before": 333,
+      "census_complete": false
+    },
+    {
+      "rank": 41,
+      "state": "GA",
+      "name": "Georgia",
+      "snap_grocery_format_records": 1857,
+      "retained_roster_assertions": 951,
+      "published_stores_before": 372,
+      "census_complete": false
+    },
+    {
+      "rank": 42,
+      "state": "OH",
+      "name": "Ohio",
+      "snap_grocery_format_records": 1951,
+      "retained_roster_assertions": 907,
+      "published_stores_before": 501,
+      "census_complete": false
+    },
+    {
+      "rank": 43,
+      "state": "NJ",
+      "name": "New Jersey",
+      "snap_grocery_format_records": 1962,
+      "retained_roster_assertions": 620,
+      "published_stores_before": 136,
+      "census_complete": false
+    },
+    {
+      "rank": 44,
+      "state": "NC",
+      "name": "North Carolina",
+      "snap_grocery_format_records": 2089,
+      "retained_roster_assertions": 1159,
+      "published_stores_before": 205,
+      "census_complete": false
+    },
+    {
+      "rank": 45,
+      "state": "IL",
+      "name": "Illinois",
+      "snap_grocery_format_records": 2333,
+      "retained_roster_assertions": 936,
+      "published_stores_before": 462,
+      "census_complete": false
+    },
+    {
+      "rank": 46,
+      "state": "PA",
+      "name": "Pennsylvania",
+      "snap_grocery_format_records": 2799,
+      "retained_roster_assertions": 951,
+      "published_stores_before": 298,
+      "census_complete": false
+    },
+    {
+      "rank": 47,
+      "state": "FL",
+      "name": "Florida",
+      "snap_grocery_format_records": 3806,
+      "retained_roster_assertions": 2275,
+      "published_stores_before": 588,
+      "census_complete": false
+    },
+    {
+      "rank": 48,
+      "state": "TX",
+      "name": "Texas",
+      "snap_grocery_format_records": 4244,
+      "retained_roster_assertions": 1777,
+      "published_stores_before": 669,
+      "census_complete": false
+    },
+    {
+      "rank": 49,
+      "state": "NY",
+      "name": "New York",
+      "snap_grocery_format_records": 5355,
+      "retained_roster_assertions": 1373,
+      "published_stores_before": 289,
+      "census_complete": false
+    },
+    {
+      "rank": 50,
+      "state": "CA",
+      "name": "California",
+      "snap_grocery_format_records": 7714,
+      "retained_roster_assertions": 2709,
+      "published_stores_before": 768,
+      "census_complete": false
+    }
+  ]
+}

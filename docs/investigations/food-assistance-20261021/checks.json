@@ -1,0 +1,18 @@
+{
+  "pytest": {
+    "command": "python -m pytest -q",
+    "passed": 437,
+    "warnings": 1,
+    "seconds": 30.88,
+    "warning": "Existing Starlette httpx deprecation"
+  },
+  "ruff": "passed",
+  "openapi_check": "passed",
+  "diff_check": "passed",
+  "tower_audit": "isolated collection attempted; development VM192.168.0.30 unreachable; canonical inventory untouched",
+  "actual_image_preflight": "64 frozen Python files compiled, network none, no data mount",
+  "deployment": "assistance worker only recovery; existing API/Bord starts preserved",
+  "live_import": "25 OSM Iowa sites and25services atomically published; later partition transport retry pending; API200",
+  "paid_requests_this_resume": 0,
+  "tower_repository_validation": "passed; existing generated-output informational and sensitive-archive warnings"
+}

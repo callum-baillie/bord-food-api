@@ -1,0 +1,64 @@
+{
+  "containers": [
+    {
+      "name": "bord-food-api",
+      "status": "running",
+      "started": "2026-10-21T06:28:50.819044922Z",
+      "health": "healthy",
+      "restarts": 0,
+      "oom": false
+    },
+    {
+      "name": "Bord",
+      "status": "running",
+      "started": "2026-10-20T19:02:26.670347701Z",
+      "health": "healthy",
+      "restarts": 0,
+      "oom": false
+    },
+    {
+      "name": "bord-food-crawl-history",
+      "status": "running",
+      "started": "2026-10-20T19:29:40.338132707Z",
+      "health": "healthy",
+      "restarts": 0,
+      "oom": false
+    },
+    {
+      "name": "bord-food-small-states-20261020",
+      "status": "running",
+      "started": "2026-10-21T00:29:23.92014924Z",
+      "health": null,
+      "restarts": 0,
+      "oom": false
+    },
+    {
+      "name": "bord-food-assistance",
+      "status": "running",
+      "started": "2026-10-21T06:34:34.127849374Z",
+      "health": "healthy",
+      "restarts": 0,
+      "oom": false
+    }
+  ],
+  "campaigns": {
+    "food_assistance": {
+      "config_sha256": "2b18326db865345893217249986bb03de937ac24bfe1d95001a63078953261fd",
+      "dependency": {
+        "campaign": "small-states-20261020",
+        "ready": false,
+        "reason": "waiting_for_supermarkets",
+        "supermarket_state": "running"
+      },
+      "state": "waiting_for_supermarkets",
+      "updated_at": 1792564655.8129945
+    },
+    "supermarkets": {
+      "active": "NH",
+      "active_run": "small-states-20261020-nh-b01",
+      "state": "running",
+      "updated_at": 1792562888.3571315
+    }
+  },
+  "verified_at": 1792564656.2480075
+}

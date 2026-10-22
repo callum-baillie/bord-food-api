@@ -1,0 +1,28 @@
+{
+  "snapshot": {
+    "file": "snapshot.json",
+    "sha256": "f9d4577031df8815a1d0a205a66a50bd358d00c4c9bd7d2ee1d4a50644f79cfd",
+    "generation": "g_55952b0eaf534c1e817cc5507ae1cf6b",
+    "captured_at": "2026-10-20T20:53:51.571936+00:00"
+  },
+  "inputs": [
+    {
+      "file": "iowa-phone-hours-candidates.jsonl",
+      "bytes": 3947757,
+      "sha256": "eade169605edf02c10a731884c2e4e3c6040ff608cdb2fcae4037d14ff42b759",
+      "origin": "retained Unraid discovery source; not a new upstream download"
+    },
+    {
+      "file": "iowa-phone-hours-places.jsonl",
+      "bytes": 2856938,
+      "sha256": "55a9f0dbc6cc4bb280218f7193b06b407ea44e3991b587ad6c933df8b93e2ea6",
+      "origin": "retained Unraid discovery source; not a new upstream download"
+    },
+    {
+      "file": "iowa-phone-hours-crosswalk.jsonl",
+      "bytes": 135200,
+      "sha256": "438d2080667a322111b8cb0e1b3d3f479249f8cc37162d4c24f6819ff4f63cdf",
+      "origin": "retained Unraid discovery source; not a new upstream download"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/827ae23a7c75cd18815692b32007ec58f8f57aff41b90cde353fc469a7fee5a5",
+  "network": "none",
+  "before": {
+    "bord-food-api": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 437314,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-20T18:25:49.727706347Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-20T13:33:28.839704989-05:00",
+            "End": "2026-10-20T13:33:29.077794607-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:33:59.078505441-05:00",
+            "End": "2026-10-20T13:33:59.322230402-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:29.323356916-05:00",
+            "End": "2026-10-20T13:34:29.566148665-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:59.566881136-05:00",
+            "End": "2026-10-20T13:34:59.80876201-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:35:29.809432429-05:00",
+            "End": "2026-10-20T13:35:30.053330074-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          }
+        ]
+      }
+    },
+    "Bord": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 4113203,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-18T14:38:21.975997354Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-20T13:33:08.347999898-05:00",
+            "End": "2026-10-20T13:33:08.502793241-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:33:38.503075068-05:00",
+            "End": "2026-10-20T13:33:38.650924888-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:08.651890125-05:00",
+            "End": "2026-10-20T13:34:08.796347937-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:38.797420664-05:00",
+            "End": "2026-10-20T13:34:38.943279398-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:35:08.944248452-05:00",
+            "End": "2026-10-20T13:35:09.093928425-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          }
+        ]
+      }
+    },
+    "bord-food-crawl-history": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 3021926,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-19T02:50:26.302830987Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-20T13:33:29.993943718-05:00",
+            "End": "2026-10-20T13:33:30.697370501-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:00.698025866-05:00",
+            "End": "2026-10-20T13:34:00.993466395-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:30.993955434-05:00",
+            "End": "2026-10-20T13:34:31.289970808-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:35:01.29072059-05:00",
+            "End": "2026-10-20T13:35:02.086898472-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:35:32.088069775-05:00",
+            "End": "2026-10-20T13:35:32.393387546-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          }
+        ]
+      }
+    }
+  },
+  "after": {
+    "bord-food-api": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 437314,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-20T18:25:49.727706347Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-20T13:33:28.839704989-05:00",
+            "End": "2026-10-20T13:33:29.077794607-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:33:59.078505441-05:00",
+            "End": "2026-10-20T13:33:59.322230402-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:29.323356916-05:00",
+            "End": "2026-10-20T13:34:29.566148665-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:59.566881136-05:00",
+            "End": "2026-10-20T13:34:59.80876201-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:35:29.809432429-05:00",
+            "End": "2026-10-20T13:35:30.053330074-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          }
+        ]
+      }
+    },
+    "Bord": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 4113203,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-18T14:38:21.975997354Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-20T13:33:38.503075068-05:00",
+            "End": "2026-10-20T13:33:38.650924888-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:08.651890125-05:00",
+            "End": "2026-10-20T13:34:08.796347937-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:34:38.797420664-05:00",
+            "End": "2026-10-20T13:34:38.943279398-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:35:08.944248452-05:00",
+            "End": "2026-10-20T13:35:09.093928425-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          },
+          {
+            "Start": "2026-10-20T13:35:39.094562355-05:00",
+            "End": "2026-10-20T13:35:39.240469272-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          }
+        ]
+      }
+    },
+    "bord-food-crawl-history": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 476698,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-20T18:35:38.538820243Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-20T13:35:43.66787632-05:00",
+            "End": "2026-10-20T13:35:44.19147795-05:00",
+            "ExitCode": 0,
+            "Output": ""
+          }
+        ]
+      }
+    }
+  },
+  "only_history_recreated": true
+}

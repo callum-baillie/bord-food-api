@@ -1,0 +1,131 @@
+{
+  "counts": {
+    "all": {
+      "phone": {
+        "before": 4703,
+        "after": 4703,
+        "verified": 103
+      },
+      "email": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "website": {
+        "before": 6196,
+        "after": 6196,
+        "verified": 17
+      },
+      "opening_hours": {
+        "before": 0,
+        "after": 10,
+        "verified": 10
+      },
+      "timezone": {
+        "before": 0,
+        "after": 6257,
+        "verified": 0
+      },
+      "hours_exceptions": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "pickup_links": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "delivery_links": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "departments": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "accessibility": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "entrances": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "aisle_category_mappings": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      }
+    },
+    "IA": {
+      "phone": {
+        "before": 287,
+        "after": 287,
+        "verified": 103
+      },
+      "email": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "website": {
+        "before": 331,
+        "after": 331,
+        "verified": 17
+      },
+      "opening_hours": {
+        "before": 0,
+        "after": 10,
+        "verified": 10
+      },
+      "timezone": {
+        "before": 0,
+        "after": 735,
+        "verified": 0
+      },
+      "hours_exceptions": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "pickup_links": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "delivery_links": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "departments": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "accessibility": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "entrances": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      },
+      "aisle_category_mappings": {
+        "before": 0,
+        "after": 0,
+        "verified": 0
+      }
+    }
+  },
+  "same_store_ids": true,
+  "source_records_unchanged": true,
+  "scope": "stores-only local rehearsal; other packs not copied"
+}

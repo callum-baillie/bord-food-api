@@ -1,0 +1,20 @@
+{
+  "source": "osm_food_assistance",
+  "state": "IA",
+  "sites": 25,
+  "services": 25,
+  "events": 0,
+  "coordinates": 25,
+  "structured_street": 13,
+  "phone": 5,
+  "website": 3,
+  "email": 0,
+  "raw_schedule": 3,
+  "independently_verified": 0,
+  "operator_targets": 2,
+  "operator_targets_held_by_history": 2,
+  "operator_gaps": 23,
+  "duplicate_review_candidates": 1,
+  "source_observed_at": "2026-10-22T17:37:51Z",
+  "census_or_completeness_claim": false
+}

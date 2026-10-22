@@ -1,0 +1,392 @@
+{
+  "source_url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts",
+  "source_title": "Cold Food Storage Chart",
+  "source_last_reviewed": "2023-09-19",
+  "retrieved_at": "2026-10-20T15:44:36.908850+00:00",
+  "source_snapshot_sha256": "1947aa99c556084a341a64fa9882abcefe1c490abacbba88032fefa1726bf163",
+  "extraction_method": "reviewed_complete_visible_table_rows_v1",
+  "source_conditions": "Refrigerator 40°F (4°C) or below; freezer 0°F (-18°C) or below. Freezer durations are quality only; continuously frozen food can be kept indefinitely.",
+  "rows": [
+    {
+      "food": "Salad",
+      "type": "Egg, chicken, ham, tuna, and macaroni salads",
+      "refrigerator": "3 to 4 days",
+      "freezer": "Does not freeze well",
+      "source_line": 19
+    },
+    {
+      "food": "Hot dogs",
+      "type": "Opened package",
+      "refrigerator": "1 week",
+      "freezer": "1 to 2 months",
+      "source_line": 20
+    },
+    {
+      "food": "Hot dogs",
+      "type": "Unopened package",
+      "refrigerator": "2 weeks",
+      "freezer": "1 to 2 months",
+      "source_line": 21
+    },
+    {
+      "food": "Luncheon meat",
+      "type": "Opened package or deli sliced",
+      "refrigerator": "3 to 5 days",
+      "freezer": "1 to 2 months",
+      "source_line": 22
+    },
+    {
+      "food": "Luncheon meat",
+      "type": "Unopened package",
+      "refrigerator": "2 weeks",
+      "freezer": "1 to 2 months",
+      "source_line": 23
+    },
+    {
+      "food": "Bacon and sausage",
+      "type": "Bacon",
+      "refrigerator": "1 week",
+      "freezer": "1 month",
+      "source_line": 24
+    },
+    {
+      "food": "Bacon and sausage",
+      "type": "Sausage, raw, from chicken, turkey, pork, or beef",
+      "refrigerator": "1 to 2 days",
+      "freezer": "1 to 2 months",
+      "source_line": 25
+    },
+    {
+      "food": "Bacon and sausage",
+      "type": "Sausage, fully cooked, from chicken, turkey, pork, or beef",
+      "refrigerator": "1 week",
+      "freezer": "1 to 2 months",
+      "source_line": 26
+    },
+    {
+      "food": "Bacon and sausage",
+      "type": "Sausage, purchased frozen",
+      "refrigerator": "After cooking, 3-4 days",
+      "freezer": "1-2 months from date of purchase",
+      "source_line": 27
+    },
+    {
+      "food": "Hamburger, ground meats and ground poultry",
+      "type": "Hamburger, ground beef, turkey, chicken, other poultry, veal, pork, lamb, and mixtures of them",
+      "refrigerator": "1 to 2 days",
+      "freezer": "3 to 4 months",
+      "source_line": 28
+    },
+    {
+      "food": "Fresh beef, veal, lamb, and pork",
+      "type": "Steaks",
+      "refrigerator": "3 to 5 days",
+      "freezer": "4 to 12 months",
+      "source_line": 29
+    },
+    {
+      "food": "Fresh beef, veal, lamb, and pork",
+      "type": "Chops",
+      "refrigerator": "3 to 5 days",
+      "freezer": "4 to 12 months",
+      "source_line": 30
+    },
+    {
+      "food": "Fresh beef, veal, lamb, and pork",
+      "type": "Roasts",
+      "refrigerator": "3 to 5 days",
+      "freezer": "4 to 12 months",
+      "source_line": 31
+    },
+    {
+      "food": "Ham",
+      "type": "Fresh, uncured, uncooked",
+      "refrigerator": "3 to 5 days",
+      "freezer": "6 months",
+      "source_line": 32
+    },
+    {
+      "food": "Ham",
+      "type": "Fresh, uncured, cooked",
+      "refrigerator": "3 to 4 days",
+      "freezer": "3 to 4 months",
+      "source_line": 33
+    },
+    {
+      "food": "Ham",
+      "type": "Cured, cook-before-eating, uncooked",
+      "refrigerator": "5 to 7 days or “use by” date",
+      "freezer": "3 to 4 months",
+      "source_line": 34
+    },
+    {
+      "food": "Ham",
+      "type": "Fully-cooked, vacuum-sealed at plant, unopened",
+      "refrigerator": "2 weeks or “use by” date",
+      "freezer": "1 to 2 months",
+      "source_line": 35
+    },
+    {
+      "food": "Ham",
+      "type": "Cooked, store-wrapped, whole",
+      "refrigerator": "1 week",
+      "freezer": "1 to 2 months",
+      "source_line": 36
+    },
+    {
+      "food": "Ham",
+      "type": "Cooked, store-wrapped, slices, half, or spiral cut",
+      "refrigerator": "3 to 5 days",
+      "freezer": "1 to 2 months",
+      "source_line": 37
+    },
+    {
+      "food": "Ham",
+      "type": "Country ham, cooked",
+      "refrigerator": "1 week",
+      "freezer": "1 month",
+      "source_line": 38
+    },
+    {
+      "food": "Ham",
+      "type": "Canned, labeled \"Keep Refrigerated,\" unopened",
+      "refrigerator": "6 to 9 months",
+      "freezer": "Do not freeze",
+      "source_line": 39
+    },
+    {
+      "food": "Ham",
+      "type": "Canned, shelf-stable, opened Note: An unopened, shelf-stable, canned ham can be stored at room temperature for 2 years.",
+      "refrigerator": "3 to 4 days",
+      "freezer": "1 to 2 months",
+      "source_line": 40
+    },
+    {
+      "food": "Ham",
+      "type": "Prosciutto, Parma or Serrano ham, dry Italian or Spanish type, cut",
+      "refrigerator": "2 to 3 months",
+      "freezer": "1 month",
+      "source_line": 41
+    },
+    {
+      "food": "Fresh poultry",
+      "type": "Chicken or turkey, whole",
+      "refrigerator": "1 to 2 days",
+      "freezer": "1 year",
+      "source_line": 42
+    },
+    {
+      "food": "Fresh poultry",
+      "type": "Chicken or turkey, pieces",
+      "refrigerator": "1 to 2 days",
+      "freezer": "9 months",
+      "source_line": 43
+    },
+    {
+      "food": "Fin Fish",
+      "type": "Fatty Fish (bluefish, catfish, mackerel, mullet, salmon, tuna, etc.)",
+      "refrigerator": "1 - 3 Days",
+      "freezer": "2 - 3 Months",
+      "source_line": 44
+    },
+    {
+      "food": "Shellfish",
+      "type": "Fresh Crab Meat",
+      "refrigerator": "2 - 4 Days",
+      "freezer": "2 - 4 Months",
+      "source_line": 47
+    },
+    {
+      "food": "Shellfish",
+      "type": "Fresh Lobster",
+      "refrigerator": "2 - 4 Days",
+      "freezer": "2 - 4 Months",
+      "source_line": 48
+    },
+    {
+      "food": "Shellfish",
+      "type": "Live Crab, Lobster",
+      "refrigerator": "1 day .",
+      "freezer": "Not recommended",
+      "source_line": 49
+    },
+    {
+      "food": "Shellfish",
+      "type": "Live Clams, Mussels, Oysters, and Scallops",
+      "refrigerator": "5 - 10 Days",
+      "freezer": "Not recommended",
+      "source_line": 50
+    },
+    {
+      "food": "Shellfish",
+      "type": "Shrimp, Crayfish",
+      "refrigerator": "3 - 5 Days",
+      "freezer": "6 - 18 Months",
+      "source_line": 51
+    },
+    {
+      "food": "Shellfish",
+      "type": "Shucked Clams, Mussels, Oysters, and Scallops",
+      "refrigerator": "3 - 10 Days",
+      "freezer": "3 - 4 Months",
+      "source_line": 52
+    },
+    {
+      "food": "Shellfish",
+      "type": "Squid",
+      "refrigerator": "1 - 3 Days",
+      "freezer": "6 - 18 Months",
+      "source_line": 53
+    },
+    {
+      "food": "Eggs",
+      "type": "Raw eggs in shell",
+      "refrigerator": "3 to 5 weeks",
+      "freezer": "Do not freeze in shell. Beat yolks and whites together, then freeze.",
+      "source_line": 54
+    },
+    {
+      "food": "Eggs",
+      "type": "Hard-cooked eggs",
+      "refrigerator": "1 week",
+      "freezer": "Do not freeze",
+      "source_line": 60
+    },
+    {
+      "food": "Eggs",
+      "type": "Egg substitutes, liquid, unopened",
+      "refrigerator": "1 week",
+      "freezer": "Do not freeze",
+      "source_line": 61
+    },
+    {
+      "food": "Eggs",
+      "type": "Egg substitutes, liquid, opened",
+      "refrigerator": "3 days",
+      "freezer": "Do not freeze",
+      "source_line": 62
+    },
+    {
+      "food": "Eggs",
+      "type": "Egg substitutes, frozen, unopened",
+      "refrigerator": "After thawing, 1 week or refer to “use by” date",
+      "freezer": "12 months",
+      "source_line": 63
+    },
+    {
+      "food": "Eggs",
+      "type": "Egg substitutes, frozen, opened",
+      "refrigerator": "After thawing, 3 to 4 days or refer to “use by” date",
+      "freezer": "Do not freeze",
+      "source_line": 64
+    },
+    {
+      "food": "Eggs",
+      "type": "Casseroles with eggs",
+      "refrigerator": "After baking, 3 to 4 days",
+      "freezer": "After baking, 2 to 3 months",
+      "source_line": 65
+    },
+    {
+      "food": "Eggs",
+      "type": "Eggnog, commercial",
+      "refrigerator": "3 to 5 days",
+      "freezer": "6 months",
+      "source_line": 66
+    },
+    {
+      "food": "Eggs",
+      "type": "Eggnog, homemade",
+      "refrigerator": "2 to 4 days",
+      "freezer": "Do not freeze",
+      "source_line": 67
+    },
+    {
+      "food": "Eggs",
+      "type": "Pies: Pumpkin or pecan",
+      "refrigerator": "After baking, 3 to 4 days",
+      "freezer": "After baking, 1 to 2 months",
+      "source_line": 68
+    },
+    {
+      "food": "Eggs",
+      "type": "Pies: Custard and chiffon",
+      "refrigerator": "After baking, 3 to 4 days",
+      "freezer": "Do not freeze",
+      "source_line": 69
+    },
+    {
+      "food": "Eggs",
+      "type": "Quiche with filling",
+      "refrigerator": "After baking, 3 to 5 days",
+      "freezer": "After baking, 2 to 3 months",
+      "source_line": 70
+    },
+    {
+      "food": "Soups and stews",
+      "type": "Vegetable or meat added",
+      "refrigerator": "3 to 4 days",
+      "freezer": "2 to 3 months",
+      "source_line": 71
+    },
+    {
+      "food": "Leftovers",
+      "type": "Cooked meat or poultry",
+      "refrigerator": "3 to 4 days",
+      "freezer": "2 to 6 months",
+      "source_line": 72
+    },
+    {
+      "food": "Leftovers",
+      "type": "Chicken nuggets or patties",
+      "refrigerator": "3 to 4 days",
+      "freezer": "1 to 3 months",
+      "source_line": 73
+    },
+    {
+      "food": "Leftovers",
+      "type": "Pizza",
+      "refrigerator": "3 to 4 days",
+      "freezer": "1 to 2 months",
+      "source_line": 74
+    }
+  ],
+  "excluded_rows": [
+    {
+      "line": 45,
+      "text": "Lean Fish (cod, flounder, haddock, halibut, sole, etc.)  | 6 - 8 Months",
+      "reason": "rowspan_or_multiline_cells_require_full_html_review"
+    },
+    {
+      "line": 46,
+      "text": "Lean Fish (pollock, ocean perch, rockfish, sea trout.)  | 4 - 8 Months",
+      "reason": "rowspan_or_multiline_cells_require_full_html_review"
+    },
+    {
+      "line": 55,
+      "text": "Raw egg whites and yolks",
+      "reason": "rowspan_or_multiline_cells_require_full_html_review"
+    },
+    {
+      "line": 56,
+      "text": "Note: Yolks do not freeze well  | 2 to 4 days  | 12 months",
+      "reason": "rowspan_or_multiline_cells_require_full_html_review"
+    },
+    {
+      "line": 57,
+      "text": "Raw egg accidentally frozen in shell",
+      "reason": "rowspan_or_multiline_cells_require_full_html_review"
+    },
+    {
+      "line": 58,
+      "text": "Note: Toss any frozen eggs with a broken shell  | Use immediately after thawing  | Keep frozen, then",
+      "reason": "rowspan_or_multiline_cells_require_full_html_review"
+    },
+    {
+      "line": 59,
+      "text": "refrigerate to thaw",
+      "reason": "rowspan_or_multiline_cells_require_full_html_review"
+    }
+  ],
+  "complete_foodkeeper_dataset": false
+}

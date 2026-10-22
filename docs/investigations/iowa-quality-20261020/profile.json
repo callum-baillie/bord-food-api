@@ -1,0 +1,886 @@
+{
+  "captured_at": 1792525132.749614,
+  "generation": "g_764fdcbc95194f3999643aa4b203f6d4",
+  "stores": 741,
+  "all_stores": 9315,
+  "manifest_stable": true,
+  "fields": [
+    {
+      "field": "phone",
+      "present": 503,
+      "coverage": 0.6788124156545209,
+      "status": {
+        "source_reported": 244,
+        "corroborated": 252,
+        "stale": 2,
+        "conflicted": 4,
+        "unverified": 1
+      },
+      "current_independent_or_reviewed": 252,
+      "normalizes": 502,
+      "invalid_count": 1,
+      "invalid_examples": [
+        {
+          "id": "sto_60e028dde0b543d695623c9d269d58f5",
+          "name": "Hy-Vee",
+          "value": "Main (641) 784-6981 - Pharmacy (641) 784-6322"
+        }
+      ]
+    },
+    {
+      "field": "website",
+      "present": 480,
+      "coverage": 0.6477732793522267,
+      "status": {
+        "source_reported": 206,
+        "conflicted": 138,
+        "corroborated": 116,
+        "unverified": 18,
+        "stale": 2
+      },
+      "current_independent_or_reviewed": 116,
+      "normalizes": 480,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "opening_hours",
+      "present": 314,
+      "coverage": 0.42375168690958165,
+      "status": {
+        "source_reported": 304,
+        "corroborated": 10
+      },
+      "current_independent_or_reviewed": 10,
+      "normalizes": 314,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "timezone",
+      "present": 741,
+      "coverage": 1.0,
+      "status": {
+        "derived": 741
+      },
+      "current_independent_or_reviewed": 0,
+      "normalizes": 741,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "email",
+      "present": 84,
+      "coverage": 0.11336032388663968,
+      "status": {
+        "source_reported": 84
+      },
+      "current_independent_or_reviewed": 0,
+      "normalizes": 84,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "departments",
+      "present": 11,
+      "coverage": 0.014844804318488529,
+      "status": {
+        "source_reported": 11
+      },
+      "current_independent_or_reviewed": 0,
+      "normalizes": 11,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "pickup_links",
+      "present": 1,
+      "coverage": 0.001349527665317139,
+      "status": {
+        "unverified": 1
+      },
+      "current_independent_or_reviewed": 0,
+      "normalizes": 1,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "delivery_links",
+      "present": 1,
+      "coverage": 0.001349527665317139,
+      "status": {
+        "unverified": 1
+      },
+      "current_independent_or_reviewed": 0,
+      "normalizes": 1,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "accessibility",
+      "present": 10,
+      "coverage": 0.01349527665317139,
+      "status": {
+        "source_reported": 10
+      },
+      "current_independent_or_reviewed": 0,
+      "normalizes": 10,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "hours_exceptions",
+      "present": 0,
+      "coverage": 0.0,
+      "status": {},
+      "current_independent_or_reviewed": 0,
+      "normalizes": 0,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "entrances",
+      "present": 0,
+      "coverage": 0.0,
+      "status": {},
+      "current_independent_or_reviewed": 0,
+      "normalizes": 0,
+      "invalid_count": 0,
+      "invalid_examples": []
+    },
+    {
+      "field": "aisle_category_mappings",
+      "present": 0,
+      "coverage": 0.0,
+      "status": {},
+      "current_independent_or_reviewed": 0,
+      "normalizes": 0,
+      "invalid_count": 0,
+      "invalid_examples": []
+    }
+  ],
+  "basics": {
+    "id_missing": 0,
+    "id_duplicate_count": 0,
+    "name_missing": 0,
+    "source_refs_missing": 0,
+    "attribution_missing": 0,
+    "license_missing": 0,
+    "chain_orphans": 0,
+    "address_key_missing": 0,
+    "postcode_missing": 0,
+    "coordinates_present": 616,
+    "invalid_coordinates": 0,
+    "closed_status": {
+      "unknown": 741
+    },
+    "permanently_closed_true": 0,
+    "excluded_name_candidates": [
+      {
+        "id": "sto_41357d7c1e8349f8909f42798f6ecdd2",
+        "name": "Fast & Fresh Hy-Vee"
+      },
+      {
+        "id": "sto_79f1cf3321444e18b707ccc34282ccd8",
+        "name": "Fast & Fresh Hy-Vee"
+      }
+    ],
+    "specialist_name_candidates": []
+  },
+  "duplicate_review": {
+    "same_address_groups": [
+      {
+        "key": "('3500 dodge st', 'dubuque', 'IA')",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_41bca8c585c74b88aacd35171966b516",
+            "name": "Hy-Vee",
+            "address": {
+              "city": null,
+              "country": "US",
+              "full": "3500 Dodge Street, Dubuque, IA 52003",
+              "postal_code": null,
+              "region": "IA",
+              "street": null
+            }
+          },
+          {
+            "id": "sto_5a9650f341634b23bd1bd8bc73d2c10d",
+            "name": "Target",
+            "address": {
+              "city": "Dubuque",
+              "country": "US",
+              "postal_code": "52003-5261",
+              "region": "IA",
+              "street": "3500 Dodge St"
+            }
+          }
+        ]
+      }
+    ],
+    "same_phone_groups": [
+      {
+        "key": "+18559552534",
+        "count": 15,
+        "stores": [
+          {
+            "id": "sto_2220f41a9799497dac0b4b37eb65a915",
+            "name": "Aldi",
+            "address": {
+              "city": "Waverly",
+              "country": "US",
+              "postal_code": "50677",
+              "region": "IA",
+              "street": "2701 4th Street South West"
+            }
+          },
+          {
+            "id": "sto_231889b864a043ee8c18d4f1b12dfa94",
+            "name": "Aldi",
+            "address": {
+              "city": "Bettendorf",
+              "country": "US",
+              "postal_code": "52722",
+              "region": "IA",
+              "street": "3221 Devils Glen Road"
+            }
+          },
+          {
+            "id": "sto_2d9da4e802b84a8e86873d2e4ef6e3af",
+            "name": "Aldi",
+            "address": {
+              "city": "Cedar Rapids",
+              "country": "US",
+              "postal_code": "52404",
+              "region": "IA",
+              "street": "1860 Edgewood Road SW"
+            }
+          },
+          {
+            "id": "sto_4655c336ee45468ea4f8ca75a03a635a",
+            "name": "Aldi",
+            "address": {
+              "city": "Dubuque",
+              "country": "US",
+              "postal_code": "52003",
+              "region": "IA",
+              "street": "2596 Dodge Street"
+            }
+          },
+          {
+            "id": "sto_5b2e5fedd39c45da84e05dbe44ec167f",
+            "name": "Aldi",
+            "address": {
+              "city": "Ames",
+              "country": "US",
+              "postal_code": "50010",
+              "region": "IA",
+              "street": "108 South 5th Street"
+            }
+          },
+          {
+            "id": "sto_624d080da3c14fc888f201190973d484",
+            "name": "Aldi",
+            "address": {
+              "city": "Cedar Rapids",
+              "country": "US",
+              "postal_code": "52402",
+              "region": "IA",
+              "street": "180 Collins Road NE Suite D, Suite D"
+            }
+          },
+          {
+            "id": "sto_6713eb20f1554e01b962ea4a657483fb",
+            "name": "Aldi",
+            "address": {
+              "city": "Newton",
+              "country": "US",
+              "postal_code": "50208",
+              "region": "IA",
+              "street": "375 Iowa Speedway Dr"
+            }
+          },
+          {
+            "id": "sto_8dbb412b325248dbb6a5b60bc23d86e0",
+            "name": "Aldi",
+            "address": {
+              "city": "Ottumwa",
+              "country": "US",
+              "postal_code": "52501",
+              "region": "IA",
+              "street": "940 North Quincy Avenue"
+            }
+          },
+          {
+            "id": "sto_a1ed70c007f947d6ac8f7b0f92301aeb",
+            "name": "Aldi",
+            "address": {
+              "city": "Davenport",
+              "country": "US",
+              "postal_code": "52806",
+              "region": "IA",
+              "street": "3643 W Kimberly Rd"
+            }
+          },
+          {
+            "id": "sto_ab1cdfc9167c4b309b25fb621af4f995",
+            "name": "Aldi",
+            "address": {
+              "city": "Keokuk",
+              "country": "US",
+              "postal_code": "52632",
+              "region": "IA",
+              "street": "3379 Main Street"
+            }
+          },
+          {
+            "id": "sto_c66a29eb21cd404d9f18361d89e422fe",
+            "name": "ALDI 72064",
+            "address": {
+              "city": "Cedar Falls",
+              "postal_code": "50613",
+              "region": "IA",
+              "street": "6322 University Ave",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_cfc461e02a5e40fc96247061770c1510",
+            "name": "Aldi",
+            "address": {
+              "city": "Fort Madison",
+              "country": "US",
+              "postal_code": "52627",
+              "region": "IA",
+              "street": "927 Avenue G"
+            }
+          },
+          {
+            "id": "sto_ea5b18d78a3c4363a6b5864cd8d2b89d",
+            "name": "Aldi",
+            "address": {
+              "city": "Grimes",
+              "country": "US",
+              "postal_code": "50111",
+              "region": "IA",
+              "street": "2055 East 1st Street"
+            }
+          },
+          {
+            "id": "sto_f13acf468ad14fd69bfc4d2b7b0df180",
+            "name": "Aldi",
+            "address": {
+              "city": "Council Bluffs",
+              "country": "US",
+              "postal_code": "51501",
+              "region": "IA",
+              "street": "3135 Manawa Centre Dr."
+            }
+          },
+          {
+            "id": "sto_fa82058527cb4cf8994a58fc769897d4",
+            "name": "Aldi",
+            "address": {
+              "city": "Windsor Heights",
+              "country": "US",
+              "postal_code": "50324",
+              "region": "IA",
+              "street": "7100 University Avenue"
+            }
+          }
+        ]
+      },
+      {
+        "key": "+15154622216",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_2814f86b91f04e919f09478b4222d623",
+            "name": "Fareway",
+            "address": {
+              "city": "Winterset",
+              "postal_code": "50273",
+              "region": "IA",
+              "street": "718;719 State Highway 92;West Iowa State Highway 92",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_71ee4524d71a445da00f048dc466c4a0",
+            "name": "Fareway",
+            "address": {
+              "city": "Winterset",
+              "country": "US",
+              "postal_code": "50273",
+              "region": "IA",
+              "street": "719 West Highway 92"
+            }
+          }
+        ]
+      },
+      {
+        "key": "+15632891234",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_6e09b54eb57a464ea12973177af2bfee",
+            "name": "Fareway Stores Inc. 237",
+            "address": {
+              "city": "Le Claire",
+              "postal_code": "52753",
+              "region": "IA",
+              "street": "1301 Eagle Ridge Rd",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_8a5e31bf8d584c1f8c16fab57c3069a9",
+            "name": "Fareway",
+            "address": {
+              "city": "LeClaire",
+              "country": "US",
+              "postal_code": "52753",
+              "region": "IA",
+              "street": "1301 Eagle Ridge Road"
+            }
+          }
+        ]
+      },
+      {
+        "key": "+13196266798",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_b86a29e446284815a91c3b97517d03ee",
+            "name": "Fareway Stores Inc. 993",
+            "address": {
+              "city": "North Liberty",
+              "postal_code": "52317",
+              "region": "IA",
+              "street": "615 Westwood Dr",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_ba15dd10eabb4abfad184de7d76d0892",
+            "name": "Fareway",
+            "address": {
+              "city": "North Liberty",
+              "country": "US",
+              "postal_code": "52317",
+              "region": "IA",
+              "street": "615 Westwood Drive, PO 96"
+            }
+          }
+        ]
+      }
+    ],
+    "same_website_groups": [
+      {
+        "key": "https://www.pricechopperdesmoines.com",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_3175641596c24194b03df766e1b47a80",
+            "name": "Price Chopper 1307",
+            "address": {
+              "city": "Des Moines",
+              "postal_code": "50312",
+              "region": "IA",
+              "street": "3425 Ingersoll Ave",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_6a0a98ec63044b15927fc8b5360f5d10",
+            "name": "Price Chopper 1310",
+            "address": {
+              "city": "Des Moines",
+              "postal_code": "50310",
+              "region": "IA",
+              "street": "1819 Beaver Ave",
+              "unit": null
+            }
+          }
+        ]
+      },
+      {
+        "key": "https://www.sunshinefoodstores.com",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_35e9181ccb92433984c9f49f919c6ff6",
+            "name": "Sunshine Foods 9037",
+            "address": {
+              "city": "Milford",
+              "postal_code": "51351",
+              "region": "IA",
+              "street": "1704 Okoboji Ave",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_531737a8beda49f1a1e133c8627591c5",
+            "name": "Sunshine Foods 9754",
+            "address": {
+              "city": "Onawa",
+              "postal_code": "51040",
+              "region": "IA",
+              "street": "1002 11th St",
+              "unit": null
+            }
+          }
+        ]
+      },
+      {
+        "key": "https://sunshinefoodstores.com",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_5b032643ec6b4d47b329870d50e01fd5",
+            "name": "Sunshine Foods 9839",
+            "address": {
+              "city": "Rock Valley",
+              "postal_code": "51247",
+              "region": "IA",
+              "street": "1227 Valley Dr",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_a6b87795d6204f0b9a23dd42ffa83475",
+            "name": "Sunshine Foods",
+            "address": {
+              "city": "Rock Rapids",
+              "postal_code": "51246",
+              "region": "IA",
+              "street": "106 N Boone St",
+              "unit": null
+            }
+          }
+        ]
+      },
+      {
+        "key": "http://www.foodland.biz",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_5dc664cd4cc748c7add5321a5ec298ed",
+            "name": "Avoca Food Land",
+            "address": {
+              "city": "Avoca",
+              "postal_code": "51521",
+              "region": "IA",
+              "street": "212 W Wood St",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_8231388527ad49448a4cf5f717019a20",
+            "name": "Food Land Super Market",
+            "address": {
+              "city": "Missouri Valley",
+              "postal_code": "51555",
+              "region": "IA",
+              "street": "407 W Huron St",
+              "unit": null
+            }
+          }
+        ]
+      },
+      {
+        "key": "http://www.shopbrothersmarket.com",
+        "count": 3,
+        "stores": [
+          {
+            "id": "sto_61fc04ce5ff341979bac446f47e16db8",
+            "name": "Brothers Market 702",
+            "address": {
+              "city": "Bloomfield",
+              "postal_code": "52537",
+              "region": "IA",
+              "street": "207 E Locust St",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_d98a8cdf230c4ca69520464a5bd80284",
+            "name": "Brothers Market 776",
+            "address": {
+              "city": "Williamsburg",
+              "postal_code": "52361",
+              "region": "IA",
+              "street": "103 W Walnut St",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_fa12fa0a352c492da98b926508329dd0",
+            "name": "Brothers Market 715",
+            "address": {
+              "city": "Clarion",
+              "postal_code": "50525",
+              "region": "IA",
+              "street": "325 Central Ave W",
+              "unit": null
+            }
+          }
+        ]
+      },
+      {
+        "key": "https://www.hy-vee.com/stores/detail.aspx?s=3945",
+        "count": 2,
+        "stores": [
+          {
+            "id": "sto_a127ee26037b43f5bba5a22d8c15096b",
+            "name": "Dollar Fresh Market",
+            "address": {
+              "city": "Independence",
+              "postal_code": "50644",
+              "region": "IA",
+              "street": "1975 Three Elms Park Road",
+              "unit": null
+            }
+          },
+          {
+            "id": "sto_e51f15f69af34b319dcfa8c42fed9e27",
+            "name": "Dollar Fresh Hy-Vee",
+            "address": {
+              "city": null,
+              "country": "US",
+              "full": "1975 Three Elms Rd, Independence, IA 50644",
+              "postal_code": null,
+              "region": "IA",
+              "street": null
+            }
+          }
+        ]
+      }
+    ],
+    "shared_email_groups": [],
+    "nearby_compatible_pairs": []
+  },
+  "conflicts": {
+    "count": 217,
+    "stores": 182,
+    "fields": {
+      "website": 154,
+      "opening_hours": 34,
+      "phone": 29
+    }
+  },
+  "freshness": {
+    "assertion_future_dates": 0,
+    "source_reported_nonnull_verification_dates": 0,
+    "stale_field_count": 22,
+    "eligible_core_assertion_observation_age": {
+      "eligible_total": 2187,
+      "observation_time_unknown": 584,
+      "30_to_180_days": 904,
+      "under_30_days": 699
+    }
+  },
+  "segments": [
+    {
+      "chain": "Independent / unmapped",
+      "stores": 337,
+      "phone": 140,
+      "website": 108,
+      "opening_hours": 15,
+      "email": 66,
+      "conflicted_stores": 11
+    },
+    {
+      "chain": "Hy-Vee",
+      "stores": 126,
+      "phone": 126,
+      "website": 126,
+      "opening_hours": 115,
+      "email": 3,
+      "conflicted_stores": 17
+    },
+    {
+      "chain": "Fareway",
+      "stores": 124,
+      "phone": 122,
+      "website": 122,
+      "opening_hours": 107,
+      "email": 11,
+      "conflicted_stores": 91
+    },
+    {
+      "chain": "Walmart",
+      "stores": 62,
+      "phone": 49,
+      "website": 43,
+      "opening_hours": 30,
+      "email": 0,
+      "conflicted_stores": 31
+    },
+    {
+      "chain": "ALDI",
+      "stores": 43,
+      "phone": 21,
+      "website": 34,
+      "opening_hours": 29,
+      "email": 0,
+      "conflicted_stores": 18
+    },
+    {
+      "chain": "Target",
+      "stores": 22,
+      "phone": 22,
+      "website": 22,
+      "opening_hours": 4,
+      "email": 1,
+      "conflicted_stores": 0
+    },
+    {
+      "chain": "Sam's Club",
+      "stores": 9,
+      "phone": 9,
+      "website": 9,
+      "opening_hours": 2,
+      "email": 0,
+      "conflicted_stores": 8
+    },
+    {
+      "chain": "Natural Grocers",
+      "stores": 6,
+      "phone": 2,
+      "website": 6,
+      "opening_hours": 5,
+      "email": 0,
+      "conflicted_stores": 1
+    },
+    {
+      "chain": "Costco",
+      "stores": 4,
+      "phone": 4,
+      "website": 4,
+      "opening_hours": 1,
+      "email": 1,
+      "conflicted_stores": 3
+    },
+    {
+      "chain": "Fresh Thyme",
+      "stores": 2,
+      "phone": 2,
+      "website": 0,
+      "opening_hours": 0,
+      "email": 0,
+      "conflicted_stores": 0
+    },
+    {
+      "chain": "Trader Joe's",
+      "stores": 2,
+      "phone": 2,
+      "website": 2,
+      "opening_hours": 2,
+      "email": 1,
+      "conflicted_stores": 0
+    },
+    {
+      "chain": "Jewel-Osco",
+      "stores": 1,
+      "phone": 1,
+      "website": 1,
+      "opening_hours": 1,
+      "email": 0,
+      "conflicted_stores": 0
+    },
+    {
+      "chain": "Family Fare",
+      "stores": 1,
+      "phone": 1,
+      "website": 1,
+      "opening_hours": 1,
+      "email": 1,
+      "conflicted_stores": 1
+    },
+    {
+      "chain": "Save-A-Lot",
+      "stores": 1,
+      "phone": 1,
+      "website": 1,
+      "opening_hours": 1,
+      "email": 0,
+      "conflicted_stores": 1
+    },
+    {
+      "chain": "Whole Foods Market",
+      "stores": 1,
+      "phone": 1,
+      "website": 1,
+      "opening_hours": 1,
+      "email": 0,
+      "conflicted_stores": 0
+    }
+  ],
+  "complete_core_bundle": 164,
+  "complete_core_bundle_without_conflicts": 63,
+  "campaigns": {
+    "iowa-fields-statewide-20261020": {
+      "state": "running",
+      "phase": "primary",
+      "counts": null,
+      "active": null,
+      "error_type": null,
+      "updated_at": 1792524721.3423064
+    },
+    "iowa-fields-statewide-20261020-primary": {
+      "state": "running",
+      "phase": "robots_and_branch_fetch",
+      "counts": {
+        "host_blocked": 5,
+        "missing_branch_url": 260,
+        "pending": 231,
+        "prior_history_hold": 242,
+        "review_required": 2,
+        "running": 1
+      },
+      "active": "sto_435e9d56edea4d1d915cfeb7170dae81",
+      "error_type": null,
+      "updated_at": 1792525073.316227
+    }
+  },
+  "pack_counts": {
+    "usda": {
+      "tables": [
+        "foods",
+        "foods_fts",
+        "foods_fts_data",
+        "foods_fts_idx",
+        "foods_fts_docsize",
+        "foods_fts_config",
+        "metadata",
+        "sqlite_stat1"
+      ]
+    },
+    "products": [
+      [
+        "product",
+        455458
+      ]
+    ],
+    "guidance": [
+      [
+        "guidance",
+        49
+      ]
+    ],
+    "maps": [
+      [
+        "map",
+        108
+      ]
+    ]
+  },
+  "off": {
+    "state": "failed",
+    "selected_products": 597000,
+    "error_type": "ValueError",
+    "phase": "off_streaming_us_snapshot"
+  }
+}

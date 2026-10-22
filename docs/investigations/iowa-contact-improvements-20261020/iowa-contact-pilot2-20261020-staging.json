@@ -1,0 +1,11 @@
+{
+  "campaign_id": "iowa-contact-pilot2-20261020",
+  "release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/c56b5b549ef33a37741b8c43eb8be12322a86e75038721a125c286856bb333f1",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "plan": {
+    "network": false,
+    "planned_targets": 15,
+    "passes": 2
+  },
+  "launched": false
+}

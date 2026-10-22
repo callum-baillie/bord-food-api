@@ -1,0 +1,109 @@
+{
+  "before_stores": 735,
+  "after_stores": 741,
+  "fields": [
+    {
+      "field": "phone",
+      "before_present": 287,
+      "after_present": 503,
+      "after_status": {
+        "source_reported": 244,
+        "corroborated": 252,
+        "stale": 2,
+        "conflicted": 4,
+        "unverified": 1
+      }
+    },
+    {
+      "field": "website",
+      "before_present": 331,
+      "after_present": 480,
+      "after_status": {
+        "source_reported": 206,
+        "conflicted": 138,
+        "corroborated": 116,
+        "unverified": 18,
+        "stale": 2
+      }
+    },
+    {
+      "field": "opening_hours",
+      "before_present": 10,
+      "after_present": 314,
+      "after_status": {
+        "source_reported": 304,
+        "corroborated": 10
+      }
+    },
+    {
+      "field": "timezone",
+      "before_present": 735,
+      "after_present": 741,
+      "after_status": {
+        "derived": 741
+      }
+    },
+    {
+      "field": "email",
+      "before_present": 0,
+      "after_present": 84,
+      "after_status": {
+        "source_reported": 84
+      }
+    },
+    {
+      "field": "departments",
+      "before_present": 0,
+      "after_present": 11,
+      "after_status": {
+        "source_reported": 11
+      }
+    },
+    {
+      "field": "pickup_links",
+      "before_present": 0,
+      "after_present": 1,
+      "after_status": {
+        "unverified": 1
+      }
+    },
+    {
+      "field": "delivery_links",
+      "before_present": 0,
+      "after_present": 1,
+      "after_status": {
+        "unverified": 1
+      }
+    },
+    {
+      "field": "accessibility",
+      "before_present": 0,
+      "after_present": 10,
+      "after_status": {
+        "source_reported": 10
+      }
+    },
+    {
+      "field": "hours_exceptions",
+      "before_present": 0,
+      "after_present": 0,
+      "after_status": {}
+    },
+    {
+      "field": "entrances",
+      "before_present": 0,
+      "after_present": 0,
+      "after_status": {}
+    },
+    {
+      "field": "aisle_category_mappings",
+      "before_present": 0,
+      "after_present": 0,
+      "after_status": {}
+    }
+  ],
+  "after_conflicts": 217,
+  "after_conflicted_stores": 182,
+  "after_coordinates": 616,
+  "permanently_closed_true": 0
+}

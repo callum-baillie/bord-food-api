@@ -1,0 +1,18 @@
+{
+  "/health": {
+    "http": 200,
+    "sha256": "4152638c7a6fbfb83b6f2af14ab3d36008ae2033b527d9a2b91a70ca29944a68"
+  },
+  "/ready": {
+    "http": 200,
+    "sha256": "f84b379d8a6bc3da12111a24bef258b06aab7f5ff448fcb610228d593fcaa3bf"
+  },
+  "/fdc/v1/foods/search?query=apple&pageSize=1": {
+    "http": 200,
+    "sha256": "ed00e92c08f0ef282fd22311a697d38b609b0fe0bb88760f855db4580ebb3388"
+  },
+  "/v1/stores?state=IA&limit=1": {
+    "http": 200,
+    "sha256": "8bd68e13a419a8861abe674f20ce7a7e65e8c1b3bd8750bcaa830e249e621997"
+  }
+}

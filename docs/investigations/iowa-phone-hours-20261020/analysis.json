@@ -1,0 +1,692 @@
+{
+  "captured_at": 1792529631.5719357,
+  "generation": "g_55952b0eaf534c1e817cc5507ae1cf6b",
+  "manifest_stable": true,
+  "stores": 735,
+  "counts": {
+    "phone": 498,
+    "website": 474,
+    "opening_hours": 312
+  },
+  "missing": {
+    "phone": 237,
+    "website": 261,
+    "opening_hours": 423
+  },
+  "segments": [
+    {
+      "segment": "Independent / unmapped",
+      "stores": 336,
+      "phone": 140,
+      "website": 107,
+      "opening_hours": 17,
+      "missing_phone": 196,
+      "missing_hours": 319
+    },
+    {
+      "segment": "Hy-Vee",
+      "stores": 124,
+      "phone": 124,
+      "website": 124,
+      "opening_hours": 113,
+      "missing_phone": 0,
+      "missing_hours": 11
+    },
+    {
+      "segment": "Fareway",
+      "stores": 121,
+      "phone": 119,
+      "website": 119,
+      "opening_hours": 105,
+      "missing_phone": 2,
+      "missing_hours": 16
+    },
+    {
+      "segment": "Walmart",
+      "stores": 62,
+      "phone": 49,
+      "website": 43,
+      "opening_hours": 30,
+      "missing_phone": 13,
+      "missing_hours": 32
+    },
+    {
+      "segment": "ALDI",
+      "stores": 43,
+      "phone": 21,
+      "website": 34,
+      "opening_hours": 29,
+      "missing_phone": 22,
+      "missing_hours": 14
+    },
+    {
+      "segment": "Target",
+      "stores": 22,
+      "phone": 22,
+      "website": 22,
+      "opening_hours": 4,
+      "missing_phone": 0,
+      "missing_hours": 18
+    },
+    {
+      "segment": "Sam's Club",
+      "stores": 9,
+      "phone": 9,
+      "website": 9,
+      "opening_hours": 2,
+      "missing_phone": 0,
+      "missing_hours": 7
+    },
+    {
+      "segment": "Natural Grocers",
+      "stores": 6,
+      "phone": 2,
+      "website": 6,
+      "opening_hours": 5,
+      "missing_phone": 4,
+      "missing_hours": 1
+    },
+    {
+      "segment": "Costco",
+      "stores": 4,
+      "phone": 4,
+      "website": 4,
+      "opening_hours": 1,
+      "missing_phone": 0,
+      "missing_hours": 3
+    },
+    {
+      "segment": "Fresh Thyme",
+      "stores": 2,
+      "phone": 2,
+      "website": 0,
+      "opening_hours": 0,
+      "missing_phone": 0,
+      "missing_hours": 2
+    },
+    {
+      "segment": "Trader Joe's",
+      "stores": 2,
+      "phone": 2,
+      "website": 2,
+      "opening_hours": 2,
+      "missing_phone": 0,
+      "missing_hours": 0
+    },
+    {
+      "segment": "Jewel-Osco",
+      "stores": 1,
+      "phone": 1,
+      "website": 1,
+      "opening_hours": 1,
+      "missing_phone": 0,
+      "missing_hours": 0
+    },
+    {
+      "segment": "Family Fare",
+      "stores": 1,
+      "phone": 1,
+      "website": 1,
+      "opening_hours": 1,
+      "missing_phone": 0,
+      "missing_hours": 0
+    },
+    {
+      "segment": "Save-A-Lot",
+      "stores": 1,
+      "phone": 1,
+      "website": 1,
+      "opening_hours": 1,
+      "missing_phone": 0,
+      "missing_hours": 0
+    },
+    {
+      "segment": "Whole Foods Market",
+      "stores": 1,
+      "phone": 1,
+      "website": 1,
+      "opening_hours": 1,
+      "missing_phone": 0,
+      "missing_hours": 0
+    }
+  ],
+  "evidence": {
+    "phone": {
+      "missing_stores": 237,
+      "causes": {
+        "no_retained_field_assertion": 212,
+        "eligible_evidence_but_no_selected_value": 25
+      },
+      "present_status": {
+        "source_reported": 238,
+        "corroborated": 252,
+        "stale": 2,
+        "unverified": 2,
+        "conflicted": 4
+      },
+      "raw_invalid": 0
+    },
+    "website": {
+      "missing_stores": 261,
+      "causes": {
+        "no_retained_field_assertion": 244,
+        "eligible_evidence_but_no_selected_value": 16,
+        "only_invalid_ineligible_stale_or_withdrawn_assertions": 1
+      },
+      "present_status": {
+        "source_reported": 198,
+        "conflicted": 138,
+        "corroborated": 118,
+        "unverified": 18,
+        "stale": 2
+      },
+      "raw_invalid": 0
+    },
+    "opening_hours": {
+      "missing_stores": 423,
+      "causes": {
+        "no_retained_field_assertion": 352,
+        "eligible_evidence_but_no_selected_value": 34,
+        "only_invalid_ineligible_stale_or_withdrawn_assertions": 37
+      },
+      "present_status": {
+        "source_reported": 301,
+        "corroborated": 10,
+        "conflicted": 1
+      },
+      "raw_invalid": 0
+    }
+  },
+  "schedule": {
+    "seven_days": 298,
+    "partial_week": 14
+  },
+  "missing_hours_conflict_shapes": {
+    "agree_on_overlapping_days": 13,
+    "overlap_agrees_and_full_week_available": 13,
+    "disagree_on_overlapping_days": 21
+  },
+  "retained_sources_union_possible": {
+    "phone": 31,
+    "website": 21,
+    "opening_hours": 46
+  },
+  "known_chain_phone_scope": 15,
+  "missing_url_gaps": 258,
+  "gap_sources": {
+    "no_website_evidence": 244,
+    "unsupported_ambiguous_or_shared_website": 8,
+    "http_only": 5,
+    "social_only": 1
+  },
+  "gap_examples": [
+    {
+      "id": "sto_0fe0ed56b93c42e2ad35e1fb7604df94",
+      "name": "Latino Market LLC 1535",
+      "address": {
+        "city": "Council Bluffs",
+        "postal_code": "51501",
+        "region": "IA",
+        "street": "1535 Avenue G",
+        "unit": null
+      },
+      "values": [
+        "https://latino-market-store.business.site"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_18a066ebc6884d60a959c248ea2c1940",
+      "name": "La Tapatia",
+      "address": {
+        "city": "Des Moines",
+        "postal_code": "50316",
+        "region": "IA",
+        "street": "1440 Des Moines St",
+        "unit": null
+      },
+      "values": [
+        "http://www.yellowpages.com/des-moines-ia/la-tapatia"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_47e25298c0cd41df9a73356e93fc7b9e",
+      "name": "Jeffs Market",
+      "address": {
+        "city": "Durant",
+        "postal_code": "52747",
+        "region": "IA",
+        "street": "408 6th Ave",
+        "unit": null
+      },
+      "values": [
+        "https://www.facebook.com/jeffsmarketandcatering/",
+        "https://m.facebook.com/jeffsmarketandcatering"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_531737a8beda49f1a1e133c8627591c5",
+      "name": "Sunshine Foods 9754",
+      "address": {
+        "city": "Onawa",
+        "postal_code": "51040",
+        "region": "IA",
+        "street": "1002 11th St",
+        "unit": null
+      },
+      "values": [
+        "https://www.sunshinefoodstores.com",
+        "https://www.sunshinefoodstores.com/"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_6a0a98ec63044b15927fc8b5360f5d10",
+      "name": "Price Chopper 1310",
+      "address": {
+        "city": "Des Moines",
+        "postal_code": "50310",
+        "region": "IA",
+        "street": "1819 Beaver Ave",
+        "unit": null
+      },
+      "values": [
+        "https://www.pricechopperdesmoines.com",
+        "https://www.pricechopperdesmoines.com/"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_6fe2e8e2d1ea4aa3af774542567f4035",
+      "name": "Frohlichs Super Valu",
+      "address": {
+        "city": "Coon Rapids",
+        "postal_code": "50058",
+        "region": "IA",
+        "street": "403 Main St",
+        "unit": null
+      },
+      "values": [
+        "https://www.supervalu.com"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_7d7a1649055042588db1d7c588b1b179",
+      "name": "Ray's Supermarket",
+      "address": {
+        "city": "Waterloo",
+        "postal_code": "50703",
+        "region": "IA",
+        "street": "1975 Franklin Street",
+        "unit": null
+      },
+      "values": [
+        "raysshursave.com"
+      ],
+      "missing_phone": false,
+      "missing_hours": false
+    },
+    {
+      "id": "sto_8231388527ad49448a4cf5f717019a20",
+      "name": "Food Land Super Market",
+      "address": {
+        "city": "Missouri Valley",
+        "postal_code": "51555",
+        "region": "IA",
+        "street": "407 W Huron St",
+        "unit": null
+      },
+      "values": [
+        "http://www.foodland.biz",
+        "http://www.foodland.biz/"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_a6b87795d6204f0b9a23dd42ffa83475",
+      "name": "Sunshine Foods",
+      "address": {
+        "city": "Rock Rapids",
+        "postal_code": "51246",
+        "region": "IA",
+        "street": "106 N Boone St",
+        "unit": null
+      },
+      "values": [
+        "https://sunshinefoodstores.com",
+        "https://sunshinefoodstores.com/"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_b5203365347a40adb969b6b2a256c56e",
+      "name": "El Palmino",
+      "address": {
+        "city": "Des Moines",
+        "postal_code": "50316",
+        "region": "IA",
+        "street": "3116 East 14th Street",
+        "unit": null
+      },
+      "values": [
+        "https://el-palomino.edan.io",
+        "https://el-palomino.edan.io/"
+      ],
+      "missing_phone": false,
+      "missing_hours": false
+    },
+    {
+      "id": "sto_d98a8cdf230c4ca69520464a5bd80284",
+      "name": "Brothers Market 776",
+      "address": {
+        "city": "Williamsburg",
+        "postal_code": "52361",
+        "region": "IA",
+        "street": "103 W Walnut St",
+        "unit": null
+      },
+      "values": [
+        "http://www.shopbrothersmarket.com",
+        "http://www.shopbrothersmarket.com/"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_da3b30e0fb11470c8baedc9f2ecae96b",
+      "name": "Highway 2 Discount Groceries",
+      "address": {
+        "city": "Bloomfield",
+        "postal_code": "52537",
+        "region": "IA",
+        "street": "19686 IA 2",
+        "unit": null
+      },
+      "values": [
+        "https://justplainbusiness.com/highway-2-discount-groceries",
+        "https://justplainbusiness.com/highway-2-discount-groceries/"
+      ],
+      "missing_phone": true,
+      "missing_hours": false
+    },
+    {
+      "id": "sto_ed8538e3b7004320b2bb1a93b60bf9b6",
+      "name": "Wheatland Grocery",
+      "address": {
+        "city": "Wheatland",
+        "postal_code": "52777",
+        "region": "IA",
+        "street": "112 E Washington St",
+        "unit": null
+      },
+      "values": [
+        "http://wheatland-meats.edan.io"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    },
+    {
+      "id": "sto_fa12fa0a352c492da98b926508329dd0",
+      "name": "Brothers Market 715",
+      "address": {
+        "city": "Clarion",
+        "postal_code": "50525",
+        "region": "IA",
+        "street": "325 Central Ave W",
+        "unit": null
+      },
+      "values": [
+        "http://www.shopbrothersmarket.com",
+        "http://www.shopbrothersmarket.com/"
+      ],
+      "missing_phone": false,
+      "missing_hours": true
+    }
+  ],
+  "missing_field_campaign_state": {
+    "phone": {
+      "missing_branch_url": 210,
+      "preserved_prior_outcome_or_not_in_current_child": 23,
+      "running": 1,
+      "pending": 3
+    },
+    "opening_hours": {
+      "missing_branch_url": 249,
+      "review_required": 12,
+      "preserved_prior_outcome_or_not_in_current_child": 102,
+      "pending": 33,
+      "host_blocked": 19,
+      "published": 8
+    }
+  },
+  "current_campaign": {
+    "state": "running",
+    "phase": "robots_and_branch_fetch",
+    "updated_at": 1792529616.7410798,
+    "counts": {
+      "host_blocked": 19,
+      "missing_branch_url": 258,
+      "pending": 154,
+      "published": 10,
+      "review_required": 13,
+      "running": 1
+    },
+    "blocked_hosts": {
+      "shop.iowafood.coop": "CrawlBlocked",
+      "sibleysuperfoods.com": "RedirectNotice",
+      "sinclairoil.com": "RedirectNotice",
+      "stores.inksoft.com": "CrawlBlocked",
+      "sunshinefoodstores.com": "RedirectNotice",
+      "thriftwayfoods.net": "RedirectNotice",
+      "tienda-el-mexicano-ia-1.hub.biz": "TransportError",
+      "unimart.com": "RedirectNotice",
+      "wangsoriental.com": "RedirectNotice",
+      "www.bendersfoods.com": "gaierror",
+      "www.biggfoods.com": "CrawlBlocked",
+      "www.centerpointia.com": "CrawlBlocked",
+      "www.fishersfoodcenter.com": "CrawlBlocked",
+      "www.hometownfoodstraer.com": "CrawlBlocked",
+      "www.jamboreefood.com": "OSError",
+      "www.jeffsfoods.com": "RedirectNotice",
+      "www.kampenfoods.com": "CrawlBlocked",
+      "www.keotaeagle.com": "OSError",
+      "www.mulhollandgrocery.com": "CrawlBlocked"
+    }
+  },
+  "sources": {
+    "openstreetmap": {
+      "source_assertions": 666,
+      "scope_filtered_fields_present": {
+        "phone": 349,
+        "website": 245,
+        "opening_hours": 275,
+        "accessibility": 17,
+        "email": 2
+      },
+      "exact_unique_current_store_matches": 286,
+      "possible_missing_fields_from_exact_join": {
+        "phone": 28,
+        "website": 20,
+        "opening_hours": 46
+      },
+      "no_prior_same_source_field_assertion": {
+        "phone": 6,
+        "website": 9,
+        "opening_hours": 22
+      },
+      "examples": [
+        {
+          "id": "sto_525576d52ec342559e805b064090a0df",
+          "name": "Aldi",
+          "field": "phone",
+          "candidate_value": "+1 833-468-7058",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_57c18ba320a64c22bb07756605bd9aa1",
+          "name": "Fareway",
+          "field": "opening_hours",
+          "candidate_value": "Mo-Sa 08:00-21:00",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_22e8b6438bfe430eb0cd005c6f776201",
+          "name": "Aldi",
+          "field": "phone",
+          "candidate_value": "+1 833-472-7038",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_81fde73c743b43dd8aaf4fce4172a01e",
+          "name": "Aldi",
+          "field": "phone",
+          "candidate_value": "+1 833-468-7005",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_81fde73c743b43dd8aaf4fce4172a01e",
+          "name": "Aldi",
+          "field": "website",
+          "candidate_value": "https://stores.aldi.us/ia/muscatine/3200-northport-drive",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_b2b33af780594ba1b818f90638442030",
+          "name": "Ames Asian Market West",
+          "field": "phone",
+          "candidate_value": "+1-515-292-4699",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_166f8906ed23488b96a3604c96f8f6a0",
+          "name": "Asia Foods Store",
+          "field": "phone",
+          "candidate_value": "+1-515-233-4928",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_260e13baaa40492c99061351fd35470e",
+          "name": "Fareway",
+          "field": "opening_hours",
+          "candidate_value": "Mo-Sa 08:00-21:00",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_efaadf81b25a4488be8d248ee60427fa",
+          "name": "Walmart SC 748",
+          "field": "opening_hours",
+          "candidate_value": "Mo-Su 06:00-01:00",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_b5b8760018e24ebf99aede5a26aa8305",
+          "name": "Walmart SC 1625",
+          "field": "website",
+          "candidate_value": "https://www.walmart.com/store/1625-le-mars-ia",
+          "note": "exact-address/name candidate; not published or independently verified"
+        }
+      ]
+    },
+    "overture_places": {
+      "source_assertions": 1758,
+      "scope_filtered_fields_present": {
+        "phone": 1160,
+        "website": 963
+      },
+      "exact_unique_current_store_matches": 414,
+      "possible_missing_fields_from_exact_join": {
+        "phone": 27,
+        "website": 17,
+        "opening_hours": 0
+      },
+      "no_prior_same_source_field_assertion": {
+        "phone": 2,
+        "website": 1,
+        "opening_hours": 0
+      },
+      "examples": [
+        {
+          "id": "sto_afe8d39d6be4406e8effee38bdfd6177",
+          "name": "Walmart Super Center 1683",
+          "field": "website",
+          "candidate_value": "https://www.walmart.com/store/1683",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_8194bfbe0d0d40b6ab6a3c161e067216",
+          "name": "Aldi",
+          "field": "phone",
+          "candidate_value": "+18559552534",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_8194bfbe0d0d40b6ab6a3c161e067216",
+          "name": "Aldi",
+          "field": "website",
+          "candidate_value": "https://stores.aldi.us/ia/sioux-city/3140-floyd-blvd?utm_source=fb&utm_medium=local&utm_campaign=brand&utm_content=storepage_webclick",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_b5b8760018e24ebf99aede5a26aa8305",
+          "name": "Walmart SC 1625",
+          "field": "website",
+          "candidate_value": "https://www.walmart.com/store/1625",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_b5b8760018e24ebf99aede5a26aa8305",
+          "name": "Walmart SC 1625",
+          "field": "website",
+          "candidate_value": "https://www.walmart.com/store/1625/le-mars-ia/details",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_e21d81777f4b4137a493a2f5b8038e39",
+          "name": "Aldi",
+          "field": "phone",
+          "candidate_value": "+18559552534",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_5d15a146d41c488080d491cb0247fbee",
+          "name": "Aldi",
+          "field": "phone",
+          "candidate_value": "+18559552534",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_f2a74049051b4c72b5a79ce7a3d72bfc",
+          "name": "Walmart SC 1723",
+          "field": "website",
+          "candidate_value": "https://grocery.walmart.com",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_f2a74049051b4c72b5a79ce7a3d72bfc",
+          "name": "Walmart SC 1723",
+          "field": "website",
+          "candidate_value": "https://www.walmart.com/store/1723",
+          "note": "exact-address/name candidate; not published or independently verified"
+        },
+        {
+          "id": "sto_1a0430b68ace47d4bc16d68100bc9f55",
+          "name": "Walmart SC 1491",
+          "field": "phone",
+          "candidate_value": "+18583244111",
+          "note": "exact-address/name candidate; not published or independently verified"
+        }
+      ]
+    }
+  }
+}

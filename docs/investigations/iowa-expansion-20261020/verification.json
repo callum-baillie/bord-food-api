@@ -1,0 +1,16 @@
+{
+  "pytest": {
+    "passed": 317,
+    "warnings": 1,
+    "seconds": 28.57
+  },
+  "ruff": "passed",
+  "format_files": 126,
+  "format": "passed",
+  "openapi": "matches FastAPI",
+  "git_diff_check": "passed",
+  "network_boundary": "synthetic fixtures and mocked source transports",
+  "tower_repository_validation": "passed with existing informational/generated and historical archive warnings",
+  "plan_package_checks": 13,
+  "plan_checksums": 93
+}

@@ -25,6 +25,7 @@ from bord_food_api.transport import Transport, _PinnedHTTPS, public_addresses
 
 RESERVATION_NANOUSD = 10_000_000  # $0.01, conservatively > 64k * $0.042/M.
 GLOBAL_CAP_NANOUSD = 5_000_000_000
+MAX_GLOBAL_CAP_NANOUSD = 15_000_000_000
 PRIOR_PILOT_NANOUSD = 100_000  # Round the prior $0.000065646 estimate upward.
 
 
@@ -62,12 +63,12 @@ class ReviewText(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         parent = self.stack[-1] if self.stack else ("", False, False, False)
-        style = re.sub(r"\s+", "", attrs.get("style", "")).lower()
+        style = re.sub(r"\s+", "", attrs.get("style") or "").lower()
         omitted = (
             parent[1]
             or tag in self.OMIT
             or "hidden" in attrs
-            or attrs.get("aria-hidden", "").lower() == "true"
+            or (attrs.get("aria-hidden") or "").lower() == "true"
             or attrs.get("role") in ("navigation", "contentinfo")
             or "display:none" in style
             or "visibility:hidden" in style
@@ -162,6 +163,9 @@ class Judge:
 
     def __init__(self, root, config, *, post=post_jev):
         self.config, self.post = config, post
+        self.global_cap = config.get("global_budget_nanousd", GLOBAL_CAP_NANOUSD)
+        if type(self.global_cap) is not int or not 0 < self.global_cap <= MAX_GLOBAL_CAP_NANOUSD:
+            raise ValueError("invalid_global_decision_limit")
         self.database = Path(root) / "control/jev-crawl-budget.sqlite"
         self.database.parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as db:
@@ -188,7 +192,7 @@ class Judge:
                 (campaign,),
             ).fetchone()
             if (
-                total + PRIOR_PILOT_NANOUSD + RESERVATION_NANOUSD > GLOBAL_CAP_NANOUSD
+                total + PRIOR_PILOT_NANOUSD + RESERVATION_NANOUSD > self.global_cap
                 or used + RESERVATION_NANOUSD > self.config["budget_nanousd"]
                 or calls >= self.config["max_calls"]
             ):
@@ -341,6 +345,7 @@ class ReviewedResponse:
     def __init__(self, response, target, judge):
         self.response, self.target, self.judge = response, target, judge
         self.headers, self.status = response.headers, response.status
+        judge.response_headers = self.headers
         self.body, self.reviewed = bytearray(), False
 
     def __enter__(self):
@@ -352,21 +357,31 @@ class ReviewedResponse:
     def read(self, size=-1):
         chunk = self.response.read(size)
         self.body.extend(chunk)
-        if len(self.body) > 524288:
+        if len(self.body) > getattr(self.judge, "page_limit", 524288):
             raise ValueError("review_page_limit")
         if not chunk and not self.reviewed:
             self.reviewed = True
             self.response.close()
+            getattr(self.judge, "check", lambda: None)()
             self.judge.after(self.target, bytes(self.body))
         return chunk
 
+    def review_cached(self, body):
+        if not self.reviewed:
+            self.reviewed = True
+            getattr(self.judge, "check", lambda: None)()
+            self.judge.after(self.target, body)
 
-def reviewed_transport(judge, target):
+
+def reviewed_transport(judge, target, *, on_request=None):
     def factory(policy):
+        judge.check = policy.get("_check", lambda: None)
         base = Transport(policy)
 
         class Wrapped:
             def get(self, url, headers=None):
+                if on_request is not None:
+                    on_request(url)
                 response = base.get(url, headers)
                 return (
                     ReviewedResponse(response, target, judge) if url == target["url"] else response

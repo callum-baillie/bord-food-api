@@ -1,0 +1,405 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Iowa data readiness",
+    "description": "Readiness assessment of the Iowa store directory for the B\u00f2rd app.",
+    "generatedAt": "2026-10-20T19:38:52.749614+00:00",
+    "filters": [],
+    "cards": [],
+    "sources": [
+      {
+        "id": "profile",
+        "label": "Iowa serving catalog quality profile, October 20, 2026",
+        "path": "docs/investigations/iowa-quality-20261020/profile.json",
+        "query": {
+          "engine": "SQLite",
+          "description": "All 741 Iowa store records from immutable serving generation g_764fdcbc95194f3999643aa4b203f6d4. Completeness counts nonempty canonical values; verified counts current corroborated/reviewed fields. Reproducible checks in profile.py and review.ipynb.",
+          "executed_at": "2026-10-20T19:38:52.749614+00:00",
+          "tables_used": [
+            "bord-food-api.stores.entities"
+          ],
+          "filters": {
+            "address.region": "IA",
+            "grain": "canonical store ID",
+            "generation": "g_764fdcbc95194f3999643aa4b203f6d4"
+          },
+          "sql": "SELECT payload FROM entities WHERE kind='store'",
+          "language": "sql",
+          "metric_definitions": {
+            "post_query_transformation": "Decode JSON payload; retain address.region == IA; calculate counts, normalized validity, duplicate candidates, provenance states and segments using profile.py. SQL is the actual source selection, not an aggregation query."
+          }
+        }
+      },
+      {
+        "id": "fareway",
+        "label": "Official Fareway LeClaire store #237",
+        "href": "https://www.fareway.com/stores/237"
+      },
+      {
+        "id": "hyvee",
+        "label": "Official Independence Dollar Fresh branch",
+        "href": "https://www.hy-vee.com/stores/detail.aspx?sc=1262"
+      },
+      {
+        "id": "fastfresh",
+        "label": "Official Cumming Fast & Fresh branch",
+        "href": "https://www.hy-vee.com/stores/detail.aspx?sc=7525"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Iowa data readiness"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "sourceId": "profile",
+        "body": "## Executive Summary\n\n- **Suitable for a labelled directory beta.** Stable IDs and provenance are strong, but the 741 records are not a verified count of distinct active stores.\n- **Needs improvement for dependable shopping assistance.** Only 164 records (22%) have phone, website, normalized hours, timezone and coordinates together; only 63 have that bundle with no field conflict anywhere on the record. Neither count implies independent verification.\n- **Prioritize identity and dependable basics before richer AI enrichment.** The current crawl is still running. Phone and website fields remain absent for roughly one-third of stores, and operating status is unknown for every record."
+      },
+      {
+        "id": "coverage-context",
+        "type": "markdown",
+        "sourceId": "profile",
+        "body": "## Basic coverage is improving, but presence exceeds verification\n\nSnapshot: October 20, 2026, 2:38 p.m. CDT. Each rate uses all 741 current Iowa records, including unresolved identity/scope candidates. Presence means a nonempty field, not a confirmed current fact. Of 503 phone fields, 252 are currently corroborated; of 480 websites, 116 are corroborated. Only 10 of the 314 weekly schedules are independently corroborated. All timezones are derived. Do not use these numbers to assert statewide census coverage or definitive open-now status."
+      },
+      {
+        "id": "coverage-chart",
+        "type": "chart",
+        "chartId": "coverage"
+      },
+      {
+        "id": "coverage-interpretation",
+        "type": "markdown",
+        "sourceId": "profile",
+        "body": "Coordinates cover 83%, phones 68%, websites 65% and normalized weekly hours 42%. Missing hours and coordinates will visibly affect nearby search and trip planning. Email is lower priority than these core fields. All 741 operating statuses are unknown; zero confirmed closures is not evidence that every business is open."
+      },
+      {
+        "id": "coverage-table",
+        "type": "table",
+        "tableId": "field_counts"
+      },
+      {
+        "id": "segments-intro",
+        "type": "markdown",
+        "sourceId": "profile",
+        "body": "## Independent and unmapped stores account for the largest practical gap\n\nAmong 337 records without a chain mapping, only 140 have phones and 15 have normalized hours (4.5%). By contrast, Hy-Vee has hours for 115 of 126 records and Fareway for 107 of 124. This is a biased completeness pattern: statewide averages conceal weak independent-store support. The unmapped group can include chains and is not a verified count of independent businesses."
+      },
+      {
+        "id": "segment-table",
+        "type": "table",
+        "tableId": "segments"
+      },
+      {
+        "id": "identity",
+        "type": "markdown",
+        "sourceId": "profile",
+        "body": "## Store identity and field scope still need cleanup\n\nCandidate duplicates include Fareway in Le Claire/LeClaire, Fareway in North Liberty with a postal-box suffix, Fareway in Winterset with a multi-valued street, and Dollar Fresh in Independence with Three Elms/Three Elms Park variants. One store ID per row does not prove one physical store per row. Four candidate pairs need review; no records were merged in this assessment.\n\nTwo Fast & Fresh records are classified as supermarkets despite the agreed convenience-store exclusion. Fifteen ALDI records share one toll-free number, which should be labelled a chain contact rather than assumed to reach the branch. One Hy-Vee phone field combines main and pharmacy numbers and fails single-number normalization. Another 125 records have full postal text but no structured street/city and also lack coordinates."
+      },
+      {
+        "id": "identity-proof",
+        "type": "markdown",
+        "sourceId": "fareway",
+        "body": "The official Fareway #237 page identifies one LeClaire branch at 1301 Eagle Ridge Road with the same phone present on both candidate records. This strengthens the duplicate suspicion. It still requires a controlled identity review preserving both source histories."
+      },
+      {
+        "id": "identity-proof2",
+        "type": "markdown",
+        "sourceId": "hyvee",
+        "body": "The official Independence Dollar Fresh page describes the branch at 1975 Three Elms Rd. Both candidate records carry the same retained branch URL. This supports an alias review, not fuzzy automatic merging."
+      },
+      {
+        "id": "freshness",
+        "type": "markdown",
+        "sourceId": "profile",
+        "body": "## Conflicts and source age limit confidence\n\nThere are 217 field conflicts across 182 stores (24.6%): 154 website, 34 hours and 29 phone conflicts. Some website differences may be canonical URL aliases; others need factual resolution. Conflict retention is a strength, but downstream screens must not label a conflicted value as verified.\n\nFor eligible core-field assertions, 904 have observation dates 30\u2013180 days old and 584 have no observation date. These are assertion counts, not store counts or error rates. A fresh download date does not refresh the business fact. No future check dates or provisional fields with nonnull verification dates were found."
+      },
+      {
+        "id": "advanced",
+        "type": "markdown",
+        "sourceId": "profile",
+        "body": "## Aisle, service and lifecycle features are not ready\n\nOnly 11 stores have department lists, 10 have accessibility reports and one has pickup/delivery links, still unverified. There are no dated holiday exceptions, reviewed entrances or reviewed aisle/category mappings. The data is currently inadequate for reliable aisle navigation, accessible-route promises or holiday opening guarantees. Missing facts should remain unknown, with a source link and a report-a-correction option."
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## Recommended next steps\n\n1. **Resolve identity and scope first.** Review the four duplicate candidates and two Fast & Fresh rows; preserve redirects and source IDs when correcting canonical identity. Normalize the 125 full-address-only records.\n2. **Improve useful coverage next.** Prioritize coordinates, branch phones, official branch URLs and weekly hours for independent/unmapped stores. A labelled chain contact is acceptable where direct phones are not published.\n3. **Make confidence visible.** Separate reported, official-source-checked, independently corroborated, conflicted, stale and unknown values. Prioritize the 34 hours and 29 phone conflicts over cosmetic URL variants. Add verified-on/source-date labels.\n4. **Validate a representative sample.** Review a stratified set across chains, independent/unmapped stores, urban/rural areas and new source records; measure field accuracy and identity precision before treating completeness as quality. Zero reported failures or passing code tests do not establish factual accuracy.\n5. **Gate advanced features.** Keep open-now, holiday, closure and aisle claims conditional until supported. Reconcile against an authoritative active grocery/license roster before claiming complete Iowa coverage."
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## Decisions still requiring evidence\n\nWhat is the authoritative active-store denominator? How accurate are populated hours and coordinates in a representative sample? Which provisional facts can the app display with uncertainty? These questions cannot be answered by the current completeness figures or Jev confidence scores alone."
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "sourceId": "profile",
+        "body": "## Snapshot and assessment limits\n\nThis was a read-only assessment of one immutable serving generation while the authorized crawl continued. It did not start new source imports or crawls, make model calls, merge stores, edit facts or change policy. External checks were limited to indexed official pages; they are not an exhaustive accuracy sample. Co-located businesses can share an address and must not be merged on address alone. Nutritional/reference packs are separate from store assortment; no current product availability or pricing is established by this directory. OFF import remains failed and full FoodKeeper is not published."
+      }
+    ],
+    "charts": [
+      {
+        "id": "coverage",
+        "title": "Iowa field coverage",
+        "type": "bar",
+        "dataset": "coverage",
+        "sourceId": "profile",
+        "valueFormat": "percent",
+        "encodings": {
+          "x": {
+            "field": "field",
+            "type": "nominal",
+            "label": "Field"
+          },
+          "y": {
+            "field": "coverage",
+            "type": "quantitative",
+            "label": "Share of 741 records"
+          },
+          "tooltip": [
+            {
+              "field": "present",
+              "type": "quantitative",
+              "label": "Records",
+              "format": "number"
+            }
+          ]
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "field_counts",
+        "title": "Field presence and current verification",
+        "dataset": "coverage",
+        "sourceId": "profile",
+        "defaultSort": {
+          "field": "present",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "field",
+            "label": "Field",
+            "type": "text"
+          },
+          {
+            "field": "present",
+            "label": "Present",
+            "format": "number"
+          },
+          {
+            "field": "coverage",
+            "label": "Coverage",
+            "format": "percent"
+          },
+          {
+            "field": "verified",
+            "label": "Verified",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "segments",
+        "title": "Coverage by chain mapping",
+        "dataset": "segments",
+        "sourceId": "profile",
+        "defaultSort": {
+          "field": "stores",
+          "direction": "desc"
+        },
+        "columns": [
+          {
+            "field": "chain",
+            "label": "Group",
+            "type": "text"
+          },
+          {
+            "field": "stores",
+            "label": "Records",
+            "format": "number"
+          },
+          {
+            "field": "phone_share",
+            "label": "Phone %",
+            "format": "percent"
+          },
+          {
+            "field": "hours_share",
+            "label": "Hours %",
+            "format": "percent"
+          }
+        ]
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-10-20T19:38:52.749614+00:00",
+    "status": "ready",
+    "datasets": {
+      "coverage": [
+        {
+          "field": "Coordinates",
+          "present": 616,
+          "coverage": 0.8313090418353576,
+          "verified": null
+        },
+        {
+          "field": "Phone",
+          "present": 503,
+          "coverage": 0.6788124156545209,
+          "verified": 252
+        },
+        {
+          "field": "Website",
+          "present": 480,
+          "coverage": 0.6477732793522267,
+          "verified": 116
+        },
+        {
+          "field": "Weekly hours",
+          "present": 314,
+          "coverage": 0.42375168690958165,
+          "verified": 10
+        },
+        {
+          "field": "Email",
+          "present": 84,
+          "coverage": 0.11336032388663968,
+          "verified": 0
+        },
+        {
+          "field": "Core bundle",
+          "present": 164,
+          "coverage": 0.2213225371120108,
+          "verified": null
+        }
+      ],
+      "segments": [
+        {
+          "chain": "Independent / unmapped",
+          "stores": 337,
+          "phone": 140,
+          "website": 108,
+          "opening_hours": 15,
+          "email": 66,
+          "conflicted_stores": 11,
+          "phone_share": 0.41543026706231456,
+          "hours_share": 0.04451038575667656
+        },
+        {
+          "chain": "Hy-Vee",
+          "stores": 126,
+          "phone": 126,
+          "website": 126,
+          "opening_hours": 115,
+          "email": 3,
+          "conflicted_stores": 17,
+          "phone_share": 1.0,
+          "hours_share": 0.9126984126984127
+        },
+        {
+          "chain": "Fareway",
+          "stores": 124,
+          "phone": 122,
+          "website": 122,
+          "opening_hours": 107,
+          "email": 11,
+          "conflicted_stores": 91,
+          "phone_share": 0.9838709677419355,
+          "hours_share": 0.8629032258064516
+        },
+        {
+          "chain": "Walmart",
+          "stores": 62,
+          "phone": 49,
+          "website": 43,
+          "opening_hours": 30,
+          "email": 0,
+          "conflicted_stores": 31,
+          "phone_share": 0.7903225806451613,
+          "hours_share": 0.4838709677419355
+        },
+        {
+          "chain": "ALDI",
+          "stores": 43,
+          "phone": 21,
+          "website": 34,
+          "opening_hours": 29,
+          "email": 0,
+          "conflicted_stores": 18,
+          "phone_share": 0.4883720930232558,
+          "hours_share": 0.6744186046511628
+        },
+        {
+          "chain": "Target",
+          "stores": 22,
+          "phone": 22,
+          "website": 22,
+          "opening_hours": 4,
+          "email": 1,
+          "conflicted_stores": 0,
+          "phone_share": 1.0,
+          "hours_share": 0.18181818181818182
+        },
+        {
+          "chain": "Sam's Club",
+          "stores": 9,
+          "phone": 9,
+          "website": 9,
+          "opening_hours": 2,
+          "email": 0,
+          "conflicted_stores": 8,
+          "phone_share": 1.0,
+          "hours_share": 0.2222222222222222
+        }
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "profile",
+      "label": "Iowa serving catalog quality profile, October 20, 2026",
+      "path": "docs/investigations/iowa-quality-20261020/profile.json",
+      "query": {
+        "engine": "SQLite",
+        "description": "All 741 Iowa store records from immutable serving generation g_764fdcbc95194f3999643aa4b203f6d4. Completeness counts nonempty canonical values; verified counts current corroborated/reviewed fields. Reproducible checks in profile.py and review.ipynb.",
+        "executed_at": "2026-10-20T19:38:52.749614+00:00",
+        "tables_used": [
+          "bord-food-api.stores.entities"
+        ],
+        "filters": {
+          "address.region": "IA",
+          "grain": "canonical store ID",
+          "generation": "g_764fdcbc95194f3999643aa4b203f6d4"
+        },
+        "sql": "SELECT payload FROM entities WHERE kind='store'",
+        "language": "sql",
+        "metric_definitions": {
+          "post_query_transformation": "Decode JSON payload; retain address.region == IA; calculate counts, normalized validity, duplicate candidates, provenance states and segments using profile.py. SQL is the actual source selection, not an aggregation query."
+        }
+      }
+    },
+    {
+      "id": "fareway",
+      "label": "Official Fareway LeClaire store #237",
+      "href": "https://www.fareway.com/stores/237"
+    },
+    {
+      "id": "hyvee",
+      "label": "Official Independence Dollar Fresh branch",
+      "href": "https://www.hy-vee.com/stores/detail.aspx?sc=1262"
+    },
+    {
+      "id": "fastfresh",
+      "label": "Official Cumming Fast & Fresh branch",
+      "href": "https://www.hy-vee.com/stores/detail.aspx?sc=7525"
+    }
+  ]
+}

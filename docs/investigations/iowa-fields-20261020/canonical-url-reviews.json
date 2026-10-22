@@ -1,0 +1,131 @@
+[
+  {
+    "store_id": "sto_00c8a79f06144b46b7438039b42776c0",
+    "name": "Valley Fresh Market",
+    "chain_id": null,
+    "spider": null,
+    "source_website": null,
+    "url": "https://www.valleyfreshmkt.com/",
+    "source_address": {
+      "city": "Elgin",
+      "postal_code": "52141",
+      "region": "IA",
+      "street": "244 Center St",
+      "unit": null
+    },
+    "expected_branch": "Valley Fresh Market Elgin",
+    "country": "US",
+    "observed_url_evidence": {
+      "kind": "provider_branch_website_candidate",
+      "source_id": "overture_places",
+      "record_id": "8d72e717-0303-4f1c-b4af-2f3357d7bf4b",
+      "extract_sha256": "55a9f0dbc6cc4bb280218f7193b06b407ea44e3991b587ad6c933df8b93e2ea6",
+      "provider_reported_url": "https://valleyfreshmkt.com/",
+      "source_address": {
+        "city": "Elgin",
+        "postal_code": "52141",
+        "region": "IA",
+        "street": "244 Center St",
+        "unit": null
+      },
+      "store_id": "sto_00c8a79f06144b46b7438039b42776c0",
+      "url": "https://www.valleyfreshmkt.com/",
+      "evidence_url": "https://www.valleyfreshmkt.com/",
+      "reviewed_at": 1792521808.318878,
+      "normalization": "Operator reviewed HTTPS www alias in observed robots redirect. Branch path unchanged",
+      "redirect_proof": {
+        "source_url": "https://valleyfreshmkt.com/robots.txt",
+        "location": "https://www.valleyfreshmkt.com/robots.txt",
+        "http_status": 301,
+        "checked_at": 1792522401.7014256
+      }
+    },
+    "source_authority": "community",
+    "single_store_site": true,
+    "missing_field_priority": 15
+  },
+  {
+    "store_id": "sto_58c96f33b6d54d9d975d86000004b902",
+    "name": "Graziano Brothers Inc.",
+    "chain_id": null,
+    "spider": null,
+    "source_website": null,
+    "url": "https://grazianobrothers.com/",
+    "source_address": {
+      "city": "Des Moines",
+      "postal_code": "50315",
+      "region": "IA",
+      "street": "1601 South Union St",
+      "unit": null
+    },
+    "expected_branch": "Graziano Brothers Inc. Des Moines",
+    "country": "US",
+    "observed_url_evidence": {
+      "kind": "provider_branch_website_candidate",
+      "source_id": "overture_places",
+      "record_id": "d982f2a3-e0bc-4835-afc6-9fe355dbd8bd",
+      "extract_sha256": "55a9f0dbc6cc4bb280218f7193b06b407ea44e3991b587ad6c933df8b93e2ea6",
+      "provider_reported_url": "http://www.grazianobrothers.com/",
+      "source_address": {
+        "city": "Des Moines",
+        "postal_code": "50315",
+        "region": "IA",
+        "street": "1601 South Union St",
+        "unit": null
+      },
+      "store_id": "sto_58c96f33b6d54d9d975d86000004b902",
+      "url": "https://grazianobrothers.com/",
+      "evidence_url": "https://grazianobrothers.com/",
+      "reviewed_at": 1792521808.318878,
+      "normalization": "Operator reviewed HTTPS www alias in observed robots redirect. Branch path unchanged",
+      "redirect_proof": {
+        "source_url": "https://www.grazianobrothers.com/robots.txt",
+        "location": "https://grazianobrothers.com/robots.txt",
+        "http_status": 301,
+        "checked_at": 1792522402.2547143
+      }
+    },
+    "source_authority": "community",
+    "single_store_site": true,
+    "missing_field_priority": 15
+  },
+  {
+    "store_id": "sto_81fde73c743b43dd8aaf4fce4172a01e",
+    "name": "Aldi",
+    "chain_id": "chn_af1cd7c0a37e4b39aaeee6076ac52e51",
+    "spider": "aldi_sud_us",
+    "source_website": null,
+    "url": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+    "source_address": {
+      "city": "Muscatine",
+      "country": "US",
+      "postal_code": "52761",
+      "region": "IA",
+      "street": "3200 Northport Drive"
+    },
+    "expected_branch": "ALDI Aldi Muscatine",
+    "country": "US",
+    "observed_url_evidence": {
+      "evidence_url": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+      "kind": "observed_official_branch_page",
+      "note": "Observed official branch URL; actual branch consistency still subject to live Jev review. ALDI locator may render its details with JavaScript.",
+      "reviewed_at": 1792372745.240606,
+      "source_address": {
+        "city": "Muscatine",
+        "country": "US",
+        "postal_code": "52761",
+        "region": "IA",
+        "street": "3200 Northport Drive"
+      },
+      "store_id": "sto_81fde73c743b43dd8aaf4fce4172a01e",
+      "url": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+      "redirect_proof": {
+        "source_url": "https://info.aldi.us/stores/l/ia/muscatine/3200-northport-drive/l086",
+        "location": "https://www.aldi.us/store/aldi/pages/locator/l/ia/muscatine/3200-northport-drive/l086",
+        "http_status": 301,
+        "checked_at": 1792522401.2288558
+      }
+    },
+    "missing_field_priority": 15
+  }
+]

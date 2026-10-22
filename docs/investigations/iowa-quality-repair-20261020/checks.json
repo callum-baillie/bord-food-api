@@ -1,0 +1,50 @@
+{
+  "pytest": {
+    "command": ".venv/bin/python -m pytest",
+    "passed": 388,
+    "warnings": 1,
+    "seconds": 16.31
+  },
+  "ruff_check": "passed",
+  "ruff_format_check": {
+    "state": "passed",
+    "files": 195
+  },
+  "openapi_export_check": "passed",
+  "git_diff_check": "passed",
+  "actual_image_network_none_preflight": "passed",
+  "viewer": {
+    "node_tests": 6,
+    "python_tests": 8,
+    "build": "passed",
+    "prettier": "passed",
+    "browser_tests": 13,
+    "browser_seconds": 21.6,
+    "collector_ruff_check": "passed",
+    "collector_format_check": "passed with line-length 100"
+  },
+  "plan_package": {
+    "state": "passed",
+    "groups": 13,
+    "checksums": 93
+  },
+  "tower_repository_validator": {
+    "exit_code": 0,
+    "existing_generated_output_info": true,
+    "existing_sensitive_archive_warnings": true
+  },
+  "tower_audit": {
+    "isolated_copy": true,
+    "vm_unreachable_exit": 255,
+    "canonical_inventory_unchanged": true
+  },
+  "forgejo_issue": {
+    "status": 502,
+    "created": false
+  },
+  "live_verification": "live-verification.json",
+  "runtime_verification": "runtime-verification.json",
+  "openai_pilot": "import_completed",
+  "openai_key_copied_to_unraid": false,
+  "git_commit_push_image_publication": false
+}

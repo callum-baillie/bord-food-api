@@ -1,0 +1,10 @@
+{
+  "container_id": "e7248dbafa129e3d32ae72c3a29696fea3a6fe80339c3db2b6229b6b364eb7ad",
+  "release": "/mnt/cache/git/compose/productivity/config/operator-releases/78ba5768b07b59fc55200607e303031ebe42f07afee057092e20d7ab71ea330a",
+  "network": "none",
+  "paid_calls": 0,
+  "scope": [
+    "en:united-states"
+  ],
+  "worker_lock": "same exclusive flock, explicit bounded operator wait rather than fail-fast"
+}

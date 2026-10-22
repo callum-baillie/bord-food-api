@@ -1,0 +1,140 @@
+{
+  "name": "feedam-hsds-v3",
+  "title": "Feed America HSDS 3.0 Food Assistance Directory",
+  "description": "Open Referral HSDS 3.0 feed of 275,307 active US food-assistance services. Covers food pantries, food banks, soup kitchens, mobile pantries, community fridges, school and summer meal sites, WIC offices, FQHC health centers, and SNAP enrollment offices. Totals are live (cached up to 6 hours); each record carries its own record date and source.",
+  "count": {
+    "services": 275307,
+    "locations": 275307,
+    "service_at_location": 275307
+  },
+  "profile": "tabular-data-package",
+  "version": "3.0.0",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "title": "Creative Commons Attribution 4.0 International",
+      "path": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "attribution": "Data from Feed America, feedam.org, EIN 92-1761881",
+  "publisher": {
+    "name": "Feed America",
+    "url": "https://feedam.org",
+    "email": "info@feedam.org",
+    "ein": "92-1761881"
+  },
+  "homepage": "https://feedam-api.emperormew.workers.dev/hsds/v3/",
+  "resources": [
+    {
+      "name": "organizations",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/organizations?format=csv",
+      "schema": {
+        "primaryKey": "id"
+      }
+    },
+    {
+      "name": "services",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/services?format=csv",
+      "schema": {
+        "primaryKey": "id",
+        "foreignKeys": [
+          {
+            "fields": "organization_id",
+            "reference": {
+              "resource": "organizations",
+              "fields": "id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "locations",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/locations?format=csv",
+      "schema": {
+        "primaryKey": "id"
+      }
+    },
+    {
+      "name": "service_at_location",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/service_at_location?format=csv",
+      "schema": {
+        "primaryKey": "id",
+        "foreignKeys": [
+          {
+            "fields": "service_id",
+            "reference": {
+              "resource": "services",
+              "fields": "id"
+            }
+          },
+          {
+            "fields": "location_id",
+            "reference": {
+              "resource": "locations",
+              "fields": "id"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "phones",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/phones?format=csv",
+      "schema": {
+        "primaryKey": "id"
+      }
+    },
+    {
+      "name": "addresses",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/addresses?format=csv",
+      "schema": {
+        "primaryKey": "id"
+      }
+    },
+    {
+      "name": "schedules",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/schedules?format=csv",
+      "schema": {
+        "primaryKey": "id"
+      }
+    },
+    {
+      "name": "languages",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/languages?format=csv",
+      "schema": {
+        "primaryKey": "id"
+      }
+    },
+    {
+      "name": "taxonomy_terms",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/taxonomy_terms?format=csv",
+      "schema": {
+        "primaryKey": "id"
+      }
+    },
+    {
+      "name": "attributes",
+      "path": "https://feedam-api.emperormew.workers.dev/hsds/v3/attributes?format=csv",
+      "schema": {
+        "primaryKey": "id"
+      }
+    }
+  ],
+  "keywords": [
+    "food-assistance",
+    "food-security",
+    "hsds",
+    "open-referral",
+    "pantries",
+    "snap",
+    "wic",
+    "food-banks"
+  ],
+  "contact": {
+    "name": "Feed America",
+    "url": "https://feedam.org",
+    "email": "info@feedam.org",
+    "ein": "92-1761881"
+  }
+}

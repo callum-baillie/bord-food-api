@@ -1,0 +1,66 @@
+{
+  "campaign_id": "small-states-20261020",
+  "activation_enabled": true,
+  "bundle": "/data/crawl-campaigns/us-staged-20261019-r2/bundle",
+  "archive_sha256": "174b0a4836f88185d5c7fbe96228814da61141e65c2330b522644dc56d8665d7",
+  "batches": [
+    {
+      "batch": 1,
+      "states": [
+        "WY",
+        "AK",
+        "VT"
+      ],
+      "snap_reference_workload": 377
+    },
+    {
+      "batch": 2,
+      "states": [
+        "ND",
+        "DE",
+        "SD"
+      ],
+      "snap_reference_workload": 603
+    },
+    {
+      "batch": 3,
+      "states": [
+        "MT",
+        "RI"
+      ],
+      "snap_reference_workload": 501
+    },
+    {
+      "batch": 4,
+      "states": [
+        "NH",
+        "HI"
+      ],
+      "snap_reference_workload": 539
+    },
+    {
+      "batch": 5,
+      "states": [
+        "ID",
+        "WV"
+      ],
+      "snap_reference_workload": 587
+    }
+  ],
+  "ranking_source_clock": 1791394759439,
+  "ranking_sha256": "3b9078dd183eb23e3ebd0c4d33756d818b1c57cd853d048c1281222841684455",
+  "deadline": 1793751997.2112615,
+  "global_jev_cap_nanousd": 15000000000,
+  "capture_product_inventory": false,
+  "capture_prices": false,
+  "capture_images": false,
+  "operator_contact": "hello@foldlab.app",
+  "authorization": "Owner requests small-state scans grouped by grocery counts; existing robots/pacing/retention/shared-budget requirements apply",
+  "limitations": [
+    "SNAP grocery-format counts are a planning proxy, not a complete or brand-cleaned census",
+    "Initial scan uses retained ATP branch rosters; missing URLs and unrepresented independents remain discovery gaps",
+    "No new SNAP/OSM store imports in this scan; aggregate SNAP ranking acquired separately",
+    "Qualify each state with five eligible pages; hold rest if no accepted page",
+    "No additional OpenAI jobs or increased Jev ceiling"
+  ]
+}

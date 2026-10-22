@@ -1,0 +1,388 @@
+{
+  "quality_checks": {
+    "unique_directory_ids": true,
+    "unique_native_candidate_keys": true,
+    "all_crosswalk_targets_resolve": true,
+    "orphan_chain_links": 0,
+    "shared_normalized_address_groups": 1,
+    "coordinates_outside_iowa_rectangle": 0
+  },
+  "captured_at": "2026-10-20T14:26:23.693491+00:00",
+  "generation": "g_06c5c35bb5174eab98572bb872b95436",
+  "definitions": {
+    "source_assertion": "A native record; sources overlap and include out-of-scope formats.",
+    "saved_crawl_page": "Unique statewide campaign store ID with a retained evidence JSON file, regardless of acceptance.",
+    "exact_branch_match": "One JSON-LD candidate matches the expected street and postal code or city/state; not a current operational audit.",
+    "field_present": "Published top-level field is populated; provenance can be bulk rather than crawler.",
+    "accepted_enrichment": "An evidence item promoted from review_required to accepted; none in this snapshot."
+  },
+  "directory_records": 735,
+  "directory_keys_unique": true,
+  "raw_source_counts": {
+    "snap": 2882,
+    "osm": 666
+  },
+  "snap_types": {
+    "Grocery Store": 244,
+    "Other": 621,
+    "Convenience Store": 1378,
+    "Farmers and Markets": 129,
+    "Specialty Store": 49,
+    "Supermarket": 95,
+    "Super Store": 366
+  },
+  "snap_broad_grocery_types_before_exclusions": 705,
+  "source_reconciliation": [
+    {
+      "source": "usda_snap_arcgis",
+      "raw_assertions": 2882,
+      "new_primary_records": 333,
+      "matched_assertions": 288,
+      "review_assertions": 113,
+      "excluded_assertions": 2148,
+      "linked_directory_stores": 621,
+      "linked_saved_crawl_pages": 68,
+      "linked_completed_crawl_stores": 69,
+      "completed_crawl_denominator": 96,
+      "saved_crawl_denominator": 95,
+      "both_source_linked_stores": 211
+    },
+    {
+      "source": "openstreetmap",
+      "raw_assertions": 666,
+      "new_primary_records": 40,
+      "matched_assertions": 237,
+      "review_assertions": 388,
+      "excluded_assertions": 1,
+      "linked_directory_stores": 276,
+      "linked_saved_crawl_pages": 46,
+      "linked_completed_crawl_stores": 46,
+      "completed_crawl_denominator": 96,
+      "saved_crawl_denominator": 95,
+      "both_source_linked_stores": 211
+    }
+  ],
+  "crawl": {
+    "completed_iowa_stores_all_campaigns": 96,
+    "unique_stores_reaching_page_review_all_iowa": 98,
+    "completed_share_of_current_directory": 13.1,
+    "target_count": 319,
+    "saved_evidence_pages": 95,
+    "share_of_current_directory_saved": 12.9,
+    "share_of_original_directory_saved": 26.2,
+    "target_outcomes": {
+      "review_required": 91,
+      "published": 95,
+      "host_blocked": 133
+    },
+    "review_reasons": {
+      "pre_fetch_confidence": 89,
+      "page_review": 2
+    },
+    "exact_branch_pages": 41,
+    "ambiguous_multi_candidate_pages": 10,
+    "no_matching_structured_candidate_pages": 44,
+    "accepted_evidence_pages": 0,
+    "visible_text_excerpts": 95,
+    "excerpts_at_limit": 21,
+    "interior_map_candidates": 0,
+    "item_placement_candidates": 0,
+    "geographic_map_links": 0,
+    "department_evidence_pages": 9,
+    "retrieved_from": "2026-10-19T02:25:09.128778+00:00",
+    "retrieved_to": "2026-10-19T06:40:06.922765+00:00",
+    "missing_urls_original_directory": 43,
+    "state": "finished_with_holds"
+  },
+  "published_directory_fields": [
+    {
+      "field": "Name",
+      "present": 735,
+      "total": 735,
+      "percent": 100.0
+    },
+    {
+      "field": "Usable postal address",
+      "present": 735,
+      "total": 735,
+      "percent": 100.0
+    },
+    {
+      "field": "Structured street and city",
+      "present": 610,
+      "total": 735,
+      "percent": 83.0
+    },
+    {
+      "field": "Coordinates",
+      "present": 610,
+      "total": 735,
+      "percent": 83.0
+    },
+    {
+      "field": "Website",
+      "present": 331,
+      "total": 735,
+      "percent": 45.0
+    },
+    {
+      "field": "Phone",
+      "present": 287,
+      "total": 735,
+      "percent": 39.0
+    },
+    {
+      "field": "Hours",
+      "present": 357,
+      "total": 735,
+      "percent": 48.6
+    },
+    {
+      "field": "Timezone",
+      "present": 0,
+      "total": 735,
+      "percent": 0.0
+    },
+    {
+      "field": "Known opening or closure status",
+      "present": 0,
+      "total": 735,
+      "percent": 0.0
+    }
+  ],
+  "crawler_fields_single_branch": [
+    {
+      "field": "Address",
+      "pages": 41,
+      "saved_pages": 95,
+      "percent_saved": 43.2,
+      "directory_records": 735,
+      "percent_directory": 5.6,
+      "acceptance": "review_required"
+    },
+    {
+      "field": "Phone",
+      "pages": 41,
+      "saved_pages": 95,
+      "percent_saved": 43.2,
+      "directory_records": 735,
+      "percent_directory": 5.6,
+      "acceptance": "review_required"
+    },
+    {
+      "field": "Hours",
+      "pages": 9,
+      "saved_pages": 95,
+      "percent_saved": 9.5,
+      "directory_records": 735,
+      "percent_directory": 1.2,
+      "acceptance": "review_required"
+    },
+    {
+      "field": "Coordinates",
+      "pages": 9,
+      "saved_pages": 95,
+      "percent_saved": 9.5,
+      "directory_records": 735,
+      "percent_directory": 1.2,
+      "acceptance": "review_required"
+    },
+    {
+      "field": "Departments",
+      "pages": 9,
+      "saved_pages": 95,
+      "percent_saved": 9.5,
+      "directory_records": 735,
+      "percent_directory": 1.2,
+      "acceptance": "review_required"
+    }
+  ],
+  "enrichment_opportunities": {
+    "Missing coordinates with linked SNAP coordinates": 94,
+    "Missing phone with linked OSM phone": 89,
+    "Missing hours with linked OSM hours": 27,
+    "Missing website with linked OSM website": 44
+  },
+  "osm_shop_types": {
+    "supermarket": 508,
+    "department_store": 122,
+    "general": 15,
+    "wholesale": 16,
+    "grocery": 5
+  },
+  "raw_osm_fields": {
+    "hours": 275,
+    "website": 245,
+    "phone": 349,
+    "wheelchair": 16
+  },
+  "crawl_by_chain": [
+    {
+      "chain": "Costco",
+      "host_blocked": 4
+    },
+    {
+      "chain": "Family Fare",
+      "published": 1,
+      "exact_branch_match": 0
+    },
+    {
+      "chain": "Fareway",
+      "published": 32,
+      "host_blocked": 87,
+      "exact_branch_match": 32
+    },
+    {
+      "chain": "Hy-Vee",
+      "review_required": 91,
+      "published": 34,
+      "exact_branch_match": 0
+    },
+    {
+      "chain": "Jewel-Osco",
+      "published": 1,
+      "exact_branch_match": 0
+    },
+    {
+      "chain": "Natural Grocers",
+      "published": 6,
+      "exact_branch_match": 0
+    },
+    {
+      "chain": "Sam's Club",
+      "published": 9,
+      "exact_branch_match": 9
+    },
+    {
+      "chain": "Save-A-Lot",
+      "published": 1,
+      "exact_branch_match": 0
+    },
+    {
+      "chain": "Target",
+      "host_blocked": 22
+    },
+    {
+      "chain": "Trader Joe's",
+      "host_blocked": 2
+    },
+    {
+      "chain": "Walmart",
+      "published": 10,
+      "host_blocked": 18,
+      "exact_branch_match": 0
+    },
+    {
+      "chain": "Whole Foods Market",
+      "published": 1,
+      "exact_branch_match": 0
+    }
+  ],
+  "iowa_map_records": 96,
+  "iowa_map_status": {
+    "not_found": 96
+  },
+  "iowa_validated_maps": 0,
+  "iowa_display_permitted_maps": 0,
+  "all_regions_map_status": {
+    "discovered": 3,
+    "ambiguous": 9,
+    "not_found": 96
+  },
+  "campaign_inventory": [
+    {
+      "campaign": "iowa-chains-20261019",
+      "state": "finished",
+      "status_keys": [
+        "active",
+        "blocked_hosts",
+        "campaign_id",
+        "completed",
+        "completed_at",
+        "phase",
+        "started_at",
+        "state",
+        "targets"
+      ],
+      "evidence_files": 0
+    },
+    {
+      "campaign": "iowa-statewide-20261019",
+      "state": "finished_with_holds",
+      "status_keys": [
+        "active",
+        "blocked_hosts",
+        "budget",
+        "campaign_id",
+        "completed_at",
+        "config_revisions",
+        "config_sha256",
+        "counts",
+        "directory_stores",
+        "last_host",
+        "missing_branch_urls",
+        "next_due",
+        "phase",
+        "started_at",
+        "state",
+        "targets",
+        "updated_at"
+      ],
+      "evidence_files": 95
+    },
+    {
+      "campaign": "woodmans-19-20261018",
+      "state": "stopped",
+      "status_keys": [
+        "active",
+        "campaign_id",
+        "completed",
+        "error_type",
+        "phase",
+        "started_at",
+        "state",
+        "stopped_at",
+        "targets"
+      ],
+      "evidence_files": 0
+    },
+    {
+      "campaign": "woodmans-remaining-20261018-r2",
+      "state": "finished",
+      "status_keys": [
+        "active",
+        "campaign_id",
+        "completed",
+        "completed_at",
+        "phase",
+        "started_at",
+        "state",
+        "targets"
+      ],
+      "evidence_files": 0
+    },
+    {
+      "campaign": "woodmans-text-check-20261018",
+      "state": "finished",
+      "status_keys": [
+        "active",
+        "campaign_id",
+        "completed",
+        "completed_at",
+        "phase",
+        "started_at",
+        "state",
+        "targets"
+      ],
+      "evidence_files": 0
+    }
+  ],
+  "checksums": {
+    "bundle.json": "9e899e2f838b1cfe250366b048e7909b0d79b12e0726833ed5428f0f8774931f",
+    "publication.json": "40e7f3a91d5bc4b92765cbad0965327645d463edea68543f18e9ed0b4ffa6867",
+    "candidates.jsonl": "eade169605edf02c10a731884c2e4e3c6040ff608cdb2fcae4037d14ff42b759",
+    "crosswalk.jsonl": "438d2080667a322111b8cb0e1b3d3f479249f8cc37162d4c24f6819ff4f63cdf",
+    "reviews.jsonl": "925812c5efdcaad224a4c9793dea56d5ab358d3530a4d83440235efc1dff86da",
+    "excluded.jsonl": "09d3e029be3d7984ffe0b2b15465923bfc833e9cc2d6549f778e3426a5c195b4"
+  }
+}

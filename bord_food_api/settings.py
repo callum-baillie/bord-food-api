@@ -48,6 +48,29 @@ SOURCE_DEFAULTS = {
         "selection_mode": "selected_spiders",
     },
     "usda_snap": {"enabled": False, "origins": ["https://www.fns.usda.gov"]},
+    "osm_food_assistance": {
+        "enabled": False,
+        "origins": ["https://overpass-api.de"],
+        "states": ["IA"],
+        "interval_seconds": 604800,
+        "parser_version": "assistance-v1",
+    },
+    "community_food_assistance": {
+        "enabled": False,
+        "origins": [],
+        "profiles": [],
+        "interval_seconds": 86400,
+        "parser_version": "assistance-v1",
+    },
+    "feed_america": {
+        "enabled": False,
+        "origins": ["https://feedam.org"],
+        "states": ["IA"],
+        "interval_seconds": 86400,
+        "parser_version": "assistance-v1",
+        "rights_reviewed": False,
+        "approved_upstream_sources": [],
+    },
     "open_food_facts": {
         "enabled": False,
         "origins": [
@@ -165,6 +188,8 @@ def load_policy(settings):
         "prices",
         "guidance",
         "maps",
+        "assistance",
+        "assistance_osm",
     }:
         raise ValueError("runtime.required_packs contains an unsupported pack")
     explicit = configured.get("sources", {})
@@ -174,6 +199,11 @@ def load_policy(settings):
     for source, defaults in policy["sources"].items():
         defaults.update(explicit.get(source, {}))
         defaults.update({"mode": mode, **policy["budgets"]})
+        if source in {"feed_america", "osm_food_assistance", "community_food_assistance"}:
+            defaults["max_artifact_bytes"] = min(defaults["max_artifact_bytes"], 16 * 1024**2)
+            defaults["max_total_bytes"] = min(
+                defaults.get("max_total_bytes", 128 * 1024**2), 128 * 1024**2
+            )
         if source == "usda_fdc":
             defaults.setdefault("datasets", list(settings.datasets))
             if not settings.auto_download and "enabled" not in explicit.get(source, {}):

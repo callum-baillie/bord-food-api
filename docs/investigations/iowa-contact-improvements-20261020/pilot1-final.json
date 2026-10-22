@@ -1,0 +1,117 @@
+{
+  "iowa-contact-pilot1-20261020": {
+    "active_run": null,
+    "campaign_id": "iowa-contact-pilot1-20261020",
+    "coverage_gaps": 0,
+    "directory_stores": 5,
+    "passes": {
+      "canonical": {
+        "state": "not_needed",
+        "targets": 0
+      },
+      "primary": {
+        "campaign_id": "iowa-contact-pilot1-20261020-primary",
+        "counts": {
+          "published": 1,
+          "review_required": 4
+        },
+        "state": "finished_with_holds"
+      }
+    },
+    "phase": "primary",
+    "planned_targets": 5,
+    "started_at": 1792531514.285397,
+    "state": "finished_with_holds",
+    "updated_at": 1792531956.9925866
+  },
+  "iowa-contact-pilot1-20261020-primary": {
+    "active": null,
+    "blocked_hosts": {},
+    "budget": {
+      "campaign_calls": 5,
+      "campaign_reserved_nanousd": 50000000,
+      "can_start": true,
+      "remaining_nanousd": 950000000,
+      "total_reserved_nanousd": 3860000000
+    },
+    "campaign_id": "iowa-contact-pilot1-20261020-primary",
+    "completed_at": 1792531956.941306,
+    "config_sha256": "e6230bd54694c547c31fd3585acb4d3760dd0928f35036d99de246fcc01e1650",
+    "counts": {
+      "published": 1,
+      "review_required": 4
+    },
+    "directory_stores": 5,
+    "last_host": "www.wheatsfield.coop",
+    "missing_branch_urls": 0,
+    "phase": "robots_and_branch_fetch",
+    "started_at": 1792531514.3502924,
+    "state": "finished_with_holds",
+    "targets": {
+      "sto_00771498a3124edca3ced134b7c84326": {
+        "attempt_started_at": 1792531764.8078778,
+        "finished_at": 1792531835.391507,
+        "host": "oneotacoop.com",
+        "job_id": "job_4f56476ddd5b448b810855c5c0437812",
+        "network_attempted": true,
+        "reason": "page_review",
+        "stage": "page_review",
+        "state": "review_required"
+      },
+      "sto_00c8a79f06144b46b7438039b42776c0": {
+        "attempt_started_at": 1792531835.433591,
+        "finished_at": 1792531902.5351171,
+        "host": "www.valleyfreshmkt.com",
+        "job_id": "job_bae87de7ef3042648e18df4a46c780cb",
+        "network_attempted": true,
+        "reason": "page_review",
+        "stage": "page_review",
+        "state": "review_required"
+      },
+      "sto_2a998e50d4db4ae99134bb9ab03abbfc": {
+        "attempt_started_at": 1792531902.561696,
+        "finished_at": 1792531956.9141817,
+        "host": "www.wheatsfield.coop",
+        "job_id": "job_527ad00ea42b4a05abff56064c03c9ff",
+        "network_attempted": true,
+        "reason": "page_review",
+        "stage": "page_review",
+        "state": "review_required"
+      },
+      "sto_435e9d56edea4d1d915cfeb7170dae81": {
+        "attempt_started_at": 1792531612.5641334,
+        "field_enrichment": {
+          "changed": 1,
+          "state": "published"
+        },
+        "field_observations": {
+          "branch_match": "exact_address",
+          "parser_version": "branch-fields-v8",
+          "valid_fields": [
+            "opening_hours",
+            "phone",
+            "website"
+          ]
+        },
+        "finished_at": 1792531680.4482312,
+        "host": "earlhammarket.com",
+        "job_id": "job_4189ef0c81eb45f7867f064d4ffb4820",
+        "map_records": 0,
+        "network_attempted": true,
+        "stage": "publication",
+        "state": "published"
+      },
+      "sto_df167da017874693bac1abf35f125608": {
+        "attempt_started_at": 1792531680.484458,
+        "finished_at": 1792531764.768964,
+        "host": "newpi.coop",
+        "job_id": "job_8c4ad4da2b94495fa3b92ff0d4ae149a",
+        "network_attempted": true,
+        "reason": "page_review",
+        "stage": "page_review",
+        "state": "review_required"
+      }
+    },
+    "updated_at": 1792531956.9552827
+  }
+}

@@ -19,6 +19,14 @@ class PolicyError(ValueError):
     """An outbound operation needs operator policy review."""
 
 
+class RedirectNotice(PolicyError):
+    """An observed redirect for operator review; never implicitly followed."""
+
+    def __init__(self, target, status):
+        super().__init__("redirect_requires_review")
+        self.target, self.status = target, status
+
+
 class TransportError(ValueError):
     def __init__(self, status, retry_after=None):
         super().__init__(f"source_http_{status}")
@@ -178,8 +186,12 @@ class Transport:
                 raise
             if response.status in (301, 302, 303, 307, 308):
                 target = urljoin(url, response.headers.get("Location", ""))
+                status = response.status
                 response.close()
                 connection.close()
+                if self.policy.get("report_redirects") is True:
+                    # No DNS resolution, redirected request or credential forwarding.
+                    raise RedirectNotice(target, status)
                 target_parsed = approved_url(target, origins)
                 if target_parsed.hostname != parsed.hostname:
                     request_headers = {

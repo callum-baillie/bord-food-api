@@ -608,6 +608,19 @@ def worker_once(
                     if isinstance(error, PolicyError)
                     else "source_validation_failed"
                 )
+                if isinstance(error, PolicyError) and str(error) in {
+                    "installation_quota_exhausted",
+                    "insufficient_staging_space",
+                    "artifact_byte_limit",
+                    "artifact_time_limit",
+                    "source_byte_budget_exhausted",
+                    "request_budget_exhausted",
+                    "network_policy_review_required",
+                    "non_public_source_address",
+                    "source_dns_empty",
+                    "source_disabled_by_policy",
+                }:
+                    reason = str(error)
                 source_reason = getattr(error, "reason_code", None)
                 if source_reason in {
                     "source_location_unresolved",

@@ -1,0 +1,196 @@
+{
+  "campaign_id": "iowa-fields-pilot1-20261020",
+  "activation_enabled": true,
+  "state": "IA",
+  "collection_profile": "public-store-layout-evidence-v1",
+  "field_focus": true,
+  "capture_prices": false,
+  "capture_product_inventory": false,
+  "capture_product_catalog": false,
+  "targets": [
+    {
+      "store_id": "sto_2d82021654064919a386ea881e3d7491",
+      "url": "https://local.jewelosco.com/ia/clinton/1307-n-2nd-st.html",
+      "source_website": "https://local.jewelosco.com/ia/clinton/1307-n-2nd-st.html",
+      "name": "Jewel-Osco",
+      "spider": "albertsons",
+      "chain_id": "chn_495003f78328447085d0fb76bf9dff24",
+      "source_address": {
+        "city": "Clinton",
+        "country": "US",
+        "postal_code": "52732",
+        "region": "IA",
+        "street": "1307 N 2nd St"
+      },
+      "expected_branch": "Jewel-Osco Clinton",
+      "country": "US"
+    },
+    {
+      "store_id": "sto_544970825def4709a2b1598c51bab0c4",
+      "url": "https://www.naturalgrocers.com/store/cedar-falls",
+      "source_website": "https://www.naturalgrocers.com/store/cedar-falls",
+      "name": "Cedar Falls",
+      "spider": "natural_grocers_us",
+      "chain_id": "chn_78a980cbfaaa4ecda48f23b492b51acf",
+      "source_address": {
+        "city": "Cedar Falls",
+        "country": "US",
+        "postal_code": "50613",
+        "region": "IA",
+        "street": "5410 University Ave"
+      },
+      "expected_branch": "Cedar Falls Cedar Falls",
+      "country": "US"
+    },
+    {
+      "store_id": "sto_74056cd3ef2c4136ad2973a92f54db83",
+      "url": "https://www.shopfamilyfare.com/stores/family-fare-valley-view",
+      "source_website": "https://www.shopfamilyfare.com/stores/family-fare-valley-view",
+      "name": "Family Fare - Valley View",
+      "spider": "family_fare_us",
+      "chain_id": "chn_b401d58becbe4448a020a8a045e3bde6",
+      "source_address": {
+        "city": "Council Bluffs",
+        "country": "US",
+        "postal_code": "51503",
+        "region": "IA",
+        "street": "1801 Valley View Dr"
+      },
+      "expected_branch": "Family Fare - Valley View Council Bluffs",
+      "country": "US"
+    },
+    {
+      "store_id": "sto_8798ec7dda594e4d86dac2b1405f3fc8",
+      "url": "https://stores.aldi.us/ia/sioux-city/5001-sergeant-road",
+      "source_website": "https://stores.aldi.us/ia/sioux-city/5001-sergeant-road",
+      "name": "ALDI",
+      "spider": null,
+      "chain_id": "chn_af1cd7c0a37e4b39aaeee6076ac52e51",
+      "source_address": {
+        "city": "Sioux City",
+        "postal_code": "51106",
+        "region": "IA",
+        "street": "5001 Sergeant Road",
+        "unit": "140"
+      },
+      "expected_branch": "ALDI Sioux City",
+      "country": "US"
+    }
+  ],
+  "scopes": {
+    "local.jewelosco.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "local.jewelosco.com",
+        "scope_prefix": "/ia/clinton/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    },
+    "www.naturalgrocers.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.naturalgrocers.com",
+        "scope_prefix": "/store/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    },
+    "www.shopfamilyfare.com": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "www.shopfamilyfare.com",
+        "scope_prefix": "/stores/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    },
+    "stores.aldi.us": {
+      "state": "approved",
+      "review_evidence": "Owner-authorized exact source branch URL; live robots checked before request; Iowa field pilot 20261020",
+      "crawl": {
+        "mode": "bulk_only",
+        "global_enabled": true,
+        "adapter_enabled": true,
+        "source_authorized": true,
+        "owner_public_robots_authorized": true,
+        "terms_reviewed": false,
+        "robots_reviewed": true,
+        "contact": "hello@foldlab.app",
+        "allowed_host": "stores.aldi.us",
+        "scope_prefix": "/ia/sioux-city/",
+        "max_pages_run": 2,
+        "max_pages_day": 500,
+        "max_bytes": 2097152,
+        "max_total_bytes": 4194304,
+        "min_spacing": 45,
+        "spacing_jitter_seconds": 45,
+        "max_run_seconds": 240,
+        "robots_ttl_seconds": 3600,
+        "allow_exact_target_queries": true,
+        "can_store_raw": true
+      }
+    }
+  },
+  "duration_seconds": 7200,
+  "directory_stores": 735,
+  "missing_branch_urls": 0,
+  "decisions": {
+    "budget_nanousd": 100000000,
+    "max_calls": 10,
+    "key_file": "/run/secrets/jev-api-key",
+    "retain_branch_html": true,
+    "review_every_page": true
+  }
+}

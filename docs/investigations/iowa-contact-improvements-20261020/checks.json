@@ -1,0 +1,55 @@
+{
+  "pytest": {
+    "command": ".venv/bin/python -m pytest",
+    "passed": 403,
+    "warnings": 1,
+    "seconds": 74.83,
+    "fixture_tmp_location": "dedicated home cache, unchanged import reserve"
+  },
+  "latest_retained_state_tests": {
+    "passed": 2
+  },
+  "ruff_check": "passed",
+  "ruff_format_check": {
+    "passed": true,
+    "files": 207
+  },
+  "openapi_export_check": "passed",
+  "git_diff_check": "passed",
+  "actual_image_network_none_preflight": "passed",
+  "pilot2_config_targets": 15,
+  "wider_config_targets": 6,
+  "follow_up_phases_launched": false,
+  "gain_gate": "held_requires_review / pilot_gain_gate_not_met",
+  "plan_package": {
+    "state": "passed",
+    "groups": 13,
+    "checksums": 93,
+    "interpreter": "system python with preinstalled jsonschema",
+    "earlier_venv_attempt": "ModuleNotFoundError: jsonschema; no dependency installed"
+  },
+  "tower_repository_validator": {
+    "exit_code": 0,
+    "valid": true,
+    "existing_generated_output_info": true,
+    "existing_sensitive_archive_warnings": true
+  },
+  "tower_audit": {
+    "isolated_copy": true,
+    "vm_unreachable_exit": 255,
+    "canonical_inventory_unchanged": true
+  },
+  "forgejo_issue": {
+    "status": 502,
+    "created": false
+  },
+  "new_jev_requests": 8,
+  "new_jev_reservation_usd": 0.08,
+  "new_openai_requests": 0,
+  "git_commit_push_image_publication": false,
+  "companion_changes": false,
+  "viewer_changes": false,
+  "other_state_activation": false,
+  "live_verification": "live-verification.json",
+  "runtime_verification": "runtime-verification.json"
+}

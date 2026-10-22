@@ -1,0 +1,181 @@
+{
+  "source_run": "2026-10-10-13-32-41",
+  "archive_sha256": "174b0a4836f88185d5c7fbe96228814da61141e65c2330b522644dc56d8665d7",
+  "scope_replay": [
+    {
+      "spider": "albertsons",
+      "member_sha256": "c841071bfc851be8fc5ce6107b434185e8bcc9169c5a16af47dfaa1a232a3c07",
+      "raw_iowa": 2,
+      "eligible": 1,
+      "published": 1,
+      "filtered": {
+        "pharmacy": 1
+      },
+      "missing_website": 0
+    },
+    {
+      "spider": "aldi_sud_us",
+      "member_sha256": "1f7e592dfedefebdffe331431e098794c0f719da653c3cea95ca19999e218dea",
+      "raw_iowa": 41,
+      "eligible": 41,
+      "published": 41,
+      "filtered": {},
+      "missing_website": 41
+    },
+    {
+      "spider": "costco_ca_gb_us",
+      "member_sha256": "3fbae45a3a04ce503e2af8fd81db12f92efd61ff03fe064f4b3e30fe6b952c2b",
+      "raw_iowa": 4,
+      "eligible": 4,
+      "published": 4,
+      "filtered": {},
+      "missing_website": 0
+    },
+    {
+      "spider": "family_fare_us",
+      "member_sha256": "8424b1cd0b1bb03e6be45742ff6252b5bb22d014d8019596c50d4f1fd6ceaf0c",
+      "raw_iowa": 1,
+      "eligible": 1,
+      "published": 1,
+      "filtered": {},
+      "missing_website": 0
+    },
+    {
+      "spider": "fareway_us",
+      "member_sha256": "fd26294a59798fe33d772301e55616b1166c5f6f7e1b07ab0918902f23aec20d",
+      "raw_iowa": 119,
+      "eligible": 119,
+      "published": 119,
+      "filtered": {},
+      "missing_website": 0
+    },
+    {
+      "spider": "fresh_thyme_us",
+      "member_sha256": "8aa2b6bb009d52a307595a4423cea74177cc7291cf5c9d9286b93dac90f01cac",
+      "raw_iowa": 2,
+      "eligible": 2,
+      "published": 2,
+      "filtered": {},
+      "missing_website": 2
+    },
+    {
+      "spider": "hy_vee_us",
+      "member_sha256": "c67e1338f4bb48ebbe4f5179022aff5fe702a638f353333ff180967271297b06",
+      "raw_iowa": 148,
+      "eligible": 125,
+      "published": 125,
+      "filtered": {
+        "pharmacy": 23
+      },
+      "missing_website": 0
+    },
+    {
+      "spider": "natural_grocers_us",
+      "member_sha256": "293f261a1e2307777b8220ac396d86db1e190bcb73850ff14edda9f799551a23",
+      "raw_iowa": 6,
+      "eligible": 6,
+      "published": 6,
+      "filtered": {},
+      "missing_website": 0
+    },
+    {
+      "spider": "sams_club",
+      "member_sha256": "67baaea52680801545ea8ab4c108e5ecf4d0c4a5e62369bdcd323efe32273893",
+      "raw_iowa": 18,
+      "eligible": 9,
+      "published": 9,
+      "filtered": {
+        "other_format_or_banner_filter": 9
+      },
+      "missing_website": 0
+    },
+    {
+      "spider": "save_a_lot_us",
+      "member_sha256": "66dea248cc9740bd9b26fb8a8a1dd7cf0c288dfc628158db6d75a393c625babb",
+      "raw_iowa": 1,
+      "eligible": 1,
+      "published": 1,
+      "filtered": {},
+      "missing_website": 0
+    },
+    {
+      "spider": "target_us",
+      "member_sha256": "d328dcf393ab496a6880053ffd9aaf874a2a240326d4287a81d06d079cea55f9",
+      "raw_iowa": 22,
+      "eligible": 22,
+      "published": 22,
+      "filtered": {},
+      "missing_website": 0
+    },
+    {
+      "spider": "trader_joes_us",
+      "member_sha256": "9c4adefeca02b3e7a1d2c54eb7a5fc9270d2bd80196c668d90b14d466a81a46b",
+      "raw_iowa": 2,
+      "eligible": 2,
+      "published": 2,
+      "filtered": {},
+      "missing_website": 0
+    },
+    {
+      "spider": "walmart_us",
+      "member_sha256": "4b5a0ea193bb7efce4b5554e486fe4e17e6084aba691a83da3bff3d71c3b0dc9",
+      "raw_iowa": 28,
+      "eligible": 28,
+      "published": 28,
+      "filtered": {},
+      "missing_website": 0
+    },
+    {
+      "spider": "whole_foods",
+      "member_sha256": "2b43f75fca7a40e8a0c09bddbd3463a994f2fdaeb2f1d6b0a08f3eac34abcea8",
+      "raw_iowa": 1,
+      "eligible": 1,
+      "published": 1,
+      "filtered": {},
+      "missing_website": 0
+    }
+  ],
+  "eligible_source_keys_equal_published": true,
+  "eligible": 362,
+  "duplicate_source_keys": 0,
+  "upstream_run_results": [
+    {
+      "spider": "fareway_us",
+      "filename": "locations/spiders/fareway_us.py",
+      "errors": 0,
+      "features": 143,
+      "elapsed_time": 25.758957491998444
+    },
+    {
+      "spider": "hy_vee_us",
+      "filename": "locations/spiders/hy_vee_us.py",
+      "errors": 0,
+      "features": 296,
+      "elapsed_time": 366.2080739619996
+    },
+    {
+      "spider": "walmart_us",
+      "filename": "locations/spiders/walmart_us.py",
+      "errors": 0,
+      "features": 1484,
+      "elapsed_time": 28800.735188827995
+    }
+  ],
+  "walmart_run": {
+    "finish_reason": "closespider_timeout",
+    "elapsed_time_seconds": 28800.735188827995,
+    "item_scraped_count": 1484,
+    "scheduler/enqueued": 4262,
+    "scheduler/dequeued": 1490,
+    "downloader/response_status_count/200": 1490
+  },
+  "walmart_unprocessed_requests": 2772,
+  "global_failed_source_scopes": 375,
+  "global_failed_scopes_are_not_an_iowa_missing_store_count": true,
+  "limitations": [
+    "Replay covers all 14 Iowa-contributing scopes, not every rejected archive scope.",
+    "Source identities equal published identities; physical-location deduplication is separate.",
+    "The statewide missing-location total is unknown; planning estimates are not a reference roster.",
+    "No live source import, crawler restart, paid call or deployment was performed."
+  ]
+}

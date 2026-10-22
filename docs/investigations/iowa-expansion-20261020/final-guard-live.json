@@ -1,0 +1,32 @@
+{
+  "module_sha256": "37f542fbe0075c862636c2ce20b83c51ad726cefa3ab885e64af2f921173aee0",
+  "other_source_fingerprints": {
+    "usda_fdc": "40d81efbd6bfb10eb4a5d88aa65d1f693caf496e0730ac27dbd23ee356596635",
+    "open_food_facts": "45c5ae13cb7a7d475254c91ba46b77d4f6dbc80af3cf74599ce014ecf4afc594",
+    "foodkeeper": "f6d11837290aa5c417de12e16f38dad802adcd05b1db0485556ea5dc9cf8b054"
+  },
+  "timeout_is_partial": true,
+  "generation": "g_06c5c35bb5174eab98572bb872b95436",
+  "http": {
+    "/live": {
+      "status": 200
+    },
+    "/ready": {
+      "status": 200
+    },
+    "/health": {
+      "status": 200
+    },
+    "/v1/system/status": {
+      "status": 200
+    },
+    "/fdc/v1/foods/search?query=apple&pageSize=1": {
+      "status": 200
+    },
+    "/v1/stores?state=IA&query=New%20Pioneer&limit=10": {
+      "status": 200,
+      "records": 3
+    }
+  },
+  "active_jobs": []
+}

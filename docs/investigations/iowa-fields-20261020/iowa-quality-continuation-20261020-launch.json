@@ -1,0 +1,12 @@
+{
+  "campaign_id": "iowa-quality-continuation-20261020",
+  "release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/ddd091a124469eb90bc716cafa9a7880227238044193b7fb2c66ca57128017fd",
+  "image_id": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "plan": {
+    "network": false,
+    "planned_targets": 197,
+    "passes": 2
+  },
+  "launched": true,
+  "container_id": "c0b52f87984806d113796b2b9493254b4868ebef2f5dec9968d7eaac33e7480d"
+}

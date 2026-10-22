@@ -6,6 +6,8 @@ A small, self-hosted USDA FoodData Central API for Bòrd. One Python container, 
 
 Container image: **`ghcr.io/callum-baillie/bord-food-api:latest`** (Linux AMD64 and ARM64).
 
+Start with the [setup and configuration guide](docs/setup-and-configuration.md) for step-by-step Unraid/Compose installation, a complete settings reference, dataset imports, Bòrd connection settings, updates, and troubleshooting.
+
 GitHub Actions runs the tests and Docker smoke test before publishing each push to `main`. Images are tagged `latest` and `sha-<full-commit>`; pushing a `v*` Git tag also publishes that version tag. Pull requests run checks without publishing. The container contains the application; datasets are downloaded/imported into its persistent data volume at runtime.
 
 ## Dataset choice
@@ -46,7 +48,7 @@ Set `AUTO_DOWNLOAD=false` to require local input and prevent automatic downloads
 
 ## Connect Bòrd
 
-Set these **server/container environment variables on Bòrd**, then recreate/restart Bòrd:
+Set these **server/container environment variables on Bòrd**, then recreate its container (or restart the local development server):
 
 ```dotenv
 USDA_FDC_ENABLED=true
@@ -107,7 +109,7 @@ The service is intended for your LAN/Docker network. Setting `API_KEY` enables s
 
 ### Reuse the already verified catalog
 
-This working copy includes a complete, gitignored catalog at `data/foods.sqlite` and the four official ZIPs under `data/downloads/` (469,046 foods; database about 1.34 GiB). To reuse it on Unraid, copy the **contents** of `data/` into `/mnt/user/appdata/bord-food-api/` before starting the container, then apply the ownership command above. Startup will use the existing catalog immediately. The normal local Compose file uses a separate named Docker volume and will download/import its own catalog unless you seed that volume yourself.
+The original development checkout has a complete, gitignored catalog at `data/foods.sqlite` and the four official ZIPs under `data/downloads/` (469,046 foods; database about 1.34 GiB). **Fresh Git clones and container images do not include this data.** If you have that catalog, copy the **contents** of `data/` into `/mnt/user/appdata/bord-food-api/` before starting the container, then apply the ownership command above. Startup will use the existing catalog immediately. The normal local Compose file uses a separate named Docker volume and will download/import its own catalog unless you seed that volume yourself.
 
 ## Update or rebuild the catalog
 
@@ -191,3 +193,31 @@ Set `USDA_FDC_API_KEY` to the shared key if authentication is enabled. This scri
 ## Data attribution
 
 U.S. Department of Agriculture, Agricultural Research Service. FoodData Central. [fdc.nal.usda.gov](https://fdc.nal.usda.gov/). USDA publishes the data under [CC0 1.0/public domain](https://fdc.nal.usda.gov/api-guide/). Source release information is retained in each catalog's metadata.
+
+Iowa store discovery and reconciliation: [operator guide](docs/IOWA-DISCOVERY.md), including SNAP/OSM provenance, coverage limits and repeatable incremental publication.
+
+
+Store-field enrichment and operator browsing are documented in [docs/STORE-ENRICHMENT.md](docs/STORE-ENRICHMENT.md).
+
+Repeatable phone/hours repair, official-site discovery and pilot gates are documented in
+[docs/STORE-CONTACT-IMPROVEMENTS.md](docs/STORE-CONTACT-IMPROVEMENTS.md).
+
+The explicitly activated, serial smaller-state campaign is documented in
+[docs/SMALL-STATE-SCANS.md](docs/SMALL-STATE-SCANS.md), including the source-based ranking,
+state qualification passes, shared pacing/budget and durable resume behavior.
+The retained-data workflow preserves independent assertions, conflicts, closure uncertainty and
+source clocks, and atomically publishes a replacement stores pack. It makes no source or model
+requests. [Retail dataset/API discovery](docs/RETAIL-DATA-DISCOVERY.md) distinguishes product
+reference data from branch inventory and records research-only connector options.
+
+Iowa field refresh and live pilot/run policy: [operator guide](docs/IOWA-FIELD-CRAWL.md).
+
+Repeatable chain profiles, deterministic identity/address repair and optional bounded OpenAI review: [operator guide](docs/STORE-QUALITY-PROFILES.md).
+
+### Food assistance
+
+Food banks, public pantries, meal programs and mobile distributions have separate optional
+reference packs and generation-bound search routes. OSM attribution stays separate from
+permissive/authorized directories. [Food assistance integration](docs/FOOD-ASSISTANCE.md)
+describes automatic updates, the post-supermarket enrichment worker, source audits and the
+remaining licensing/companion boundaries.

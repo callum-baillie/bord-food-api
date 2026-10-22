@@ -1,0 +1,99 @@
+{
+  "pytest": {
+    "command": ".venv/bin/python -m pytest",
+    "passed": 412,
+    "warnings": 1,
+    "seconds": 72.35,
+    "fixtures_and_mocked_transports": true,
+    "fixture_tmp_location": "dedicated home cache; import reserve unchanged"
+  },
+  "ruff_check": "passed",
+  "ruff_format_check": {
+    "passed": true,
+    "files": 214
+  },
+  "openapi_export_check": "passed",
+  "git_diff_check": "passed",
+  "notebook": {
+    "cells_executed": 2,
+    "state_grain_checks": "passed",
+    "aggregate_reconciliation": "passed",
+    "batch_reproduction": "passed",
+    "execution_from_notebook_directory": "passed"
+  },
+  "actual_image_network_none_preflight": {
+    "states": 12,
+    "passed": true,
+    "source_calls": 0,
+    "paid_calls": 0,
+    "published": false
+  },
+  "backup_verification": {
+    "backup_complete_check": "passed",
+    "network": "none",
+    "source_requests": 0,
+    "paid_calls": 0
+  },
+  "ranking": {
+    "public_requests": 5,
+    "distinct_urls": 4,
+    "groups": 360,
+    "all_format_reference_records": 248622,
+    "states": 50,
+    "complete_census": false
+  },
+  "live_scan": {
+    "launched": true,
+    "cohort_states": 12,
+    "batches": 5,
+    "first_retailer_request_jev_publication_verified": true,
+    "completed_all_states": false,
+    "active_release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/a1a566edb7e2e8e6b6794b12903a180761a3a6d0b4b2ad4a2cb944af8ae80a35",
+    "latest_resume_release": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/6208a345281b9c873db29ceee54d0a4e28e13f4779b80197fce76c38293dee01",
+    "global_jev_cap_usd": 15,
+    "additional_openai_jobs": 0,
+    "wyoming_pilot": {
+      "host_blocked": 2,
+      "published": 3
+    },
+    "wyoming_larger_batch_started": true
+  },
+  "tower_audit": {
+    "isolated": true,
+    "exit_code": 255,
+    "cause": "development VM unreachable",
+    "canonical_inventory_preserved": true
+  },
+  "tower_repository_validator": {
+    "exit_code": 0,
+    "valid": true,
+    "existing_generated_info_sensitive_archive_warnings": true
+  },
+  "plan_package": {
+    "passed": true,
+    "groups": 13,
+    "checksums": 93
+  },
+  "forgejo_issue": {
+    "status": 502,
+    "created": false
+  },
+  "iowa_and_other_nonselected_states_preserved": true,
+  "api_bord_history_not_recreated": true,
+  "git_commit_push_new_image_publication": false,
+  "viewer_changes": false,
+  "companion_changes": false,
+  "resume_network_none_preflight": {
+    "actual_image_network_none": "passed",
+    "complete_backup": "passed",
+    "incomplete_phase_resume": "passed",
+    "source_requests": 0,
+    "paid_calls": 0
+  },
+  "latest_targeted_tests": {
+    "passed": 9,
+    "warnings": 1,
+    "seconds": 0.21,
+    "regression_covered": "partial backups and completed-pilot/incomplete-state resume"
+  }
+}

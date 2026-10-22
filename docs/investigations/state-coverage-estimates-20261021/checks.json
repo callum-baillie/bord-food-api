@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-21",
+  "data_checks": [
+    "50 distinct states; no DC or territories in targets",
+    "102 unique Census state/industry totals; all-legal-form totals only",
+    "National source totals agree: groceries62947, clubs7961 including DC",
+    "All low <= point <= high; estimates independent of catalog counts",
+    "Executed notebook offline; deterministic CSV/JSON/artifact regeneration"
+  ],
+  "pytest_initial": {
+    "passed": 408,
+    "failed": 4,
+    "cause": "/tmp had 3.6GiB available, below production importer 5GiB free-space reserve",
+    "log": "/tmp/state-estimate-tests.txt"
+  },
+  "pytest_disk_rerun": {
+    "command": "python -m pytest -q --basetemp <new directory under /home/callum/.cache>",
+    "passed": 412,
+    "failed": 0,
+    "warnings": 1,
+    "duration_seconds": 148.03,
+    "warning": "Existing Starlette/httpx deprecation"
+  },
+  "ruff_check": "passed",
+  "git_diff_check": "passed",
+  "report": {
+    "artifact_schema_validation": "passed",
+    "html_package": "passed; self-contained shared reader",
+    "browser_verification": "failed horizontal_overflow at desktop viewport",
+    "root_cause": "Shared reader analytics-top-bar spans 100vw; document scrollWidth1433 versus clientWidth1425 at1440 viewport (8px overflow). Content has no element beyond viewport. Renderer issue retained as a report-layout limitation; no production/frontend code modified.",
+    "visual_inspection": "Desktop screenshot reviewed: title, scope, chart and narrative legible",
+    "delivery_attempts": "initial browser timeout; subsequent runs isolate top-bar overflow"
+  },
+  "operations": {
+    "paid_ai_requests": 0,
+    "retailer_requests": 0,
+    "catalog_writes": 0,
+    "worker_changes": 0,
+    "deployments": 0,
+    "git_pushes": 0
+  }
+}

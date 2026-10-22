@@ -1,0 +1,77 @@
+{
+  "network": {
+    "mode": "bulk_only",
+    "crawl_enabled": false
+  },
+  "sources": {
+    "usda_fdc": {
+      "enabled": false
+    },
+    "all_the_places": {
+      "enabled": false
+    },
+    "usda_snap": {
+      "enabled": false
+    },
+    "osm_food_assistance": {
+      "enabled": true,
+      "states": [
+        "IA",
+        "WY",
+        "AK",
+        "VT",
+        "ND",
+        "DE",
+        "SD",
+        "MT",
+        "RI",
+        "NH",
+        "HI",
+        "ID",
+        "WV"
+      ],
+      "interval_seconds": 604800,
+      "timeout": 120,
+      "max_seconds": 120,
+      "max_requests": 30
+    },
+    "community_food_assistance": {
+      "enabled": false
+    },
+    "feed_america": {
+      "enabled": false,
+      "states": [
+        "IA",
+        "WY",
+        "AK",
+        "VT",
+        "ND",
+        "DE",
+        "SD",
+        "MT",
+        "RI",
+        "NH",
+        "HI",
+        "ID",
+        "WV"
+      ],
+      "rights_reviewed": false,
+      "approved_upstream_sources": []
+    },
+    "open_food_facts": {
+      "enabled": false
+    },
+    "open_prices": {
+      "enabled": false
+    },
+    "foodkeeper": {
+      "enabled": false
+    }
+  },
+  "runtime": {
+    "required_packs": []
+  },
+  "budgets": {
+    "data_quota_bytes": 274877906944
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "valid": true,
+  "violations": 0,
+  "findings": [
+    {
+      "status": "info",
+      "kind": "generated_ignored",
+      "path": "platform/tower-control/control/node_modules"
+    },
+    {
+      "status": "info",
+      "kind": "generated_ignored",
+      "path": "platform/tower-control/control/dist"
+    },
+    {
+      "status": "info",
+      "kind": "generated_ignored",
+      "path": "stacks/iptv/plex-relay/__pycache__"
+    },
+    {
+      "status": "info",
+      "kind": "generated_ignored",
+      "path": "scripts/operations/tests/__pycache__"
+    },
+    {
+      "status": "info",
+      "kind": "generated_ignored",
+      "path": "scripts/bootstrap/__pycache__"
+    },
+    {
+      "status": "warning",
+      "kind": "tracked_sensitive_archive",
+      "path": "archive/pre-rebuild/unraid-config-2026-07-16/unraid-config-2026-07-16/Basic.key"
+    },
+    {
+      "status": "warning",
+      "kind": "tracked_sensitive_archive",
+      "path": "archive/pre-rebuild/unraid-config-2026-07-16/unraid-config-2026-07-16/Trial.key"
+    },
+    {
+      "status": "warning",
+      "kind": "tracked_sensitive_archive",
+      "path": "archive/pre-rebuild/unraid-config-2026-07-16/unraid-config-2026-07-16/ssl/certs/Tower_unraid_bundle.pem"
+    },
+    {
+      "status": "warning",
+      "kind": "tracked_sensitive_archive",
+      "path": "archive/pre-rebuild/unraid-config-2026-07-16/unraid-config-2026-07-16/ssl/certs/certificate_bundle.pem"
+    },
+    {
+      "status": "warning",
+      "kind": "tracked_sensitive_archive",
+      "path": "archive/pre-rebuild/unraid-config-2026-07-16/unraid-config-2026-07-16/ssl/dhparam.pem"
+    }
+  ]
+}
