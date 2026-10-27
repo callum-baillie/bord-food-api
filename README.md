@@ -100,12 +100,18 @@ Or add a container through the Unraid UI using these values (a [user template](u
 | `DATASETS` | `branded,foundation,fndds,sr_legacy` |
 | `AUTO_DOWNLOAD` | `true` or `false` |
 | `API_KEY` | Blank, or a shared local secret |
+| `LOG_LEVEL` | `debug`, `info` (default), `warning`, `error` or `silent` |
+| `LOG_FORMAT` | `json` (default) or `text` |
 
 The image runs as UID/GID 10001 by default. The Unraid examples use UID 99/GID 100; make the data directory writable by that user. No privileged mode is required. For the UI template, copy the XML to `/boot/config/plugins/dockerMan/templates-user/my-bord-food-api.xml`, then select it under Add Container. Configure autostart in Unraid as usual.
 
 To update the application with Compose, run `docker compose -f compose.unraid.yaml pull` followed by `docker compose -f compose.unraid.yaml up -d`. Updating the application image preserves the catalog; use the refresh command below when you want newer USDA data.
 
 The service is intended for your LAN/Docker network. Setting `API_KEY` enables shared-key authentication immediately; HTTP itself does not encrypt traffic.
+
+### Logs
+
+Every log line is one JSON object (`time`, `level`, `service`, `component`, `msg`, `role` plus fields): debug and info on stdout, warnings and errors on stderr. `docker logs` and Dozzle read that stream directly, and Dozzle can filter on `level`. Requests that return 4xx are logged as warnings and 5xx as errors (path and status only, never the query string, so API keys stay out of the logs); successful requests and the `/live` probe appear only at `LOG_LEVEL=debug`. Credentials in messages or fields are redacted.
 
 ### Reuse the already verified catalog
 

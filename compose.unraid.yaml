@@ -11,6 +11,8 @@ services:
       API_KEY: ${API_KEY:-}
       DATASETS: ${DATASETS:-branded,foundation,fndds,sr_legacy}
       AUTO_DOWNLOAD: ${AUTO_DOWNLOAD:-true}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_FORMAT: ${LOG_FORMAT:-json}
       BORD_FOOD_CONFIG: ${BORD_FOOD_CONFIG:-}
     volumes:
       - /mnt/user/appdata/bord-food-api:/data

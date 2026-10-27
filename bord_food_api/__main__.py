@@ -2,12 +2,12 @@
 
 import argparse
 import json
-import logging
 import os
 import time
 from pathlib import Path
 
 from .catalog import connect, metadata
+from .log_config import configure_logging
 from .runtime import (
     apply_rights_policy,
     crawl_plan,
@@ -104,7 +104,7 @@ def _parser():
 
 def main():
     args = _parser().parse_args()
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    configure_logging(role=args.command or "serve")
     settings = Settings()
     # Validate all effective policy before role initialization or subprocess creation.
     load_policy(settings)
@@ -136,7 +136,8 @@ def main():
             create_app(settings),
             host="0.0.0.0",
             port=int(os.getenv("PORT", "8080")),
-            access_log=False,
+            access_log=True,
+            log_config=None,
             proxy_headers=False,
         )
     elif command == "status":
