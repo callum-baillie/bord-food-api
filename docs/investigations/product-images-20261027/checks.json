@@ -1,0 +1,28 @@
+{
+  "policy_changes_only_product_images": true,
+  "product_images": {
+    "enabled": true,
+    "api_fallback": true,
+    "cache_quota_bytes": 1073741824,
+    "free_space_reserve_bytes": 5368709120,
+    "api_daily_limit": 500,
+    "asset_daily_limit": 10000
+  },
+  "trusted_https_health": {
+    "status": "ok",
+    "totalFoods": 469046
+  },
+  "pytest": {
+    "passed": 464,
+    "warnings": 1
+  },
+  "ruff": "passed",
+  "openapi": "passed",
+  "audit": {
+    "attempted_before_changes": true,
+    "isolated_directory": "/tmp/bord-images-audit-8gh3e93m",
+    "result": "DevBox 192.168.0.30 unreachable; canonical inventory preserved"
+  },
+  "tower_repository_validation": "passed; existing generated/archive findings",
+  "visual_inspection": "Aldi Happy Farms sharp cheddar front photo confirmed"
+}

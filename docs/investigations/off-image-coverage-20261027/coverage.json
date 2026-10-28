@@ -1,0 +1,109 @@
+{
+  "dataset": "openfoodfacts/product-database",
+  "revision": "89cfb571db20b1f1b246f27cab71837fc96225b1",
+  "last_modified": "2026-10-27T09:07:24Z",
+  "split": "food",
+  "product_rows": 2117571,
+  "counts_with_non_null_image_metadata": {
+    "images.list.element.key": 1810935,
+    "last_image_t": 1811438,
+    "max_imgid": 1811074
+  },
+  "row_groups": 2068,
+  "field_mismatch_groups": 362,
+  "mismatch_examples": [
+    {
+      "row_group": 3,
+      "images.list.element.key": 260,
+      "last_image_t": 260,
+      "max_imgid": 259
+    },
+    {
+      "row_group": 16,
+      "images.list.element.key": 373,
+      "last_image_t": 374,
+      "max_imgid": 373
+    },
+    {
+      "row_group": 63,
+      "images.list.element.key": 128,
+      "last_image_t": 130,
+      "max_imgid": 130
+    },
+    {
+      "row_group": 75,
+      "images.list.element.key": 258,
+      "last_image_t": 259,
+      "max_imgid": 259
+    },
+    {
+      "row_group": 76,
+      "images.list.element.key": 205,
+      "last_image_t": 206,
+      "max_imgid": 206
+    },
+    {
+      "row_group": 78,
+      "images.list.element.key": 316,
+      "last_image_t": 317,
+      "max_imgid": 316
+    },
+    {
+      "row_group": 82,
+      "images.list.element.key": 212,
+      "last_image_t": 213,
+      "max_imgid": 212
+    },
+    {
+      "row_group": 85,
+      "images.list.element.key": 334,
+      "last_image_t": 335,
+      "max_imgid": 335
+    },
+    {
+      "row_group": 86,
+      "images.list.element.key": 177,
+      "last_image_t": 178,
+      "max_imgid": 177
+    },
+    {
+      "row_group": 94,
+      "images.list.element.key": 326,
+      "last_image_t": 326,
+      "max_imgid": 325
+    }
+  ],
+  "lowest_positive_max_imgid": 1,
+  "photo_metadata_percentage": 85.5194465734561,
+  "method": "Aggregate complete Parquet row-group statistics, cross-check images key vs last_image_t vs max_imgid; no image bytes downloaded.",
+  "image_metadata_records": 1810935,
+  "records_without_image_metadata": 306636,
+  "percentage_rounded": 85.5,
+  "denominator": "All 2,117,571 food rows in the pinned downloadable OFF Parquet snapshot; not all USDA foods or the older retained JSONL.",
+  "limitations": [
+    "Counts metadata, not verified downloadable image files.",
+    "Any-image metadata is not selected front-of-pack coverage.",
+    "Snapshot differs from the 2026-10-18 JSONL retained on Unraid.",
+    "Historical timestamps/max_imgid differ slightly from current image metadata: 85.52\u201385.54%; all round to 85.5%."
+  ],
+  "server": {
+    "checked_at": "2026-10-27",
+    "product_jsonl_bytes": 13179356850,
+    "product_jsonl_date": "2026-10-18",
+    "product_jsonl_present": true,
+    "image_collection_downloaded": false,
+    "media_directory_exists": false,
+    "verification": "Live Tower file listing and image-file search within bord-food-api appdata; no catalog/service changes."
+  },
+  "footer": {
+    "path": "data/off-image-coverage-20261027/food-footer.parquet",
+    "bytes": 45617758,
+    "sha256": "c5f4b229d206a2991b7873db4274b4d1345e5f9b25feb8e8670ecffb4dd45da3"
+  },
+  "sources": {
+    "barcode_and_image_mapping": "https://openfoodfacts.github.io/openfoodfacts-server/api/how-to-download-images/",
+    "bulk_image_download": "https://openfoodfacts.github.io/openfoodfacts-server/api/aws-images-dataset/",
+    "no_account_and_license": "https://registry.opendata.aws/openfoodfacts-images/",
+    "parquet_snapshot": "https://huggingface.co/datasets/openfoodfacts/product-database/tree/89cfb571db20b1f1b246f27cab71837fc96225b1"
+  }
+}

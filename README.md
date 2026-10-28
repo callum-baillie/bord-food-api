@@ -4,6 +4,10 @@ V1 expansion code now includes empty startup, a durable bulk worker, native stor
 
 A small, self-hosted USDA FoodData Central API for Bòrd. One Python container, one SQLite database, no separate database server. Search and food details stay local after the initial import.
 
+Optional [barcode-matched product images](docs/PRODUCT-IMAGES.md) support explicit OFF bulk downloads,
+local JPEG serving and a paced public-API fallback for cache misses. This cache is separate from
+USDA nutrition and requires consumer integration to display photos in Bòrd.
+
 Container image: **`ghcr.io/callum-baillie/bord-food-api:latest`** (Linux AMD64 and ARM64).
 
 Start with the [setup and configuration guide](docs/setup-and-configuration.md) for step-by-step Unraid/Compose installation, a complete settings reference, dataset imports, Bòrd connection settings, updates, and troubleshooting.

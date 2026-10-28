@@ -251,4 +251,9 @@ def load_policy(settings):
         interval = defaults.setdefault("interval_seconds", 86400)
         if not isinstance(interval, (int, float)) or interval < 60:
             raise ValueError("source interval_seconds must be at least 60")
+    from .product_images import image_policy
+
+    policy["product_images"] = image_policy(
+        {**policy, "product_images": configured.get("product_images", {})}
+    )
     return policy

@@ -28,7 +28,18 @@ def main():
         (directory / "imports").mkdir()
         policy = directory / "offline.json"
         policy.write_text(
-            json.dumps({"network": {"mode": "offline"}, "scheduler": {"enabled": False}})
+            json.dumps(
+                {
+                    "network": {"mode": "offline"},
+                    "scheduler": {"enabled": False},
+                    # Six synthetic records should not require production-sized disk reserves.
+                    "budgets": {
+                        "free_space_reserve_bytes": 0,
+                        "max_staging_bytes": 8 * 1024**2,
+                        "data_quota_bytes": 16 * 1024**2,
+                    },
+                }
+            )
         )
         shutil.copy(ROOT / "tests/fixtures/foods.json", directory / "imports/foods.json")
         try:

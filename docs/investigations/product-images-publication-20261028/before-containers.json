@@ -1,0 +1,74 @@
+[
+  {
+    "name": "/bord-food-api",
+    "image": "bord-food-api:product-images-036f99434082",
+    "image_id": "sha256:c15bfcb134ee621c0d45f8c849ec52ba1dff7622ad8758e945fed9dd962b2305",
+    "started_at": "2026-10-28T04:00:20.408032151Z",
+    "health": "healthy",
+    "mounts": [
+      {
+        "source": "/mnt/cache/git/compose/productivity/config/product-image-releases/036f9943408260d193fdfaca74fed2e65ad753019143afb103544effb900dc33/bord_food_api",
+        "destination": "/app/bord_food_api",
+        "rw": false
+      },
+      {
+        "source": "/mnt/cache/appdata/bord-food-api",
+        "destination": "/data",
+        "rw": true
+      },
+      {
+        "source": "/mnt/cache/appdata/bord-food-api/imports",
+        "destination": "/imports",
+        "rw": false
+      },
+      {
+        "source": "/mnt/cache/git/compose/productivity/config/food-policy.json",
+        "destination": "/config/food-policy.json",
+        "rw": false
+      }
+    ]
+  },
+  {
+    "name": "/Bord",
+    "image": "ghcr.io/callum-baillie/bord:v1.0.0-rc.27",
+    "image_id": "sha256:ed17a9c6d74bb24517777b71ab495e7955dca2c2dd3a9e4f1901b924ec1284b0",
+    "started_at": "2026-10-28T04:50:46.1514416Z",
+    "health": "healthy",
+    "mounts": [
+      {
+        "source": "/mnt/cache/appdata/our-recipes",
+        "destination": "/data",
+        "rw": true
+      }
+    ]
+  },
+  {
+    "name": "/bord-food-crawl-history",
+    "image": "ghcr.io/callum-baillie/bord-food-api:sha-ed0edd4bd44377b866a26a3a74db5dfcb542a9be",
+    "image_id": "sha256:2bed62be6d533db8bacc7637861e7d4cfc9b90cbc6a4eae932ff3db255d446ec",
+    "started_at": "2026-10-26T16:15:07.389515784Z",
+    "health": "healthy",
+    "mounts": [
+      {
+        "source": "/mnt/cache/appdata/bord-food-api",
+        "destination": "/data",
+        "rw": false
+      },
+      {
+        "source": "/mnt/cache/appdata/bord-food-api/control/crawl-history",
+        "destination": "/history",
+        "rw": true
+      },
+      {
+        "source": "/mnt/cache/git/compose/productivity/config/crawl-releases/33002ee9c21263acb5f7b3bb39c5c9c654cde76c93d7393786fb395c9067700f",
+        "destination": "/observer",
+        "rw": false
+      },
+      {
+        "source": "/mnt/cache/git/compose/productivity/config/crawl-field-releases/28d60800261366ea5d2f3ac025a84dafd7e3589e95dca6da2d59f5eb630b3b89/bord_food_api/crawl_history.py",
+        "destination": "/observer/bord_food_api/crawl_history.py",
+        "rw": false
+      }
+    ]
+  }
+]

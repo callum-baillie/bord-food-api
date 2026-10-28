@@ -89,6 +89,9 @@ def _parser():
     undo.add_argument("decision_id", type=int)
     catalog = commands.add_parser("catalog")
     operations = catalog.add_subparsers(dest="operation", required=True)
+    operations.add_parser(
+        "reindex-products", help="Atomically publish exact product identifier indexes offline"
+    )
     rollback = operations.add_parser("rollback")
     rollback.add_argument("generation")
     flags = rollback.add_mutually_exclusive_group(required=True)
@@ -331,7 +334,10 @@ def main():
             platform.control.undo_alias(args.decision_id)
         print(json.dumps({"operation": args.operation, "status": "recorded"}))
     elif command == "catalog":
-        if args.plan:
+        if args.operation == "reindex-products":
+            with heavy_lock(settings.data_dir):
+                print(json.dumps(platform.reindex_products(), default=str))
+        elif args.plan:
             result = platform.rollback(args.generation, apply=False)
             print(
                 json.dumps(

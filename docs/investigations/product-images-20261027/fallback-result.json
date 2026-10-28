@@ -1,0 +1,51 @@
+{
+  "state": "passed",
+  "barcode": "0008577000492",
+  "gtin": "00008577000492",
+  "first_ms": 6549.636233132333,
+  "cached_ms": 4.034925950691104,
+  "api_requests": 1,
+  "second_request_network_requests": 0,
+  "image_bytes": 20125,
+  "metadata": {
+    "gtin": "00008577000492",
+    "sha256": "2aa3183d3c4e8f845562deffb32a1827b1c96616b9649e838df745ba461caf8d",
+    "bytes": 20125,
+    "width": 200,
+    "height": 400,
+    "source": "open_food_facts",
+    "source_url": "https://openfoodfacts-images.s3.eu-west-3.amazonaws.com/data/000/857/700/0492/3.400.jpg",
+    "product_url": "https://world.openfoodfacts.org/product/0008577000492",
+    "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "attribution": "Open Food Facts contributors",
+    "kind": "selected_front_source",
+    "source_revision": "11",
+    "reference_provenance": {
+      "method": "api"
+    },
+    "retrieved_at": 1793159798.212675,
+    "transformation": "EXIF orientation, maximum 600px, JPEG; metadata removed",
+    "url": "/v1/product-images/00008577000492"
+  },
+  "catalog_pointer_unchanged": true,
+  "cache": {
+    "enabled": true,
+    "api_fallback": true,
+    "cached_images": 40,
+    "bytes": 844582,
+    "budgets": [
+      {
+        "provider": "api",
+        "day": "2026-10-28",
+        "requests": 1,
+        "next_at": 1793159796.684225
+      },
+      {
+        "provider": "aws",
+        "day": "2026-10-28",
+        "requests": 40,
+        "next_at": 1793159797.6785793
+      }
+    ]
+  }
+}

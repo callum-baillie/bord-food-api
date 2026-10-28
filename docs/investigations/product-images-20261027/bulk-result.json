@@ -1,0 +1,24 @@
+{
+  "state": "complete",
+  "counts": {
+    "cached": 39,
+    "missing": 0,
+    "deferred": 0
+  },
+  "cache": {
+    "enabled": true,
+    "api_fallback": false,
+    "cached_images": 39,
+    "bytes": 824457,
+    "budgets": [
+      {
+        "provider": "aws",
+        "day": "2026-10-28",
+        "requests": 39,
+        "next_at": 1793159640.411847
+      }
+    ]
+  },
+  "elapsed_seconds": 125.18198016285896,
+  "catalog_writes": 0
+}

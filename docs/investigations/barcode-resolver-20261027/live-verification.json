@@ -1,0 +1,344 @@
+{
+  "state": "passed",
+  "http_from_bord": {
+    "barcode_checks": [
+      {
+        "http": 200,
+        "elapsed_ms": 81.786152,
+        "generation": "g_3d03aef2ba8745718bde0e9dac73fc13",
+        "results": [
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_f95c0517171c4258a12a602d0ff894b0",
+                "name": "PUMPKIN SPICE CREAM CHEESE SPREAD, PUMPKIN SPICE"
+              }
+            ]
+          },
+          {
+            "status": "not_found",
+            "candidates": []
+          },
+          {
+            "status": "invalid",
+            "candidates": []
+          },
+          {
+            "status": "candidates",
+            "candidates": [
+              {
+                "id": "prd_4baafaecbefa49ffbe6086b1ec58c029",
+                "name": "Maola Milk, Whole, Chocolate, Extra Rich"
+              },
+              {
+                "id": "prd_647689bf0dd44e7890545a843d785f5c",
+                "name": "ORGANIC BLUE CORN TORTILLA CHIPS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "http": 200,
+        "elapsed_ms": 12.940536000000009,
+        "generation": "g_3d03aef2ba8745718bde0e9dac73fc13",
+        "results": [
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_f95c0517171c4258a12a602d0ff894b0",
+                "name": "PUMPKIN SPICE CREAM CHEESE SPREAD, PUMPKIN SPICE"
+              }
+            ]
+          },
+          {
+            "status": "not_found",
+            "candidates": []
+          },
+          {
+            "status": "invalid",
+            "candidates": []
+          },
+          {
+            "status": "candidates",
+            "candidates": [
+              {
+                "id": "prd_4baafaecbefa49ffbe6086b1ec58c029",
+                "name": "Maola Milk, Whole, Chocolate, Extra Rich"
+              },
+              {
+                "id": "prd_647689bf0dd44e7890545a843d785f5c",
+                "name": "ORGANIC BLUE CORN TORTILLA CHIPS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "http": 200,
+        "elapsed_ms": 11.637554000000023,
+        "generation": "g_3d03aef2ba8745718bde0e9dac73fc13",
+        "results": [
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_f95c0517171c4258a12a602d0ff894b0",
+                "name": "PUMPKIN SPICE CREAM CHEESE SPREAD, PUMPKIN SPICE"
+              }
+            ]
+          },
+          {
+            "status": "not_found",
+            "candidates": []
+          },
+          {
+            "status": "invalid",
+            "candidates": []
+          },
+          {
+            "status": "candidates",
+            "candidates": [
+              {
+                "id": "prd_4baafaecbefa49ffbe6086b1ec58c029",
+                "name": "Maola Milk, Whole, Chocolate, Extra Rich"
+              },
+              {
+                "id": "prd_647689bf0dd44e7890545a843d785f5c",
+                "name": "ORGANIC BLUE CORN TORTILLA CHIPS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "http": 200,
+        "elapsed_ms": 11.621202000000011,
+        "generation": "g_3d03aef2ba8745718bde0e9dac73fc13",
+        "results": [
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_f95c0517171c4258a12a602d0ff894b0",
+                "name": "PUMPKIN SPICE CREAM CHEESE SPREAD, PUMPKIN SPICE"
+              }
+            ]
+          },
+          {
+            "status": "not_found",
+            "candidates": []
+          },
+          {
+            "status": "invalid",
+            "candidates": []
+          },
+          {
+            "status": "candidates",
+            "candidates": [
+              {
+                "id": "prd_4baafaecbefa49ffbe6086b1ec58c029",
+                "name": "Maola Milk, Whole, Chocolate, Extra Rich"
+              },
+              {
+                "id": "prd_647689bf0dd44e7890545a843d785f5c",
+                "name": "ORGANIC BLUE CORN TORTILLA CHIPS"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "http": 200,
+        "elapsed_ms": 11.648847999999987,
+        "generation": "g_3d03aef2ba8745718bde0e9dac73fc13",
+        "results": [
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_63f36cc89ed14486b39688db1e2ce2cd",
+                "name": "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR"
+              }
+            ]
+          },
+          {
+            "status": "exact",
+            "candidates": [
+              {
+                "id": "prd_f95c0517171c4258a12a602d0ff894b0",
+                "name": "PUMPKIN SPICE CREAM CHEESE SPREAD, PUMPKIN SPICE"
+              }
+            ]
+          },
+          {
+            "status": "not_found",
+            "candidates": []
+          },
+          {
+            "status": "invalid",
+            "candidates": []
+          },
+          {
+            "status": "candidates",
+            "candidates": [
+              {
+                "id": "prd_4baafaecbefa49ffbe6086b1ec58c029",
+                "name": "Maola Milk, Whole, Chocolate, Extra Rich"
+              },
+              {
+                "id": "prd_647689bf0dd44e7890545a843d785f5c",
+                "name": "ORGANIC BLUE CORN TORTILLA CHIPS"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "other_routes": [
+      {
+        "path": "/live",
+        "http": 200
+      },
+      {
+        "path": "/ready",
+        "http": 200
+      },
+      {
+        "path": "/health",
+        "http": 200
+      },
+      {
+        "path": "/fdc/v1/foods/search?query=4099100013566&pageSize=1",
+        "http": 200
+      },
+      {
+        "path": "/v1/foods/usda_fdc/694690",
+        "http": 200
+      }
+    ],
+    "unauthenticated_http": 401
+  },
+  "containers": [
+    {
+      "name": "/bord-food-api",
+      "started_at": "2026-10-27T20:23:34.463766129Z",
+      "healthy": true,
+      "oom": false,
+      "image_unchanged": true,
+      "start_time_unchanged": false
+    },
+    {
+      "name": "/Bord",
+      "started_at": "2026-10-27T20:05:58.281200115Z",
+      "healthy": true,
+      "oom": false,
+      "image_unchanged": false,
+      "start_time_unchanged": false
+    },
+    {
+      "name": "/bord-food-crawl-history",
+      "started_at": "2026-10-26T16:15:07.389515784Z",
+      "healthy": true,
+      "oom": false,
+      "image_unchanged": true,
+      "start_time_unchanged": true
+    }
+  ],
+  "module_hashes": {
+    "platform.py": "2732f9076ef8b9e3bbf7624db1d7f83a4e96b6e96d3e1a603f2bb40d54ffdecf",
+    "native_api.py": "dce6e710a78ad531aeb926bd32203704873b65ef4dc6dade3ed0c23f31d1ed1e",
+    "__main__.py": "622157c4a4a41aea79c58a2a377a676d448fb605797a3a6f315cbff2c03cac70"
+  },
+  "new_asgi_errors": 0,
+  "history_start_time_preserved": true,
+  "concurrent_bord_update": {
+    "started_at": "2026-10-27T20:05:58.281200115Z",
+    "predates_api_activation": true,
+    "targeted_by_this_deployment": false
+  },
+  "verification_household_writes": 0
+}

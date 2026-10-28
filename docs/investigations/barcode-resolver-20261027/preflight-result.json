@@ -1,0 +1,23 @@
+{
+  "state": "passed",
+  "reused_sealed_pack": true,
+  "source_generation": "g_696f9076a2be4869ba41caaa2435e02e",
+  "original_products": "objects/catalogs/4cbea13626fdf2a08ac9893947528858db1d1bce3331da9b9b8cc139875f7f4c.sqlite",
+  "indexed_products": "objects/catalogs/80ba94a3192dbe0db16c8d1fc5f5e52c67bc4146274666c58b3233effd341d37.sqlite",
+  "preserved_entities": 455458,
+  "identifier_rows": 443350,
+  "duplicate_candidates": 2,
+  "http_200_requests": 5,
+  "latency_ms": [
+    89.16489291004837,
+    8.419581921771169,
+    8.59258882701397,
+    9.534036042168736,
+    9.650303982198238
+  ],
+  "median_ms": 9.534036042168736,
+  "max_ms": 89.16489291004837,
+  "peak_rss_kib": 56660,
+  "elapsed_seconds": 15.456179613946006,
+  "source_network_requests": 0
+}

@@ -1,0 +1,13 @@
+{
+  "release": "/mnt/cache/git/compose/productivity/config/barcode-releases/a7b1d769edaa6ad9adb037d534a05a38962e9ec84c87ba3a7c11f1cba2f6667c",
+  "validation": "/mnt/cache/appdata/bord-food-api/validation/barcode-resolver-20261027-r3",
+  "revision": "a7b1d769edaa6ad9adb037d534a05a38962e9ec84c87ba3a7c11f1cba2f6667c",
+  "module_hashes": {
+    "platform.py": "2732f9076ef8b9e3bbf7624db1d7f83a4e96b6e96d3e1a603f2bb40d54ffdecf",
+    "native_api.py": "dce6e710a78ad531aeb926bd32203704873b65ef4dc6dade3ed0c23f31d1ed1e",
+    "__main__.py": "622157c4a4a41aea79c58a2a377a676d448fb605797a3a6f315cbff2c03cac70"
+  },
+  "base": "/mnt/cache/git/compose/productivity/config/food-assistance-releases/27981dfa8fe615d734fc9d109f8490cc0de3b4b078d8d4f8de2308ff51472d8d/bord_food_api",
+  "image": "sha256:169264bb538c8add672750b01d0124489237e1cc7379c24975915466a8e3ded3",
+  "container": "bord-food-barcode-preflight-20261027-r5"
+}

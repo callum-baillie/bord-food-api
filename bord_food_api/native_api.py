@@ -25,7 +25,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from . import catalog
 from .domain import normalize_gtin
-from .platform import Platform
+from .platform import Platform, ProductIndexUnavailable
 from .runtime import crawl_plan, effective_sources
 
 
@@ -700,27 +700,18 @@ def install_routes(app, settings, authenticate):
             normal = normalize_gtin(item.value) if item.namespace == "gtin" else item.value
             valid = normal is not None and (item.namespace == "gtin" or bool(item.chain_id))
             requested.append((item, normal, valid, []))
-        for candidate in platform.iter_records("product", generation=gen):
-            identifiers = list(candidate.get("identifiers", []))
-            gtin = candidate.get("gtin") or candidate.get("gtin14")
-            if gtin:
-                identifiers.append({"namespace": "gtin", "value": gtin})
+        try:
             for item, normal, valid, found in requested:
-                if not valid:
-                    continue
-                for identifier in identifiers:
-                    value = identifier.get("value")
-                    if item.namespace == "gtin":
-                        value = normalize_gtin(value) if isinstance(value, str) else None
-                    if (
-                        identifier.get("namespace") == item.namespace
-                        and value == normal
-                        and (
-                            item.namespace == "gtin" or identifier.get("chain_id") == item.chain_id
+                if valid:
+                    found.extend(
+                        platform.product_candidates(
+                            item.namespace, normal, item.chain_id, generation=gen
                         )
-                    ):
-                        found.append(candidate)
-                        break
+                    )
+        except ProductIndexUnavailable:
+            fail(503, "PRODUCT_INDEX_NOT_READY", "The product identifier index needs rebuilding.")
+        except sqlite3.OperationalError:
+            fail(503, "CATALOG_UNAVAILABLE", "Product lookup is temporarily unavailable.")
         results = [
             {
                 "identifier": item.model_dump(),

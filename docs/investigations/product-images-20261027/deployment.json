@@ -1,0 +1,8 @@
+{
+  "state": "healthy",
+  "image": "bord-food-api:product-images-036f99434082",
+  "release": "/mnt/cache/git/compose/productivity/config/product-image-releases/036f9943408260d193fdfaca74fed2e65ad753019143afb103544effb900dc33",
+  "backup": "/mnt/cache/backups/bord-food-api/20261027-product-images",
+  "catalog_pointer_unchanged": true,
+  "catalog_pointer_sha256": "49e902b9d6bb63493be0fe8768758fbb26c50580fdd6e88ee6fda6d986583c64"
+}

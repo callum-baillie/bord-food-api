@@ -1,0 +1,13 @@
+{
+  "state": "published",
+  "backup": "/data/backups/20261027-before-barcode-index",
+  "before_generation": "g_696f9076a2be4869ba41caaa2435e02e",
+  "generation": "g_3d03aef2ba8745718bde0e9dac73fc13",
+  "before_products": "objects/catalogs/4cbea13626fdf2a08ac9893947528858db1d1bce3331da9b9b8cc139875f7f4c.sqlite",
+  "products": "objects/catalogs/80ba94a3192dbe0db16c8d1fc5f5e52c67bc4146274666c58b3233effd341d37.sqlite",
+  "other_packs_unchanged": true,
+  "source_clocks_and_checkpoints_unchanged": true,
+  "registry_and_redirects_unchanged": true,
+  "elapsed_seconds": 557.5625812569633,
+  "source_network_requests": 0
+}

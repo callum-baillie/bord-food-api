@@ -1,0 +1,5 @@
+{
+  "exit_code": 255,
+  "stderr": "ssh: connect to host 192.168.0.30 port 22: No route to host\r\n",
+  "isolated_directory": "/tmp/bord-publish-audit-20261028-j4xyic0a"
+}

@@ -1,0 +1,169 @@
+{
+  "state": "passed",
+  "http_from_bord": {
+    "state": "passed",
+    "images": [
+      {
+        "barcode": "0008577000492",
+        "http": 200,
+        "first_ms": 11.417560000000009,
+        "cached_ms": 7.385044000000022,
+        "bytes": 20125,
+        "sha256": "2aa3183d3c4e8f845562deffb32a1827b1c96616b9649e838df745ba461caf8d",
+        "etag_http": 304,
+        "repeat_network_requests": 0,
+        "metadata": {
+          "gtin": "00008577000492",
+          "sha256": "2aa3183d3c4e8f845562deffb32a1827b1c96616b9649e838df745ba461caf8d",
+          "bytes": 20125,
+          "width": 200,
+          "height": 400,
+          "source": "open_food_facts",
+          "source_url": "https://openfoodfacts-images.s3.eu-west-3.amazonaws.com/data/000/857/700/0492/3.400.jpg",
+          "product_url": "https://world.openfoodfacts.org/product/0008577000492",
+          "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "attribution": "Open Food Facts contributors",
+          "kind": "selected_front_source",
+          "source_revision": "11",
+          "reference_provenance": {
+            "method": "api"
+          },
+          "retrieved_at": 1793159798.212675,
+          "transformation": "EXIF orientation, maximum 600px, JPEG; metadata removed",
+          "url": "/v1/product-images/00008577000492"
+        }
+      },
+      {
+        "barcode": "4099100013566",
+        "http": 200,
+        "first_ms": 1769.952321,
+        "cached_ms": 6.998170999999957,
+        "bytes": 34780,
+        "sha256": "a7ad3128d240809eec0e98ef4d0bec2775b9463186b0cd93bc716fa87d77320e",
+        "etag_http": 304,
+        "repeat_network_requests": 0,
+        "metadata": {
+          "gtin": "04099100013566",
+          "sha256": "a7ad3128d240809eec0e98ef4d0bec2775b9463186b0cd93bc716fa87d77320e",
+          "bytes": 34780,
+          "width": 225,
+          "height": 400,
+          "source": "open_food_facts",
+          "source_url": "https://openfoodfacts-images.s3.eu-west-3.amazonaws.com/data/409/910/001/3566/10.400.jpg",
+          "product_url": "https://world.openfoodfacts.org/product/4099100013566",
+          "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "attribution": "Open Food Facts contributors",
+          "kind": "selected_front_source",
+          "source_revision": "43",
+          "reference_provenance": {
+            "method": "api"
+          },
+          "retrieved_at": 1793160062.6014116,
+          "transformation": "EXIF orientation, maximum 600px, JPEG; metadata removed",
+          "url": "/v1/product-images/04099100013566"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "path": "/live",
+        "http": 200,
+        "elapsed_ms": 1.6020790000000034
+      },
+      {
+        "path": "/ready",
+        "http": 200,
+        "elapsed_ms": 80.44976799999995
+      },
+      {
+        "path": "/health",
+        "http": 200,
+        "elapsed_ms": 5.633585000000039,
+        "body": {
+          "status": "ok",
+          "totalFoods": 469046
+        }
+      },
+      {
+        "path": "/fdc/v1/foods/search?query=4099100013566&pageSize=1",
+        "http": 200,
+        "elapsed_ms": 16.638656999999967
+      },
+      {
+        "path": "/v1/foods/usda_fdc/694690",
+        "http": 200,
+        "elapsed_ms": 7.201548999999886
+      }
+    ],
+    "barcode": {
+      "http": 200,
+      "elapsed_ms": 27.327518000000055,
+      "generation": "g_3d03aef2ba8745718bde0e9dac73fc13",
+      "names": [
+        "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR",
+        "PUMPKIN SPICE CREAM CHEESE SPREAD, PUMPKIN SPICE"
+      ]
+    },
+    "unauthenticated_http": 401,
+    "invalid_gtin_http": 422,
+    "cache": {
+      "enabled": true,
+      "api_fallback": true,
+      "cached_images": 41,
+      "bytes": 879362,
+      "budgets": [
+        {
+          "provider": "api",
+          "day": "2026-10-28",
+          "requests": 2,
+          "next_at": 1793160065.8672123
+        },
+        {
+          "provider": "aws",
+          "day": "2026-10-28",
+          "requests": 41,
+          "next_at": 1793160061.852116
+        }
+      ]
+    }
+  },
+  "containers": [
+    {
+      "name": "/bord-food-api",
+      "started_at": "2026-10-28T04:00:20.408032151Z",
+      "healthy": true,
+      "oom": false,
+      "start_time_unchanged": false,
+      "image_id": "sha256:c15bfcb134ee621c0d45f8c849ec52ba1dff7622ad8758e945fed9dd962b2305"
+    },
+    {
+      "name": "/Bord",
+      "started_at": "2026-10-27T23:51:30.782604493Z",
+      "healthy": true,
+      "oom": false,
+      "start_time_unchanged": true,
+      "image_id": "sha256:18404a4c20414c43579b095bb5d83ee833a75f7a4594c0ad79597dc682fbe527"
+    },
+    {
+      "name": "/bord-food-crawl-history",
+      "started_at": "2026-10-26T16:15:07.389515784Z",
+      "healthy": true,
+      "oom": false,
+      "start_time_unchanged": true,
+      "image_id": "sha256:2bed62be6d533db8bacc7637861e7d4cfc9b90cbc6a4eae932ff3db255d446ec"
+    }
+  ],
+  "modules": {
+    "pillow": "13.0.0",
+    "hashes": {
+      "api.py": "efe3eb6ab97c2d2b1c62f3d629498f8544a58cd9830aed784932f542e860e2fc",
+      "settings.py": "8c40ddb8b390d064791bade31c52c5beb26948f4fe32a8d360c38e28288a094e",
+      "product_images.py": "cd54d87faceb7e265dc0f3058d31d7c6b6c7e5bb8d4b0d9f6b22e0574bf29f88",
+      "image_api.py": "7f35f6258944e587a59e05c0dcb9c328b66c3507ea9d37e542de5f65c3b7f6d7"
+    }
+  },
+  "catalog_pointer_unchanged": true,
+  "catalog_pointer_sha256": "49e902b9d6bb63493be0fe8768758fbb26c50580fdd6e88ee6fda6d986583c64",
+  "new_asgi_errors": 0,
+  "verification_household_writes": 0
+}

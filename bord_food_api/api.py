@@ -153,4 +153,7 @@ def create_app(settings: Settings | None = None):
     from .native_api import install_routes
 
     install_routes(app, settings, authenticate)
+    from .image_api import install_image_routes
+
+    install_image_routes(app, settings, authenticate, platform)
     return app

@@ -1,0 +1,14 @@
+{
+  "release": "/mnt/cache/git/compose/productivity/config/product-image-releases/036f9943408260d193fdfaca74fed2e65ad753019143afb103544effb900dc33",
+  "revision": "036f9943408260d193fdfaca74fed2e65ad753019143afb103544effb900dc33",
+  "base": "/mnt/cache/git/compose/productivity/config/barcode-releases/a7b1d769edaa-logging-b209229/bord_food_api",
+  "base_image": "ghcr.io/callum-baillie/bord-food-api:sha-f177b5e1106484c6ca2dffb36fa035c514280d30",
+  "image": "bord-food-api:product-images-036f99434082",
+  "hashes": {
+    "api.py": "efe3eb6ab97c2d2b1c62f3d629498f8544a58cd9830aed784932f542e860e2fc",
+    "settings.py": "8c40ddb8b390d064791bade31c52c5beb26948f4fe32a8d360c38e28288a094e",
+    "product_images.py": "cd54d87faceb7e265dc0f3058d31d7c6b6c7e5bb8d4b0d9f6b22e0574bf29f88",
+    "image_api.py": "7f35f6258944e587a59e05c0dcb9c328b66c3507ea9d37e542de5f65c3b7f6d7"
+  },
+  "validation": "/mnt/cache/appdata/bord-food-api/validation/product-images-20261027"
+}

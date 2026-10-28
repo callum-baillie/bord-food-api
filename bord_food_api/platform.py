@@ -18,7 +18,7 @@ from threading import Lock
 from .assistance import ASSISTANCE_KINDS
 from .control import SCHEMA_VERSION as CONTROL_SCHEMA_VERSION
 from .control import Control
-from .domain import US_STATES, business_payload, content_hash, encoded
+from .domain import US_STATES, business_payload, content_hash, encoded, normalize_gtin
 from .refresh import GROUP_FIELDS, field_groups, plan_store_refresh
 
 # Sealed objects are immutable. Avoid rereading multi-GB packs on every idle
@@ -72,6 +72,45 @@ CREATE VIRTUAL TABLE search USING fts5(kind UNINDEXED,id UNINDEXED,text);
 CREATE VIRTUAL TABLE spatial USING rtree(rowid,min_lat,max_lat,min_lon,max_lon);
 PRAGMA user_version=1;
 """
+
+PRODUCT_IDENTIFIER_SCHEMA = """
+CREATE TABLE IF NOT EXISTS product_identifiers (
+ namespace TEXT NOT NULL, value TEXT NOT NULL, chain_id TEXT NOT NULL,
+ product_id TEXT NOT NULL, PRIMARY KEY(namespace,value,chain_id,product_id)
+) WITHOUT ROWID;
+"""
+
+
+class ProductIndexUnavailable(Exception):
+    """An older immutable product pack needs an explicit index publication."""
+
+
+def _index_product(db, entity_id, payload):
+    identifiers = list(payload.get("identifiers", []))
+    gtin = payload.get("gtin") or payload.get("gtin14")
+    if gtin:
+        identifiers.append({"namespace": "gtin", "value": gtin})
+    keys = set()
+    for identifier in identifiers:
+        namespace, value = identifier.get("namespace"), identifier.get("value")
+        chain_id = identifier.get("chain_id") or ""
+        if namespace == "gtin":
+            value, chain_id = normalize_gtin(value), ""
+        elif namespace not in {"retailer_sku", "plu"} or not chain_id:
+            continue
+        if isinstance(value, str) and value and isinstance(chain_id, str):
+            keys.add((namespace, value, chain_id, entity_id))
+    db.executemany("INSERT OR IGNORE INTO product_identifiers VALUES (?,?,?,?)", keys)
+
+
+def _rebuild_product_identifiers(db):
+    db.executescript(PRODUCT_IDENTIFIER_SCHEMA)
+    db.execute("DELETE FROM product_identifiers")
+    # Read pages in storage order: the kind/id index scatters multi-GB payloads.
+    for entity_id, raw in db.execute(
+        "SELECT id,payload FROM entities NOT INDEXED WHERE kind='product'"
+    ):
+        _index_product(db, entity_id, json.loads(raw))
 
 
 @contextmanager
@@ -295,6 +334,7 @@ class Platform:
         hook=None,
         source_snapshot=None,
         identity_snapshot=None,
+        acknowledge=True,
     ):
         previous = self.current()
         generation = "g_" + uuid.uuid4().hex
@@ -332,7 +372,9 @@ class Platform:
                     generation,
                     (previous or {}).get("generation"),
                     encoded(manifest),
-                    encoded(
+                    encoded([])
+                    if not acknowledge
+                    else encoded(
                         [ack] if source_snapshot is None else {"replace_sources": source_snapshot}
                     ),
                     encoded(events),
@@ -475,6 +517,69 @@ class Platform:
                 manifest.get("redirects", {}).get(row[1], row[1]) if kind == "product" else None
             )
             return result
+
+    def product_candidates(self, namespace, value, chain_id=None, *, generation=None):
+        """Read exact identifier matches without scanning or decoding unrelated products."""
+        manifest = self.manifest(generation)
+        if not manifest or "products" not in manifest["packs"]:
+            return []
+        path = self.object_path(manifest["packs"]["products"])
+        denied = self.control.hidden_sources()
+        redirects = manifest.get("redirects", {})
+        with _sqlite(path.resolve().as_uri() + "?mode=ro", uri=True) as db:
+            if not db.execute(
+                "SELECT 1 FROM sqlite_master WHERE name='product_identifiers' AND type='table'"
+            ).fetchone():
+                raise ProductIndexUnavailable
+            deadline = time.monotonic() + 5
+            db.set_progress_handler(lambda: int(time.monotonic() > deadline), 10000)
+            return [
+                self._visible_payload(json.loads(raw), denied)
+                for raw, source, entity_id in db.execute(
+                    "SELECT e.payload,e.source,e.id FROM product_identifiers i "
+                    # Keep the selective lookup first; an INNER JOIN may walk
+                    # every product ID to avoid sorting the matching candidates.
+                    "CROSS JOIN entities e ON e.kind='product' AND e.id=i.product_id "
+                    "WHERE i.namespace=? AND i.value=? AND i.chain_id=? ORDER BY e.id",
+                    (namespace, value, "" if namespace == "gtin" else chain_id),
+                )
+                if source not in denied and entity_id not in redirects
+            ]
+
+    def reindex_products(self, hook=None):
+        """Publish a private indexed copy; preserve every entity and source checkpoint."""
+        with self.writer():
+            self._recover()
+            previous = self.current()
+            if not previous or "products" not in previous["packs"]:
+                raise ValueError("No product catalog has been published")
+            original = self.object_path(previous["packs"]["products"])
+            with _sqlite(original.resolve().as_uri() + "?mode=ro", uri=True) as db:
+                if db.execute(
+                    "SELECT 1 FROM sqlite_master WHERE name='product_identifiers' AND type='table'"
+                ).fetchone():
+                    return previous
+            if shutil.disk_usage(self.root).free < original.stat().st_size * 2 + 64 * 1024**2:
+                raise ValueError("Disk budget exceeded")
+            with tempfile.TemporaryDirectory(dir=self.root / "staging") as directory:
+                private = Path(directory) / "products.sqlite"
+                shutil.copyfile(original, private)
+                with _sqlite(private) as db:
+                    _rebuild_product_identifiers(db)
+                relative = self._seal(private)
+                return self._publish(
+                    {**previous["packs"], "products": relative},
+                    "operator",
+                    "product_index",
+                    "1",
+                    None,
+                    "1",
+                    [],
+                    hook=hook,
+                    source_snapshot=previous["sources"],
+                    identity_snapshot=previous,
+                    acknowledge=False,
+                )
 
     def changes(self, after=0, limit=100):
         with self.control.connect() as db:
@@ -1030,10 +1135,15 @@ class Platform:
                             continue
                         db.execute("DELETE FROM search")
                         db.execute("DELETE FROM spatial")
+                        if pack == "products":
+                            db.executescript(PRODUCT_IDENTIFIER_SCHEMA)
+                            db.execute("DELETE FROM product_identifiers")
                         for rowid, kind, entity_id, raw in db.execute(
                             "SELECT rowid,kind,id,payload FROM entities"
                         ):
                             payload = json.loads(raw)
+                            if pack == "products" and kind == "product":
+                                _index_product(db, entity_id, payload)
                             db.execute(
                                 "INSERT INTO search VALUES (?,?,?)",
                                 (
@@ -1396,6 +1506,9 @@ class Platform:
                                     "revision": revision,
                                 }
                             )
+                    if pack == "products":
+                        with _sqlite(path) as db:
+                            _rebuild_product_identifiers(db)
                     packs[pack] = self._seal(path)
                 sources = {
                     key: ack

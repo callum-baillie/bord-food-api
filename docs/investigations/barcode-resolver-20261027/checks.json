@@ -1,0 +1,29 @@
+{
+  "pytest": {
+    "passed": 453,
+    "warnings": [
+      "Upstream Starlette TestClient/httpx deprecation"
+    ]
+  },
+  "ruff": "passed",
+  "openapi": "matches",
+  "scoped_git_diff_check": "passed",
+  "full_catalog_preflight": "preflight-result.json",
+  "production": "passed",
+  "audit": {
+    "collector_exit": 255,
+    "reason": "Development VM 192.168.0.30: No route to host",
+    "isolated_inventory": "/tmp/bord-barcode-audit-n4jmjwnm",
+    "canonical_inventory_preserved": true
+  },
+  "forgejo_issue": "https://git.tower/callum/tower-operations/issues/22",
+  "https_health": {
+    "status": "ok",
+    "totalFoods": 469046
+  },
+  "tower_repository_validator": {
+    "status": "passed",
+    "violations": 0,
+    "warnings": "Existing archived sensitive filenames; ignored generated output"
+  }
+}

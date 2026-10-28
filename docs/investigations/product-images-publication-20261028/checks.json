@@ -1,0 +1,14 @@
+{
+  "pytest": {
+    "passed": 461,
+    "warning": "Upstream Starlette TestClient/httpx deprecation"
+  },
+  "ruff": "passed",
+  "format": "passed",
+  "openapi": "matches",
+  "base_commit": "7c53313eb65b26f4624660d13260123c9489f019",
+  "preserved": "Existing structured logging and 0.2.0 release state",
+  "changes": "Exact barcode index repair, authenticated local image cache, bounded bulk helper, OFF fallback and docs",
+  "fixture_smoke_budget": "8 MiB staging, 16 MiB data, zero free-space reserve; production policy unchanged",
+  "docker_smoke": "passed: boot/search/detail/auth, failed import preserves catalog, atomic replacement, persisted restart"
+}
