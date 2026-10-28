@@ -10,5 +10,13 @@
   "preserved": "Existing structured logging and 0.2.0 release state",
   "changes": "Exact barcode index repair, authenticated local image cache, bounded bulk helper, OFF fallback and docs",
   "fixture_smoke_budget": "8 MiB staging, 16 MiB data, zero free-space reserve; production policy unchanged",
-  "docker_smoke": "passed: boot/search/detail/auth, failed import preserves catalog, atomic replacement, persisted restart"
+  "docker_smoke": "passed: boot/search/detail/auth, failed import preserves catalog, atomic replacement, persisted restart",
+  "trusted_https_health": {
+    "status": "ok",
+    "totalFoods": 469046
+  },
+  "worker_alive": true,
+  "ci": "success",
+  "live_verification": "passed",
+  "tower_repository_validation": "passed; existing archive/generated findings"
 }

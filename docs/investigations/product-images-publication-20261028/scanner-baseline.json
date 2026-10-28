@@ -1,0 +1,14 @@
+{
+  "name": "/bord-scanner-companion",
+  "image": "bord-scanner-companion:0.2.1-4d9df12",
+  "image_id": "sha256:ea761a88cfa0ef94ac93e342e9ddbc94a4045649913eebdb042c5728fb9df9d7",
+  "started_at": "2026-10-28T04:51:00.600250014Z",
+  "health": null,
+  "mounts": [
+    {
+      "source": "/mnt/cache/appdata/bord-scanner-companion",
+      "destination": "/data",
+      "rw": true
+    }
+  ]
+}

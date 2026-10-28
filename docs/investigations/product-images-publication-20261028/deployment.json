@@ -1,0 +1,14 @@
+{
+  "state": "healthy",
+  "source_commit": "405278132cf364ec01270f1dc1839dc5f60d0597",
+  "image": "ghcr.io/callum-baillie/bord-food-api:sha-405278132cf364ec01270f1dc1839dc5f60d0597",
+  "image_id": "sha256:4bd62b6d489b548b4c5bfce0d1051232fe9203b0da23eabbe15120fc24678ea0",
+  "repo_digests": [
+    "ghcr.io/callum-baillie/bord-food-api@sha256:cfd30a9008884df056439eddc72e0e1263805146b62c6eae76749366150dfe3d"
+  ],
+  "backup": "/mnt/cache/backups/bord-food-api/20261028-published-4052781",
+  "policy_unchanged": true,
+  "catalog_pointer_unchanged": true,
+  "catalog_pointer_sha256": "49e902b9d6bb63493be0fe8768758fbb26c50580fdd6e88ee6fda6d986583c64",
+  "module_overlay_removed": true
+}

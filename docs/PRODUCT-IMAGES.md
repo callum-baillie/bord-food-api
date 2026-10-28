@@ -4,6 +4,10 @@ Product images are an optional barcode-matched cache, separate from the immutabl
 USDA nutrition, FDC IDs, units and source assertions are unchanged. The cache uses Open Food
 Facts (OFF); enabling it does not enable or import the full OFF product adapter.
 
+Tower's [published-image deployment and verification](investigations/product-images-publication-20261028/RESULTS.md)
+records the committed revision, registry digest and live checks. Earlier pilot receipts remain
+historical evidence.
+
 ## Requests
 
 All three routes use the existing `X-Api-Key` authentication:

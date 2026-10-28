@@ -1,0 +1,217 @@
+{
+  "state": "passed",
+  "http_from_bord": {
+    "state": "passed",
+    "images": [
+      {
+        "barcode": "0008577000492",
+        "http": 200,
+        "first_ms": 13.025234000000012,
+        "cached_ms": 7.0871250000000146,
+        "bytes": 20125,
+        "sha256": "2aa3183d3c4e8f845562deffb32a1827b1c96616b9649e838df745ba461caf8d",
+        "etag_http": 304,
+        "repeat_network_requests": 0,
+        "metadata": {
+          "gtin": "00008577000492",
+          "sha256": "2aa3183d3c4e8f845562deffb32a1827b1c96616b9649e838df745ba461caf8d",
+          "bytes": 20125,
+          "width": 200,
+          "height": 400,
+          "source": "open_food_facts",
+          "source_url": "https://openfoodfacts-images.s3.eu-west-3.amazonaws.com/data/000/857/700/0492/3.400.jpg",
+          "product_url": "https://world.openfoodfacts.org/product/0008577000492",
+          "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "attribution": "Open Food Facts contributors",
+          "kind": "selected_front_source",
+          "source_revision": "11",
+          "reference_provenance": {
+            "method": "api"
+          },
+          "retrieved_at": 1793159798.212675,
+          "transformation": "EXIF orientation, maximum 600px, JPEG; metadata removed",
+          "url": "/v1/product-images/00008577000492"
+        }
+      },
+      {
+        "barcode": "4099100013566",
+        "http": 200,
+        "first_ms": 8.157825000000003,
+        "cached_ms": 6.636660000000006,
+        "bytes": 34780,
+        "sha256": "a7ad3128d240809eec0e98ef4d0bec2775b9463186b0cd93bc716fa87d77320e",
+        "etag_http": 304,
+        "repeat_network_requests": 0,
+        "metadata": {
+          "gtin": "04099100013566",
+          "sha256": "a7ad3128d240809eec0e98ef4d0bec2775b9463186b0cd93bc716fa87d77320e",
+          "bytes": 34780,
+          "width": 225,
+          "height": 400,
+          "source": "open_food_facts",
+          "source_url": "https://openfoodfacts-images.s3.eu-west-3.amazonaws.com/data/409/910/001/3566/10.400.jpg",
+          "product_url": "https://world.openfoodfacts.org/product/4099100013566",
+          "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "attribution": "Open Food Facts contributors",
+          "kind": "selected_front_source",
+          "source_revision": "43",
+          "reference_provenance": {
+            "method": "api"
+          },
+          "retrieved_at": 1793160062.6014116,
+          "transformation": "EXIF orientation, maximum 600px, JPEG; metadata removed",
+          "url": "/v1/product-images/04099100013566"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "path": "/live",
+        "http": 200,
+        "elapsed_ms": 1.4998360000000162
+      },
+      {
+        "path": "/ready",
+        "http": 200,
+        "elapsed_ms": 38.11022200000002
+      },
+      {
+        "path": "/health",
+        "http": 200,
+        "elapsed_ms": 3.037307999999996,
+        "body": {
+          "status": "ok",
+          "totalFoods": 469046
+        }
+      },
+      {
+        "path": "/fdc/v1/foods/search?query=4099100013566&pageSize=1",
+        "http": 200,
+        "elapsed_ms": 12.389849000000027
+      },
+      {
+        "path": "/v1/foods/usda_fdc/694690",
+        "http": 200,
+        "elapsed_ms": 5.69001099999997
+      }
+    ],
+    "barcode": {
+      "http": 200,
+      "elapsed_ms": 13.594768000000045,
+      "generation": "g_3d03aef2ba8745718bde0e9dac73fc13",
+      "names": [
+        "FINELY SHREDDED SHARP CHEDDAR CHEESE, SHARP CHEDDAR",
+        "PUMPKIN SPICE CREAM CHEESE SPREAD, PUMPKIN SPICE"
+      ]
+    },
+    "unauthenticated_http": 401,
+    "invalid_gtin_http": 422,
+    "cache": {
+      "enabled": true,
+      "api_fallback": true,
+      "cached_images": 41,
+      "bytes": 879362,
+      "budgets": [
+        {
+          "provider": "api",
+          "day": "2026-10-28",
+          "requests": 2,
+          "next_at": 1793160065.8672123
+        },
+        {
+          "provider": "aws",
+          "day": "2026-10-28",
+          "requests": 41,
+          "next_at": 1793160061.852116
+        }
+      ]
+    }
+  },
+  "containers": [
+    {
+      "name": "/bord-food-api",
+      "started_at": "2026-10-28T17:32:06.325711461Z",
+      "healthy": true,
+      "oom": false,
+      "start_time_unchanged": false,
+      "image_id": "sha256:4bd62b6d489b548b4c5bfce0d1051232fe9203b0da23eabbe15120fc24678ea0"
+    },
+    {
+      "name": "/Bord",
+      "started_at": "2026-10-28T04:50:46.1514416Z",
+      "healthy": true,
+      "oom": false,
+      "start_time_unchanged": true,
+      "image_id": "sha256:ed17a9c6d74bb24517777b71ab495e7955dca2c2dd3a9e4f1901b924ec1284b0"
+    },
+    {
+      "name": "/bord-food-crawl-history",
+      "started_at": "2026-10-26T16:15:07.389515784Z",
+      "healthy": true,
+      "oom": false,
+      "start_time_unchanged": true,
+      "image_id": "sha256:2bed62be6d533db8bacc7637861e7d4cfc9b90cbc6a4eae932ff3db255d446ec"
+    },
+    {
+      "name": "/bord-scanner-companion",
+      "started_at": "2026-10-28T04:51:00.600250014Z",
+      "oom": false,
+      "start_time_unchanged": true,
+      "image_id": "sha256:ea761a88cfa0ef94ac93e342e9ddbc94a4045649913eebdb042c5728fb9df9d7",
+      "running": true,
+      "healthcheck": "not_configured"
+    }
+  ],
+  "modules": {
+    "pillow": "13.0.0",
+    "hashes": {
+      "__init__.py": "0ef338c5e39ebf64ca364c94fb57e7773ab7c19dab8dd5df1cdd4dfbe98d4e07",
+      "__main__.py": "3b424144f745ee161762c6fcf6b46e174492667ea2de6d91e78b078cc9f996a6",
+      "api.py": "efe3eb6ab97c2d2b1c62f3d629498f8544a58cd9830aed784932f542e860e2fc",
+      "assistance.py": "0f2bf43523def314ce83824b2a2dd96b050677ba9e85fead3151165d17987311",
+      "assistance_api.py": "e53cc362b136db8bad3a5f773ee4f7a5b1f79daf187fbfc0f57195e6217d8270",
+      "assistance_campaign.py": "cf7bc3bbbea90bb8a5db3e5cc85c30e13b5a25f6127a37c83d94528d26146c83",
+      "assistance_crawl.py": "4695cecf1f3ff93e679d14159f401ffea5bc8502017020c3e2959c7740347201",
+      "assistance_exports.py": "38c21623fd546b651c57e1cd02c36f41d6bc498f28048d07fa4b6ed577244107",
+      "assistance_review.py": "e499ea515811e77d4dfb5f28576dc42821f3c08bcc41a5375db9ab19d10f4e5a",
+      "assistance_sources.py": "3435a7090fb33a430bb8d22d6fe41b8e89eb74275cab86628f583807725bc95c",
+      "catalog.py": "1c6f05c34e295148caf5d9e2c6b3ffdec0f106151d67ec3d415b859d4832b32d",
+      "chain_profiles.py": "f1ee9f459f92827d7e1156ae56b7ebf9d4c47a246f750e4969995c4065f359e3",
+      "control.py": "f03242df51c8c96a5bffb96f3ce015e29a97b2a7283b032fe065de73e44f26e8",
+      "crawl_cache.py": "42ab1c42823d5fa7e6c2aa2c752c0c444be499a6b56de8bc71516bd9a717c826",
+      "crawl_evidence.py": "9ef1b6ba5f2ff9f556dbce143e0406f5bc983d211a15e8d879af9c11aad5c488",
+      "crawl_history.py": "662e44f5eb8279d681f88f2aa815c11b540912094d484105bb0b873b41a4f49c",
+      "crawl_runtime.py": "8815fd4cc629e1def8ff9f58bf926fb1b5493ca6edf27641ebd83543428a8ea2",
+      "crawlers.py": "9cbcf8327241c11c92031c10089c0331b420790d3a382ce895501805b9d02e75",
+      "domain.py": "da195ada8126f3e79852f05c4867e5dc83d846084725ad6eaf28ebdb8c17b692",
+      "download.py": "444d7f5f52913b6d87c61238b27042adbe146ab7d8355d88eebfd6cba8835379",
+      "image_api.py": "7f35f6258944e587a59e05c0dcb9c328b66c3507ea9d37e542de5f65c3b7f6d7",
+      "importer.py": "84fb05171b743af01e92cf24be2a811924263ccd990a99b3e25fb74a4d331902",
+      "log_config.py": "ced63659e6021044114669ce6e8a30d6b3503c27c812feabe02a81fbce6ccf06",
+      "nationwide.py": "a66fed76ca21bf76b26cbede8e49e588614071edc40e79393dfe9885404eaab8",
+      "native_api.py": "dce6e710a78ad531aeb926bd32203704873b65ef4dc6dade3ed0c23f31d1ed1e",
+      "operator_products.py": "c2d306dee69d3f12ce1cf10dcc4f363bfe9aedc4a6ca9dc5767051450d5c9f56",
+      "platform.py": "2732f9076ef8b9e3bbf7624db1d7f83a4e96b6e96d3e1a603f2bb40d54ffdecf",
+      "product_images.py": "cd54d87faceb7e265dc0f3058d31d7c6b6c7e5bb8d4b0d9f6b22e0574bf29f88",
+      "refresh.py": "2e5d9aa74ab25cf5f43b57c1c9ea2a6fdb04337740b44e7cf1277ccec1d92bd3",
+      "runtime.py": "ea53272b5571759b42f3b8421a90ea73588844de7929f13d6a06883828c63bf1",
+      "settings.py": "8c40ddb8b390d064791bade31c52c5beb26948f4fe32a8d360c38e28288a094e",
+      "site_discovery.py": "1b60b990e7a7c3721fb3b4fea1c740b966e424016fd0ac28870f671f0f96595d",
+      "sources.py": "5d72e1795ff1011fa184098d73f40e7fc7a1610cf783dffa299bb482bdd76ea2",
+      "state_batch.py": "1ee07ad8aff8e6b3e371ae79e340e08f677d45d1a84ccfad750fd51ba8df2269",
+      "state_campaigns.py": "a43a67428910cb8760a29568642ca9b7d379c5fbc44c5e78cc426d85a56d486d",
+      "store_discovery.py": "d9c6d3a4cf09748786392cfe0fe26384263b62a52542a80dd0eedec48d1eea25",
+      "store_enrichment.py": "ded3debd58471643a4ba3b95557bd02e675ec6ace495ef571fcb854ed1710303",
+      "store_hours.py": "d4b3df93a2613318eab02eb473a809fbc7e0e7674939eafba126fed123a8e559",
+      "store_microdata.py": "f0d82d3a77bf0566f1753853fbbda004675a568ca8d847b370e0e2cb3e8993cd",
+      "store_pages.py": "ef96cd23e7a4a91b0c45c055888659b711c564503dfaddbf1d7ab0f37fd5e801",
+      "store_quality.py": "0920c2bd41ee335764f500dbce015c3bdf6cf35face6e99145e56a8e577fcea0",
+      "store_sources.py": "cc984cba5713d58c86208f9cfec500c1cfdeb913d120d328ed6619fd4e773b4f",
+      "transport.py": "b7ce7805c9a0c64c23b7b9a659e7b834a518484e4013b5327e404eedf3e766db"
+    }
+  },
+  "catalog_pointer_unchanged": true,
+  "catalog_pointer_sha256": "49e902b9d6bb63493be0fe8768758fbb26c50580fdd6e88ee6fda6d986583c64",
+  "new_asgi_errors": 0,
+  "verification_household_writes": 0
+}
